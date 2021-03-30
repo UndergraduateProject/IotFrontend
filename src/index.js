@@ -1,51 +1,33 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap4-toggle/css/bootstrap4-toggle.min.css'
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import './index.css';
-
+const { get } = require('axios'); //這裡需要安裝package  "npm install axios" 
 
 class Switch extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      light_on : false,
+    };
+  }
 	render(){
-		return (
-			<div>
-				<label class="switch">
-					<input type="checkbox"></input>
-					<span class="slider round"></span>
-				</label>
-			</div>
-		)
+    const data = get("http://192.168.1.129:8000/enviroment/humidity/").then(response => console.log(response))
+    const value = (this.state.light_on ? <p>turn off the light</p> : <p>turn on the light</p>);
+    return (
+      <div>
+        <label className="switch">
+          <input type="checkbox" onChange={() => this.setState({ light_on : !this.state.light_on })}></input>
+          <span className="slider round"></span>
+        </label>
+      <p>{value}</p>
+      </div>
+    )
 	}
 }
   
-  // ========================================
+// ========================================
   
 ReactDOM.render(
 	<Switch />,
 	document.getElementById('root')
 );
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return {winner : squares[a],
-							lights   : lines[i],
-						 };
-    }
-  }
-  return {
-		winner : null,
-		lights : null,
-	};
-}
