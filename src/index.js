@@ -7,20 +7,19 @@ class Switch extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      light_on : false,
+      lists : [],
     };
   }
 	render(){
-    const data = get("http://192.168.1.129:8000/enviroment/humidity/").then(response => console.log(response))
+    fetch("http://192.168.1.129:8000/enviroment/humidity/?limit=100").then( response => response.json().then( results => {
+      let data = results['results'];
+      this.setState({lists:data});
+    }));
     const value = (this.state.light_on ? <p>turn off the light</p> : <p>turn on the light</p>);
     return (
-      <div>
-        <label className="switch">
-          <input type="checkbox" onChange={() => this.setState({ light_on : !this.state.light_on })}></input>
-          <span className="slider round"></span>
-        </label>
-      <p>{value}</p>
-      </div>
+      <ul>
+        {this.state.lists.map(ele => <li>humidity:{ele.value}-createtime:{ele.created}</li>)}
+      </ul>
     )
 	}
 }
