@@ -1,32 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import ReactDOM, { render } from 'react-dom';
 import './index.css';
-const { get } = require('axios'); //這裡需要安裝package  "npm install axios" 
+import axios from 'axios'; //這裡需要安裝package  "npm install axios" 
+import { Line } from 'react-chartjs-2';
+const url = "http://140.117.71.98:8000/enviroment/humidity/";
 
-class Switch extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      lists : [],
-    };
-  }
-	render(){
-    fetch("http://192.168.1.129:8000/enviroment/humidity/?limit=100").then( response => response.json().then( results => {
-      let data = results['results'];
-      this.setState({lists:data});
-    }));
-    const value = (this.state.light_on ? <p>turn off the light</p> : <p>turn on the light</p>);
-    return (
-      <ul>
-        {this.state.lists.map(ele => <li>humidity:{ele.value}-createtime:{ele.created}</li>)}
-      </ul>
+let linedata = {
+  labels: [], //每一個點的時間點
+  datasets: [
+    {
+      label: 'Humidity',
+      data: [] //濕度資料儲存位置
+    }
+  ]
+};
+
+
+function App() {
+  const [data, setData] = useState ([]);
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const getdata = async () => {
+    const response = await axios.get(url);
+    let humidity = [];
+    console.log(response.data);
+    response.data['results'].forEach(ele => humidity.push(ele) );
+    humidity.forEach(
+      ele => {
+        linedata.datasets[0].data.push(ele.value)
+        linedata.labels.push(ele.created)
+      }
     )
-	}
+    setData(humidity);
+  };
+
+
+  
+  return (
+    <div>
+      <ul>{data.map((x,i) => <li key={i}>id : {x.id}   humidity : {x.value}     created : {x.created}</li>)}</ul>
+      <Line data={linedata}/>
+    </div>
+  )
 }
   
 // ========================================
   
 ReactDOM.render(
-	<Switch />,
+	<App />,
 	document.getElementById('root')
 );
