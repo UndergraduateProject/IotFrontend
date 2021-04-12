@@ -34,6 +34,7 @@ function App() {
         linedata.labels.push(ele.created)
       }
     )
+    // hihihi
     setData(humidity);
   };
 
