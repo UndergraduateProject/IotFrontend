@@ -23,20 +23,19 @@ function App() {
     getdata();
   }, []);
 
-  const getdata = async () => {
-    const response = await axios.get(url);
-    let humidity = [];
-    console.log(response.data);
-    response.data['results'].forEach(ele => humidity.push(ele) );
-    humidity.forEach(
-      ele => {
-        linedata.datasets[0].data.push(ele.value)
-        linedata.labels.push(ele.created)
-      }
-    )
-    setData(humidity);
-  };
-
+  const getdata = () => {
+    let humidity = Array();
+    fetch(url).then(response => response.json())
+      .then(response => {
+        let d = response.results
+        d.forEach(row => {
+          humidity.push(row);
+          linedata.datasets[0].data.push(row.value);
+          linedata.labels.push(row.created);
+        })
+        setData(humidity);
+      })
+  }
 
   
   return (
