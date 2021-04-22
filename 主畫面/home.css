@@ -1,0 +1,303 @@
+.mediaViewInfo {
+	--web-view-name: iPhone X, XS, 11 Pro – 1;
+	--web-view-id: iPhone_X_XS_11_Pro__1;
+	--web-scale-on-resize: true;
+	--web-center-horizontally: true;
+	--web-center-vertically: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: iPhone_X_XS_11_Pro__1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#iPhone_X_XS_11_Pro__1 {
+	position: absolute;
+	width: 375px;
+	height: 812px;
+	background-color: rgba(177,190,183,1);
+	overflow: hidden;
+	--web-view-name: iPhone X, XS, 11 Pro – 1;
+	--web-view-id: iPhone_X_XS_11_Pro__1;
+	--web-scale-on-resize: true;
+	--web-center-horizontally: true;
+	--web-center-vertically: true;
+	--web-enable-deep-linking: true;
+}
+#Rectangle_1 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_1 {
+	filter: drop-shadow(0px 14px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 261px;
+	height: 89px;
+	left: 62px;
+	top: 222px;
+}
+#images-removebg-preview {
+	position: absolute;
+	width: 59px;
+	height: 59px;
+	left: 21px;
+	top: 121px;
+	overflow: visible;
+}
+# {
+	left: 66px;
+	top: 154px;
+	position: absolute;
+	overflow: visible;
+	width: 7px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(121,115,115,1);
+}
+#images-removebg-preview_j {
+	position: absolute;
+	width: 59px;
+	height: 59px;
+	left: 203px;
+	top: 122px;
+	overflow: visible;
+}
+#_k {
+	left: 248px;
+	top: 152px;
+	position: absolute;
+	overflow: visible;
+	width: 81px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(121,115,115,1);
+}
+#Line_1 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_1 {
+	overflow: visible;
+	position: absolute;
+	width: 79px;
+	height: 3px;
+	left: 67.5px;
+	top: 179.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_2 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_2 {
+	overflow: visible;
+	position: absolute;
+	width: 81.022px;
+	height: 3.603px;
+	left: 248.5px;
+	top: 179.897px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#_n {
+	left: 142px;
+	top: 246px;
+	position: absolute;
+	overflow: visible;
+	width: 121px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(121,115,115,1);
+}
+#_o {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 74px;
+	top: 230px;
+	overflow: visible;
+}
+#Rectangle_5 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_5 {
+	filter: drop-shadow(0px 14px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 261px;
+	height: 89px;
+	left: 62px;
+	top: 332px;
+}
+#_q {
+	left: 171px;
+	top: 350px;
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(121,115,115,1);
+}
+#Rectangle_6 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_6 {
+	filter: drop-shadow(0px 14px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 261px;
+	height: 89px;
+	left: 62px;
+	top: 441px;
+}
+#Rectangle_7 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_7 {
+	filter: drop-shadow(0px 14px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 261px;
+	height: 89px;
+	left: 62px;
+	top: 564px;
+}
+#_t {
+	left: 175px;
+	top: 459px;
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(121,115,115,1);
+}
+#_u {
+	left: 142px;
+	top: 583px;
+	position: absolute;
+	overflow: visible;
+	width: 127px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(121,115,115,1);
+}
+#image-removebg-preview {
+	position: absolute;
+	width: 57px;
+	height: 57px;
+	left: 67px;
+	top: 339px;
+	overflow: visible;
+}
+#image-removebg-preview_w {
+	position: absolute;
+	width: 49px;
+	height: 49px;
+	left: 71px;
+	top: 451px;
+	overflow: visible;
+}
+#image-removebg-preview2 {
+	position: absolute;
+	width: 77px;
+	height: 77px;
+	left: 55px;
+	top: 557px;
+	overflow: visible;
+}
+#Rectangle_8 {
+	fill: rgba(106,103,103,1);
+}
+.Rectangle_8 {
+	position: absolute;
+	overflow: visible;
+	width: 375px;
+	height: 78px;
+	left: 0px;
+	top: 734px;
+}
+#image-removebg-preview_z {
+	position: absolute;
+	width: 46px;
+	height: 57px;
+	left: 44px;
+	top: 745px;
+	overflow: visible;
+}
+#image-removebg-preview4 {
+	position: absolute;
+	width: 46px;
+	height: 46px;
+	left: 302px;
+	top: 751px;
+	overflow: visible;
+}
+#image-removebg-preview6 {
+	position: absolute;
+	width: 66px;
+	height: 47px;
+	left: 158px;
+	top: 751px;
+	overflow: visible;
+}
+#_ {
+	left: 72px;
+	top: 149px;
+	position: absolute;
+	overflow: visible;
+	width: 67px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(121,115,115,1);
+}
+#logo {
+	position: absolute;
+	width: 63px;
+	height: 63px;
+	left: 144px;
+	top: 17px;
+	overflow: visible;
+}
