@@ -1,4 +1,4 @@
-const API_URL = "http://140.117.71.98:8000/api/";
+const API_URL = "http://127.0.0.1:8000/";
 
 // default using GET
 const apiFetch = (url, method = 'GET', data = {}) => {
@@ -6,18 +6,25 @@ const apiFetch = (url, method = 'GET', data = {}) => {
     'method' : method
   };
   options.headers = {
-    'Accept': 'application/json',
+    //'Accept': 'application/json',
     'Content-Type': 'application/json'
   };
+  //const token = localStorage.clear(); // clear all localStorage data
+  // we will store 'token' in localStorage which is a authentication mechanism on server
+  const token = localStorage.getItem('token');
+  if (token){
+    options.headers['Authorization'] = `token ${token}`;
+  }
+
   if (data) { 
     options.body = JSON.stringify(data);
   }
+
   return fetch(url, options)
     .then(
       res => {
         return res.status !== 204 ? res.json() : {} // deal with 204 return empty
-    })
-    
+      })
     
 };
 

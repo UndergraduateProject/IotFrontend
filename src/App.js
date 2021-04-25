@@ -1,7 +1,106 @@
 import React, { useState } from "react";
-import "./App.css";
 import { useSpring, animated } from "react-spring";
-import api from './utils/api'; // import api function which contains "GET","POST","DELETE","PATCH"
+import "./App.css";
+import api from './utils/api'; // import api function which contains "GET","POST","DELETE","PATCH" methods
+
+function LoginForm(props) {
+  const [formdata, setFormdata] = useState({
+    username : '',
+    password : '',
+  });
+
+  const login = e => {
+    e.preventDefault();
+    const data = {
+      username : formdata.username,
+      password : formdata.password,
+    };
+    api.post("auth/login/", data).then(res => {
+      console.log(res);
+      if (res.token){
+        localStorage.setItem('token', res.token); // store token into localStorage(similar to cookie and  session)
+        localStorage.setItem('username', res.user.username);
+        window.location.href = "/";
+      }
+    })
+  };
+  
+  const handleChange = e => {
+    const {id, value} = e.target;
+    setFormdata( prevState => ({
+      ...prevState,
+      [id] : value,
+    }));
+  };
+
+  return (
+    <animated.form action="" id="loginform" style={props.style}>
+      <input id="username" type="text" placeholder="Enter your username" value={formdata.username} onChange={handleChange} />
+      <input id="password" type="text" placeholder="Enter your password" value={formdata.password} onChange={handleChange} />
+      <br/>
+      
+      <input type="submit" value="submit" className="submit" onClick={login} />
+    </animated.form>
+  );
+}
+
+function RegisterForm(props) { //設定props參數，取得從外面傳進來的style  
+  const [formdata, setFormdata] = useState({  // a state contains form data
+    username : '',
+    email : '',
+    password : '',
+    confirmpassword : ''
+  });
+ 
+  const handleChange = e => {
+    const {id, value} = e.target;    // 特殊用法，類似python tuple unpack
+    setFormdata( prevState => ({      //特殊用法，keyword : object spread
+      ...prevState,
+      [id] : value,       
+    }));
+  }
+  
+  const regiteruser = e => {
+    e.preventDefault();
+    const data = { 
+      username : formdata.username,
+      email : formdata.email,
+      password : formdata.password,
+    }
+    api.post('auth/register/', data) //post data to server/database
+    .then(res => {
+      console.log(res);  //print response data
+    })
+  }
+
+  return (
+    <animated.form action="" id="registerform" style={props.style}> 
+    {/* <React.Fragment>  Now we can delete this fragment*/} 
+      <input id="username" type="text" placeholder="Create your username" value={formdata.username} onChange={handleChange} />
+      <input id="email" type="text" placeholder="Create your email" value={formdata.email} onChange={handleChange}/>
+      <input id="password" type="text" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
+      <input id="confirmpassword" type="text" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
+
+      <input type="submit" value="submit" class="submit" onClick={regiteruser}/>
+    {/* </React.Fragment> */}
+    </animated.form>
+  );
+}
+
+function Userstatus() {
+  const username = localStorage.getItem('username');
+  if (username){
+    const handleClick = () =>{
+      api.post("auth/logout/",{}).then(res => {
+        console.log(res);
+        localStorage.clear();
+        window.location.href = "/";
+      })
+    }
+    return (<div>Hello, {username} <button onClick={handleClick}>logout</button></div>);
+  }
+  return (null);
+}
 
 function App() {
   const [registrationFormStatus, setRegistartionFormStatus] = useState(false);
@@ -34,6 +133,7 @@ function App() {
   return (
 
     <div className="login-register-wrapper">
+      <Userstatus />
       <div className="nav-buttons">
         <animated.button
           onClick={loginClicked}
@@ -52,10 +152,10 @@ function App() {
         </animated.button>
       </div>
       <div className="form-group">
-        <animated.form action="" id="loginform" style={loginProps}>
-          <LoginForm />
-        </animated.form>
-        {/* 把amimated.form這個component加入RegisterForm裡面 透過porps傳入style 上面的loginform也按照一樣的做法 */ }
+        {/* <animated.form action="" id="loginform" style={loginProps}> */}
+          <LoginForm style={loginProps} />
+        {/* </animated.form> */}
+        {/* 把amimated.form這個component加入RegisterForm裡面 透過porps傳入style 上面的loginform也按照一樣的做法 這幾段comment看懂之後就可以刪掉*/ }
         {/* <animated.form action="" id="registerform" style={registerProps}> */}   
           <RegisterForm style={registerProps} />
         {/* </animated.form> */}
@@ -64,66 +164,6 @@ function App() {
         <a herf="#">Forgot password</a>    
       </animated.div>
     </div>
-  );
-}
-
-function LoginForm() {
-  return (
-    <React.Fragment>
-      <input id="username" type="text" placeholder="Enter your email" />
-      <input id="password" type="text" placeholder="Enter your password" />
-      <br/>
-      
-      <input type="submit" value="submit" className="submit" />
-    </React.Fragment>
-  );
-}
-
-function RegisterForm(props) { //設定props參數，取得從外面傳進來的style  
-  const [formdata, setFormdata] = useState({  // a state contains form data
-    username : '',
-    email : '',
-    password : '',
-    confirmpassword : ''
-  });
- 
-  const handleChange = e => {
-    const {id , value} = e.target;    // 特殊用法，類似python tuple unpack
-    setFormdata( prevState => ({      //特殊用法，keyword : object spread
-      ...prevState,
-      [id] : value,       
-    }));
-  }
-  
-  const postclient = (path) => {
-    const data = { 
-      username : formdata.username,
-      email : formdata.email,
-      password : formdata.password,
-      verify : 99999,  //for testing
-    }
-    api.post(path, data) //post data to server/database
-    .then(res => {
-      console.log(res);  //print response data
-    })
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    postclient('client/'); //api url
-  }
-
-  return (
-    <animated.form action="" id="registerform" style={props.style}> 
-    {/* <React.Fragment>  Now we can delete this fragment*/} 
-      <input id="username" type="text" placeholder="Create your username" value={formdata.username} onChange={handleChange} />
-      <input id="email" type="text" placeholder="Create your email" value={formdata.email} onChange={handleChange}/>
-      <input id="password" type="text" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
-      <input id="confirmpassword" type="text" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
-
-      <input type="submit" value="submit" class="submit" onClick={handleSubmit}/>
-    {/* </React.Fragment> */}
-    </animated.form>
   );
 }
 
