@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import './index.css';
-const { get } = require('axios'); //這裡需要安裝package  "npm install axios" 
 
 class Switch extends React.Component{
   constructor(props){
