@@ -15,13 +15,14 @@ function LoginForm(props) {
       username : formdata.username,
       password : formdata.password,
     };
-    api.post("auth/login/", data).then(res => {
+    api.post("user/login/", data).then(res => {
       console.log(res);
       if (res.token){
         localStorage.setItem('token', res.token); // store token into localStorage(similar to cookie and  session)
-        localStorage.setItem('username', res.user.username);
+        localStorage.setItem('username', data.username);
         window.location.href = "/";
       }
+      console.log('login fail!');
     })
   };
   
@@ -67,7 +68,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       email : formdata.email,
       password : formdata.password,
     }
-    api.post('auth/register/', data) //post data to server/database
+    api.post('user/register/', data) //post data to server/database
     .then(res => {
       console.log(res);  //print response data
     })
@@ -91,7 +92,7 @@ function Userstatus() {
   const username = localStorage.getItem('username');
   if (username){
     const handleClick = () =>{
-      api.post("auth/logout/",{}).then(res => {
+      api.post("user/user/",{}).then(res => {
         console.log(res);
         localStorage.clear();
         window.location.href = "/";
