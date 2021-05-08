@@ -30,7 +30,7 @@ html,body, body * {
 
   .login-register-wrapper {    /*綠框*/
       height: 670px;
-      width: 500px;                     /*525*/
+      width: 500px;               
       margin-left: auto;
       margin-right: auto;
       padding:0 2em;
@@ -129,8 +129,6 @@ html,body, body * {
         transition: all .08s ease;
 
     }
-
-
 
 
 
