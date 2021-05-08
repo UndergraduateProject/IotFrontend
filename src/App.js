@@ -82,7 +82,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       <input id="password" type="text" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
       <input id="confirmpassword" type="text" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
 
-      <input type="submit" value="submit" class="submit" onClick={regiteruser}/>
+      <input type="submit" value="submit" className="submit" onClick={regiteruser}/>
     {/* </React.Fragment> */}
     </animated.form>
   );
