@@ -33,7 +33,7 @@ function Notification(){
   })
     
     return (
-      <div style={{ textAlign: "center" }}>
+      <div>
       <ReactNotification/>
       </div>
     );
