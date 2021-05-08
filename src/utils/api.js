@@ -6,10 +6,9 @@ const apiFetch = (url, method = 'GET', data = {}) => {
     'method' : method
   };
   options.headers = {
-    //'Accept': 'application/json',
     'Content-Type': 'application/json'
   };
-  //const token = localStorage.clear(); // clear all localStorage data
+  // const token = localStorage.clear(); // clear all localStorage data
   // we will store 'token' in localStorage which is a authentication mechanism on server
   const token = localStorage.getItem('token');
   if (token){
@@ -25,7 +24,6 @@ const apiFetch = (url, method = 'GET', data = {}) => {
       res => {
         return res.status !== 204 ? res.json() : {} // deal with 204 return empty
       })
-    
 };
 
 // ajax get method
