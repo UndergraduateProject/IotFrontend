@@ -40,7 +40,6 @@ componentDidMount() {
   }
 
 render() {
-    const { response } = this.state;
     return (
       <div style={{ textAlign: "center" }}>
       <ReactNotification/>
