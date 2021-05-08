@@ -1,25 +1,19 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import ReactNotification from 'react-notifications-component'
 import {store} from 'react-notifications-component';
 import 'animate.css'
 import 'react-notifications-component/dist/theme.css'
 
-class Notification extends Component {
-  constructor() {
-    super();
-    this.state = {
-      response: false,
-      endpoint: "http://140.117.71.98:4001"
-    };
-  }
+const endpoint = "http://140.117.71.98:4001"
 
+function Notification(){
+  const [response,setResponse] = useState()
 
-componentDidMount() {
-    const { endpoint } = this.state;
+  useEffect(()=>{
     const socket = socketIOClient(endpoint);
     socket.on("message", data =>{
-      this.setState({ response: data })
+      setResponse(data)
       store.addNotification({
         title: "Warning!",
         message: "Temperature too high :" + data,
@@ -36,15 +30,13 @@ componentDidMount() {
     }
     
     );
+  })
     
-  }
-
-render() {
     return (
       <div style={{ textAlign: "center" }}>
       <ReactNotification/>
       </div>
     );
   }
-}
+
 export default Notification;
