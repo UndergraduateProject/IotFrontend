@@ -30,7 +30,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       .then(res => {
         console.log(res);  //print response data
         if(res["user"]){
-          api.post("utils/mail_certification/",data["email"]).then(res =>{ //call mail function from api
+          api.post("utils/mail_certification/",{"mail":data["email"]}).then(res =>{ //call mail function from api
             console.log(res)
             if(res["success"]){ //mail sent
               localStorage.setItem('verify',res["verify"])
