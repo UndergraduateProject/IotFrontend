@@ -12,7 +12,6 @@ function LoginForm(props) {
     });
   
     useEffect(() => {
-      console.log("use effect")
       console.log(formdata.hidePassword)
       if (formdata.hidePassword) {
         formdata.passwordType = 'password'
@@ -52,13 +51,8 @@ function LoginForm(props) {
       setFormdata({...formdata, hidePassword: !formdata.hidePassword})
     }
   
-  
-  
     return (
-  
-  
       <animated.form action="" id="loginform" style={props.style}>
-  
         <input  id="username" type="text" placeholder="Enter your username" value={formdata.username} onChange={handleChange} />
         <div key="test" className="column">
           <input  id="password" type={formdata.passwordType} placeholder="Enter your password" value={formdata.password} onChange={handleChange} />
@@ -66,11 +60,8 @@ function LoginForm(props) {
         </div>
   
         <br/>
-  
         <input type="submit" value="submit" className="submit" onClick={login} />
       </animated.form>
-  
-  
     )
   }
 

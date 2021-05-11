@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from '../../utils/api';
 import { useSpring, animated } from "react-spring";
-import show from "../../images/show.png";
+import Verify from "./verify";
 
 function RegisterForm(props) { //設定props參數，取得從外面傳進來的style  
     const [formdata, setFormdata] = useState({  // a state contains form data
@@ -10,6 +10,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       password : '',
       confirmpassword : ''
     });
+    const [verify, setVerify] = useState(false)
    
     const handleChange = e => {
       const {id, value} = e.target;    // 特殊用法，類似python tuple unpack
@@ -33,29 +34,29 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
           api.post("utils/mail_certification/",{"mail":data["email"]}).then(res =>{ //call mail function from api
             console.log(res)
             if(res["success"]){ //mail sent
-              localStorage.setItem('verify',res["verify"])
+              localStorage.setItem('verify',res["verify"]);
+              setVerify(true);
             }
             else{
-              alert("Mail not sent")
+              alert("Mail not sent");
             }
           })
           
         }
       })
     }
-  
+    
+    if (verify){
+      return(<Verify style={props.style}/>)
+    }
     return (
       <animated.form action="" id="registerform" style={props.style}> 
-      {/* <React.Fragment>  Now we can delete this fragment*/} 
         <input id="username" type="text" placeholder="Create your username" value={formdata.username} onChange={handleChange} />
         <input id="email" type="text" placeholder="Create your email" value={formdata.email} onChange={handleChange}/>
         <input id="password" type="text" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
         <input id="confirmpassword" type="text" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
   
         <input type="submit" value="submit" class="submit" onClick={regiteruser}/>
-  
-      
-      {/* </React.Fragment> */}
       </animated.form>
     );
   }
