@@ -8,7 +8,7 @@ import "./login.css";
 
 
 function Login() {
-  const [registrationFormStatus, setRegistartionFormStatus] = useState(false);
+  const [registrationFormStatus, setRegistrationFormStatus] = useState(false);
   const loginProps = useSpring({ 
     left: registrationFormStatus ? -500 : 0, // Login form sliding positions
   });
@@ -28,12 +28,10 @@ function Login() {
   });
 
   // 像這種在裡面的function盡量寫成arrow function
-  const registerClicked = () => {
-    setRegistartionFormStatus(true);
+  const Clicked = () => {
+    setRegistrationFormStatus(!registrationFormStatus);
   }
-  const loginClicked = () => {
-    setRegistartionFormStatus(false);
-  }
+
 
 
   return (
@@ -42,7 +40,7 @@ function Login() {
       <Userstatus />
       <div className="nav-buttons">
         <animated.button
-          onClick={loginClicked}
+          onClick={Clicked}
           id="loginBtn"
           style={loginBtnProps}
         >
@@ -50,7 +48,7 @@ function Login() {
           LOGIN
         </animated.button>
         <animated.button
-          onClick={registerClicked}
+          onClick={Clicked}
           id="registerBtn"
           style={registerBtnProps}
         >

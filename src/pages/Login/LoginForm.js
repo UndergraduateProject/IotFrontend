@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from '../../utils/api';
 import { useSpring, animated } from "react-spring";
 import show from "../../images/show.png";
+import {Alert} from "react-bootstrap";
 
 function LoginForm(props) {
     const [formdata, setFormdata] = useState({
@@ -10,9 +11,11 @@ function LoginForm(props) {
       hidePassword: true,
       passwordType: "password",
     });
+
+    const [credentials,setCredentials] = useState(false);
+    const [msg,setMsg] = useState("");
   
     useEffect(() => {
-      console.log(formdata.hidePassword)
       if (formdata.hidePassword) {
         formdata.passwordType = 'password'
       }
@@ -28,13 +31,20 @@ function LoginForm(props) {
         password : formdata.password,
       };
   
-      api.post("auth/login/", data).then(res => {
+      api.post("user/login/", data).then(res => {
         console.log(res);
         if (res.token){
           localStorage.setItem('token', res.token); // store token into localStorage(similar to cookie and  session)
-          localStorage.setItem('username', res.user.username);
+          //localStorage.setItem('username', res.user.username);
           window.location.href = "/";
         }
+        else if(res.username){
+          setMsg("Field may not be blank");
+        }
+        else {
+          setMsg("Wrong username or password");
+        }
+        setCredentials(true);
       })
     };
   
@@ -47,7 +57,6 @@ function LoginForm(props) {
     };
   
     const setPasswordVisibility = () => {
-      console.log("test")
       setFormdata({...formdata, hidePassword: !formdata.hidePassword})
     }
   
@@ -58,6 +67,7 @@ function LoginForm(props) {
           <input  id="password" type={formdata.passwordType} placeholder="Enter your password" value={formdata.password} onChange={handleChange} />
           <img src={show} onClick={setPasswordVisibility} style={{position:'absolute',left:'350px',top:'78px',width:'20px', height:'20px', objectFit:'cover'}}/>
         </div>
+        {credentials && <Alert variant="warning">{msg}</Alert>}
   
         <br/>
         <input type="submit" value="submit" className="submit" onClick={login} />
