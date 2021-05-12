@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./homepage.css"
 import homepage1 from "../../images/homepage1.png"
 import journal from "../../images/journal.png"
+import Userstatus from "../../component/Userstatus"
 
 function Homepage(){
     
     return(
         <div className="container">
           <div className="login-register-wrapper">
+					<Userstatus/>
 
               <div>
               <img style={

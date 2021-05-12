@@ -24,19 +24,26 @@ function LoginForm(props) {
       }
     });
   
+    const {
+      log : [log,setLog]
+    } = {
+      log : useState(false),
+      ...(props.state||{})
+    }
+
     const login = e => {
       e.preventDefault();
       const data = {
         username : formdata.username,
         password : formdata.password,
       };
-  
       api.post("user/login/", data).then(res => {
         console.log(res);
         if (res.token){
           localStorage.setItem('token', res.token); // store token into localStorage(similar to cookie and  session)
-          //localStorage.setItem('username', res.user.username);
-          window.location.href = "/";
+          localStorage.setItem('username', data["username"]);
+          console.log(data["username"]);
+          setLog(true);
         }
         else if(res.username){
           setMsg("Field may not be blank");

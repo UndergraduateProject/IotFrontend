@@ -7,8 +7,9 @@ import "./login.css";
 
 
 
-function Login() {
+function Login(props) {
   const [registrationFormStatus, setRegistrationFormStatus] = useState(false);
+  
   const loginProps = useSpring({ 
     left: registrationFormStatus ? -500 : 0, // Login form sliding positions
   });
@@ -56,7 +57,7 @@ function Login() {
         </animated.button>
       </div>
       <div className="form-group">
-          <LoginForm style={loginProps} />
+          <LoginForm style={loginProps} state={props.state}/>
           <RegisterForm style={registerProps} />
       </div>
       <animated.div className="forgot-panel" style={loginProps}>
