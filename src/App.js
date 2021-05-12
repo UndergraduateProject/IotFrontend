@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Login from "./pages/Login";
-import Verify from "./pages/Login/verify"
+import Homepage from "./pages/Home"
+import {
+  Redirect,
+  Route,
+} from "react-router-dom";
 //import "/App.css";
 
 
 
 function App() {
+  const [log,setLog] = useState(false);
+
+
   return (
     <React.Fragment>
-      <Login />
+            <Route path="/Homepage"><Homepage /></Route>
+            {log ? <Redirect to="/homepage"/>:<Login state={{log :[log,setLog]}}/>}
     </React.Fragment>
   )
 }
