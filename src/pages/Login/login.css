@@ -1,134 +1,128 @@
-
-html,body, body * { 
-    box-sizing: border-box; 
-    font-family: 'Open Sans', sans-serif; 
-    margin:0;
-    padding:0;
-    color:#6a6f8c;   /*login&register的字*/
- }
-
-
-
-
- body {
-    background:#757575;  /*灰色背景*/
-  }
-
- 
-  .container {       /*綠框的位子*/
-      width: 100%;
-      padding-top: 60px;
-      padding-bottom: 100px;
-  }
-
-  .logo1{
-	  position:absolute;
-	  top:150px;
-	  left:500px;
-  }
-
-
-  .login-register-wrapper {    /*綠框*/
-      height: 670px;
-      width: 500px;               
-      margin-left: auto;
-      margin-right: auto;
-      padding:0 2em;
-      border-radius: 12px;   /*綠框的角->圓弧*/
-      overflow: hidden; 
-      background: #aebfb7;
-  }
-  
-  /* Nav buttons */
-  .nav-buttons {
-    width: 100%;
-    height: 100px;
-    padding-top: 200px;    /*login&register的位子*/
-    opacity: 1;
-    margin-bottom: 3em;
-
-  }
-
-  button {      /*login&register*/
-      font-size: 1.5em;
-      font-weight:bold;
-      margin-right:-100px;
-      margin-left: 120px;
-      border:0px;
-      cursor: pointer;
-      background-color: inherit;
-  }
-
-  button:focus {
-      outline: 0px;
-  }
-  button.active {
-      padding-bottom: 10px;
-      border-bottom: solid 20px;
-  } 
-  
-   /* footer: forgot section */
-   .forgot-panel {
-    font-weight:bold;
-    position: relative;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    padding-top: 30px;
-    border-top: solid 1px rgba(255,255,255,.3);    
+html,
+body,
+body * {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #6a6f8c; /*login&register的字*/
 }
 
-    /* form styling */
-    .form-group input {
-        margin-left: 3.2em;    /*輸入框框的位子*/
-        font-weight:bold;
-        width: 80%;			   /*輸入框框的大小*/
-        height: 45px;
-        padding-left: 15px;
-        border: none;
-        border-radius: 25px;    /*輸入框框的邊角->圓弧*/
-        margin-bottom: 20px;
-        background: rgba(255,255,255,.5) ;
-    }
+body {
+  background: #757575; /*灰色背景*/
+}
 
-    input.submit {
-    	  margin-left: 8em; 
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: center;
-        color: rgba(255,255,255, 1); 
-        padding: 8px 0px;
-        width: 50%;
-        height: 45px;
-        border: none;
-        border-radius: 25px;
-        margin-top: 35px;
-        background-color: #757575;
-    
-    }
+.container {
+  /*綠框的位子*/
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 100px;
+}
 
-    /*Form positioning and animation */
+.logo1 {
+  position: absolute;
+  top: 150px;
+  left: 500px;
+}
 
-    form#registerform {
-        left:500px;
-        top:-230px;
-        position:relative;
-    }
+.login-register-wrapper {
+  /*綠框*/
+  height: 100%;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2em;
+  border-radius: 12px; /*綠框的角->圓弧*/
+  overflow: hidden;
+  background: #aebfb7;
+}
 
-    .forgot-panel {
-        margin-top:-280px;
-        color:gray;
-    }
+/* Nav buttons */
+.nav-buttons {
+  width: 100%;
+  height: 100px;
+  padding-top: 200px; /*login&register的位子*/
+  opacity: 1;
+  margin-bottom: 3em;
+}
 
-    form, .forgot-panel { 
-        position: relative;
-        transition: all .08s ease;
-    }
-    #loginBtn, #registerBtn {
-        transition: all .08s ease;
+button {
+  /*login&register*/
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: -100px;
+  margin-left: 120px;
+  border: 0px;
+  cursor: pointer;
+  background-color: inherit;
+}
 
-    }
+button:focus {
+  outline: 0px;
+}
+button.active {
+  padding-bottom: 10px;
+  border-bottom: solid 20px;
+}
 
+/* footer: forgot section */
+.forgot-panel {
+  font-weight: bold;
+  position: relative;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 30px;
+  border-top: solid 1px rgba(255, 255, 255, 0.3);
+}
 
+/* form styling */
+.form-group input {
+  margin-left: 3.2em; /*輸入框框的位子*/
+  font-weight: bold;
+  width: 80%; /*輸入框框的大小*/
+  height: 45px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 25px; /*輸入框框的邊角->圓弧*/
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.5);
+}
 
+input.submit {
+  margin-left: 8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  padding: 8px 0px;
+  width: 50%;
+  height: 45px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 35px;
+  background-color: #757575;
+}
+
+/*Form positioning and animation */
+
+form#registerform {
+  left: 500px;
+  top: -230px;
+  position: relative;
+}
+
+.forgot-panel {
+  color: gray;
+}
+
+form,
+.forgot-panel {
+  position: relative;
+  transition: all 0.08s ease;
+}
+#loginBtn,
+#registerBtn {
+  transition: all 0.08s ease;
+}

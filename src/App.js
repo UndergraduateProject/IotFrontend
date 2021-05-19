@@ -10,13 +10,13 @@ import {
 
 
 function App() {
-  const [log,setLog] = useState(false);
+  const [log,setLog] = useState(localStorage.getItem('token'));
 
 
   return (
     <React.Fragment>
             <Route path="/Homepage"><Homepage /></Route>
-            {log ? <Redirect to="/homepage"/>:<Login state={{log :[log,setLog]}}/>}
+            {log ? <Redirect to="/Homepage"/>:<Login state={{log :[log,setLog]}}/>}
     </React.Fragment>
   )
 }

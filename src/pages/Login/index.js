@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
 import Userstatus from "./Userstatus"
 import "./login.css";
+import { Container, Row ,Col } from 'react-bootstrap'
 
 
 
