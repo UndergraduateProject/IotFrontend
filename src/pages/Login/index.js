@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
 import Userstatus from "./Userstatus"
 import "./login.css";
+import logo from "./logo.png";
 
 
 
@@ -38,6 +39,7 @@ function Login(props) {
   return (
 
     <div className="login-register-wrapper">
+      <img className="top11" style={{height:'80px',width:'140px'}} src={ logo }/>
       <Userstatus />
       <div className="nav-buttons">
         <animated.button
@@ -61,7 +63,7 @@ function Login(props) {
           <RegisterForm style={registerProps} />
       </div>
       <animated.div className="forgot-panel" style={loginProps}>
-        <a herf="#">Forgot password</a>    
+        <a className="forgot" herf="#">Forgot password</a>    
       </animated.div>
     </div>
   );
