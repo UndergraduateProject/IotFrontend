@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Notification from './Notification'
-import Chart from './Chart'
+import {BrowserRouter as Router} from "react-router-dom"
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <Notification />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
