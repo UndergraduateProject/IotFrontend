@@ -72,7 +72,7 @@ function LoginForm(props) {
         <input  id="username" type="text" placeholder="Enter your username" value={formdata.username} onChange={handleChange} />
         <div key="test" className="column">
           <input  id="password" type={formdata.passwordType} placeholder="Enter your password" value={formdata.password} onChange={handleChange} />
-          <img src={show} onClick={setPasswordVisibility} style={{position:'absolute',left:'350px',top:'78px',width:'20px', height:'20px', objectFit:'cover'}}/>
+          <img src={show} onClick={setPasswordVisibility} style={{position:'absolute',left:'345px',top:'115px',width:'30px', height:'30px', objectFit:'cover'}}/>
         </div>
         {credentials && <Alert variant="warning">{msg}</Alert>}
   
