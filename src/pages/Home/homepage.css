@@ -1,31 +1,34 @@
-.bodyyy{    /*背景(灰色)*/
-    background-color:#757575;
-    box-sizing: border-box; 
-    font-family: 'Open Sans', sans-serif; 
-    margin:0;
-    padding:0;
+.bodyyy {
+  /*背景(灰色)*/
+  background-color: #757575;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.container {       /*綠框的位子*/
-    width: 100%;
-    padding-top: 60px;
-    padding-bottom: 100px;
+.container {
+  /*綠框的位子*/
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 100px;
 }
 
-
-.login-register-wrapper {    /*綠框的顏色、邊框之類*/
-    height: 1200px;
-    width: 500px;               
-    margin-left: auto;
-    margin-right: auto;
-    padding:0 2em;
-    border-radius: 12px;   /*綠框的角->圓弧*/
-    overflow: hidden; 
-    background: #aebfb7;
+.login-register-wrapper {
+  /*綠框的顏色、邊框之類*/
+  height: 1200px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2em;
+  border-radius: 12px; /*綠框的角->圓弧*/
+  overflow: hidden;
+  background: #aebfb7;
 }
 
-.list{    /*把功能選單還有植物日誌的radio隱藏*/
-    display: none;
+.list {
+  /*把功能選單還有植物日誌的radio隱藏*/
+  display: none;
 }
 
 /*
@@ -39,7 +42,7 @@
 }
 */
 
- /*   
+/*   
 .journalList { 
     position: absolute;  
     width:145px;
@@ -48,50 +51,47 @@
 }
 */
 
-.button{
-    width: 250px;
-    height: 60px;
-    position: absolute;
-    left: 50%;  
-    border: none;
-    color: #757575;
-    font-size: 20px;
-    border-radius: 6px;    /*輸入框框的邊角->圓弧*/
+.button {
+  width: 250px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  border: none;
+  color: #757575;
+  font-size: 20px;
+  border-radius: 6px; /*輸入框框的邊角->圓弧*/
 }
 
-.button1{
-    margin: 130px 0 0 -125px;
+.button1 {
+  margin: 130px 0 0 -125px;
 }
-.button2{
-    margin: 220px 0 0 -125px;
+.button2 {
+  margin: 220px 0 0 -125px;
 }
-.button3{
-    margin: 310px 0 0 -125px;
+.button3 {
+  margin: 310px 0 0 -125px;
 }
-.button4{
-    margin: 400px 0 0 -125px;
+.button4 {
+  margin: 400px 0 0 -125px;
 }
 
 .wrapper {
-    /* 設定高度最小為100%, 如果內容區塊很多, 可以再多 */
-    min-height: 100%;
-   
+  /* 設定高度最小為100%, 如果內容區塊很多, 可以再多 */
+  min-height: 100%;
 }
 
 .content {
-    /* 留出header及footer區塊的空間 */
-    padding-bottom: 40px;    
+  /* 留出header及footer區塊的空間 */
+  padding-bottom: 40px;
 }
 
 .footer {
-    /* 設定footer的高度 */
-    margin-top: 478px; /*隨footer高度需做調整*/
-    margin-left: -100px;
-    height: 87px;
-    width:700px;
-    background-color:#6b6767;
-    box-sizing: border-box;
-    /* 設定footer絕對位置在底部 */
-   
+  /* 設定footer的高度 */
+  margin-top: 478px; /*隨footer高度需做調整*/
+  margin-left: -100px;
+  height: 87px;
+  width: 700px;
+  background-color: #6b6767;
+  box-sizing: border-box;
+  /* 設定footer絕對位置在底部 */
 }
-

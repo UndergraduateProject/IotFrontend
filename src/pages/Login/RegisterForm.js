@@ -31,10 +31,8 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       }
       api.post('user/register/', data) //post data to server/database
       .then(res => {
-        console.log(res);  //print response data
         if(res["user"]){
           api.post("utils/mail_certification/",{"mail":data["email"]}).then(res =>{ //call mail function from api
-            console.log(res)
             if(res["success"]){ //mail sent
               localStorage.setItem('verify',res["verify"]);
               setVerify(true);
@@ -43,7 +41,6 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
               alert("Mail not sent");
             }
           })
-          
         }
         else if(res["username"]){
           setUsername(true)

@@ -28,9 +28,9 @@ function LoginForm(props) {
       log : [log,setLog]
     } = {
       log : useState(false),
-      ...(props.state||{})
+      ...(props.state || {})
     }
-
+    
     const login = e => {
       e.preventDefault();
       const data = {
@@ -38,11 +38,9 @@ function LoginForm(props) {
         password : formdata.password,
       };
       api.post("user/login/", data).then(res => {
-        console.log(res);
         if (res.token){
           localStorage.setItem('token', res.token); // store token into localStorage(similar to cookie and  session)
           localStorage.setItem('username', data["username"]);
-          console.log(data["username"]);
           setLog(true);
         }
         else if(res.username){
@@ -69,8 +67,8 @@ function LoginForm(props) {
   
     return (
       <animated.form action="" id="loginform" style={props.style}>
-        <input  id="username" type="text" placeholder="Enter your username" value={formdata.username} onChange={handleChange} />
-        <div key="test" className="column">
+        <div className="row"><input  id="username" type="text" placeholder="Enter your username" value={formdata.username} onChange={handleChange} /></div>
+        <div key="test" className="row">
           <input  id="password" type={formdata.passwordType} placeholder="Enter your password" value={formdata.password} onChange={handleChange} />
           <img src={show} onClick={setPasswordVisibility} style={{position:'absolute',left:'345px',top:'115px',width:'30px', height:'30px', objectFit:'cover'}}/>
         </div>
