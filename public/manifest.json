@@ -2,12 +2,14 @@
 "short_name": "IRIS",
 "name": "IRIS",
 "icons": [
-{
-"src": "favicon.ico",
-"sizes": "144x144",
-"type": "image/png"
-}
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
 ],
 "start_url": "./",
-"display": "standalone"
+"display": "standalone",
+"theme_color": "#000000",
+"background_color": "#ffffff"
 }
