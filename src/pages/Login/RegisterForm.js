@@ -13,6 +13,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
     });
     const [verify, setVerify] = useState(false)
     const [username,setUsername] = useState(false)
+    const [confirm,setConfirm] = useState(false)
    
     const handleChange = e => {
       const {id, value} = e.target;    // 特殊用法，類似python tuple unpack
@@ -24,28 +25,37 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
     
     const regiteruser = e => {
       e.preventDefault();
-      const data = { 
-        username : formdata.username,
-        email : formdata.email,
-        password : formdata.password,
+      setUsername(false)
+      setConfirm(false)
+      if(formdata.password != formdata.confirmpassword){
+        setConfirm(true)
       }
-      api.post('user/register/', data) //post data to server/database
-      .then(res => {
-        if(res["user"]){
-          api.post("utils/mail_certification/",{"mail":data["email"]}).then(res =>{ //call mail function from api
-            if(res["success"]){ //mail sent
-              localStorage.setItem('verify',res["verify"]);
-              setVerify(true);
-            }
-            else{
-              alert("Mail not sent");
-            }
-          })
+      else{
+        setConfirm(false)
+        const data = { 
+          username : formdata.username,
+          email : formdata.email,
+          password : formdata.password,
+          confirm : formdata.confirmpassword,
         }
-        else if(res["username"]){
-          setUsername(true)
-        }
-      })
+        api.post('user/register/', data) //post data to server/database
+        .then(res => {
+          if(res["user"]){
+            setVerify(true);
+            api.post("utils/mail_certification/",{"mail":data["email"]}).then(res =>{ //call mail function from api
+              if(res["success"]){ //mail sent
+                localStorage.setItem('verify',res["verify"]);
+              }
+              else{
+                alert("Mail not sent");
+              }
+            })
+          }
+          else if(res["username"]){
+            setUsername(true)
+          }
+        })
+      }
     }
     
     if (verify){
@@ -60,9 +70,11 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
         </Row>
         }
         <input id="email" type="text" placeholder="Create your email" value={formdata.email} onChange={handleChange}/>
-        <input id="password" type="text" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
-        <input id="confirmpassword" type="text" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
-  
+        <input id="password" type="password" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
+        <input id="confirmpassword" type="password" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
+        {confirm && <Row>
+          <Col><Alert variant="warning">Password is not the same as above.</Alert></Col>
+        </Row>}
         <input type="submit" value="submit" className="submit" onClick={regiteruser}/>
       </animated.form>
     );
