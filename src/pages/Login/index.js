@@ -39,7 +39,7 @@ function Login(props) {
   return (
 
     <div className="login-register-wrapper">
-      <img className="top11" style={{height:'80px',width:'140px'}} src={ logo }/>
+      <img className="top11"  src={ logo }/>
       <Userstatus />
       <div className="nav-buttons">
         <animated.button
