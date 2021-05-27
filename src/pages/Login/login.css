@@ -31,7 +31,7 @@ body {
 
 .login-register-wrapper {
   /*綠框*/
-  height: 1200px;
+  height: auto; /*讓app隨著手機的長度變化，1200px 會使這個框架固定為1200px大小，所以若熒幕太短則會需下拉*/
   width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -47,7 +47,7 @@ body {
   height: 100px;
   padding-top: 100px; /*login&register的位子*/
   opacity: 1;
-  margin-bottom: 7e;
+  margin-bottom: 7em;
 }
 
 .container {
@@ -154,12 +154,6 @@ form,
 }
 
 /*Form positioning and animation */
-
-form#registerform {
-  left: 500px;
-  top: -230px;
-  position: relative;
-}
 
 .forgot-panel {
   color: gray;
