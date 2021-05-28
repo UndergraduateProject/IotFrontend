@@ -1,0 +1,268 @@
+.body_control {
+    background-color: #aebfb7;
+    font-family: "Open Sans", sans-serif;
+    height: 100vh;
+    width:100vw;
+  }
+
+.control_house_pic{
+    margin-top: 2vh;
+    margin-left:5vw;
+    margin-right:5vw;
+    position: absolute;
+    height: 33vh;
+    width: 90vw;
+}
+
+.control_button1{
+    background-color:#FFA042;
+    font-weight: bold;
+    text-align: center;
+    font-size: 5vmin;
+    Color:white;
+    width: 35vw;
+    height: 6vh;
+    margin-top: 38vh;
+    margin-left: 32.5vw;
+    margin-right: 32.5vw;
+    border: none;
+    border-radius: 22px;
+}
+
+.control_button2{
+    background-color:#4E97CA;
+    width: 80vw;
+    height: 6vh;
+    margin-top: 4vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.control_top{
+    height:5vh;
+    width: 45vw;
+    margin: 1vh 5vw;
+    font-size: 5vmin;
+    color:black;
+    font-weight: bold;
+    position: absolute;
+}
+
+.control_battery_pic{
+    margin-top: 6vh;
+    margin-left: 5.5vw;
+    height: 13vh;
+    width:25.5vw;
+}
+
+.control_capacity_pic{
+    margin-top: 6vh;
+    margin-left: 5.5vw;
+    height: 13vh;
+    width:25.5vw;
+}
+
+.control_light_pic{
+    margin-top: 6vh;
+    margin-left: 5.5vw;
+    height: 13vh;
+    width:25.5vw;
+}
+
+.control_duration_pic{
+    margin-top: 2vh;
+    margin-left: 5.5vw;
+    width:40vw;
+    height: 9.5vh;
+}
+
+.control_close_pic{
+    margin-top: 2vh;
+    margin-left: 7vw;
+    height: 9.5vh;
+    width:40vw;
+}
+
+.control_top1{
+    height:5vh;
+    width: 10vw;
+    margin: 16vh 12vw;
+    font-size: 2vmin;
+    color:#282B3A;
+    font-weight: bold;
+    position: absolute;
+}
+
+.control_top2{
+    margin: 16vh 42vw; 
+}
+
+.control_top3{
+    margin: 16vh 76vw; 
+}
+
+.control_top4{
+    margin: 8.5vh 24vw; 
+}
+
+.control_top5{
+    margin: 8.5vh 74vw; 
+}
+
+.control_input1{
+    margin: 12vh 12vw;
+    font-size: 6.5vmin;
+    color:#282B3A;
+    font-weight: bold;
+    position: absolute;
+}
+
+.control_input2{
+    font-size: 6vmin;
+    margin: 12vh 40vw;
+}
+
+.control_input3{
+    font-size: 6.5vmin;
+    margin: 12vh 74vw;
+}
+
+.control_input4{
+    font-size: 6vmin;
+    margin: 4vh 23vw;
+}
+
+.control_input5{
+    font-size: 6vmin;
+    margin: 4vh 70vw;
+}
+
+.footer_control{
+    height: 11.924vh;
+    width: 100%;
+    background-color: #6b6767;
+    margin-top:2vh ;
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.monitor_top{
+    height:5vh;
+    width: 60vw;
+    margin: 5vh 5vw;
+    font-size: 7vmin;
+    color:white;
+    font-weight: bold;
+    position: absolute;
+}
+
+.monitor_top1{
+    height:5vh;
+    width: 80vw;
+    margin: 11vh 5vw;
+    color:white;
+    font-size: 7vmin;
+    font-weight: bold;
+    position: absolute;
+
+}
+  
+.monitor_wea_pic{
+   margin-top: 6vh;
+   margin-left:78vw;
+   position: absolute;
+   width: 15vw;
+ 
+}
+
+
+
+.monitor_top2{
+    font-size: 15vmin;
+    color:white;
+    margin-top:44vh;
+    margin-left:35vw;
+    height:10vh;
+    width:30vw;
+    position: absolute;
+
+}
+
+.monitor_top3{
+    font-size: 4.5vmin;
+    margin-top:14vh;
+    margin-left:75.5vw;
+    height:3vh;
+    width:20vw;
+    position: absolute;
+}
+
+.monitor_top4{
+    font-size: 12vmin;
+    color: white;
+    margin-top:65vh;
+    margin-left:18vw;
+    height:3vh;
+    width:20vw;
+    position: absolute;
+
+}
+.monitor_top5{
+    font-size: 12vmin;
+    color: white;
+    margin-top:65vh;
+    margin-left:58.5vw;
+    height:3vh;
+    width:20vw;
+    position: absolute;
+
+}
+
+.monitor_light_pic{
+    margin-top: 22vh;
+    margin-left:12.5vw;
+    margin-right:12.5vw;
+    position: absolute;
+    height: 34vh;
+    width: 75vw;
+}
+
+
+
+.monitor_temp_pic{
+    margin-top: 58vh;
+    margin-left:12.5vw;
+    position: absolute;
+    width:35vw;
+}
+    
+
+
+.monitor_humi_pic{
+    margin-top: 58vh;
+    margin-left:52.5vw;
+    position: absolute;
+    width:35vw;
+
+}
+
+
+  
+  
