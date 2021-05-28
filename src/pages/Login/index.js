@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
-import LoginForm from "./LoginForm"
-import RegisterForm from "./RegisterForm"
-import Userstatus from "./Userstatus"
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
+import Userstatus from "./Userstatus";
 import "./login.css";
 import logo from "./logo.png";
 
@@ -32,31 +32,16 @@ function Login(props) {
   // 像這種在裡面的function盡量寫成arrow function
   const Clicked = () => {
     setRegistrationFormStatus(!registrationFormStatus);
-  }
-
-
+  };
 
   return (
 
     <div className="login-register-wrapper">
-      <img className="top11"  src={ logo }/>
+      <img className="top11" src={ logo }/>
       <Userstatus />
       <div className="nav-buttons">
-        <animated.button
-          onClick={Clicked}
-          id="loginBtn"
-          style={loginBtnProps}
-        >
-
-          LOGIN
-        </animated.button>
-        <animated.button
-          onClick={Clicked}
-          id="registerBtn"
-          style={registerBtnProps}
-        >
-          SIGN UP
-        </animated.button>
+        <animated.button onClick={Clicked} id="loginBtn" style={loginBtnProps}>LOGIN</animated.button>
+        <animated.button onClick={Clicked} id="registerBtn" style={registerBtnProps}>SIGN UP</animated.button>
       </div>
       <div className="form-group">
           <LoginForm style={loginProps} state={props.state}/>
@@ -67,6 +52,6 @@ function Login(props) {
       </animated.div>
     </div>
   );
-}
+};
 
 export default Login;
