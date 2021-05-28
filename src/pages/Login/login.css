@@ -1,11 +1,23 @@
-html,
-body,
-body * {
-  box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #6a6f8c; /*login&register的字*/
+html,body, body * { 
+    box-sizing: border-box; 
+    font-family: 'Open Sans', sans-serif; 
+    margin:0;
+    padding:0;
+    color:#6a6f8c;   /*login&register的字*/
+ }
+
+
+
+
+ body {
+    background:#aebfb7;  /*灰色背景*/
+  }
+.top11{
+    margin-top: 100px;
+    height:80px;
+    width:140px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 body {
@@ -104,28 +116,3 @@ input.submit {
 }
 
 /*Form positioning and animation */
-
-form#registerform {
-  margin-left: -2.5%;
-  top: -350px;
-  position: relative;
-}
-
-.forgot-panel {
-  margin-top: -400px;
-  color: gray;
-}
-
-.forgot {
-  font-size: 20px;
-}
-
-form,
-.forgot-panel {
-  position: relative;
-  transition: all 0.08s ease;
-}
-#loginBtn,
-#registerBtn {
-  transition: all 0.08s ease;
-}
