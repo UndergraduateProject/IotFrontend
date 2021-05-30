@@ -5,6 +5,7 @@ import RegisterForm from "./RegisterForm";
 import Userstatus from "./Userstatus";
 import "./login.css";
 import logo from "./logo.png";
+import {Row, Col} from "react-bootstrap";
 
 
 
@@ -13,9 +14,11 @@ function Login(props) {
   
   const loginProps = useSpring({ 
     left: registrationFormStatus ? -500 : 0, // Login form sliding positions
+    display: registrationFormStatus ? 'none' : 'block',
   });
   const registerProps = useSpring({
     left: registrationFormStatus ? 0 : 500, // Register form sliding positions 
+    display: registrationFormStatus? 'block':'none',
   });
 
   const loginBtnProps = useSpring({
@@ -36,12 +39,16 @@ function Login(props) {
 
   return (
 
-    <div className="login-register-wrapper">
-      <img className="top11" src={ logo }/>
+    <div className="login-register-wrapper container-fluid">
+      <div className="logorow row">
+      <img className="logo" src={ logo }/>
+      </div>
       <Userstatus />
       <div className="nav-buttons">
-        <animated.button onClick={Clicked} id="loginBtn" style={loginBtnProps}>LOGIN</animated.button>
-        <animated.button onClick={Clicked} id="registerBtn" style={registerBtnProps}>SIGN UP</animated.button>
+        <Row>
+          <Col className="d-flex justify-content-end"><animated.button onClick={Clicked} id="loginBtn" style={loginBtnProps}>LOGIN</animated.button></Col>
+          <Col><animated.button onClick={Clicked} id="registerBtn" style={registerBtnProps}>SIGN UP</animated.button></Col>
+        </Row>
       </div>
       <div className="form-group">
           <LoginForm style={loginProps} state={props.state}/>

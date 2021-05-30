@@ -63,19 +63,19 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
     }
     return (
       <animated.form action="" id="registerform" style={props.style}> 
-        <input id="username" type="text" placeholder="Create your username" value={formdata.username} onChange={handleChange} />
+        <Row><input id="username" type="text" placeholder="Create your username" value={formdata.username} onChange={handleChange} /></Row>
         {username && 
         <Row>
           <Col><Alert variant="warning">A user with that username already exists.</Alert></Col>
         </Row>
         }
-        <input id="email" type="text" placeholder="Create your email" value={formdata.email} onChange={handleChange}/>
-        <input id="password" type="password" placeholder="Create your password" value={formdata.password} onChange={handleChange} />
-        <input id="confirmpassword" type="password" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} />
+        <Row><input id="email" type="text" placeholder="Create your email" value={formdata.email} onChange={handleChange}/></Row>
+        <Row><input id="password" type="password" placeholder="Create your password" value={formdata.password} onChange={handleChange} /></Row>
+        <Row><input id="confirmpassword" type="password" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} /></Row>
         {confirm && <Row>
           <Col><Alert variant="warning">Password is not the same as above.</Alert></Col>
         </Row>}
-        <input type="submit" value="submit" className="submit" onClick={regiteruser}/>
+        <Row><input type="submit" value="submit" className="submit" onClick={regiteruser}/></Row>
       </animated.form>
     );
   }

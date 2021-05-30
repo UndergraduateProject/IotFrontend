@@ -1,7 +1,6 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Row, Col,Button} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import "./homepage.css";
 import logo from "./logo.png";
 import homepage1 from "./homepage.png";
@@ -10,8 +9,8 @@ import journal from "./journal.png";
 
 function homepage() {
   return (
-    <div class="bodyyy">
-    <Container >
+    <div class="home">
+    <Container fluid>
       <Row>
         <Col className="top1"></Col>
         <Col  className="top1"><img style={{height:'80px',width:'140px'}} src={ logo }/></Col>
@@ -25,7 +24,7 @@ function homepage() {
       
       <Row className="top">
         <Col></Col>
-        <Col xs={7.5}><Button size="lg" variant="light" className="btn">選擇植物</Button >{' '}</Col>
+        <Col xs={7.5}><Button size="lg" variant="light" className="btn">選擇植物</Button>{' '}</Col>
         <Col></Col>
       </Row>
 
