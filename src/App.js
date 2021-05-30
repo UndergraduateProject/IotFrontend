@@ -15,8 +15,8 @@ function App() {
 
   return (
     <React.Fragment>
-            <Route path="/Homepage"><Homepage /></Route>
-            {log ? <Redirect to="/Homepage"/>:<Login state={{log :[log,setLog]}}/>}
+      <Route path="/Homepage"><Homepage /></Route>
+      {log ? <Redirect to="/Homepage"/>:<Login state={{log :[log,setLog]}}/>}
     </React.Fragment>
   )
 }

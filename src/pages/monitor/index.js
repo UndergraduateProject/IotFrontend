@@ -6,7 +6,7 @@ import monitor_temperature from './monitor_temperature.png';
 import monitor_humidity from './monitor_humidity.png';
 
 
-function monitor() {
+function Monitor() {
   return (
     <div className="body_monitor">
 
@@ -31,4 +31,4 @@ function monitor() {
   )
 }
 
-export default monitor;
+export default Monitor;

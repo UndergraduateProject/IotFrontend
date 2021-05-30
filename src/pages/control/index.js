@@ -9,10 +9,10 @@ import control_close from './control_close.png';
 
 
 
-function control() {
+function Control() {
   return (
-    <div className="body_control">
-      <img className="control_house_pic" src={control_greenHouse}/>
+    <div className="body_control container-fluid">
+      <div className="row"><img className="control_house_pic" src={control_greenHouse}/></div>
       <input className="control_button1" type="button"  value="Change" />
       <div className="control_top">Catalogue</div>
 
@@ -20,7 +20,7 @@ function control() {
       <div className="control_top1 control_top2 ">Capacity</div>
       <div className="control_top1 control_top3 ">Light</div>
 
-      <div className="control_input1">30%</div>
+      <div className="control_input1">50%</div>
       <div className="control_input1 control_input2">750ml</div>
       <div className="control_input1 control_input3">40%</div>
 
@@ -46,4 +46,4 @@ function control() {
   )
 }
 
-export default control;
+export default Control;
