@@ -1,0 +1,155 @@
+.body_select {
+    background-color: #aebfb7;
+    font-family: "Open Sans", sans-serif;
+    height: 100vh;
+    width:100vw;
+  }
+
+.left{
+  float: left;
+  width: 54vw;
+}
+
+.right{
+  float: right;
+  width: 46vw;
+
+}
+
+.select_plant{
+  height:26vh ;
+  width:90vw;
+  top: 3vh;
+  left: 4.3vw;
+  right: 4.3vw;
+  border-radius: 12px;
+  border-color:white;
+  background-color:transparent;
+  border-width:0.5vw;
+  border-style:solid;
+  position: relative;
+}
+
+.select_plant1{
+  top: 4vh;
+}
+
+.select_plant2{
+  top: 5vh;
+}
+
+.select_potato_pic{
+  top: 2vh;
+  padding-left:8vw;
+  position: absolute;
+  width:24vw;
+}
+
+.plant_title{
+  font-size: 8.5vmin;
+  font-weight:bold;
+  color:#050244;
+  padding-left:4vw;
+  position: absolute;
+  top:14vh;
+}
+
+.plant_level{
+  font-size: 4vmin;
+  font-weight:bold;
+  color:#6C6C6C;
+  position: absolute;
+  float:left;
+  top:19vh;
+  left: 2vw;
+  text-align: center;
+  width: 20vw;
+}
+
+.plant_cost{
+  font-size: 4vmin;
+  font-weight:bold;
+  color:#6C6C6C;
+  position: absolute;
+  text-align: center;
+  float:right;
+  top:19vh;
+  left: 17vw;
+  width: 20vw;
+
+}
+
+.plant_level_answer{
+  font-size: 3vmin;
+  text-transform:uppercase;
+  color:#6C6C6C;
+  position: absolute;
+  text-align: center;
+  float:left;
+  top:22vh;
+  width: 20vw;  
+  left: 2vw;
+
+}
+
+.plant_cost_answer{
+  font-size: 3vmin;
+  text-transform:uppercase;
+  color:#6C6C6C;
+  position: absolute;
+  text-align: center;
+  float:right;
+  top:22vh;
+  width: 20vw;
+  left: 17vw;
+
+}
+
+.plant_week{
+  font-size: 5vmin;
+  color:#5e3c00;
+  text-decoration:underline;
+  top: 4vh;
+  position: absolute;
+
+}
+ 
+.plant_evaluation{
+  font-size: 5vmin;
+  color:#6C6C6C;
+  top: 8vh;
+  position: absolute;
+}
+
+.plant_evaluation_answer{
+  font-size: 3.5vmin;
+  color:#6C6C6C;
+  word-break:keep-all;
+  width:45vw;
+  top: 11vh;
+  position: absolute;
+}
+
+.select_button{
+  background-color:#7d5b00;
+  font-weight: bold;
+  text-align: center;
+  font-size: 5vmin;
+  Color:white;
+  width: 27vw;
+  height: 4vh;
+  left: 47vw;
+  top: 21vh;
+  position: absolute;
+  border: none;
+  border-radius: 22px;
+}
+
+.footer_select {
+    height: 12vh;
+    width: 100vw;
+    background-color: #6b6767;
+    top:88vh ;
+    position: absolute;
+
+}  
