@@ -1,12 +1,14 @@
 import React from 'react';
 import "./monitor.css";
 import monitor_weather from './monitor_weather.png';
+
 import monitor_light1 from './monitor_light1.png';
 import monitor_temperature from './monitor_temperature.png';
 import monitor_humidity from './monitor_humidity.png';
 import monitor_detail from './monitor_detail.png';
 import monitor_arrow_left from './monitor_arrow_left.png';
 import monitor_arrow_right from './monitor_arrow_right.png';
+
 
 
 function Monitor() {
@@ -19,6 +21,7 @@ function Monitor() {
       <img className="monitor_wea_pic" src={monitor_weather}/>
       <div className="monitor_top3">晴時多雲</div>
       
+
       <div className="wrap_light">
         <img className="monitor_light_pic" src={monitor_light1}/>
           <div className="monitor_top2">40%</div>
