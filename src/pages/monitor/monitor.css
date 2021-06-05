@@ -31,18 +31,17 @@
    margin-left:78vw;
    position: absolute;
    width: 15vw;
+ 
 }
 
-
-
 .monitor_top2{
-    font-size: 15vmin;
-    color:white;
-    margin-top:44vh;
-    margin-left:35vw;
-    height:10vh;
-    width:30vw;
-    position: absolute;
+    font-size: 12vmin;
+    color: white;
+    margin-top:-9vh;
+    padding-left:9vw;
+    height:3vh;
+    width:20vw;
+    position: relative;
 }
 
 .monitor_top3{
@@ -57,45 +56,97 @@
 .monitor_top4{
     font-size: 12vmin;
     color: white;
-    margin-top:65vh;
-    margin-left:18vw;
+    margin-top:-16vh;
+    padding-left:8vw;
     height:3vh;
     width:20vw;
-    position: absolute;
+    position: relative;
 }
 
 .monitor_top5{
     font-size: 12vmin;
     color: white;
-    margin-top:65vh;
-    margin-left:58.5vw;
+    margin-top:-16vh;
+    margin-left:8vw;
     height:3vh;
     width:20vw;
-    position: absolute;
+    position: relative;
+}
 
+.monitor_top6{
+    font-size: 6vmin;
+    color:black;
+    margin-top:-20vh;
+    margin-left:6vw;
+    word-break: break-all;
+    position: relative;
+    width:30vw;
 }
 
 .monitor_light_pic{
-    margin-top: 22vh;
-    margin-left:12.5vw;
-    margin-right:12.5vw;
-    position: absolute;
-    height: 34vh;
-    width: 75vw;
+    padding-top: 2vh;
+    padding-left:2.5vw;
+    position: relative;
+    width: 35vw;
+}
+
+.monitor_detail_pic{
+    padding-top: 2vh;
+    padding-left:2.5vw;
+    position: relative;
+    width: 35vw;
 }
 
 .monitor_temp_pic{
-    margin-top: 58vh;
-    margin-left:12.5vw;
-    position: absolute;
+    padding-top: 2vh;
+    padding-left:2.5vw;
+    position: relative;
     width:35vw;
 }
     
 .monitor_humi_pic{
-    margin-top: 58vh;
-    margin-left:52.5vw;
-    position: absolute;
+    padding-top: 2vh;
+    padding-left:2.5vw;
+    position: relative;
     width:35vw;
+}
+
+.monitor_arrow_left{
+    margin-top:63vh;
+    margin-left: 2vw;
+    width: 6vw;
+    position:absolute;
+}
+
+.monitor_arrow_right{
+    margin-top:63vh;
+    margin-left: 92vw;
+    width: 6vw;
+    position:absolute;
+}
+
+.wrap_temp{
+    margin-top:52vh;
+    margin-left:10vw;
+    position: absolute;
+}
+
+.wrap_humi{
+    margin-top:52vh;
+    margin-left:50vw;
+    position: absolute;
+}
+
+.wrap_light{
+    margin-top:23vh;
+    margin-left:10vw;
+    position: absolute;
+}
+
+.wrap_detail{
+    margin-top:23vh;
+    margin-left:50vw;
+    position: absolute;
 }
 
 .footer_monitor{
