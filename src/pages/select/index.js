@@ -7,7 +7,7 @@ import select_tomato from "./select_tomato.png";
 
 
 
-function select() {
+function Select() {
   return (
     <div className="body_select">
     <div className="select_plant" >
@@ -69,4 +69,4 @@ function select() {
   )
 }
 
-export default select;
+export default Select;
