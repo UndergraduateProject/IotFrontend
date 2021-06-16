@@ -25,12 +25,12 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: 10vh;
-  width: 140px;
+  width: auto;
 }
 
 .login-register-wrapper {
   /*綠框*/
-  max-width: 425px;
+  max-width: 768px;
   height: 100vh;
   width: 100vw;
   margin-left: auto;
@@ -78,7 +78,8 @@ button.active {
   margin-right: auto; /*輸入框框的位子*/
   font-size: 2.3vh;
   font-weight: bold;
-  width: 350px; /*輸入框框的大小*/
+  max-width: 768px;
+  width: 93vw; /*輸入框框的大小*/
   height: 6.5vh;
   padding-left: 15px;
   border: none;
@@ -88,13 +89,14 @@ button.active {
 }
 
 input.submit {
+  position: relative;
   font-weight: bold;
   font-size: 2.5vh;
   text-transform: uppercase;
   text-align: center;
   color: rgba(255, 255, 255, 1);
   padding: 8px 0px;
-  width: 40%;
+  width: 55%;
   height: 6vh;
   border: none;
   border-radius: 30px;
@@ -109,10 +111,9 @@ form#registerform {
 }
 
 .eye {
-  position: absolute;
-  left: 85%;
-  top: 10.5vh;
-  width: 4vh;
+  position: relative;
+  margin-top: 1vh;
+  width: auto;
   height: 4vh;
   object-fit: cover;
 }
