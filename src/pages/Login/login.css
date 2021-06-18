@@ -8,9 +8,9 @@ body * {
   color: #6a6f8c; /*login&register的字*/
 }
 
-body {
-  background: #aebfb7; /*灰色背景*/
-}
+/* body {
+  background: #aebfb7;
+} */ /*灰色背景*/
 
 .container {
   display: flex;
@@ -39,6 +39,21 @@ body {
   border-radius: 12px; /*綠框的角->圓弧*/
   overflow: hidden;
   background: #aebfb7;
+}
+
+@media (min-width: 1024px) {
+  .login-register-wrapper {
+    /*綠框*/
+    max-width: 425px;
+    height: 100vh;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2em;
+    border-radius: 12px; /*綠框的角->圓弧*/
+    overflow: hidden;
+    background: #aebfb7;
+  }
 }
 
 /* Nav buttons */
@@ -88,6 +103,12 @@ button.active {
   background: rgba(255, 255, 255, 0.5);
 }
 
+i {
+  position: absolute;
+  right: 25px;
+  top: calc(50%-0.5em);
+}
+
 input.submit {
   position: relative;
   font-weight: bold;
@@ -106,7 +127,6 @@ input.submit {
 
 /*Form positioning and animation */
 form#registerform {
-  display: none;
   position: relative;
 }
 
@@ -138,7 +158,7 @@ form#registerform {
 form,
 .forgot-panel {
   position: relative;
-  transition: all 0.08s ease;
+  transition: left 0.08s ease, opacity 0.5s ease-out;
 }
 #loginBtn,
 #registerBtn {

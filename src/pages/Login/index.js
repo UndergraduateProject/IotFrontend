@@ -15,10 +15,14 @@ function Login(props) {
   const loginProps = useSpring({ 
     left: registrationFormStatus ? -500 : 0, // Login form sliding positions
     display: registrationFormStatus ? 'none' : 'block',
+    opacity: registrationFormStatus ? 0 : 1,
+
   });
   const registerProps = useSpring({
     left: registrationFormStatus ? 0 : 500, // Register form sliding positions 
     display: registrationFormStatus? 'block':'none',
+    opacity: registrationFormStatus ? 1 : 0,
+
   });
 
   const loginBtnProps = useSpring({
@@ -33,9 +37,13 @@ function Login(props) {
   });
 
   // 像這種在裡面的function盡量寫成arrow function
-  const Clicked = () => {
-    setRegistrationFormStatus(!registrationFormStatus);
-  };
+  // 像這種在裡面的function盡量寫成arrow function
+  const registerClicked = () => {
+    setRegistrationFormStatus(true);
+  }
+  const loginClicked = () => {
+    setRegistrationFormStatus(false);
+  }
 
   return (
 
@@ -46,8 +54,8 @@ function Login(props) {
       <Userstatus />
       <div className="nav-buttons">
         <Row>
-          <Col className="d-flex justify-content-end"><animated.button onClick={Clicked} id="loginBtn" style={loginBtnProps}>LOGIN</animated.button></Col>
-          <Col><animated.button onClick={Clicked} id="registerBtn" style={registerBtnProps}>SIGN UP</animated.button></Col>
+          <Col className="d-flex justify-content-end"><animated.button onClick={loginClicked} id="loginBtn" style={loginBtnProps}>LOGIN</animated.button></Col>
+          <Col><animated.button onClick={registerClicked} id="registerBtn" style={registerBtnProps}>SIGN UP</animated.button></Col>
         </Row>
       </div>
       <div className="form-group">
