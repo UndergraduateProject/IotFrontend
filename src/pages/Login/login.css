@@ -143,7 +143,7 @@ form#registerform {
 form,
 .forgot-panel {
   position: relative;
-  transition: all 0.08s ease;
+  transition: left 0.08s ease, opacity 0.5s ease-out;
 }
 #loginBtn,
 #registerBtn {
