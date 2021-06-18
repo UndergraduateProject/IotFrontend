@@ -88,6 +88,12 @@ button.active {
   background: rgba(255, 255, 255, 0.5);
 }
 
+i {
+  position: absolute;
+  right: 25px;
+  top: calc(50%-0.5em);
+}
+
 input.submit {
   position: relative;
   font-weight: bold;
@@ -106,7 +112,6 @@ input.submit {
 
 /*Form positioning and animation */
 form#registerform {
-  display: none;
   position: relative;
 }
 
