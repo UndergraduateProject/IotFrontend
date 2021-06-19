@@ -11,7 +11,7 @@ import monitor_arrow_right from './monitor_arrow_right.png';
 
 
 
-function Monitor() {
+function monitor() {
   return (
     <div className="body_monitor">
 
@@ -52,4 +52,4 @@ function Monitor() {
   )
 }
 
-export default Monitor;
+export default monitor;
