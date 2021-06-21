@@ -64,7 +64,6 @@ function select() {
     </div>
     </div>
     
-    <div class="footer_select "></div>  
     </div>   
   )
 }

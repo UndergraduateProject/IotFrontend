@@ -1,9 +1,9 @@
 .body_select {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
-  }
+  background-color: #aebfb7;
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  width:100vw;
+}
 
 .left{
   float: left;
@@ -13,13 +13,12 @@
 .right{
   float: right;
   width: 46vw;
-
 }
 
 .select_plant{
   height:26vh ;
   width:90vw;
-  top: 3vh;
+  top: 10vh;
   left: 4.3vw;
   right: 4.3vw;
   border-radius: 12px;
@@ -31,11 +30,11 @@
 }
 
 .select_plant1{
-  top: 4vh;
+  top: 11vh;
 }
 
 .select_plant2{
-  top: 5vh;
+  top: 12vh;
 }
 
 .select_potato_pic{
@@ -113,7 +112,7 @@
   position: absolute;
 
 }
- 
+
 .plant_evaluation{
   font-size: 5vmin;
   color:#6C6C6C;
@@ -145,11 +144,420 @@
   border-radius: 22px;
 }
 
-.footer_select {
-    height: 12vh;
-    width: 100vw;
-    background-color: #6b6767;
-    top:88vh ;
-    position: absolute;
+.select_pages{
+  position: relative;
+  top:4vh;
+  font-size: 5vmin;
+  color: #6b6767;   
+  text-decoration: underline; 
+}
 
-}  
+.select_next{ 
+  position: relative;
+  top:10vh;
+  margin-left: 10vw;
+}
+
+.select_next1{
+  position: relative;
+  top:10vh;
+  margin-left: 15vw;
+}
+
+
+@media only screen and (min-width: 500px) and (max-height: 700px){  
+  .body_select {
+    max-width: 768px;
+  }
+  
+  .select_plant{
+    height:25.5vh ;
+  }
+
+  .select_potato_pic{
+    top: 1vh;
+    max-width:14vw;
+    max-height:15vh ;
+  }
+
+  .plant_title{
+    font-size: 5vmin;
+    padding-left:7vw;
+  }
+
+  .plant_level{
+    font-size: 3.5vmin;
+    left: -1vw;
+  }
+
+  .plant_cost{
+    font-size: 3.5vmin;
+    left: 11vw;
+  }
+
+  .plant_level_answer{
+    font-size: 2.5vmin;
+    left: -1vw; 
+  }
+
+  .plant_cost_answer{
+    font-size: 2.5vmin;
+    left: 11vw;
+  }
+
+  .plant_week{
+    top: 0vh;
+  }
+  
+  .plant_evaluation{
+    font-size: 4.5vmin;
+    top: 6vh;
+  }
+
+  .plant_evaluation_answer{
+    font-size: 3vmin;
+  }
+
+  .select_button{
+    font-size: 3.5vmin;
+    max-width: 14vw;
+    left: 68vw;
+    height: 5vh;
+    top: 20vh;
+  }
+
+  .select_pages{
+    font-size: 4vmin;
+  }
+
+  .select_next{ 
+    top:9vh;
+  }
+
+  .select_next1{
+    top:9vh;
+  } 
+}
+
+
+@media only screen and  ( min-width : 768px ) and ( max-height : 1024px)  /*ipad*/
+{
+.body_select {
+  max-width: 768px;
+  left:50%;
+  margin-left: -384px;
+  position: absolute;
+}
+
+.select_plant{
+  height:25.5vh ;
+}
+
+.select_potato_pic{
+  padding-left:10vw;
+  max-width:14vw;
+  max-height:15vh ;
+}
+
+.plant_title{
+  font-size: 5vmin;
+  padding-left:7vw;
+}
+
+.plant_level{
+  font-size: 3.5vmin;
+  left: 1vw;
+}
+
+.plant_cost{
+  font-size: 3.5vmin;
+  left: 13.5vw;
+}
+
+.plant_level_answer{
+  font-size: 2.5vmin;
+  left: 1vw; 
+}
+
+.plant_cost_answer{
+  font-size: 2.5vmin;
+  left: 13.5vw;
+}
+
+.plant_week{
+  top: 0vh;
+}
+
+.plant_evaluation{
+  font-size: 4.5vmin;
+  top: 6vh;
+}
+
+.plant_evaluation_answer{
+  font-size: 3vmin;
+}
+
+.select_button{
+  font-size: 3.5vmin;
+  width: 17vw;
+  left: 68vw;
+  height: 5vh;
+  top: 20vh;
+}
+
+.select_pages{
+  font-size: 4vmin;
+}
+}
+
+
+@media only screen and  ( min-width : 768px ) and ( max-height : 600px)  
+{
+ .body_select {
+  max-width: 768px;
+  left:50%;
+  margin-left: -384px;
+  position: absolute;
+}
+
+.select_plant{
+  height:25.5vh ;
+  max-width: 670px;
+  left: 5.2vw;
+}
+
+.select_potato_pic{
+  top: 0vh;
+  padding-left:6vw;
+  max-width:100px;
+  max-height:14vh ;
+}
+
+.plant_title{
+  font-size: 5vmin;
+  padding-left:5vw;
+  top:13vh;
+}
+
+.plant_level{
+  font-size: 3vmin;
+  left: -3vw;
+}
+
+.plant_cost{
+  font-size: 3vmin;
+  left: 5.5vw;
+}
+
+.plant_level_answer{
+  font-size: 2.5vmin;
+  left: -3vw; 
+}
+
+.plant_cost_answer{
+  font-size: 2.5vmin;
+  left: 5.5vw;
+}
+
+.plant_week{
+  top: 0vh;
+}
+
+.plant_evaluation{
+  font-size: 4.5vmin;
+  top: 6vh;
+}
+
+.plant_evaluation_answer{
+  font-size: 3vmin;
+}
+
+.select_button{
+  font-size: 3.5vmin;
+  width: 17vw;
+  max-width: 100px;
+  left: 55vw;
+  height: 5vh;
+  top: 19.5vh;
+}
+
+.select_pages{
+  font-size: 4vmin;
+}
+
+.select_next{   /*下一頁*/
+  top:8vh;
+  margin-left: 16vw;
+}
+
+.select_next1{  /*上一頁*/
+  top:2.5vh;
+  margin-left: 17vw;
+} 
+}
+
+
+@media only screen and (min-width:1024px)and (max-height:1366px) /*ipad pro*/
+{
+.body_select {
+ max-width: 1024px;
+ left:50%;
+ margin-left: -512px;
+ position: absolute;
+}
+
+.select_plant{
+  height:25.5vh ;
+}
+
+.select_potato_pic{
+  padding-left:10vw;
+  max-width:14vw;
+  max-height:15vh ;
+}
+
+.plant_title{
+  font-size: 5vmin;
+  padding-left:7vw;
+}
+
+.plant_level{
+  font-size: 3.5vmin;
+  left: 1vw;
+}
+
+.plant_cost{
+  font-size: 3.5vmin;
+  left: 13.5vw;
+}
+
+.plant_level_answer{
+  font-size: 2.5vmin;
+  left: 1vw; 
+}
+
+.plant_cost_answer{
+  font-size: 2.5vmin;
+  left: 13.5vw;
+}
+
+.plant_week{
+  top: 0vh;
+}
+
+.plant_evaluation{
+  font-size: 4.5vmin;
+  top: 6vh;
+}
+
+.plant_evaluation_answer{
+  font-size: 3vmin;
+}
+
+.select_button{
+  font-size: 3.5vmin;
+  width: 17vw;
+  left: 68vw;
+  height: 5vh;
+  top: 20vh;
+}
+
+.select_pages{
+  font-size: 4vmin;
+}
+}
+
+
+@media only screen and (min-width: 1024px)  and ( max-height : 700px)
+{
+.body_select {
+  max-width: 425px;
+  max-height: 577px;
+  left:50%;
+  top:50%;
+  margin-left: -212.5px;
+  margin-top: -288.5px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.select_plant{
+  width:380px;
+  left: 1.8vw;
+  border-width:0.3vw;
+}
+
+.select_potato_pic{
+  top: 1vh;
+  padding-left:3vw;
+  width: 75px;
+}
+
+.plant_title{
+  font-size: 5vmin;
+  padding-left:1.5vw;
+  top:13vh;
+}
+
+.plant_level{
+  font-size: 3vmin;
+  top:18.5vh;
+  left: -6.5vw;
+}
+
+.plant_cost{
+  font-size: 3vmin;
+  top:18.5vh;
+  left: -1vw;
+}
+
+.plant_level_answer{
+  font-size: 2vmin;
+  left: -6.5vw;
+}
+
+.plant_cost_answer{
+  font-size: 2vmin;
+  left: -1vw;
+}
+
+.plant_week{
+  font-size: 4vmin;
+  top: 1.5vh;
+  left:13.5vw;
+}
+
+.plant_evaluation{
+  font-size: 3.5vmin;
+  top: 7vh;
+  left:13.5vw;
+}
+
+.plant_evaluation_answer{
+  font-size: 2.5vmin;
+  width:16vw;
+  top: 11vh;
+  left:13.5vw;
+}
+
+.select_button{
+  font-size: 3vmin;
+  width: 7vw;
+  left: 21vw;
+}
+
+.select_pages{
+  top:6vh;
+  font-size: 3vmin;
+}
+
+.select_next{ 
+  top:6.5vh;
+  margin-left: 35vw;
+}
+
+.select_next1{
+  top:2.5vh;
+  margin-left: 6vw;
+}
+}
