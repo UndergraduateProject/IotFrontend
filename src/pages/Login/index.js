@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import Userstatus from "./Userstatus";
 import "./login.css";
 import logo from "./logo.png";
 import {Row, Col} from "react-bootstrap";
@@ -51,7 +50,6 @@ function Login(props) {
       <div className="logorow row">
       <img className="logo" src={ logo }/>
       </div>
-      <Userstatus />
       <div className="nav-buttons">
         <Row>
           <Col className="d-flex justify-content-end"><animated.button onClick={loginClicked} id="loginBtn" style={loginBtnProps}>LOGIN</animated.button></Col>

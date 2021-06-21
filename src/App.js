@@ -8,25 +8,36 @@ import {
   Redirect,
   Route,
   Switch,
+  useHistory,
 } from "react-router-dom";
-//import "/App.css";
 
 
 
 function App() {
   const [log,setLog] = useState(localStorage.getItem('token'));
-
-
+  let history = useHistory()
+  const ProtectedRoute = ({ component: Comp, loggedIn, path, ...rest }) => {
+    return (
+      <Route
+        path={path}
+        {...rest}
+        render={(props) => {
+          return log ? <Comp {...props} /> : <Redirect to="/" />;
+        }}
+      />
+    );
+  };
+  
   return (
     <React.Fragment>
       <Switch>
-        <Route path="/Homepage"><Homepage /></Route>
-        <Route path="/Monitor"><Monitor/></Route>
-        <Route path="/Control"><Control /></Route>
-        <Route path="/Select"><Select /></Route>
-        <Route path="/"><Login/></Route>
+        <ProtectedRoute path="/Homepage" loggedIn = {log} component = {Homepage}/>
+        <ProtectedRoute path="/Monitor" loggedIn = {log} component = {Monitor}/>
+        <ProtectedRoute path="/Control" loggedIn = {log} component = {Control}/>
+        <ProtectedRoute path="/Select" loggedIn = {log} component = {Select}/>
+        <Route path="/"><Login  state={{log :[log,setLog]}}/></Route>
       </Switch>
-      {/* {log ? <Redirect to="/Homepage"/>:<Login state={{log :[log,setLog]}}/>} */}
+      
     </React.Fragment>
   )
 }

@@ -5,12 +5,14 @@ import "./homepage.css";
 import logo from "./logo.png";
 import homepage1 from "./homepage.png";
 import journal from "./journal.png";
+import Userstatus from "./Userstatus";
 
 
 function homepage() {
   return (
     <div class="home">
     <Container fluid>
+      <Userstatus />
       <Row>
         <Col className="top1"></Col>
         <Col  className="top1"><img style={{height:'80px',width:'140px'}} src={ logo }/></Col>

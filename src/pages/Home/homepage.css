@@ -6,26 +6,30 @@
   padding: 0;
 }
 
-.homepage {     
-  display:block; 
-  margin:auto
+.container-fluid {
+  background: #aebfb7;
+}
+
+.homepage {
+  display: block;
+  margin: auto;
 }
 
 .rowww {
-  margin-top:30px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.top { 
-  margin-top:40px;
-  margin-bottom: 20px; 
+.top {
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
-.top1 { 
-  margin-top:50px;
+.top1 {
+  margin-top: 50px;
 }
 
-.btn{
+.btn {
   width: 200px;
   height: 65px;
   margin-left: 0px;
