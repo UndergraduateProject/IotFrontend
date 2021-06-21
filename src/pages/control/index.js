@@ -9,7 +9,7 @@ import control_close from './control_close.png';
 
 
 
-function control() {
+function Control() {
   return (
     <div className="body_control container-fluid">
       <div className="row"><img className="control_house_pic" src={control_greenHouse}/></div>
@@ -46,4 +46,4 @@ function control() {
   )
 }
 
-export default control;
+export default Control;
