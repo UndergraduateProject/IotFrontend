@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Homepage from "./pages/Home";
-import Control from "./pages/Control";
+// import Control from "./pages/Control";
 import Monitor from "./pages/Monitor";
 import Select from "./pages/Select";
 import {
@@ -33,7 +33,7 @@ function App() {
       <Switch>
         <ProtectedRoute path="/Homepage" loggedIn = {log} component = {Homepage}/>
         <ProtectedRoute path="/Monitor" loggedIn = {log} component = {Monitor}/>
-        <ProtectedRoute path="/Control" loggedIn = {log} component = {Control}/>
+        {/* <ProtectedRoute path="/Control" loggedIn = {log} component = {Control}/> */}
         <ProtectedRoute path="/Select" loggedIn = {log} component = {Select}/>
         <Route path="/"><Login  state={{log :[log,setLog]}}/></Route>
       </Switch>
