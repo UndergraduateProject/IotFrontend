@@ -9,7 +9,6 @@ import select_tomato from "./select_tomato.png";
 
 function select() {
   return (
-    <div>
     <div className="body_select">
     <div className="select_plant" >
       <div className="left">
@@ -64,9 +63,20 @@ function select() {
         <input className="select_button" type="button"  value="Select" />
     </div>
     </div>
+
+    <div className="right">
+      <div className="select_pages">
+        <a  className="select_next"herf="#"> 下一頁{'>'}{'>'}</a> 
+      </div>
+    </div>
+
+    <div className="left">
+      <div className="select_pages">
+        <a  className="select_next1"herf="#"> {'<'}{'<'}上一頁</a> 
+      </div>
+    </div>
     
     </div>   
-    </div>
   )
 }
 
