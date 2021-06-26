@@ -15,8 +15,8 @@ function Login(props) {
     left: registrationFormStatus ? -500 : 0, // Login form sliding positions
     display: registrationFormStatus ? 'none' : 'block',
     opacity: registrationFormStatus ? 0 : 1,
-
   });
+  
   const registerProps = useSpring({
     left: registrationFormStatus ? 0 : 500, // Register form sliding positions 
     display: registrationFormStatus? 'block':'none',

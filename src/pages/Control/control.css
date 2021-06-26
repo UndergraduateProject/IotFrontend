@@ -1,12 +1,20 @@
-.body_control {
+body {
+  background-color: #aebfb7;
   background-color: #aebfb7;
   font-family: "Open Sans", sans-serif;
+}
+
+.control-container {
   height: 100vh;
   width: 100vw;
   max-width: 425px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.control_house_pic {
+
+
+.house {
   margin-top: 2vh;
   margin-left: 5vw;
   margin-right: 5vw;
@@ -15,7 +23,7 @@
   width: 90vw;
 }
 
-.control_button1 {
+.change-btn {
   background-color: #ffa042;
   font-weight: bold;
   text-align: center;
@@ -27,7 +35,8 @@
   margin-left: 32.5vw;
   margin-right: 32.5vw;
   border: none;
-  border-radius: 22px;
+  border-radius: 5vw;
+  padding-top: 1.2vh;
 }
 
 .control_button2 {
