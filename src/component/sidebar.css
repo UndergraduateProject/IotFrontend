@@ -3,7 +3,8 @@
   width: 60vw;
   height: 100vh;
   background: #6a7b62;
-  left: -60vw;
+  transition: left 0.3s linear;
+  z-index: 9999;
 }
 
 #sidebar .toggle-btn {
