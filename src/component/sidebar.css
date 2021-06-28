@@ -34,9 +34,12 @@
 }
 
 .user-text {
+  width:5vw;
   color: white;
-  padding-top: 3vh;
+  left:28vw;
+  top: -8vh;
   font-size: 3.7vh;
+  position: relative;
 }
 
 #sidebar ul li {
