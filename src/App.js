@@ -35,7 +35,7 @@ function App() {
         <ProtectedRoute path="/Monitor" loggedIn = {log} component = {Monitor}/>
         <ProtectedRoute path="/Control" loggedIn = {log} component = {Control}/>
         <ProtectedRoute path="/Select" loggedIn = {log} component = {Select}/>
-        <Route path="/"><Login  state={{log :[log,setLog]}}/></Route>
+        <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       
     </React.Fragment>

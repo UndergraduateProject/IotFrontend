@@ -8,6 +8,11 @@ import control_duration from './control_duration.png';
 import control_close from './control_close.png';
 import {Container, Row, Col} from 'react-bootstrap';
 import Sidebar from '../../component/Sidebar'
+import fan from '../../images/fan.png';
+import water from '../../images/water.png';
+import light from '../../images/light.png';
+import clock from '../../images/clock.png';
+import door from '../../images/door.png';
 
 
 
@@ -24,35 +29,35 @@ function Control() {
       </Row>
       <Row className="control-square">
         <Col>
-          <div></div>
+          <div><img src={fan}/></div>
           <div className="data">30%</div>
           <div>Battery</div>
         </Col>
         <Col>
-          <div></div>
+          <div><img src={water}/></div>
           <div className="data">750ml</div>
           <div>Capacity</div>
         </Col>
         <Col>
-          <div></div>
+          <div><img src={light}/></div>
           <div className="data">40%</div>
           <div>Light</div>
         </Col>
       </Row>
       <Row className="control-rectangle">
         <Col>
-          <div></div>
+          <div ><img src={clock}/></div>
           <div className="data">30Min</div>
           <div>Duration</div>
         </Col>
         <Col>
-          <div></div>
+          <div><img src={door}/></div>
           <div className="data">Open</div>
           <div>Close</div>
         </Col>
       </Row>
       <Row>
-        <button className="control_button2">Power On</button>
+        <button className="power-btn">Power On</button>
       </Row>
     </Container>
   )
