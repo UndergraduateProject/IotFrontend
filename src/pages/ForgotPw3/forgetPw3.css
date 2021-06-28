@@ -1,0 +1,85 @@
+.forgetPw3_body {
+  background-color: #aebfb7;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+}
+
+@media only screen and (min-width: 768px) and (max-height: 1024px) { /*ipad*/
+  .forgetPw3_body {
+    max-width: 768px;
+    left:50%;
+    margin-left: -384px;
+    border-radius: 0px; 
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) { /*ipad pro*/
+  .forgetPw3_body {
+    max-width: 1024px;
+    left:0%;
+    margin-left: auto;
+    border-radius: 0px; 
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 850px) {  /*for laptop*/
+  .forgetPw3_body {
+    max-width: 425px;
+    left:50%;
+    margin-left: -212.5px;
+    border-radius: 12px; 
+  }  
+}
+
+.forgetPw3_top1 {       /*for logo*/
+  height: 30vh;
+}
+
+.forgetPw3_logo{     /*logo*/
+  padding-top:11vh;
+  width:170px;
+  left:50%;
+  margin-left: -85px;
+  position: absolute;
+}
+
+.forgetPw3_top2{
+  text-align: center;
+  font-size: 27.6px;
+  color:	#7B7B7B;
+  font-weight: 600;
+}
+
+.forgetPw3_top6{
+  height: 14vh;
+  padding-top: 16vh;
+  text-align: center;
+  font-size: 17px;
+  color:	#8E8E8E	;
+  font-weight: 450;
+}
+
+.forgetPw3_top4{
+  height: 20vh;
+  padding-top: 7vh;
+  width:202px;
+  left:50%;
+  margin-left: -101px;
+  position: absolute;
+}
+
+.forgetPw3_top5 {
+  padding-top: 12vh;
+  height: 20vh;
+}
+
+.btn{
+  width: 80px;
+  left:50%;
+  margin-left: -40px;
+  position: absolute;
+}
