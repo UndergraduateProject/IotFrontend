@@ -4,6 +4,7 @@ import Homepage from "./pages/Home";
 import Control from "./pages/Control";
 import Monitor from "./pages/Monitor";
 import Select from "./pages/Select";
+import Camera from "./pages/Camera";
 import {
   Redirect,
   Route,
@@ -35,6 +36,7 @@ function App() {
         <ProtectedRoute path="/Monitor" loggedIn = {log} component = {Monitor}/>
         <ProtectedRoute path="/Control" loggedIn = {log} component = {Control}/>
         <ProtectedRoute path="/Select" loggedIn = {log} component = {Select}/>
+        <ProtectedRoute path="/Camera" loggedIn = {log} component = {Camera}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       
