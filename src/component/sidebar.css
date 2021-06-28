@@ -1,0 +1,59 @@
+#sidebar {
+  position: absolute;
+  width: 60vw;
+  height: 100vh;
+  background: #6a7b62;
+  transition: left 0.3s linear;
+  z-index: 9999;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  top: 10px;
+  left: 65vw;
+}
+
+.toggle-btn span {
+  width: 36px;
+  height: 4px;
+  background: white;
+  display: block;
+  opacity: 75%;
+  margin-top: 11px;
+}
+
+.user {
+  padding: 3vh 11vw 2vh 6.4vw;
+  text-align: right;
+  border-bottom: solid 1px #a1a999;
+  height: 122.5px;
+}
+
+.user img {
+  float: left;
+}
+
+.user-text {
+  color: white;
+  padding-top: 3vh;
+  font-size: 3.7vh;
+}
+
+#sidebar ul li {
+  list-style: none;
+  color: white;
+  font-size: 6vw;
+  padding: 2.5vh 6.4vw;
+}
+
+.menu {
+  margin-top: 2vh;
+  border-bottom: solid 1px #a1a999;
+  padding-bottom: 1vh;
+}
+
+.setting {
+  color: white;
+  font-size: 6vw;
+  padding: 5vh 6.4vw;
+}

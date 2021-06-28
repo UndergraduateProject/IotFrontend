@@ -1,21 +1,35 @@
-.body_control {
+body {
+  background-color: #aebfb7;
   background-color: #aebfb7;
   font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.control-container {
   height: 100vh;
   width: 100vw;
   max-width: 425px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.control_house_pic {
-  margin-top: 2vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  position: relative;
-  height: 33vh;
+.img {
+  display: block;
+  text-align: center;
+  margin-top: 9vh;
+}
+
+.house {
+  height: 36vh;
   width: 90vw;
 }
 
-.control_button1 {
+.change-btn {
   background-color: #ffa042;
   font-weight: bold;
   text-align: center;
@@ -27,26 +41,60 @@
   margin-left: 32.5vw;
   margin-right: 32.5vw;
   border: none;
-  border-radius: 22px;
+  border-radius: 5vw;
+  padding-top: 1.2vh;
 }
 
 .control_button2 {
   background-color: #4e97ca;
   width: 80vw;
   height: 6vh;
-  margin-top: 4vh;
   margin-left: 10vw;
   margin-right: 10vw;
+  border: none;
+  border-radius: 5vw;
 }
 
-.control_top {
-  height: 5vh;
-  width: 45vw;
+.catalogue {
   margin: 1vh 5vw;
   font-size: 5vmin;
   color: black;
   font-weight: bold;
-  position: absolute;
+}
+
+.control-square .col {
+  height: 13vh;
+  border-radius: 12px;
+  border: 1px;
+  background: rgba(103, 151, 115, 0.5);
+  opacity: 50%;
+  display: block;
+  text-align: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 2vmin;
+  color: #282b3a;
+  font-weight: bold;
+}
+
+.data {
+  font-size: 6.5vmin;
+  color: #282b3a;
+  font-weight: bold;
+}
+
+.control-rectangle .col {
+  height: 10vh;
+  border-radius: 12px;
+  border: 1px;
+  background: rgba(103, 151, 115, 0.5);
+  opacity: 50%;
+  display: block;
+  text-align: center;
+  margin: 4vh 4vw 4vh 4vw;
+  font-size: 2vmin;
+  color: #282b3a;
+  font-weight: bold;
 }
 
 .control_battery_pic {
