@@ -1,56 +1,74 @@
-.bodyyy {
+.home {
   background-color: #aebfb7;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  margin: 0;
-  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+ 
 }
 
-.container-fluid {
-  background: #aebfb7;
+@media only screen and (min-width: 768px) and (max-height: 1024px) { /*ipad*/
+  .home {
+    max-width: 768px;
+    left:50%;
+    margin-left: -384px;
+    border-radius: 0px; 
+  }
 }
 
-.homepage {
-  display: block;
-  margin: auto;
+@media only screen and (min-width: 1024px) and (max-height: 1366px) { /*ipad pro*/
+  .home {
+    max-width: 1024px;
+    left:0%;
+    margin-left: auto;
+    border-radius: 0px; 
+  }
 }
 
-.rowww {
-  margin-top: 30px;
-  margin-bottom: 30px;
+@media only screen and (min-width: 1024px) and (max-height: 850px) {  /*for computer*/
+  .home {
+    max-width: 425px;
+    left:50%;
+    margin-left: -212.5px;
+    border-radius: 12px; 
+  }  
 }
 
-.top {
-  margin-top: 40px;
-  margin-bottom: 20px;
+.home_top1 {       /*for logo*/
+  height: 30vh;
 }
 
-.top1 {
-  margin-top: 50px;
+.home_pic{     /*logo*/
+  padding-top:11vh;
+  width:170px;
+  left:50%;
+  margin-left: -85px;
+  position: absolute;
 }
 
-.btn {
-  width: 200px;
-  height: 65px;
-  margin-left: 0px;
-  margin-right: 0px;
+.home_top2 {
+  margin-top: 3vh;
+  height: 12vh;
 }
 
-.wrapper1 {
-  /* 設定高度最小為100%, 如果內容區塊很多, 可以再多 */
-  min-height: 100%;
+.home_btn {
+  width: 220px;
+  height: 70px;
+  left:50%;
+  font-size: 22px;
+  margin-left: -110px;
+  position: absolute;
 }
 
-.content1 {
-  /* 留出header及footer區塊的空間 */
-  padding-bottom: 40px;
+.home_top3 {
+  height: 10vh;
 }
 
-.footer1 {
-  /* 設定footer的高度 */
-  margin-left: -100px;
-  height: 95px;
-  background-color: #6b6767;
-  box-sizing: border-box;
-  /* 設定footer絕對位置在底部 */
-}
+
+
+
+
+
+
