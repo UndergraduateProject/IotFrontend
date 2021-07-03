@@ -1,11 +1,11 @@
 import React from 'react';
 import "./control.css";
-import control_greenHouse from './control_greenHouse.png';
-import control_battery from './control_battery.png';
-import control_capacity from './control_capacity.png';
-import control_light from './control_light.png';
-import control_duration from './control_duration.png';
-import control_close from './control_close.png';
+import control_greenHouse from '../../images/control_greenHouse.png';
+import control_battery from '../../images/control_battery.png';
+import control_capacity from '../../images/control_capacity.png';
+import control_light from '../../images/control_light.png';
+import control_duration from '../../images/control_duration.png';
+import control_close from '../../images/control_close.png';
 import {Container, Row, Col} from 'react-bootstrap';
 import Sidebar from '../../component/Sidebar'
 import fan from '../../images/fan.png';
@@ -19,9 +19,11 @@ import door from '../../images/door.png';
 function Control() {
   return (
     <Container fluid className="control-container">
-      <Row><Sidebar /></Row>
+      <Sidebar />
       <Row>
         <Col className="img"><img className="house" src={control_greenHouse}/></Col>
+      </Row>
+      <Row>
         <Col className="change-btn">Change</Col>
       </Row>
       <Row >

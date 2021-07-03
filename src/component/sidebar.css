@@ -1,9 +1,9 @@
 #sidebar {
   position: absolute;
-  width: 60vw;
-  height: 100vh;
+  width: 60%;
+  height: 100%;
   background: #6a7b62;
-  transition: left 0.3s linear;
+  transition: left 0.08s linear;
   z-index: 9999;
 }
 
@@ -34,9 +34,9 @@
 }
 
 .user-text {
-  width:5vw;
+  width: 5vw;
   color: white;
-  left:28vw;
+  left: 105px;
   top: -8vh;
   font-size: 3.7vh;
   position: relative;
@@ -59,4 +59,68 @@
   color: white;
   font-size: 6vw;
   padding: 5vh 6.4vw;
+}
+
+@media screen and (min-width: 1024px) {
+  #sidebar {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background: #6a7b62;
+    transition: left 0.08s linear;
+    z-index: 9999;
+  }
+
+  #sidebar .toggle-btn {
+    position: absolute;
+    top: 10px;
+    left: 110%;
+  }
+
+  .toggle-btn span {
+    width: 36px;
+    height: 4px;
+    background: white;
+    display: block;
+    margin-top: 11px;
+  }
+
+  .user {
+    padding: 3% 11% 2% 6.4%;
+    text-align: right;
+    border-bottom: solid 1px #a1a999;
+    height: 122.5px;
+  }
+
+  .user img {
+    float: left;
+  }
+
+  .user-text {
+    width: 5%;
+    color: white;
+    padding-top: 50%;
+    left: 105px;
+    font-size: 250%;
+    position: relative;
+  }
+
+  #sidebar ul li {
+    list-style: none;
+    color: white;
+    font-size: 250%;
+    padding: 2.5% 6.4%;
+  }
+
+  .menu {
+    margin-top: 10%;
+    border-bottom: solid 1px #a1a999;
+    padding-bottom: 10%;
+  }
+
+  .setting {
+    color: white;
+    font-size: 250%;
+    padding: 10% 7%;
+  }
 }

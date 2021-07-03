@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import './chart.css';
 import { Line } from 'react-chartjs-2';
-import api from './utils/api';
+import api from '../utils/api';
 
-const path = "/api/humidtemp/";
+const path = "api/Humidtemp/";
 
 const linedata = {
   labels: [],
@@ -36,7 +36,7 @@ function Chart() {
   }, []);
 
   const getdata = () => {
-    api.get('api/humidtemp/').then(response => {
+    api.get(path).then(response => {
       console.log(response);
       let humidity = [];
       response['results'].forEach(ele => humidity.push(ele));
@@ -59,11 +59,7 @@ function Chart() {
   }
   return (
     <div>
-      {
-        view ? <ul>{data.map((x, i) => <li key={i}>id : {x.id}   humidity : {x.humidity}  temperature : {x.temperature}   created : {x.created}</li>)}</ul> 
-        : <Line  data={linedata} />
-      }
-      <button onClick={()=> setView(!view)}>{msg}</button>
+      <Line  data={linedata} />
     </div>
   )
 }
