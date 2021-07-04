@@ -6,44 +6,47 @@
   height: 100vh;
   overflow: hidden;
   position: absolute;
- 
 }
 
-@media only screen and (min-width: 768px) and (max-height: 1024px) { /*ipad*/
+@media only screen and (min-width: 768px) and (max-height: 1024px) {
+  /*ipad*/
   .home {
     max-width: 768px;
-    left:50%;
+    left: 50%;
     margin-left: -384px;
-    border-radius: 0px; 
+    border-radius: 0px;
   }
 }
 
-@media only screen and (min-width: 1024px) and (max-height: 1366px) { /*ipad pro*/
+@media only screen and (min-width: 1024px) and (max-height: 1366px) {
+  /*ipad pro*/
   .home {
     max-width: 1024px;
-    left:0%;
+    left: 0%;
     margin-left: auto;
-    border-radius: 0px; 
+    border-radius: 0px;
   }
 }
 
 @media only screen and (min-width: 1024px) and (max-height: 1200px) {  /*for computer*/
   .home {
     max-width: 425px;
-    left:50%;
+    left: 50%;
     margin-left: -212.5px;
-    border-radius: 12px; 
-  }  
+    border-radius: 12px;
+  }
 }
 
-.home_top1 {       /*for logo*/
+.home_top1 {
+  /*for logo*/
   height: 30vh;
 }
 
-.home_pic{     /*logo*/
-  padding-top:11vh;
-  width:170px;
-  left:50%;
+.home_pic {
+  /*logo*/
+  padding-top: 11vh;
+  width: 170px;
+  left: 50%;
   margin-left: -85px;
   position: absolute;
 }
@@ -56,14 +59,12 @@
 .home_btn {
   width: 220px;
   height: 70px;
-  left:50%;
+  left: 50%;
   font-size: 22px;
   margin-left: -110px;
   position: absolute;
 }
 
-
-
-
-
-
+.home_top3 {
+  height: 10vh;
+}

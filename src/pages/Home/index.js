@@ -12,8 +12,7 @@ function homepage() {
   return (
     <div class="home">
     <Container >
-    <Row><Sidebar /></Row>
-      <Userstatus /> 
+      <Row><Sidebar /></Row>
       <Row>
         <Col  className="home_top1" md={{ span: 6, offset: 3 }} sm={{ span: 6, offset: 3 }} xs={{ span: 6, offset: 3 }}>
           <img className="home_pic" src={ logo }/></Col>
