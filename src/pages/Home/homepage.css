@@ -28,8 +28,7 @@
   }
 }
 
-@media only screen and (min-width: 1024px) and (max-height: 1200px) {
-  /*for computer*/
+@media only screen and (min-width: 1024px) and (max-height: 1200px) {  /*for computer*/
   .home {
     max-width: 425px;
     left: 50%;
