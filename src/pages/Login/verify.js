@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./verify.css";
-import { useSpring, animated } from "react-spring";
+import { animated } from "react-spring";
 import {Alert} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,7 +12,7 @@ function Verify(props){
 
   const verify = () =>{
     const verify = localStorage.getItem('verify');
-    if(code == verify){ //verified, correct code
+    if(code === verify){ //verified, correct code
       setMsg("驗證碼正確");
       setVariant("success")
       setShowAlert(true);

@@ -24,7 +24,7 @@ function Sidebar(){
                 <span></span> 
             </div>
             <div className="user">
-            <div><img src={user_icon}/></div>
+            <div><img src={user_icon}  alt=""/></div>
             <div className="user-text">User</div>
             </div>
             <div className="menu">

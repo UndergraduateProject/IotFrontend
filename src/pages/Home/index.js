@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import "./homepage.css";
 import logo from "./logo.png";
-import Userstatus from "./Userstatus";
 import Sidebar from '../../component/Sidebar'
 
 
@@ -15,7 +14,7 @@ function homepage() {
       <Row><Sidebar /></Row>
       <Row>
         <Col  className="home_top1" md={{ span: 6, offset: 3 }} sm={{ span: 6, offset: 3 }} xs={{ span: 6, offset: 3 }}>
-          <img className="home_pic" src={ logo }/></Col>
+          <img className="home_pic" src={ logo } alt=""/></Col>
       </Row>
       
       <Row >

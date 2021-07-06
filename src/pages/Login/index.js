@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
@@ -48,7 +48,7 @@ function Login(props) {
 
     <div className="login-register-wrapper container-fluid">
       <div className="logorow row">
-      <img className="logo" src={ logo }/>
+      <img className="logo" src={ logo } alt=""/>
       </div>
       <div className="nav-buttons">
         <Row>
@@ -61,7 +61,7 @@ function Login(props) {
           <RegisterForm style={registerProps} />
       </div>
       <animated.div className="forgot-panel" style={loginProps}>
-        <a className="forgot" herf="#">Forgot password</a>    
+        <a className="forgot" href="#">Forgot password</a>    
       </animated.div>
     </div>
   );

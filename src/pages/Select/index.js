@@ -12,7 +12,7 @@ function select() {
     <div className="body_select">
     <div className="select_plant" >
       <div className="left">
-          <img className="select_potato_pic" src={select_potato}/>
+          <img className="select_potato_pic" src={select_potato} alt=""/>
           <div className="plant_title">Potato</div>
             <div className="plant_level">Level</div>
             <div className="plant_cost">Cost</div>
@@ -30,7 +30,7 @@ function select() {
 
     <div className="select_plant select_plant1" >
       <div className="left">
-          <img className="select_potato_pic" src={select_cabbage}/>
+          <img className="select_potato_pic" src={select_cabbage} alt=""/>
           <div className="plant_title">Cabbage</div>
             <div className="plant_level">Level</div>
             <div className="plant_cost">Cost</div>
@@ -48,7 +48,7 @@ function select() {
 
     <div className="select_plant select_plant2" >
       <div className="left">
-          <img className="select_potato_pic" src={select_tomato}/>
+          <img className="select_potato_pic" src={select_tomato} alt=""/>
           <div className="plant_title">Tomato</div>
             <div className="plant_level">Level</div>
             <div className="plant_cost">Cost</div>
