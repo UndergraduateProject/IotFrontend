@@ -12,7 +12,7 @@ function Sidebar(){
     }
     
     const show = useSpring({
-        left: isActive ? "0": "-60vw",
+        left: isActive ? "0": "-60%",
     });
 
 

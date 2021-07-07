@@ -1,1294 +1,193 @@
-@media only screen and  ( max-width : 768px ) 
-{
-  .body_monitor {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
-    max-width: 768px;
-    position: absolute;
-  }
-
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 5vh 5vw;
-    font-size: 7vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 11vh 5vw;
-    color:white;
-    font-size: 7vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-  margin-top: 6vh;
-  margin-left:78vw;
+.monitor_body {
+  background-color: #aebfb7;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   position: absolute;
-  width: 15vw;
-
-  }
-
-  .monitor_top2{
-    font-size: 12vmin;
-    color: white;
-    margin-top:-9vh;
-    padding-left:9vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top3{
-    font-size: 4.5vmin;
-    margin-top:14vh;
-    margin-left:75.5vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
-
-  .monitor_top4{
-    font-size: 12vmin;
-    color: white;
-    margin-top:-16vh;
-    padding-left:8vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top5{
-    font-size: 12vmin;
-    color: white;
-    margin-top:-16vh;
-    margin-left:8vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top6{
-    font-size: 6vmin;
-    color:black;
-    margin-top:-20vh;
-    margin-left:6vw;
-    word-break: break-all;
-    position: relative;
-    width:30vw;
-  }
-
-  .monitor_light_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width: 35vw;
-  }
-
-  .monitor_detail_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width: 35vw;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width:35vw;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width:35vw;
-  }
-
-  .monitor_arrow_left{
-    margin-top:75vh;
-    margin-left: 2vw;
-    width: 5vw;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:75vh;
-    margin-left: 92vw;
-    width: 5vw;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:60vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:60vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:23vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:23vh;
-    margin-left:50vw;
-    position: absolute;
-  }
 }
 
-@media only screen and  ( min-width : 500px ) and ( max-height : 700px)
-{
-  .body_monitor {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
-    max-width: 768px;
-    position: absolute;
-  }
-
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 5vh 5vw;
-    font-size: 7vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 11vh 5vw;
-    color:white;
-    font-size: 7vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-  margin-top: 6vh;
-  margin-left:78vw;
-  position: absolute;
-  width: 12vw;
-
-  }
-
-  .monitor_top2{   /*light*/
-    font-size: 7vmin;
-    color: white;
-    margin-top:-13vh;
-    padding-left:7vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top3{ /*晴時多雲*/
-    font-size: 3.5vmin;
-    margin-top:21vh;
-    margin-left:77.5vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
-
-  .monitor_top4{ /*temperature*/
-    font-size: 7vmin;
-    color: white;
-    margin-top:-21vh;
-    padding-left:8vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top5{ /*humidity*/
-    font-size: 7vmin;
-    color: white;
-    margin-top:-21vh;
-    margin-left:8vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top6{ /*detail*/
-    font-size: 3vmin;
-    color:black;
-    margin-top:-22vh;
-    margin-left:4vw;
-    word-break: break-all;
-    position: relative;
-    width:17vw;
-  }
-
-  .monitor_light_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width: 20vw;
-  }
-
-  .monitor_detail_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width: 20vw;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width:20vw;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 2vh;
-    padding-left:2.5vw;
-    position: relative;
-    width:20vw;
-  }
-
-  .monitor_arrow_left{
-    margin-top:75vh;
-    margin-left: 2vw;
-    width: 5vw;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:75vh;
-    margin-left: 92vw;
-    width: 5vw;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:60vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:60vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:23vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:23vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-}
-
-
-@media only screen and  ( min-width : 768px ) and ( max-height : 1024px)  /*ipad*/
-{
-  .body_monitor {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
+@media only screen and (min-width: 768px) and (max-height: 1024px) { /*ipad*/
+  .monitor_body {
     max-width: 768px;
     left:50%;
     margin-left: -384px;
-    position: absolute;
-  }
-
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 5vh 5vw;
-    font-size: 7vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 11vh 5vw;
-    color:white;
-    font-size: 7vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-  margin-top: 6vh;
-  margin-left:78vw;
-  position: absolute;
-  width: 15vw;
-
-  }
-
-  .monitor_top2{    /*light*/
-    font-size: 9vmin;
-    color: white;
-    margin-top:-12vh;
-    padding-left:10vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top3{    /*晴時多雲*/
-    font-size: 4vmin;
-    margin-top:16.5vh;
-    margin-left:76vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
-
-  .monitor_top4{ /*temperature*/
-    font-size: 10vmin;
-    color: white;
-    margin-top:-20vh;
-    padding-left:9vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top5{ /*humidity*/
-    font-size: 10vmin;
-    color: white;
-    margin-top:-20vh;
-    margin-left:9vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top6{ /*detail*/
-    font-size: 4vmin;
-    color:black;
-    margin-top:-28vh;
-    margin-left:8vw;
-    word-break: break-all;
-    position: relative;
-    width:25vw;
-  }
-
-  .monitor_light_pic{
-    padding-top: 2vh;
-    padding-left:3.5vw;
-    position: relative;
-    width: 32vw;
-  }
-
-  .monitor_detail_pic{
-    padding-top: 2vh;
-    padding-left:4.5vw;
-    position: relative;
-    width: 32vw;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 8vh;
-    padding-left:3.5vw;
-    position: relative;
-    width:32vw;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 8vh;
-    padding-left:4.5vw;
-    position: relative;
-    width:32vw;
-  }
-
-  .monitor_arrow_left{
-    margin-top:75vh;
-    margin-left: 3vw;
-    width: 5vw;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:75vh;
-    margin-left: 92vw;
-    width: 5vw;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:52vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:52vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:23vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:23vh;
-    margin-left:50vw;
-    position: absolute;
+    border-radius: 0px; 
   }
 }
 
-
-@media only screen and  ( min-width : 768px ) and ( max-height : 600px)  
-{
-  .body_monitor {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
-    max-width: 768px;
-    left:50%;
-    overflow: hidden;
-    margin-left: -384px;
-    position: absolute;
-  }
-
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 4vh 5vw;
-    font-size: 7vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 12vh 5vw;
-    color:white;
-    font-size: 7vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-  margin-top: 6vh;
-  margin-left:60vw;
-  position: absolute;
-  width: 8vw;
-
-  }
-
-  .monitor_top2{    /*light*/
-    font-size: 7vmin;
-    color: white;
-    margin-top:-12vh;
-    padding-left:6.5vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top3{    /*晴時多雲*/
-    font-size: 4vmin;
-    margin-top:18vh;
-    margin-left:59vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
-
-  .monitor_top4{ /*temperature*/
-    font-size: 7vmin;
-    color: white;
-    margin-top:-20vh;
-    padding-left:6vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top5{ /*humidity*/
-    font-size: 7vmin;
-    color: white;
-    margin-top:-20vh;
-    margin-left:7.5vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top6{ /*detail*/
-    font-size: 3vmin;
-    color:black;
-    margin-top:-26vh;
-    margin-left:6vw;
-    word-break: break-all;
-    position: relative;
-    width:12vw;
-  }
-
-  .monitor_light_pic{
-    padding-top: 2vh;
-    padding-left:3.5vw;
-    position: relative;
-    width: 14vw;
-  }
-
-  .monitor_detail_pic{
-    padding-top: 2vh;
-    padding-left:4.5vw;
-    position: relative;
-    width: 14vw;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 8vh;
-    padding-left:3.5vw;
-    position: relative;
-    width:14vw;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 8vh;
-    padding-left:4.5vw;
-    position: relative;
-    width:14vw;
-  }
-
-  .monitor_arrow_left{
-    margin-top:75vh;
-    margin-left: 10vw;
-    width: 2vw;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:75vh;
-    margin-left: 68vw;
-    width: 2vw;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:52vh;
-    margin-left:12vw;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:52vh;
-    margin-left:42vw;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:23vh;
-    margin-left:12vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:23vh;
-    margin-left:42vw;
-    position: absolute;
-  }
-}
-
-/* 
-
-
-@media only screen and (min-width: 1024px) and (max-height: 850px) 
-{
-  .body_monitor {
-    max-width: 425px;
-    background-color: blue;
-    font-family: "Open Sans", sans-serif;
-    left:50%;
-    margin-left: -212.5;
-    height: 100vh;
-    width:100vw;
-    position: absolute;
-  }
-
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 5vh 5vw;
-    font-size: 6vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 11vh 5vw;
-    color:white;
-    font-size: 6vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-  margin-top: 6vh;
-  margin-left:81vw;
-  position: absolute;
-  width: 12vw;
-
-  }
-
-  .monitor_top2{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-11vh;
-    padding-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top3{
-    font-size: 3.5vmin;
-    margin-top:15vh;
-    margin-left:80vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
-
-  .monitor_top4{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-20vh;
-    padding-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top5{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-20vh;
-    margin-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top6{
-    font-size: 4vmin;
-    color:black;
-    margin-top:-27vh;
-    margin-left:8vw;
-    word-break: break-all;
-    position: relative;
-    width:25vw;
-  }
-
-  .monitor_light_pic{
-    margin-top: -2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-
-  .monitor_detail_pic{
-    margin-top: -2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-
-  .monitor_arrow_left{
-    margin-top:66vh;
-    margin-left: 2vw;
-    width: 4.5vw;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:66vh;
-    margin-left: 92vw;
-    width: 4.5vw;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:52vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:52vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:23vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:23vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-}
- */
-
-@media only screen and (min-width:1024px)and (max-height:1366px)
-{
-  .body_monitor {
+@media only screen and (min-width: 1024px) and (max-height: 1366px) { /*ipad pro*/
+  .monitor_body {
     max-width: 1024px;
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    left:50%;
-    margin-left: -512px;
-    height: 100vh;
-    width:100vw;
-    position: absolute;
+    left:0%;
+    margin-left: auto;
+    border-radius: 0px; 
   }
+}
 
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 5vh 5vw;
-    font-size: 6vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 11vh 5vw;
-    color:white;
-    font-size: 6vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-  margin-top: 6vh;
-  margin-left:81vw;
-  position: absolute;
-  width: 12vw;
-
-  }
-
-  .monitor_top2{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-11vh;
-    padding-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top3{
-    font-size: 3.5vmin;
-    margin-top:15vh;
-    margin-left:80vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
-
-  .monitor_top4{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-20vh;
-    padding-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top5{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-20vh;
-    margin-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
-
-  .monitor_top6{
-    font-size: 4vmin;
-    color:black;
-    margin-top:-27vh;
-    margin-left:8vw;
-    word-break: break-all;
-    position: relative;
-    width:25vw;
-  }
-
-  .monitor_light_pic{
-    margin-top: -2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-
-  .monitor_detail_pic{
-    margin-top: -2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-
-  .monitor_arrow_left{
-    margin-top:75vh;
-    margin-left: 2vw;
-    width: 4.5vw;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:75vh;
-    margin-left: 92vw;
-    width: 4.5vw;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:60vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:60vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:27vh;
-    margin-left:10vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:27vh;
-    margin-left:50vw;
-    position: absolute;
-  }
-
-} 
-
-@media only screen and (min-width: 1024px)  and ( max-height : 700px){
-  .body_monitor {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
+@media only screen and (min-width: 1024px) and (max-height: 1200px) {  /*for computer*/
+  .monitor_body {
     max-width: 425px;
-    max-height: 577px;
-    overflow: hidden;
-    border-radius: 12px;
-    left:50%;
-    top:50%;
-    margin-left: -212.5px;
-    margin-top: -288.5px;
-    position: absolute;
-  }
-
-  .monitor_top{
-    height:5vh;
-    width: 255px;
-    margin: 5vh 22.68px;
-    font-size: 5vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
-
-  .monitor_top1{
-    height:5vh;
-    width: 500px;
-    margin: 11vh 22.68px;
-    color:white;
-    font-size: 5vmin;
-    font-weight: bold;
-    position: absolute;
-
-  }
-
-  .monitor_wea_pic{
-    
-    width: 51px;
-    top:2vh;
-    margin-left:330px;
-
-  }
-
-  .monitor_top2{
-    font-size: 6vmin;
-    color: white;
-    margin-top:-11vh;
-    padding-left:65px;
-    height:3vh;
-    width:226px;
-    position: relative;
-  }
-
-  .monitor_top3{
-    font-size: 3vmin;
-    margin-top:16vh;
-    margin-left:320px;
-    height:3vh;
-    width:226px;
-    position: absolute;
-  }
-
-  .monitor_top4{
-    font-size: 6vmin;
-    color: white;
-    margin-top:-20vh;
-    padding-left:70px;
-    height:3vh;
-    width:226px;
-    position: relative;
-  }
-
-  .monitor_top5{
-    font-size: 6vmin;
-    color: white;
-    margin-top:-20vh;
-    margin-left:-190px;
-    height:3vh;
-    width:226px;
-    position: relative;
-  }
-
-  .monitor_top6{
-    font-size: 2.5vmin;
-    color:black;
-    margin-top:-26vh;
-    margin-left:-210px;
-    word-break: break-all;
-    position: relative;
-    width:110px;
-  }
-
-  .monitor_light_pic{
-    margin-top: -2vh;
-    padding-left:37px;
-    position: relative;
-    width: 124px;
-    
-  }
-
-  .monitor_detail_pic{
-    margin-top: -2vh;
-    margin-left: -280px;
-    width: 124px;
-    position: relative;
-  }
-
-  .monitor_temp_pic{
-    padding-top: 2vh;
-    padding-left:37px;
-    position: relative;
-    width: 124px;
-  
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 2vh;
-    margin-left: -280px;
-    width: 124px;
-  }
-
-  .monitor_arrow_left{
-    margin-top:75vh;
-    margin-left: 25px;
-    width: 17px;
-    position:absolute;
-  }
-
-  .monitor_arrow_right{
-    margin-top:75vh;
-    margin-left: 385px;
-    width: 17px;
-    position:absolute;
-  }
-
-  .wrap_temp{
-    margin-top:60vh;
-    margin-left:34px;
-    position: absolute;
-  }
-
-  .wrap_humi{
-    margin-top:60vh;
-    margin-left:455px;
-    position: absolute;
-  }
-
-  .wrap_light{
-    margin-top:30vh;
-    margin-left:34px;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:30vh;
-    margin-left:455px;
-    position: absolute;
-  }
-
-}  
-
-
-
-
- /* @media only screen and (width: 540px) and (max-height: 720px) {
-  .body_monitor {
-    background-color: #aebfb7;
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    width:100vw;
-    max-width: 425px;
-    overflow: hidden;
-    border-radius: 12px;
     left:50%;
     margin-left: -212.5px;
-    position: absolute;
-  }
+    border-radius: 12px; 
+  }  
+}
 
+.monitor_top1 {  /*wea_pic*/
+  height: 10vh;
+}
 
-  .monitor_top{
-    height:5vh;
-    width: 60vw;
-    margin: 5vh 5vw;
-    font-size: 4vmin;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-  }
+.monitor_wea_pic{
+  padding-top:3vh;
+  width: 50px;
+  left:50%;
+  margin-left: -25px;
+}
 
-  .monitor_top1{
-    height:5vh;
-    width: 80vw;
-    margin: 11vh 5vw;
-    color:white;
-    font-size: 6vmin;
-    font-weight: bold;
-    position: absolute;
+.monitor_top2{
+  text-align: center;
+  left:1vw;
+  font-size: 18px;
+}
 
-  }
-
-  .monitor_wea_pic{
-  margin-top: 7.5vh;
-  margin-left:63vw;
+.monitor_top3 {    /*monitor status*/
+  height: 10vh;
+  font-size: 29px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
   position: absolute;
-  width: 12vw;
+}
 
-  }
+.monitor_background{
+  top: 8vh;
+  width:310px;
+  height: 220px;
+  border-radius: 12px; 
+  left: 50%;
+  margin-left: -155px;
+  background-color:#CCCCCC;
+  opacity:0.7;
+  position: relative;
+}
 
-  .monitor_top2{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-11vh;
-    padding-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
+.monitor_light{
+  top: 1.8vh; 
+  width:150px;
+  height: 190px;
+  left: 0.5vw;
+  border-radius: 12px; 
+  background-image: linear-gradient(to bottom, #008b8b, #ffff00);
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+}
 
-  .monitor_top3{
-    font-size: 3.5vmin;
-    margin-top:16vh;
-    margin-left:61vw;
-    height:3vh;
-    width:20vw;
-    position: absolute;
-  }
+.monitor_light2{
+  top:1vh;
+  position: relative;
+  text-decoration:underline;
+}
 
-  .monitor_top4{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-20vh;
-    padding-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
+.monitor_light_pic{
+  top:2vh;
+  width:70px;
+  height: 70px;
+  position: relative;
+}
 
-  .monitor_top5{
-    font-size: 9vmin;
-    color: white;
-    margin-top:-20vh;
-    margin-left:11vw;
-    height:3vh;
-    width:20vw;
-    position: relative;
-  }
+.monitor_light1{  /*light data*/
+  top:2vh;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;  
+  position: relative;
+}
 
-  .monitor_top6{
-    font-size: 4vmin;
-    color:black;
-    margin-top:-27vh;
-    margin-left:8vw;
-    word-break: break-all;
-    position: relative;
-    width:25vw;
-  }
+.monitor_detail{
+  word-break: break-all;
+  width: 105px;
+  position:relative;
+  font-size: 10px;
+  left:187px;
+  top:2.5vh;
+  font-size: 18px;
+}
 
-  .monitor_light_pic{
-    margin-top: -2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
+.monitor_temp{
+  top: 9vh;  
+  width:150px;
+  height: 190px;
+  left: 100%;
+  margin-left: -140px;
+  border-radius: 12px; 
+  background-image: linear-gradient(to bottom, #9e0000, #fae0e0);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
 
-  .monitor_detail_pic{
-    margin-top: -2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
+.monitor_temp2{
+  top:2vh;
+  left: 5%;
+  position: absolute;
+  text-decoration:underline;
+}
 
-  .monitor_temp_pic{
-    padding-top: 2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
-    
-  .monitor_humi_pic{
-    padding-top: 2vh;
-    padding-left:5vw;
-    position: relative;
-    width: 30vw;
-    height: 30vh;
-  }
+.monitor_cloud_pic{
+  top:120px; 
+  left: 65px;
+  width:80px;
+  height: 70px;
+  position: absolute;
+}
 
-  .monitor_arrow_left{
-    margin-top:69vh;
-    margin-left: 1.5vw;
-    width: 4.5vw;
-    position:absolute;
-  }
+.monitor_temp1{
+  top:40%;
+  left: 20%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;  
+  position: absolute;
+}
 
-  .monitor_arrow_right{
-    margin-top:69vh;
-    margin-left: 72.5vw;
-    width: 4.5vw;
-    position:absolute;
-  }
+.monitor_humi{
+  top: 9vh;  
+  width:150px;
+  height: 190px;
+  left: -4%; 
+  border-radius: 12px; 
+  background-image: linear-gradient(to bottom, #105293, #b9d4ef);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
 
-  .wrap_temp{
-    margin-top:55vh;
-    margin-left:3vw;
-    position: absolute;
-  }
+.monitor_humi2{
+  top:2vh;
+  left: 18%;
+  position: absolute;
+  text-decoration:underline;
+}
 
-  .wrap_humi{
-    margin-top:55vh;
-    margin-left:35.5vw;
-    position: absolute;
-  }
+.monitor_water_pic{
+  top:120px; 
+  left: 90px;
+  width:110x;
+  height: 80px;
+  position: absolute;
+}
 
-  .wrap_light{
-    margin-top:23vh;
-    margin-left:3vw;
-    position: absolute;
-  }
-
-  .wrap_detail{
-    margin-top:23vh;
-    margin-left:35.5vw;
-    position: absolute;
-  }
-}  */
-
-
- 
+.monitor_humi1{
+  top:40%;
+  left: 22%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;  
+  position: absolute;
+}
