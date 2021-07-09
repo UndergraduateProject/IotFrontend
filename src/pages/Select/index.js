@@ -1,82 +1,177 @@
 import React from 'react';
 import "./select.css";
-import select_potato from "./select_potato.png";
-import select_cabbage from "./select_cabbage.png";
-import select_tomato from "./select_tomato.png";
-
+import select_potato from "../../images/select_potato.png";
+import select_cabbage from "../../images/select_cabbage.png";
+import select_tomato from "../../images/select_tomato.png";
+import Sidebar from '../../component/Sidebar';
 
 
 
 function select() {
   return (
     <div className="body_select">
-    <div className="select_plant" >
-      <div className="left">
-          <img className="select_potato_pic" src={select_potato}/>
-          <div className="plant_title">Potato</div>
-            <div className="plant_level">Level</div>
-            <div className="plant_cost">Cost</div>
-          <div className="plant_level_answer">easy</div>
-          <div className="plant_cost_answer">$30</div>
-      </div>
+      <Container>
+        <Row><Sidebar /></Row>
+              <Row>
+                <Col  md={{ span: 10, offset: 1 }}  sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}> 
+                  <div className="select_plant" >
+                    {/* <div className="left"> */}
+                      <Row>
+                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_potato}/></Col>
+                      </Row>
 
-    <div className="right">
-        <div className="plant_week">5Weeks</div>
-        <div className="plant_evaluation">self-evaluation:</div>
-        <div className="plant_evaluation_answer">I am Potato,The potato is a root vegetable native to the Americas.</div>
-        <input className="select_button" type="button"  value="Select" />
-    </div>
-    </div>
+                      <Row>
+                        <Col className="select_title">Potato</Col>
+                      </Row>
 
-    <div className="select_plant select_plant1" >
-      <div className="left">
-          <img className="select_potato_pic" src={select_cabbage}/>
-          <div className="plant_title">Cabbage</div>
-            <div className="plant_level">Level</div>
-            <div className="plant_cost">Cost</div>
-          <div className="plant_level_answer">easy</div>
-          <div className="plant_cost_answer">$200</div>
-      </div>
+                      <Row>
+                        <Col className="select_level" md={2} sm={2} xs={2}>Level</Col>
+                        <Col className="select_cost" md={3} sm={3} xs={3}>Cost</Col>
+                      </Row>
 
-    <div className="right">
-        <div className="plant_week">10Weeks</div>
-        <div className="plant_evaluation">self-evaluation:</div>
-        <div className="plant_evaluation_answer">Cabbage is a leafy green, red purple or white (pale green) biennial plant. </div>
-        <input className="select_button" type="button"  value="Select" />
-    </div>
-    </div>
+                      <Row>
+                        <Col className="select_level_ans" md={2} sm={2} xs={2}>EASY</Col>
+                        <Col className="select_cost_ans" md={3} sm={3} xs={3}>$40</Col>
+                      </Row>
+                    {/* </div>  */}
+                    {/* <div className="right"> */}
+                      <Row>
+                        <Col className="select_week" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>5 Weeks</Col>
+                      </Row>
 
-    <div className="select_plant select_plant2" >
-      <div className="left">
-          <img className="select_potato_pic" src={select_tomato}/>
-          <div className="plant_title">Tomato</div>
-            <div className="plant_level">Level</div>
-            <div className="plant_cost">Cost</div>
-          <div className="plant_level_answer">high</div>
-          <div className="plant_cost_answer">$700</div>
-      </div>
+                      <Row>
+                        <Col className="select_evaluation" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>self-evaluation</Col>
+                      </Row>
 
-    <div className="right">
-        <div className="plant_week">12Weeks</div>
-        <div className="plant_evaluation">self-evaluation:</div>
-        <div className="plant_evaluation_answer">A rose is a woody perennial flowering plant of the genus Rosa.</div>
-        <input className="select_button" type="button"  value="Select" />
-    </div>
-    </div>
+                      <Row>
+                        <Col className="select_evaluation_ans" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
+                          I am Potato,The potato is a root vegetable native to the America.</Col>
+                      </Row>
 
-    <div className="right">
-      <div className="select_pages">
-        <a  className="select_next"herf="#"> 下一頁{'>'}{'>'}</a> 
-      </div>
-    </div>
+                      <Row>
+                        <Col md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
+                        <Button size="sm"  className="select_btn">Select</Button>{' '}
+                        </Col>
+                      </Row>
 
-    <div className="left">
-      <div className="select_pages">
-        <a  className="select_next1"herf="#"> {'<'}{'<'}上一頁</a> 
-      </div>
-    </div>
-    
-    </div>   
+                    </div>
+                  {/* </div> */}
+                </Col>
+              </Row>
+
+
+
+
+              <Row>
+                <Col  md={{ span: 10, offset: 1 }}  sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}> 
+                  <div className="select_plant select_plant2" >
+                    {/* <div className="left"> */}
+                      <Row>
+                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_cabbage}/></Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_title">Cabbage</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_level" md={2} sm={2} xs={2}>Level</Col>
+                        <Col className="select_cost" md={3} sm={3} xs={3}>Cost</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_level_ans" md={2} sm={2} xs={2}>EASY</Col>
+                        <Col className="select_cost_ans" md={3} sm={3} xs={3}>$100</Col>
+                      </Row>
+                    {/* </div>  */}
+                    {/* <div className="right"> */}
+                      <Row>
+                        <Col className="select_week" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>10 Weeks</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_evaluation" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>self-evaluation</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_evaluation_ans" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
+                         Cabbage is a leafy green, red purple or white (pale green) biennial plant. </Col>
+                      </Row>
+
+                      <Row>
+                        <Col md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
+                        <Button size="sm"  className="select_btn">Select</Button>{' '}
+                        </Col>
+                      </Row>
+
+                    </div>
+                  {/* </div> */}
+                </Col>
+              </Row>
+
+
+
+
+              <Row>
+                <Col  md={{ span: 10, offset: 1 }}  sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}> 
+                  <div className="select_plant select_plant3" >
+                    {/* <div className="left"> */}
+                      <Row>
+                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_tomato}/></Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_title">Tomato</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_level" md={2} sm={2} xs={2}>Level</Col>
+                        <Col className="select_cost" md={3} sm={3} xs={3}>Cost</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_level_ans" md={2} sm={2} xs={2}>HIGH</Col>
+                        <Col className="select_cost_ans" md={3} sm={3} xs={3}>$60</Col>
+                      </Row>
+                    {/* </div>  */}
+                    {/* <div className="right"> */}
+                      <Row>
+                        <Col className="select_week" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>12 Weeks</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_evaluation" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>self-evaluation</Col>
+                      </Row>
+
+                      <Row>
+                        <Col className="select_evaluation_ans" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
+                        A rose is a woody perennial flowering plant of the genus Rosa.</Col>
+                      </Row>
+
+                      <Row>
+                        <Col md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
+                        <Button size="sm"  className="select_btn">Select</Button>{' '}
+                        </Col>
+                      </Row>
+
+                    </div>
+                  {/* </div> */}
+                </Col>
+              </Row>
+
+             
+              <Row >                 
+                <Col  className="select_next_top" md={6}  sm={6} xs={6}>
+                <a  className="select_next1"herf="#"> {'<'}{'<'}上一頁</a> 
+                </Col> 
+
+                <Col  className="select_next_top2" md={6}  sm={6} xs={6}>
+                <a  className="select_next1"herf="#">下一頁{'>'}{'>'}</a> 
+                </Col> 
+              </Row>
+              
+      </Container>
+    </div> 
   )
 }
 
