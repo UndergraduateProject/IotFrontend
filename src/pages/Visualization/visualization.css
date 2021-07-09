@@ -1,0 +1,38 @@
+.visual-wrapper {
+  background-color: #aebfb7;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) and (max-height: 1024px) {
+  /*ipad*/
+  .visual-wrapper {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) {
+  /*ipad pro*/
+  .visual-wrapper {
+    max-width: 1024px;
+    left: 0%;
+    margin-left: auto;
+    border-radius: 0px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1200px) {
+  /*for computer*/
+  .visual-wrapper {
+    position: relative;
+    max-width: 425px;
+    border-radius: 12px;
+    margin-left: 40%;
+  }
+}

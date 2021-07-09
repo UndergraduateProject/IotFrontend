@@ -1,0 +1,9 @@
+.chart {
+  position: relative;
+  width: 100%;
+}
+
+.date {
+  position: relative;
+  text-align: center;
+}
