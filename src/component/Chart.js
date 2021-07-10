@@ -1,31 +1,85 @@
 import React, { useState, useEffect } from "react";
 import './chart.css';
-import { Line } from 'react-chartjs-2';
+import ApexCharts from 'apexcharts'
 import api from '../utils/api';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { DateRangePicker } from 'react-date-range';
-import {Spinner} from 'react-bootstrap'
-import { addDays } from 'date-fns';
+
 
 
 const path = "api/Humidtemp/?limit=99999999999999999";
 
 
+
 function Chart() {
-  const today = new Date().getDate();
   const [chart, setChart] = useState({});
   const [loading,setLoading] = useState(false);
-  const [selectionRange, setRange] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection'
-    }
-  ]);
-
+  const [series,setSerires] = useState([{
+    data : [{
+      x:0,
+      y:0,
+    }]
+  }])
+  const [options, setOption] = useState({
+    options: {
+      chart: {
+        type: 'area',
+        stacked: false,
+        height: 350,
+        zoom: {
+          type: 'x',
+          enabled: true,
+          autoScaleYaxis: true
+        },
+        toolbar: {
+          autoSelected: 'zoom'
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      markers: {
+        size: 0,
+      },
+      title: {
+        text: 'Stock Price Movement',
+        align: 'left'
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shadeIntensity: 1,
+          inverseColors: false,
+          opacityFrom: 0.5,
+          opacityTo: 0,
+          stops: [0, 90, 100]
+        },
+      },
+      yaxis: {
+        labels: {
+          formatter: function (val) {
+            return (val / 1000000).toFixed(0);
+          },
+        },
+        title: {
+          text: 'Price'
+        },
+      },
+      xaxis: {
+        type: 'datetime',
+      },
+      tooltip: {
+        shared: false,
+        y: {
+          formatter: function (val) {
+            return (val / 1000000).toFixed(0)
+          }
+        }
+      }
+    },
+  }) 
+  
   const changedate = (item) => {
-    setRange([item.selection]);
     getdata();
   }
 
@@ -37,10 +91,8 @@ function Chart() {
         var date = new Date(ele.timestamp).getDate();
         var month = new Date(ele.timestamp).getMonth();
         var year = new Date(ele.timestamp).getFullYear();
-        if(date >= selectionRange[0].startDate.getDate() && date <= selectionRange[0].endDate.getDate()){
-          labels.push(ele.timestamp);
-          dataValue.push(ele.humidity);
-        }
+        labels.push(ele.timestamp);
+        dataValue.push(ele.humidity);
       });
     setLoading(true) 
     setChart({
@@ -71,15 +123,8 @@ function Chart() {
 
   return (
     <div>
-      <div className="chart">{loading ? <Line  data={chart} /> :<Spinner animation="border" role="status"></Spinner>}</div>
-      <div className="date">
-        <DateRangePicker
-          editableDateInputs={true}
-          onChange={changedate}
-          moveRangeOnFirstSelection={false}
-          ranges={selectionRange}
-          maxDate={addDays(new Date(), 0)}
-        />
+      <div id="chart-line">
+        <ApexCharts options={options} series={this.state.series} type="line" height={160} />
       </div>
     </div>
   )
