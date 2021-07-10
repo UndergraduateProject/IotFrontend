@@ -2,7 +2,7 @@ import React from 'react';
 import "./control.css";
 import control_greenHouse from '../../images/control_greenHouse.png';
 import {Container, Row, Col} from 'react-bootstrap';
-import Sidebar from '../../component/Sidebar'
+import Sidebar from '../../component/Sidebar';
 import fan from '../../images/fan.png';
 import water from '../../images/water.png';
 import light from '../../images/light.png';

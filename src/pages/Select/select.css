@@ -1,10 +1,64 @@
 .body_select {
   background-color: #aebfb7;
+  box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
+  width: 100vw;
   height: 100vh;
-  width:100vw; /*~~~*/
+  overflow: hidden;
+  position: absolute;
 }
 
+
+@media only screen and (min-width: 768px) and (max-height: 1024px) { /*ipad*/
+  .body_select  {
+    max-width: 768px;
+    left:50%;
+    margin-left: -384px;
+    border-radius: 0px; 
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) { /*ipad pro*/
+  .body_select  {
+    max-width: 1024px;
+    left:0%;
+    margin-left: auto;
+    border-radius: 0px; 
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1200px) {  /*for computer*/
+  .body_select  {
+    max-width: 425px;
+    left:50%;
+    margin-left: -212.5px;
+    border-radius: 12px; 
+  }  
+}
+
+.select_plant{
+  height: 156px;
+  width: 315px;
+  left:50%;
+  margin-left: -157.5px;  
+  top: 10.2vh;
+  border-radius: 12px;
+  border-color:white;
+  background-color:transparent;
+  border-width:0.2vw;
+  border-style:solid;
+  position: relative;
+}
+
+.select_plant2{
+  top: 10.6vh;
+}
+
+.select_plant3{
+  top: 11vh;
+}
+
+/* 
 .left{
   float: left;
   width: 54vw;
@@ -13,551 +67,150 @@
 .right{
   float: right;
   width: 46vw;
-}
+} */
 
-.select_plant{
-  height:26vh ;
-  width:90vw;
-  top: 10vh;
-  left: 4.3vw;
-  right: 4.3vw;
-  border-radius: 12px;
-  border-color:white;
-  background-color:transparent;
-  border-width:0.5vw;
-  border-style:solid;
-  position: relative;
-}
-
-.select_plant1{
-  top: 11vh;
-}
-
-.select_plant2{
-  top: 12vh;
-}
 
 .select_potato_pic{
-  top: 2vh;
-  padding-left:8vw;
+  left:40px;
+  top: 1vh;
   position: absolute;
-  width:24vw;
-}
+  width:90px;
 
-.plant_title{
-  font-size: 8.5vmin;
+} 
+
+.select_title{
+  font-size: 25px;
   font-weight:bold;
   color:#050244;
-  padding-left:4vw;
+  padding-left:30px;
   position: absolute;
-  top:14vh;
+  top:88px;
 }
 
-.plant_level{
-  font-size: 4vmin;
+
+.select_level{
+  font-size: 15px;
   font-weight:bold;
   color:#6C6C6C;
   position: absolute;
   float:left;
-  top:19vh;
-  left: 2vw;
-  text-align: center;
-  width: 20vw;
+  top:118px;
+  padding-left:32px;
 }
 
-.plant_cost{
-  font-size: 4vmin;
+.select_cost{
+  font-size: 15px;
   font-weight:bold;
   color:#6C6C6C;
   position: absolute;
-  text-align: center;
-  float:right;
-  top:19vh;
-  left: 17vw;
-  width: 20vw;
-
-}
-
-.plant_level_answer{
-  font-size: 3vmin;
-  text-transform:uppercase;
-  color:#6C6C6C;
-  position: absolute;
-  text-align: center;
   float:left;
-  top:22vh;
-  width: 20vw;  
-  left: 2vw;
-
+  top:118px;
+  padding-left:100px;
 }
 
-.plant_cost_answer{
-  font-size: 3vmin;
+.select_level_ans{
+  font-size: 12px;
   text-transform:uppercase;
   color:#6C6C6C;
   position: absolute;
-  text-align: center;
-  float:right;
-  top:22vh;
-  width: 20vw;
-  left: 17vw;
-
+  float:left;
+  top:133px;
+  padding-left:37px;
 }
 
-.plant_week{
-  font-size: 5vmin;
+.select_cost_ans{
+  font-size: 12px;
+  text-transform:uppercase;
+  color:#6C6C6C;
+  position: absolute;
+  float:left;
+  top:133px;
+  padding-left:105px;
+}
+
+.select_week{
+  font-size: 20px;
   color:#5e3c00;
   text-decoration:underline;
-  top: 4vh;
   position: absolute;
 
 }
 
-.plant_evaluation{
-  font-size: 5vmin;
+.select_evaluation{
+  font-size: 17px;
   color:#6C6C6C;
-  top: 8vh;
+  top: 26px;
   position: absolute;
 }
 
-.plant_evaluation_answer{
-  font-size: 3.5vmin;
+.select_evaluation_ans{
+  font-size: 10px;
   color:#6C6C6C;
   word-break:keep-all;
-  width:45vw;
-  top: 11vh;
+  top: 50px;
   position: absolute;
 }
 
-.select_button{
+.select_btn{
   background-color:#7d5b00;
   font-weight: bold;
   text-align: center;
-  font-size: 5vmin;
-  Color:white;
-  width: 27vw;
-  height: 4vh;
-  left: 47vw;
-  top: 21vh;
+  font-size: 10px;
+  height: 24px;
+  left:40px;
+  top: 123px;
   position: absolute;
   border: none;
-  border-radius: 22px;
+  border-radius: 18px;
 }
 
-.select_pages{
-  position: relative;
-  top:4vh;
-  font-size: 5vmin;
-  color: #6b6767;   
-  text-decoration: underline; 
-}
-
-.select_next{ 
-  position: relative;
-  top:10vh;
-  margin-left: 10vw;
-}
-
-.select_next1{
-  position: relative;
-  top:10vh;
-  margin-left: 15vw;
-}
-
-
-@media only screen and (min-width: 500px) and (max-height: 700px){  
-  .body_select {
-    max-width: 768px;
-  }
-  
-  .select_plant{
-    height:25.5vh ;
+@media only screen and (min-width: 768px) and (max-height: 1024px) { /*ipad*/
+  .select_next_top {
+  top:11.5vh;
+  left: 220px;
   }
 
-  .select_potato_pic{
-    top: 1vh;
-    max-width:14vw;
-    max-height:15vh ;
-  }
-
-  .plant_title{
-    font-size: 5vmin;
-    padding-left:7vw;
-  }
-
-  .plant_level{
-    font-size: 3.5vmin;
-    left: -1vw;
-  }
-
-  .plant_cost{
-    font-size: 3.5vmin;
-    left: 11vw;
-  }
-
-  .plant_level_answer{
-    font-size: 2.5vmin;
-    left: -1vw; 
-  }
-
-  .plant_cost_answer{
-    font-size: 2.5vmin;
-    left: 11vw;
-  }
-
-  .plant_week{
-    top: 0vh;
-  }
-  
-  .plant_evaluation{
-    font-size: 4.5vmin;
-    top: 6vh;
-  }
-
-  .plant_evaluation_answer{
-    font-size: 3vmin;
-  }
-
-  .select_button{
-    font-size: 3.5vmin;
-    max-width: 14vw;
-    left: 68vw;
-    height: 5vh;
-    top: 20vh;
-  }
-
-  .select_pages{
-    font-size: 4vmin;
-  }
-
-  .select_next{ 
-    top:9vh;
-  }
-
-  .select_next1{
-    top:9vh;
+  .select_next_top2{
+    top:11.5vh;
+    left: 5vw;
   } 
 }
 
-
-@media only screen and  ( min-width : 768px ) and ( max-height : 1024px)  /*ipad*/
-{
-.body_select {
-  max-width: 768px;
-  left:50%;
-  margin-left: -384px;
-  position: absolute;
+@media only screen and (min-width: 1024px) and (max-height: 1366px) { /*ipad pro*/
+  .select_next_top{
+    top:11.5vh;
+    left:33vw;
+  }
+  .select_next_top2{
+    top:11.5vh;
+    left: 5vw;
+  } 
 }
 
-.select_plant{
-  height:25.5vh ;
+@media only screen and (min-width: 1024px) and (max-height: 1200px) {  /*for computer*/
+  .select_next_top{
+    top:11.5vh;
+    left:70px;
+  }
+  .select_next_top2{
+    top:11.5vh;
+    left: 2.8vw;
+  } 
 }
 
-.select_potato_pic{
-  padding-left:10vw;
-  max-width:14vw;
-  max-height:15vh ;
-}
+@media  screen and (max-width : 767px)  {  /*for mobile phone*/
+  .select_next_top{
+    top:11.5vh;
+    left: 18vw;
+  }
 
-.plant_title{
-  font-size: 5vmin;
-  padding-left:7vw;
-}
-
-.plant_level{
-  font-size: 3.5vmin;
-  left: 1vw;
-}
-
-.plant_cost{
-  font-size: 3.5vmin;
-  left: 13.5vw;
-}
-
-.plant_level_answer{
-  font-size: 2.5vmin;
-  left: 1vw; 
-}
-
-.plant_cost_answer{
-  font-size: 2.5vmin;
-  left: 13.5vw;
-}
-
-.plant_week{
-  top: 0vh;
-}
-
-.plant_evaluation{
-  font-size: 4.5vmin;
-  top: 6vh;
-}
-
-.plant_evaluation_answer{
-  font-size: 3vmin;
-}
-
-.select_button{
-  font-size: 3.5vmin;
-  width: 17vw;
-  left: 68vw;
-  height: 5vh;
-  top: 20vh;
-}
-
-.select_pages{
-  font-size: 4vmin;
-}
-}
-
-
-@media only screen and  ( min-width : 768px ) and ( max-height : 600px)  
-{
- .body_select {
-  max-width: 768px;
-  left:50%;
-  margin-left: -384px;
-  position: absolute;
-}
-
-.select_plant{
-  height:25.5vh ;
-  max-width: 670px;
-  left: 5.2vw;
-}
-
-.select_potato_pic{
-  top: 0vh;
-  padding-left:6vw;
-  max-width:100px;
-  max-height:14vh ;
-}
-
-.plant_title{
-  font-size: 5vmin;
-  padding-left:5vw;
-  top:13vh;
-}
-
-.plant_level{
-  font-size: 3vmin;
-  left: -3vw;
-}
-
-.plant_cost{
-  font-size: 3vmin;
-  left: 5.5vw;
-}
-
-.plant_level_answer{
-  font-size: 2.5vmin;
-  left: -3vw; 
-}
-
-.plant_cost_answer{
-  font-size: 2.5vmin;
-  left: 5.5vw;
-}
-
-.plant_week{
-  top: 0vh;
-}
-
-.plant_evaluation{
-  font-size: 4.5vmin;
-  top: 6vh;
-}
-
-.plant_evaluation_answer{
-  font-size: 3vmin;
-}
-
-.select_button{
-  font-size: 3.5vmin;
-  width: 17vw;
-  max-width: 100px;
-  left: 55vw;
-  height: 5vh;
-  top: 19.5vh;
-}
-
-.select_pages{
-  font-size: 4vmin;
-}
-
-.select_next{   /*下一頁*/
-  top:8vh;
-  margin-left: 16vw;
+  .select_next_top2{
+    top:11.5vh;
+    left: 6vw;
+  } 
 }
 
 .select_next1{  /*上一頁*/
-  top:2.5vh;
-  margin-left: 17vw;
+  color: #7d5b00;
+  font-weight: 700;
 } 
-}
-
-
-@media only screen and (min-width:1024px)and (max-height:1366px) /*ipad pro*/
-{
-.body_select {
- max-width: 1024px;
- left:50%;
- margin-left: -512px;
- position: absolute;
-}
-
-.select_plant{
-  height:25.5vh ;
-}
-
-.select_potato_pic{
-  padding-left:10vw;
-  max-width:14vw;
-  max-height:15vh ;
-}
-
-.plant_title{
-  font-size: 5vmin;
-  padding-left:7vw;
-}
-
-.plant_level{
-  font-size: 3.5vmin;
-  left: 1vw;
-}
-
-.plant_cost{
-  font-size: 3.5vmin;
-  left: 13.5vw;
-}
-
-.plant_level_answer{
-  font-size: 2.5vmin;
-  left: 1vw; 
-}
-
-.plant_cost_answer{
-  font-size: 2.5vmin;
-  left: 13.5vw;
-}
-
-.plant_week{
-  top: 0vh;
-}
-
-.plant_evaluation{
-  font-size: 4.5vmin;
-  top: 6vh;
-}
-
-.plant_evaluation_answer{
-  font-size: 3vmin;
-}
-
-.select_button{
-  font-size: 3.5vmin;
-  width: 17vw;
-  left: 68vw;
-  height: 5vh;
-  top: 20vh;
-}
-
-.select_pages{
-  font-size: 4vmin;
-}
-}
-
-
-@media only screen and (min-width: 1024px)  and ( max-height : 700px)
-{
-.body_select {
-  max-width: 425px;
-  max-height: 577px;
-  left:50%;
-  top:50%;
-  margin-left: -212.5px;
-  margin-top: -288.5px;
-  overflow: hidden;
-  position: absolute;
-}
-
-.select_plant{
-  width:380px;
-  left: 1.8vw;
-  border-width:0.3vw;
-}
-
-.select_potato_pic{
-  top: 1vh;
-  padding-left:3vw;
-  width: 75px;
-}
-
-.plant_title{
-  font-size: 5vmin;
-  padding-left:1.5vw;
-  top:13vh;
-}
-
-.plant_level{
-  font-size: 3vmin;
-  top:18.5vh;
-  left: -6.5vw;
-}
-
-.plant_cost{
-  font-size: 3vmin;
-  top:18.5vh;
-  left: -1vw;
-}
-
-.plant_level_answer{
-  font-size: 2vmin;
-  left: -6.5vw;
-}
-
-.plant_cost_answer{
-  font-size: 2vmin;
-  left: -1vw;
-}
-
-.plant_week{
-  font-size: 4vmin;
-  top: 1.5vh;
-  left:13.5vw;
-}
-
-.plant_evaluation{
-  font-size: 3.5vmin;
-  top: 7vh;
-  left:13.5vw;
-}
-
-.plant_evaluation_answer{
-  font-size: 2.5vmin;
-  width:16vw;
-  top: 11vh;
-  left:13.5vw;
-}
-
-.select_button{
-  font-size: 3vmin;
-  width: 7vw;
-  left: 21vw;
-}
-
-.select_pages{
-  top:6vh;
-  font-size: 3vmin;
-}
-
-.select_next{ 
-  top:6.5vh;
-  margin-left: 35vw;
-}
-
-.select_next1{
-  top:2.5vh;
-  margin-left: 6vw;
-}
-}

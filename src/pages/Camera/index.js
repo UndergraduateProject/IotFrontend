@@ -67,6 +67,9 @@ function Camera() {
     if (peerConnection.connectionState === 'connected') {
       console.log('peer connected!');
     }
+    if (peerConnection.connectionState === 'failed') {
+      startSignal(); // restart
+    }
   }
   
   const getTrackAndAdd = async (event) => {
