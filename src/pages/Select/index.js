@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Row, Col,Button} from 'react-bootstrap';
 import "./select.css";
 import select_potato from "../../images/select_potato.png";
 import select_cabbage from "../../images/select_cabbage.png";
