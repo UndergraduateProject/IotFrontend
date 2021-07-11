@@ -4,6 +4,8 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 import "./homepage.css";
 import logo from "./logo.png";
 import Sidebar from '../../component/Sidebar'
+import {Link} from "react-router-dom";
+
 
 
 
@@ -19,22 +21,26 @@ function homepage() {
       
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Button size="lg" variant="light" className="home_btn">選擇植物</Button>{' '}</Col>
+        <Link to="/select"><Button size="lg" variant="light" className="home_btn">選擇植物</Button>{' '}</Link>
+        </Col>
       </Row>
 
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Button size="lg" variant="light" className="home_btn">監控數據</Button>{' '}</Col>
+        <Link to="/monitor"><Button size="lg" variant="light" className="home_btn">監控數據</Button>{' '}</Link>
+        </Col>
       </Row>
 
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Button size="lg" variant="light" className="home_btn">調控物件</Button>{' '}</Col>
+        <Link to="/control"><Button size="lg" variant="light" className="home_btn">調控物件</Button>{' '}</Link>
+        </Col>
       </Row>
 
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Button size="lg" variant="light" className="home_btn">分析結果</Button>{' '}</Col>
+        <Link to="/"><Button size="lg" variant="light" className="home_btn">分析結果</Button>{' '}</Link>
+        </Col>
       </Row>
 
     </Container>

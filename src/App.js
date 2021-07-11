@@ -11,14 +11,12 @@ import {
   Redirect,
   Route,
   Switch,
-  useHistory,
 } from "react-router-dom";
 
 
 
 function App() {
   const [log,setLog] = useState(localStorage.getItem('token'));
-  let history = useHistory()
   const ProtectedRoute = ({ component: Comp, loggedIn, path, ...rest }) => {
     return (
       <Route
