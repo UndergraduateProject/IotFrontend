@@ -2,10 +2,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./monitor.css";
 import {Container, Row, Col} from 'react-bootstrap';
-import monitor_weather from './monitor_weather.png';
-import light from './light.png';
-import cloud from './cloud.png';
-import water from './water.png';
+import monitor_weather from '../../images/monitor_weather.png';
+import light from '../../images/monitor_light.png';
+import cloud from '../../images/cloud.png';
+import water from '../../images/monitor_water.png';
 import Sidebar from '../../component/Sidebar'
 
 
