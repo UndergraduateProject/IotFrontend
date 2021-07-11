@@ -38,9 +38,7 @@ function Sidebar(){
                 <Link to=""><li>分析結果</li></Link>                
             </ul>
             </div>
-            <div className="setting">
-                設定
-            </div>
+            <Link to="/"><div className="setting">設定</div></Link>
       </animated.div>
     )
 }

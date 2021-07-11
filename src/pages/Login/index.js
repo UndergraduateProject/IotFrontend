@@ -3,7 +3,7 @@ import { useSpring, animated } from "react-spring";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import "./login.css";
-import logo from "./logo.png";
+import logo from "../../images/logo.png";
 import {Row, Col} from "react-bootstrap";
 
 

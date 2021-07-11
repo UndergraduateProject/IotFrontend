@@ -7,7 +7,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 
 
-const path = "api/Humidtemp/?offset=10000&limit=4000";
+const path = "api/Humidtemp/?limit=999999";
 
 
 
@@ -19,14 +19,15 @@ function Visualization() {
 						group :'enviroment',
             type: 'line',
             height: "100%",
-						zoom: {
-							type: 'x',
-							enabled: true,
-							autoScaleYaxis: true
-						},
-						toolbar: {
-							autoSelected: 'zoom'
-						}
+			zoom: {
+				type: 'x',
+				enabled: true,
+				autoScaleYaxis: true
+			},
+			toolbar: {
+				autoSelected: 'zoom'
+			}
+			
           },
           colors: ['#008FFB'],
           yaxis: {
@@ -36,12 +37,10 @@ function Visualization() {
           },
         xaxis: {
           type: 'datetime',
-		  datetimeFormatter :{
-			  day : 'dd MMM'
-		  }
+		  tickPlacement:'on',
         },
         noData:{
-            text: "Loading..."
+            text: "DataLarge...Loading..."
         },
 				title:{
 					text:"Humidity",
@@ -53,14 +52,14 @@ function Visualization() {
 						group :'enviroment',
             type: 'line',
             height: "100%",
-						zoom: {
-							type: 'x',
-							enabled: true,
-							autoScaleYaxis: true
-						},
-						toolbar: {
-							autoSelected: 'zoom'
-						}
+			zoom: {
+				type: 'x',
+				enabled: true,
+				autoScaleYaxis: true
+			},
+			toolbar: {
+				autoSelected: 'zoom'
+			}
           },
           colors: ['#546E7A'],
           yaxis: {
@@ -69,10 +68,11 @@ function Visualization() {
             }
           },
         xaxis: {
-					type: 'datetime'
+			type: 'datetime',
+			tickPlacement:'on',
         },
         noData:{
-            text: "Loading...",
+            text: "DataLarge...Loading..."
         },
 				title:{
 					text:"Temperature",
@@ -111,7 +111,7 @@ function Visualization() {
 					}
 				})
 
-				break
+				break;
 			case 'six_months':
 				setState({
 					humidoptions:{
@@ -121,7 +121,7 @@ function Visualization() {
 						}
 					}
 				})
-				break
+				break;
 			case 'one_year':
 				setState({
 					humidoptions:{
@@ -131,7 +131,7 @@ function Visualization() {
 						}
 					}
 				})
-				break
+				break;
 			case 'ytd':
 				setState({
 					humidoptions:{
@@ -141,7 +141,7 @@ function Visualization() {
 						}
 					}
 				})
-				break
+				break;
 			case 'all':
 				setState({
 					humidoptions:{
@@ -151,6 +151,8 @@ function Visualization() {
 						}
 					}
 				})
+				break;
+			default:
 		}
 	}
 

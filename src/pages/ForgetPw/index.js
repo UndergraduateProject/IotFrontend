@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import "./forgetPw.css";
-import logo from "./logo.png";
+import logo from "../../images/logo.png";
 
 
 

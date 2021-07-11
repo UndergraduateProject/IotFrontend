@@ -17,9 +17,8 @@ function select() {
               <Row>
                 <Col  md={{ span: 10, offset: 1 }}  sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}> 
                   <div className="select_plant" >
-                    {/* <div className="left"> */}
                       <Row>
-                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_potato}/></Col>
+                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_potato} alt=""/></Col>
                       </Row>
 
                       <Row>
@@ -35,8 +34,6 @@ function select() {
                         <Col className="select_level_ans" md={2} sm={2} xs={2}>EASY</Col>
                         <Col className="select_cost_ans" md={3} sm={3} xs={3}>$40</Col>
                       </Row>
-                    {/* </div>  */}
-                    {/* <div className="right"> */}
                       <Row>
                         <Col className="select_week" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>5 Weeks</Col>
                       </Row>
@@ -57,7 +54,6 @@ function select() {
                       </Row>
 
                     </div>
-                  {/* </div> */}
                 </Col>
               </Row>
 
@@ -67,9 +63,8 @@ function select() {
               <Row>
                 <Col  md={{ span: 10, offset: 1 }}  sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}> 
                   <div className="select_plant select_plant2" >
-                    {/* <div className="left"> */}
                       <Row>
-                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_cabbage}/></Col>
+                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_cabbage} alt=""/></Col>
                       </Row>
 
                       <Row>
@@ -85,8 +80,6 @@ function select() {
                         <Col className="select_level_ans" md={2} sm={2} xs={2}>EASY</Col>
                         <Col className="select_cost_ans" md={3} sm={3} xs={3}>$100</Col>
                       </Row>
-                    {/* </div>  */}
-                    {/* <div className="right"> */}
                       <Row>
                         <Col className="select_week" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>10 Weeks</Col>
                       </Row>
@@ -107,7 +100,6 @@ function select() {
                       </Row>
 
                     </div>
-                  {/* </div> */}
                 </Col>
               </Row>
 
@@ -117,9 +109,8 @@ function select() {
               <Row>
                 <Col  md={{ span: 10, offset: 1 }}  sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}> 
                   <div className="select_plant select_plant3" >
-                    {/* <div className="left"> */}
                       <Row>
-                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_tomato}/></Col>
+                        <Col md={6}  sm={6} xs={6}><img className="select_potato_pic" src={select_tomato} alt=""/></Col>
                       </Row>
 
                       <Row>
@@ -135,8 +126,6 @@ function select() {
                         <Col className="select_level_ans" md={2} sm={2} xs={2}>HIGH</Col>
                         <Col className="select_cost_ans" md={3} sm={3} xs={3}>$60</Col>
                       </Row>
-                    {/* </div>  */}
-                    {/* <div className="right"> */}
                       <Row>
                         <Col className="select_week" md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>12 Weeks</Col>
                       </Row>
