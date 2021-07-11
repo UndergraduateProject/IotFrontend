@@ -9,7 +9,7 @@ import Sidebar from '../../component/Sidebar'
 
 function homepage() {
   return (
-    <div class="home">
+    <div className="home">
     <Container >
       <Row><Sidebar /></Row>
       <Row>
