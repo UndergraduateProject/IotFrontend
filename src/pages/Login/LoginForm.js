@@ -69,7 +69,7 @@ function LoginForm(props) {
         <div className="row"><input  id="username" type="text" placeholder="Enter your username" value={formdata.username} onChange={handleChange} /></div>
         <div key="test" className="row">
           <input  id="password" type={formdata.passwordType} placeholder="Enter your password" value={formdata.password} onChange={handleChange} />
-          <i><img className = "eye" src={show} onClick={setPasswordVisibility}/></i>
+          <i><img className = "eye" src={show} alt="" onClick={setPasswordVisibility}/></i>
         </div>
       </div>
       {credentials && <Row><Alert variant="warning">{msg}</Alert></Row>} {/* y條件為true&&則顯示x */}

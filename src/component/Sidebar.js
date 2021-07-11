@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useSpring, animated} from "react-spring";
 import user_icon from '../images/user.png';
 import "./sidebar.css"
+import {Link} from "react-router-dom"
 
 function Sidebar(){
     const [isActive, setActive] = useState(false)
@@ -14,6 +15,7 @@ function Sidebar(){
     const show = useSpring({
         left: isActive ? "0": "-60%",
     });
+   
 
 
     return(
@@ -24,16 +26,16 @@ function Sidebar(){
                 <span></span> 
             </div>
             <div className="user">
-            <div><img src={user_icon}/></div>
+            <div><img src={user_icon}  alt=""/></div>
             <div className="user-text">User</div>
             </div>
             <div className="menu">
             <ul>
-                <li>首頁</li>
-                <li>選擇植物</li>
-                <li>監控數據</li>
-                <li>調控物件</li>
-                <li>分析結果</li>
+                <Link to="/homepage"><li>首頁</li></Link>
+                <Link to="/select"><li>選擇植物</li></Link>
+                <Link to="/monitor"><li>監控數據</li></Link>
+                <Link to="/control"><li>調控物件</li></Link>
+                <Link to=""><li>分析結果</li></Link>                
             </ul>
             </div>
             <div className="setting">

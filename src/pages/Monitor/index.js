@@ -16,7 +16,7 @@ function Monitor() {
         <Row><Sidebar /></Row>
           <Row>
             <Col className="monitor_top1" md={{ span: 3, offset: 9 }}  sm={{ span: 3, offset: 9 }} xs={{ span: 3, offset: 9 }}>
-              <img className="monitor_wea_pic" src= { monitor_weather }/>
+              <img className="monitor_wea_pic" src= { monitor_weather } alt=""/>
             </Col>
           </Row>
 
@@ -36,7 +36,7 @@ function Monitor() {
             <Col md={12} sm={12} xs={12}>
                 <div className="monitor_background"> 
                   <div className="monitor_light"> <div className="monitor_light2">light</div>
-                    <div><img className="monitor_light_pic" src={light}/></div>
+                    <div><img className="monitor_light_pic" src={light} alt=""/></div>
                     <div className="monitor_light1">40%</div>
                   </div>
                   <div className=" monitor_detail">這邊放各種資訊abcdsfwrfsfsdldf(亂打)</div>
@@ -47,13 +47,13 @@ function Monitor() {
           <Row>
             <Col md={6} sm={6} xs={6}>
               <div className="monitor_temp"> <div className="monitor_temp2">Temperature</div>
-                <div><img className="monitor_cloud_pic" src={cloud} /></div>
+                <div><img className="monitor_cloud_pic" src={cloud} alt=""/></div>
                 <div className="monitor_temp1">25°C</div>
               </div>
             </Col>
             <Col md={6} sm={6} xs={6}>
               <div className="monitor_humi"> <div className="monitor_humi2">Humidity</div>
-                <div><img className="monitor_water_pic" src={water} /></div>
+                <div><img className="monitor_water_pic" src={water} alt=""/></div>
                 <div className="monitor_humi1">35%</div>
               </div>
             </Col>

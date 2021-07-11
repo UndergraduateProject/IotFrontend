@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import api from '../../utils/api';
-import { useSpring, animated } from "react-spring";
+import {animated } from "react-spring";
 import Verify from "./verify";
 import {Row,Col,Alert} from "react-bootstrap"
 
@@ -27,7 +27,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       e.preventDefault();
       setUsername(false)
       setConfirm(false)
-      if(formdata.password != formdata.confirmpassword){
+      if(formdata.password !== formdata.confirmpassword){
         setConfirm(true)
       }
       else{
