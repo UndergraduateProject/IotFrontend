@@ -201,29 +201,29 @@ function Visualization() {
 
   return (
     <div className="visual-wrapper">
-			<div id="chart-temperature">
-				<Chart
-					options={state.tempoptions}
-					series={state.tempseries}
-					type="line"
-					width="100%"
-				/>
-      </div>
-			<div id="chart-humidity">
-				<Chart
-					options={state.humidoptions}
-					series={state.humidityseries}
-					type="line"
-					width="100%"
-				/>
-      </div>
-			<div className="toolbar">
-        <button onClick={()=>changeDate('one_month')} id="one_month" className={ (state.selection==='one_month' ? 'active' : '')}>1M</button>
-        <button onClick={()=>changeDate('six_months')} id="six_months" className={ (state.selection==='six_months' ? 'active' : '')}>6M</button>
-        <button onClick={()=>changeDate('one_year')} id="one_year" className={ (state.selection==='one_year' ? 'active' : '')}>1Y</button>
-        <button onClick={()=>changeDate('ytd')} id="ytd" className={ (state.selection==='ytd' ? 'active' : '')}>YTD</button>
-        <button onClick={()=>changeDate('all')} id="all" className={ (state.selection==='all' ? 'active' : '')}>ALL</button>
-      </div>
+		<div id="chart-temperature">
+			<Chart
+				options={state.tempoptions}
+				series={state.tempseries}
+				type="line"
+				width="100%"
+			/>
+        </div>
+		<div id="chart-humidity">
+			<Chart
+				options={state.humidoptions}
+				series={state.humidityseries}
+				type="line"
+				width="100%"
+			/>
+        </div>
+	    <div className="toolbar">
+        	<button onClick={()=>changeDate('one_month')} id="one_month" className={ (state.selection==='one_month' ? 'active' : '')}>1M</button>
+        	<button onClick={()=>changeDate('six_months')} id="six_months" className={ (state.selection==='six_months' ? 'active' : '')}>6M</button>
+        	<button onClick={()=>changeDate('one_year')} id="one_year" className={ (state.selection==='one_year' ? 'active' : '')}>1Y</button>
+        	<button onClick={()=>changeDate('ytd')} id="ytd" className={ (state.selection==='ytd' ? 'active' : '')}>YTD</button>
+        	<button onClick={()=>changeDate('all')} id="all" className={ (state.selection==='all' ? 'active' : '')}>ALL</button>
+        </div>
     </div>
   )
 }

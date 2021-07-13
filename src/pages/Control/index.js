@@ -13,7 +13,8 @@ import door from '../../images/door.png';
 
 function Control() {
   return (
-    <Container fluid className="control-container">
+    <div className="home">
+      <Container fluid className="control-container">
       <Sidebar />
       <Row>
         <Col className="img"><img className="house" src={control_greenHouse} alt=""/></Col>
@@ -57,6 +58,7 @@ function Control() {
         <button className="power-btn">Power On</button>
       </Row>
     </Container>
+    </div>
   )
 }
 
