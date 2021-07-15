@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSpring, animated} from "react-spring";
 import user_icon from '../images/user.png';
 import "./sidebar.css"
@@ -15,7 +15,15 @@ function Sidebar(){
     const show = useSpring({
         left: isActive ? "0": "-60%",
     });
-   
+
+    useEffect(()=>{
+        document.addEventListener('click',(event)=>{
+            const target = event.target;
+            if(!(target).closest("#sidebar") && isActive){
+                setActive(false)
+            }
+        })
+    })
 
 
     return(
