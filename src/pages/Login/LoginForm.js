@@ -72,7 +72,7 @@ function LoginForm(props) {
           <i><img className = "eye" src={show} alt="" onClick={setPasswordVisibility}/></i>
         </div>
       </div>
-      {credentials && <Row><Alert variant="warning">{msg}</Alert></Row>} {/* y條件為true&&則顯示x */}
+      {credentials && <Row><Alert className="alert_password" variant="warning">{msg}</Alert></Row>} {/* y條件為true&&則顯示x */}
       <div className="row"><input type="submit" value="submit" className="submit" onClick={login} /></div>
     </animated.form>
     )

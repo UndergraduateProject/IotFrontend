@@ -1,6 +1,21 @@
 import "./camera.css";
 import webSocket from 'socket.io-client';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import React, { useRef, useState, useEffect } from 'react';
+import plant from "../../images/plant.jpg";
+import x from "../../images/x.png";
+import flash from "../../images/flash.png";
+import turn_camera from "../../images/turn_camera.png";
+import left_arrow from "../../images/left_arrow.png";
+import right_arrow from "../../images/right_arrow.png";
+import shutter from "../../images/shutter.png";
+
+
+
+
+
+
+
 
 // this is the client side that asking for video streaming 
 function Camera() {
@@ -89,11 +104,34 @@ function Camera() {
   }
 
   return(
-    <div className="body_control container-fluid">
-      <input type='button' value='connect' onClick={connectWebSocket} />
+    <div className="body_camera">
+      <Container>
+        <Row>
+          <Col className="camera_top"><img className="camera_pic1" src={ x }/></Col>
+          <Col className="camera_top"><img className="camera_pic2" src={ flash }/></Col>
+          <Col className="camera_top"><img className="camera_pic3" src={ turn_camera }/></Col>
+
+        </Row>
+        <Row>
+          <Col><img className="body_camera" src={ plant }/></Col>
+        </Row>
+
+        <Row>
+          <Col><img className="left_arrow" src={ left_arrow }/></Col>
+        </Row>
+        <Row>
+          <Col><img className="left_arrow" src={ left_arrow }/></Col>
+          <Col><img className="camera_shutter" src={ shutter }/></Col>
+          <Col><img className="right_arrow" src={ right_arrow }/></Col>
+
+        </Row>
+
+       
+      {/* <input type='button' value='connect' onClick={connectWebSocket} />
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
-      </div>
+      </div> */}
+      </Container>
     </div>
   )
 }
