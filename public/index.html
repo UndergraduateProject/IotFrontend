@@ -5,6 +5,14 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="theme-color" content="#000000"/>
+
+    <!-- icon -->
+    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+    <script src="https://cdn.rawgit.com/icons8/titanic/master/dist/js/titanic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.5.9/bodymovin.min.js"></script>
+    <script src="https://kit.fontawesome.com/f63577f840.js" crossorigin="anonymous"></script>
+    <!-- icon -->
+
     <link rel="stylesheet" href="login.css">
     <meta
       name="description"
@@ -38,6 +46,14 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
+      var titanic = new Titanic({
+        baseUrl:"https://abcd.com",
+        hover : false,
+        click: true
+      });
+      
+    </script>
+    <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('worker.js').then(function(registration) {
@@ -51,6 +67,8 @@
       } else {
         console.log('Service Worker is not supported by browser.');
       }
+      
+      
     </script>
   </body>
 </html>

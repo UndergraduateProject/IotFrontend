@@ -1,3 +1,9 @@
+### 實作注意事項
+
+React 特殊語法，所有 element 都需要有 close element（如：<div></div> , <input />)
+
+### 實作注意事項
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

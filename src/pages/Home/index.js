@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import "./homepage.css";
 import logo from "../../images/logo.png";
-import Sidebar from '../../component/Sidebar'
 import {Link} from "react-router-dom";
+import Sidebar from '../../component/Sidebar';
 
 
 
@@ -13,7 +13,7 @@ function homepage() {
   return (
     <div className="home">
     <Container >
-      <Row><Sidebar /></Row>
+      <Row><Sidebar></Sidebar></Row>
       <Row>
         <Col  className="home_top1" md={{ span: 6, offset: 3 }} sm={{ span: 6, offset: 3 }} xs={{ span: 6, offset: 3 }}>
           <img className="home_pic" src={ logo } alt=""/></Col>

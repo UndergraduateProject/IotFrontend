@@ -10,7 +10,7 @@
 #sidebar .toggle-btn {
   position: absolute;
   top: 10px;
-  left: 65vw;
+  left: 110%;
 }
 
 .toggle-btn span {

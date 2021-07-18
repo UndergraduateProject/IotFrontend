@@ -39,7 +39,9 @@ function Monitor() {
                     <div><img className="monitor_light_pic" src={light} alt=""/></div>
                     <div className="monitor_light1">40%</div>
                   </div>
-                  <div className=" monitor_detail">這邊放各種資訊abcdsfwrfsfsdldf(亂打)</div>
+                  <div className=" monitor_detail">植物建議日照時長</div>
+                  <div className=" monitor_detail">目前日照時長：2小時</div>
+                  <div className=" monitor_detail">建議植物燈色：紅色</div>
                 </div>
             </Col> 
           </Row>
