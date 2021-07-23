@@ -32,24 +32,26 @@ button{
   margin-right: 0px !important;
 }
 
-/* 
+
 .rec-arrow-left {
-  position: relative;
-  right: -5vw;
+  display: none;
+  /* position: relative;
+  right: -5vw; */
 }
 .rec-arrow-right {
-  position: relative;
-  margin-right: 5vw;
+  display: none;
+  /* position: relative;
+  margin-right: 5vw; */
 }
- */
+ 
 
 @media only screen and (max-width: 768px) {  /*width<768 (for laptop's width<768 and mobile phone)*/
   .slider_adjust{
-    top: 25vh;
+    top: 57vh;
     position:absolute;
-    width: 100% !important;
+    width: 340px !important;
     left: 50% !important;
-    margin-left: -50vw !important; 
+    margin-left: -170px !important; 
   }
 
   .monitor_top1 {  /*wea_pic*/
@@ -80,11 +82,11 @@ button{
 
   .monitor_background{
     top: 0vh;
-    width:220px;
-    height: 60vh;
+    width:320px;
+    height: 30vh;
     border-radius: 12px; 
     left: 50%;
-    margin-left: -110px;
+    margin-left: -160px;
     background-color:#CCCCCC;
     opacity:0.7;
     position: relative;
@@ -92,7 +94,7 @@ button{
 
   .monitor_light{
     top:0vh;
-    width:150px;
+    width:140px;
     height: 190px;
     border-radius: 12px; 
     background-image: linear-gradient(to bottom, #008b8b, #ffff00);
@@ -125,17 +127,17 @@ button{
 
   .monitor_detail{
     word-break: break-all;
-    width: 165px;
+    width: 120px;
     position:absolute;
     font-size: 10px;
-    left:30px;
-    top:39vh;
+    left:180px;
+    top:3vh;
     font-size: 18px;
   }
 
   .monitor_temp{
     top: 0vh; 
-    width:150px;
+    width:140px;
     height: 190px;
     border-radius: 12px; 
     background-image: linear-gradient(to bottom, #9e0000, #fae0e0);
@@ -147,14 +149,15 @@ button{
 
   .monitor_temp2{
     top:2vh;
-    left: 5%;
+    left: 2%;
+    text-align: center;
     position: absolute;
     text-decoration:underline;
   }
 
   .monitor_cloud_pic{
     top:120px; 
-    left: 65px;
+    left: 60px;
     width:80px;
     height: 70px;
     position: absolute;
@@ -171,7 +174,7 @@ button{
 
   .monitor_humi{
     top: 0vh; 
-    width:150px;
+    width:140px;
     height: 190px;
     border-radius: 12px; 
     background-image: linear-gradient(to bottom, #105293, #b9d4ef);
@@ -190,7 +193,7 @@ button{
 
   .monitor_water_pic{
     top:120px; 
-    left: 90px;
+    left: 80px;
     width:110x;
     height: 80px;
     position: absolute;
@@ -208,13 +211,12 @@ button{
 
 
 @media only screen and (min-width: 768px) { /*for laptop's 768<width<1024 */
-
   .slider_adjust{
-    top: 25vh;
+    top: 59vh;
     position:absolute;
-    width: 768px !important;
+    width: 400px !important;
     left: 50% !important;
-    margin-left: -384px !important; 
+    margin-left: -200px !important; 
   }
 
   .monitor_body {
@@ -251,12 +253,12 @@ button{
   }
 
   .monitor_background{
-    top: 0vh;
-    width:220px;
-    height: 60vh;
+    top: -2vh;
+    width:340px;
+    height: 34vh;
     border-radius: 12px; 
     left: 50%;
-    margin-left: -110px;
+    margin-left: -170px;
     background-color:#CCCCCC;
     opacity:0.7;
     position: relative;
@@ -297,11 +299,11 @@ button{
 
   .monitor_detail{
     word-break: break-all;
-    width: 165px;
+    width: 120px;
     position:absolute;
     font-size: 10px;
-    left:30px;
-    top:40vh;
+    left:200px;
+    top:4vh;
     font-size: 18px;
   }
 
@@ -381,7 +383,7 @@ button{
 
 @media only screen and (min-width: 1024px) {  /*for laptop:when width>1024*/
   .slider_adjust{
-    top: 25vh;
+    top: 59.5vh;
     position:absolute;
     width: 425px !important;
     left: 50% !important;
@@ -431,12 +433,12 @@ button{
   }
 
   .monitor_background{
-    top: 14vh;
-    width:220px;
-    height: 60vh;
+    top: 13vh;
+    width:355px;
+    height: 34vh;
     border-radius: 12px; 
     left: 50%;
-    margin-left: -110px;
+    margin-left: -177.5px;
     background-color:#CCCCCC;
     opacity:0.7;
     position: relative;
@@ -477,11 +479,11 @@ button{
 
   .monitor_detail{
     word-break: break-all;
-    width: 165px;
+    width: 130px;
     position:absolute;
     font-size: 10px;
-    left:30px;
-    top:40vh;
+    left:210px;
+    top:4vh;
     font-size: 18px;
   }
 
@@ -560,12 +562,12 @@ button{
 
 @media only screen and (width: 768px) and (height:1024px){  /*ipad*/
   .slider_adjust{
-    top: 25vh;
+    top: 57vh;
     position:absolute;
-    width: 768px !important;
+    width: 540px !important;
     height: 350px;
     left: 50% !important;
-    margin-left: -384px !important; 
+    margin-left: -270px !important; 
   }
 
   .rec-arrow-left {
@@ -615,11 +617,11 @@ button{
 
   .monitor_background{
     top: 4vh;
-    width:360px;
-    height: 60vh;
+    width:480px;
+    height: 30vh;
     border-radius: 12px; 
     left: 50%;
-    margin-left: -180px;
+    margin-left: -240px;
     background-color:#CCCCCC;
     opacity:0.7;
     position: relative;
@@ -662,12 +664,11 @@ button{
 
   .monitor_detail{
     word-break: break-all;
-    width: 240px;
+    width: 170px;
     position:absolute;
     font-size: 28px;
-    left:50%;
-    margin-left: -120px;
-    top:33vh;
+    left:58%;
+    top:3vh;
   }
 
   .monitor_temp{
@@ -727,9 +728,9 @@ button{
   }
 
   .monitor_water_pic{
-    top:120px; 
-    left: 90px;
-    width:110x;
+    top:190px; 
+    left: 130px;
+    width:110px;
     height: 80px;
     position: absolute;
   }
@@ -747,12 +748,12 @@ button{
   
 @media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
   .slider_adjust{
-    top: 25vh;
+    top: 57vh;
     position:absolute;
-    width: 1024px !important;
+    width: 800px !important;
     height: 490px;
     left: 50% !important;
-    margin-left: -512px !important; 
+    margin-left: -400px !important; 
   }
 
   .ejXxNI {
@@ -811,11 +812,11 @@ button{
 
   .monitor_background{
     top: 18vh;
-    width:540px;
-    height: 800px;
+    width:700px;
+    height: 420px;
     border-radius: 12px; 
     left: 50%;
-    margin-left: -270px;
+    margin-left: -350px;
     background-color:#CCCCCC;
     opacity:0.7;
     position: relative;
@@ -858,12 +859,11 @@ button{
 
   .monitor_detail{
     word-break: break-all;
-    width: 400px;
+    width: 255px;
     position:absolute;
     font-size: 40px;
-    left:50%;
-    margin-left: -200px;
-    top:34vh;
+    left:58%;
+    top:3vh;
   }
 
   .monitor_temp{

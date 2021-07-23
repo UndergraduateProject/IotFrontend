@@ -26,7 +26,7 @@ const Item = styled.div`
 function Monitor() {
   return (
     <div className="monitor_body">
-      
+    
         <Row><Sidebar /></Row>
           <Row>
             <Col className="monitor_top1" md={{ span: 3, offset: 9 }}  sm={{ span: 3, offset: 9 }} xs={{ span: 3, offset: 9 }}>
@@ -52,8 +52,8 @@ function Monitor() {
 
 
           {/* slider */}
-          <div className="layer">
-          <Carousel itemPadding={[97, 0]} className="slider_adjust" itemsToShow={1}>
+         
+          <Carousel itemPadding={[97, 10]} className="slider_adjust" itemsToShow={2}>
             <Item>
               <div className="monitor_light"> <div className="monitor_light2">light</div>
                 <div><img className="monitor_light_pic" src={light} alt=""/></div>
@@ -74,9 +74,29 @@ function Monitor() {
                 <div className="monitor_humi1">35%</div>
               </div>
             </Item>
+            
+            <Item>
+              <div className="monitor_light"> <div className="monitor_light2">light</div>
+                <div><img className="monitor_light_pic" src={light} alt=""/></div>
+                <div className="monitor_light1">40%</div>
+              </div>
+            </Item>
 
+            <Item>
+              <div className="monitor_temp"> <div className="monitor_temp2">Temperature</div>
+                <div><img className="monitor_cloud_pic" src={cloud} alt=""/></div>
+                <div className="monitor_temp1">25°C</div>
+              </div>
+            </Item>
+
+            <Item>
+            <div className="monitor_humi"> <div className="monitor_humi2">Humidity</div>
+                <div><img className="monitor_water_pic" src={water} alt=""/></div>
+                <div className="monitor_humi1">35%</div>
+              </div>
+            </Item>
           </Carousel>
-          </div>
+         
           {/* slider */}
 
         
@@ -93,6 +113,8 @@ function Monitor() {
             </Col> 
           </Row>
           */}
+
+
 
           {/* <Row>
             <Col md={6} sm={6} xs={6}>
