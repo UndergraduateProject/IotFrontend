@@ -74,7 +74,7 @@ function Control() {
         <Col className="img"><img className="house" src={control_greenHouse} alt=""/></Col>
       </Row>
       <Row >
-        <Col className="catalogue">Catalogue</Col>
+        <Col className="catalogue">Control</Col>
       </Row>
       <Row className="control-square">
         <Popup 
