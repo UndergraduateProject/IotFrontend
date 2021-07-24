@@ -195,3 +195,21 @@ form,
   transition: all 0.08s ease;
 }
 
+.alert_password{
+  position: relative;
+  width: 230px;
+  left: 50%;
+  margin-left: -115px;
+  font-size: small;
+  text-align :center;
+}
+
+.alert_password2{
+  position: relative;
+  width: 314px;
+  left: 50%;
+  margin-left: -157px;
+  font-size: small;
+}
+
+

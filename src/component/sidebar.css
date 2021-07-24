@@ -23,7 +23,7 @@
 }
 
 .user {
-  padding: 3vh 11vw 2vh 6.4vw;
+  padding: 3vh 11vw 2vh 4vw;
   text-align: right;
   border-bottom: solid 1px #a1a999;
   height: 122.5px;
@@ -46,7 +46,7 @@
   list-style: none;
   color: white;
   font-size: 6vw;
-  padding: 2.5vh 6.4vw;
+  padding: 2.5vh 4vw;
 }
 
 .menu {
@@ -58,23 +58,24 @@
 .setting {
   color: white;
   font-size: 6vw;
-  padding: 5vh 6.4vw;
+  padding: 5vh 4vw;
 }
-
+/* 
 @media screen and (min-width: 1024px) {
   #sidebar {
-    position: absolute;
-    width: 60%;
+    position: fixed;
+    width: 220px;
     height: 100%;
     background: #6a7b62;
-    transition: left 0.08s linear;
+    margin-left: 33.5vw; 
+    transition: left 0.0008s linear;
     z-index: 9999;
   }
 
   #sidebar .toggle-btn {
-    position: absolute;
+    position: fixed;
     top: 10px;
-    left: 110%;
+    left: 35%;
   }
 
   .toggle-btn span {
@@ -101,14 +102,14 @@
     color: white;
     padding-top: 50%;
     left: 105px;
-    font-size: 250%;
+    font-size: 200%;
     position: relative;
   }
 
   #sidebar ul li {
     list-style: none;
     color: white;
-    font-size: 250%;
+    font-size: 150%;
     padding: 2.5% 6.4%;
   }
 
@@ -120,7 +121,347 @@
 
   .setting {
     color: white;
-    font-size: 250%;
+    font-size: 150%;
     padding: 10% 7%;
   }
+} */
+
+
+@media only screen and (max-width: 1024px)  {
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 5vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 60%;
+    height: 100%;
+    background: #6a7b62;
+    transition: left 0.008s linear;
+    z-index: 9999;
+  }
 }
+
+
+ @media only screen and (min-width: 800px) and (max-width: 900px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    padding-left: 5vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 2.2vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+  }
+} 
+
+@media only screen and (min-width: 901px) and (max-width: 1000px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    padding-left: 10vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 7.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+  }
+} 
+
+@media only screen and (min-width: 1001px) and (max-width: 1024px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    padding-left: 10vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 12vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+  }
+} 
+
+
+@media only screen and (width: 1024px) {   /*ipad pro & when width=1024*/
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: -5vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 0vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    padding: 7vh 11vw 2vh 4vw;
+    font-size: 5vh;
+  }
+
+  #sidebar ul li {
+    font-size: 4vw;
+    padding: 2.5vh 4vw;
+  }
+    
+  .setting {
+    font-size: 4vw;
+    padding: 5vh 4vw;
+  }
+}
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1300px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 34.5vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 230px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 29.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+  }
+}
+
+
+
+@media only screen and (min-width: 1301px) and (max-width: 1600px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 37.5vw;
+  }
+  
+  #sidebar {
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 33.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+  }
+}
+
+
+@media only screen and (min-width: 1601px) and (max-width: 1900px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 39.5vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 310px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 33.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+  }
+}
+
+@media only screen and (min-width: 1901px) and (max-width: 2200px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 41.5vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 270px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 33.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 3vh;
+    padding: 12vh 11vw 2vh 0vw;
+
+  }
+
+  #sidebar ul li {
+    font-size: 1vw;
+    padding: 2.5vh 3vw;
+  }
+    
+  .setting {
+    font-size: 1vw;
+    padding: 2.5vh 3vw;
+  }
+}
+
+@media only screen and (min-width: 2201px) and (max-width: 2800px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 43vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 33.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+    padding: 10vh 11vw 2vh 3vw;
+
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+    padding: 2.5vh 3vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+    padding: 2.5vh 3vw;
+  }
+}
+
+@media only screen and (min-width: 2801px){
+  #sidebar .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 45vw;
+  }
+
+  #sidebar {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: #6a7b62;
+    margin-left: 33.5vw; 
+    transition: left 0.0008s linear;
+    z-index: 9999;
+  }
+    
+  .user-text {
+    font-size: 4vh;
+    padding: 10vh 11vw 2vh 1vw;
+
+  }
+
+  #sidebar ul li {
+    font-size: 2vw;
+    padding: 2.5vh 1vw;
+  }
+    
+  .setting {
+    font-size: 2vw;
+    padding: 2.5vh 1vw;
+  }
+}
+ 

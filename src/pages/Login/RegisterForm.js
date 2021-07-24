@@ -1,6 +1,6 @@
-import React, {useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from '../../utils/api';
-import {animated } from "react-spring";
+import { useSpring, animated } from "react-spring";
 import Verify from "./verify";
 import {Row,Col,Alert} from "react-bootstrap"
 
@@ -27,10 +27,8 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
       e.preventDefault();
       setUsername(false)
       setConfirm(false)
-      if(formdata.password !== formdata.confirmpassword){
-        setConfirm(true)
-      }
-      else{
+  
+      if(formdata.username =!''&& formdata.email!='' && formdata.password!='' && formdata.confirmpassword!='' && formdata.password === formdata.confirmpassword){
         setConfirm(false)
         const data = { 
           username : formdata.username,
@@ -56,6 +54,9 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
           }
         })
       }
+      else{
+        setConfirm(true)
+      }
     }
     
     if (verify){
@@ -73,7 +74,7 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
         <Row><input id="password" type="password" placeholder="Create your password" value={formdata.password} onChange={handleChange} /></Row>
         <Row><input id="confirmpassword" type="password" placeholder="Enter  your password again" value={formdata.confirmpassword} onChange={handleChange} /></Row>
         {confirm && <Row>
-          <Col><Alert variant="warning">Password is not the same as above.</Alert></Col>
+          <Col><Alert className="alert_password2" variant="warning">Please check the password and all the fields.</Alert></Col>
         </Row>}
         <Row><input type="submit" value="submit" className="submit" onClick={regiteruser}/></Row>
       </animated.form>
@@ -81,3 +82,4 @@ function RegisterForm(props) { //設定props參數，取得從外面傳進來的
   }
 
   export default RegisterForm
+
