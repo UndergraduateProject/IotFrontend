@@ -8,6 +8,155 @@ body {
   margin-left: 0px;
 }
 
+lord-icon {
+  width: 70%;
+  height: 40%;
+}
+
+.titanic {
+  height: 40%;
+}
+
+.fan {
+  height: 40%;
+  width: 100%;
+  font-size: 2em;
+}
+
+.fas {
+  position: relative;
+  left: 0;
+  margin-top: 15%;
+}
+
+.control-square .col,
+.control-rectangle .col {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.control-rectangle lord-icon {
+  position: absolute;
+  left: 0;
+  width: 35%;
+  height: 100%;
+}
+
+.btn-primary {
+  margin: 0 auto;
+}
+
+.sub {
+  margin-left: 30%;
+}
+
+/* animate slider */
+.MuiSlider-thumb:not(.MuiSlider-active) {
+  transition: left 3s ease-in;
+}
+
+.MuiSlider-track {
+  transition: width 3s ease-in;
+}
+
+.water-data {
+  transition: --num 3s;
+}
+
+/* popup control */
+.popup-content {
+  margin: auto;
+  background: rgba(103, 151, 115);
+  width: 20%;
+  height: 30%;
+  padding: 5px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.switch {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* popup control */
+
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+  }
+}
+.popup-content {
+  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+
 @media screen and (max-width: 767px) {
   .control-container {
     background-color: #aebfb7;
@@ -47,6 +196,7 @@ body {
     background-color: #4e97ca;
     width: 80vw;
     height: 6vh;
+    margin-top: 10%;
     margin-left: 10vw;
     margin-right: 10vw;
     border: none;
@@ -61,11 +211,11 @@ body {
   }
 
   .control-square {
-    max-height: 15%;
+    height: 15%;
   }
 
   .control-square .col {
-    height: auto;
+    height: 100%;
     border-radius: 12px;
     border: 1px;
     background: rgba(103, 151, 115, 0.3);
@@ -85,7 +235,7 @@ body {
     background: rgba(103, 151, 115, 0.3);
     display: block;
     text-align: center;
-    margin: 8% 4% 8% 4%;
+    margin: 4%;
     font-size: 100%;
     color: #282b3a;
     font-weight: bold;
@@ -103,7 +253,7 @@ body {
   }
 
   .control-rectangle {
-    max-height: 20%;
+    height: 12%;
   }
 
   .control-rectangle img {
@@ -116,8 +266,9 @@ body {
 
   .control-rectangle .data {
     position: relative;
+    font-size: 150%;
     margin-top: 15%;
-    margin-left: 15%;
+    margin-left: 30%;
   }
 }
 
@@ -205,7 +356,7 @@ body {
     background: rgba(103, 151, 115, 0.3);
     display: block;
     text-align: center;
-    margin: 4vh 4vw 4vh 4vw;
+    margin: 4%;
     font-size: 4vmin;
     color: #282b3a;
     font-weight: bold;
@@ -220,8 +371,9 @@ body {
   }
 
   .control-rectangle .data {
-    margin-top: 2vh;
-    margin-left: 3vw;
+    font-size: 150%;
+    margin-top: 15%;
+    margin-left: 30%;
   }
 }
 
@@ -326,7 +478,8 @@ body {
   }
 
   .control-rectangle .data {
-    margin-top: 10%;
-    margin-left: 3%;
+    font-size: 150%;
+    margin-top: 15%;
+    margin-left: 30%;
   }
 }

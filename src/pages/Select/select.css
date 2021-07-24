@@ -25,22 +25,7 @@
     border-width:0.2vw;
     border-style:solid;
     position: relative;
-  }
-  
-
-  
-  /* 
-  .left{
-    float: left;
-    width: 54vw;
-  }
-  
-  .right{
-    float: right;
-    width: 46vw;
-  } */
-  
-  
+  }  
   .select_potato_pic{
     left:40px;
     top: 1vh;
@@ -435,10 +420,10 @@
   left:50%;
   margin-left: -250px;  
   border-radius: 12px;
-  border-color:white;
-  background-color:transparent;
-  border-width:0.2vw;
-  border-style:solid;
+  border-color: white;
+  background-color: transparent;
+  border-width: 0.2vw;
+  border-style: solid;
   position: relative;
 }
 /* 
@@ -540,8 +525,8 @@
   position: absolute;
 }
 
-.select_btn{
-  background-color:#7d5b00;
+.select_btn {
+  background-color: #7d5b00;
   font-weight: bold;
   text-align: center;
   font-size: 20px;
