@@ -4,148 +4,143 @@
   font-family: "Open Sans", sans-serif;
   width: 100vw;
   height: 100vh;
-  overflow-x:hidden;
-  overflow-y:auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: absolute;
 }
 
+@media screen and (max-width: 768px) {
+  /*width<768 (for laptop's width<768 and mobile phone)*/
 
-@media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
- 
-  .select_plant{
+  .select_plant {
     height: 156px;
     width: 315px;
-    left:50%;
-    top:60px;
+    left: 50%;
+    top: 60px;
     margin-top: 10px;
-    margin-left: -157.5px;  
+    margin-left: -157.5px;
     border-radius: 12px;
-    border-color:white;
-    background-color:transparent;
-    border-width:0.2vw;
-    border-style:solid;
+    border-color: white;
+    background-color: transparent;
+    border-width: 0.2vw;
+    border-style: solid;
     position: relative;
-  }  
-  .select_potato_pic{
-    left:40px;
+  }
+  .select_potato_pic {
+    left: 40px;
     top: 1vh;
     position: absolute;
-    width:90px;
-  
-  } 
-  
-  .select_title{
+    width: 90px;
+  }
+
+  .select_title {
     font-size: 25px;
-    font-weight:bold;
-    color:#050244;
-    padding-left:30px;
+    font-weight: bold;
+    color: #050244;
+    padding-left: 30px;
     position: absolute;
-    top:88px;
+    top: 88px;
   }
-  
-  
-  .select_level{
+
+  .select_level {
     font-size: 15px;
-    font-weight:bold;
-    color:#6C6C6C;
+    font-weight: bold;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:118px;
-    padding-left:32px;
+    float: left;
+    top: 118px;
+    padding-left: 32px;
   }
-  
-  .select_cost{
+
+  .select_cost {
     font-size: 15px;
-    font-weight:bold;
-    color:#6C6C6C;
+    font-weight: bold;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:118px;
-    padding-left:100px;
+    float: left;
+    top: 118px;
+    padding-left: 100px;
   }
-  
-  .select_level_ans{
+
+  .select_level_ans {
     font-size: 12px;
-    text-transform:uppercase;
-    color:#6C6C6C;
+    text-transform: uppercase;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:133px;
-    padding-left:37px;
+    float: left;
+    top: 133px;
+    padding-left: 37px;
   }
-  
-  .select_cost_ans{
+
+  .select_cost_ans {
     font-size: 12px;
-    text-transform:uppercase;
-    color:#6C6C6C;
+    text-transform: uppercase;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:133px;
-    padding-left:105px;
+    float: left;
+    top: 133px;
+    padding-left: 105px;
   }
-  
-  .select_week{
+
+  .select_week {
     font-size: 20px;
-    color:#5e3c00;
-    text-decoration:underline;
+    color: #5e3c00;
+    text-decoration: underline;
     position: absolute;
-  
   }
-  
-  .select_evaluation{
+
+  .select_evaluation {
     font-size: 17px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     top: 26px;
     position: absolute;
   }
-  
-  .select_evaluation_ans{
+
+  .select_evaluation_ans {
     font-size: 10px;
-    color:#6C6C6C;
-    word-break:keep-all;
+    color: #6c6c6c;
     top: 50px;
     position: absolute;
   }
-  
-  .select_btn{
-    background-color:#7d5b00;
+
+  .select_btn {
+    background-color: #7d5b00;
     font-weight: bold;
     text-align: center;
     font-size: 10px;
     height: 24px;
-    left:40px;
+    left: 40px;
     top: 123px;
     position: absolute;
     border: none;
     border-radius: 18px;
   }
-  
+}
 
+@media only screen and (min-width: 768px) {
+  /*for laptop's width>768 */
+  .body_select {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px;
   }
 
-  @media only screen and (min-width: 768px) { /*for laptop's width>768 */
-    .body_select  {
-      max-width: 768px;
-      left:50%;
-      margin-left: -384px;
-      border-radius: 0px; 
-    }
-  
-    .select_plant{
-      top:60px;
-      margin-top: 10px;
-      height: 156px;
-      width: 315px;
-      left:50%;
-      margin-left: -157.5px;  
-      border-radius: 12px;
-      border-color:white;
-      background-color:transparent;
-      border-width:0.2vw;
-      border-style:solid;
-      position: relative;
-    }
-/*     
+  .select_plant {
+    top: 60px;
+    margin-top: 10px;
+    height: 156px;
+    width: 315px;
+    left: 50%;
+    margin-left: -157.5px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 0.2vw;
+    border-style: solid;
+    position: relative;
+  }
+  /*     
     .select_plant2{
       top: 80px;
     }
@@ -153,8 +148,8 @@
     .select_plant3{
       top: 90px;
     } */
-    
-    /* 
+
+  /* 
     .left{
       float: left;
       width: 54vw;
@@ -164,129 +159,122 @@
       float: right;
       width: 46vw;
     } */
-    
-    
-    .select_potato_pic{
-      left:40px;
-      top: 1vh;
-      position: absolute;
-      width:90px;
-    
-    } 
-    
-    .select_title{
-      font-size: 25px;
-      font-weight:bold;
-      color:#050244;
-      padding-left:30px;
-      position: absolute;
-      top:88px;
-    }
-    
-    
-    .select_level{
-      font-size: 15px;
-      font-weight:bold;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:118px;
-      padding-left:32px;
-    }
-    
-    .select_cost{
-      font-size: 15px;
-      font-weight:bold;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:118px;
-      padding-left:100px;
-    }
-    
-    .select_level_ans{
-      font-size: 12px;
-      text-transform:uppercase;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:133px;
-      padding-left:37px;
-    }
-    
-    .select_cost_ans{
-      font-size: 12px;
-      text-transform:uppercase;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:133px;
-      padding-left:105px;
-    }
-    
-    .select_week{
-      font-size: 20px;
-      color:#5e3c00;
-      text-decoration:underline;
-      position: absolute;
-    
-    }
-    
-    .select_evaluation{
-      font-size: 17px;
-      color:#6C6C6C;
-      top: 26px;
-      position: absolute;
-    }
-    
-    .select_evaluation_ans{
-      font-size: 10px;
-      color:#6C6C6C;
-      word-break:keep-all;
-      top: 50px;
-      position: absolute;
-    }
-    
-    .select_btn{
-      background-color:#7d5b00;
-      font-weight: bold;
-      text-align: center;
-      font-size: 10px;
-      height: 24px;
-      left:40px;
-      top: 123px;
-      position: absolute;
-      border: none;
-      border-radius: 18px;
-    }
 
+  .select_potato_pic {
+    left: 40px;
+    top: 1vh;
+    position: absolute;
+    width: 90px;
   }
 
+  .select_title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #050244;
+    padding-left: 30px;
+    position: absolute;
+    top: 88px;
+  }
 
-  @media only screen and (min-width: 1024px)  {  /*for laptop:when width>1024*/
-    .body_select  {
-      max-width: 425px;
-      left:50%;
-      margin-left: -212.5px;
-      border-radius: 12px; 
-    }  
-  
-  
-  .select_plant{
-    top:60px;
+  .select_level {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 118px;
+    padding-left: 32px;
+  }
+
+  .select_cost {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 118px;
+    padding-left: 100px;
+  }
+
+  .select_level_ans {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 133px;
+    padding-left: 37px;
+  }
+
+  .select_cost_ans {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 133px;
+    padding-left: 105px;
+  }
+
+  .select_week {
+    font-size: 20px;
+    color: #5e3c00;
+    text-decoration: underline;
+    position: absolute;
+  }
+
+  .select_evaluation {
+    font-size: 17px;
+    color: #6c6c6c;
+    top: 26px;
+    position: absolute;
+  }
+
+  .select_evaluation_ans {
+    font-size: 10px;
+    color: #6c6c6c;
+    top: 50px;
+    position: absolute;
+  }
+
+  .select_btn {
+    background-color: #7d5b00;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    height: 24px;
+    left: 40px;
+    top: 123px;
+    position: absolute;
+    border: none;
+    border-radius: 18px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /*for laptop:when width>1024*/
+  .body_select {
+    max-width: 425px;
+    left: 50%;
+    margin-left: -212.5px;
+    border-radius: 12px;
+  }
+
+  .select_plant {
+    top: 60px;
     margin-top: 10px;
     height: 156px;
     width: 315px;
-    left:50%;
-    margin-left: -157.5px;  
+    left: 50%;
+    margin-left: -157.5px;
     border-radius: 12px;
-    border-color:white;
-    background-color:transparent;
-    border-width:0.2vw;
-    border-style:solid;
+    border-color: white;
+    background-color: transparent;
+    border-width: 0.2vw;
+    border-style: solid;
     position: relative;
   }
-/*   
+  /*   
   .select_plant2{
     top: 80px;
   }
@@ -305,128 +293,122 @@
     float: right;
     width: 46vw;
   } */
-  
-  
-  .select_potato_pic{
-    left:40px;
+
+  .select_potato_pic {
+    left: 40px;
     top: 1vh;
     position: absolute;
-    width:90px;
-  
-  } 
-  
-  .select_title{
+    width: 90px;
+  }
+
+  .select_title {
     font-size: 25px;
-    font-weight:bold;
-    color:#050244;
-    padding-left:30px;
+    font-weight: bold;
+    color: #050244;
+    padding-left: 30px;
     position: absolute;
-    top:88px;
+    top: 88px;
   }
-  
-  
-  .select_level{
+
+  .select_level {
     font-size: 15px;
-    font-weight:bold;
-    color:#6C6C6C;
+    font-weight: bold;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:118px;
-    padding-left:32px;
+    float: left;
+    top: 118px;
+    padding-left: 32px;
   }
-  
-  .select_cost{
+
+  .select_cost {
     font-size: 15px;
-    font-weight:bold;
-    color:#6C6C6C;
+    font-weight: bold;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:118px;
-    padding-left:100px;
+    float: left;
+    top: 118px;
+    padding-left: 100px;
   }
-  
-  .select_level_ans{
+
+  .select_level_ans {
     font-size: 12px;
-    text-transform:uppercase;
-    color:#6C6C6C;
+    text-transform: uppercase;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:133px;
-    padding-left:37px;
+    float: left;
+    top: 133px;
+    padding-left: 37px;
   }
-  
-  .select_cost_ans{
+
+  .select_cost_ans {
     font-size: 12px;
-    text-transform:uppercase;
-    color:#6C6C6C;
+    text-transform: uppercase;
+    color: #6c6c6c;
     position: absolute;
-    float:left;
-    top:133px;
-    padding-left:105px;
+    float: left;
+    top: 133px;
+    padding-left: 105px;
   }
-  
-  .select_week{
+
+  .select_week {
     font-size: 20px;
-    color:#5e3c00;
-    text-decoration:underline;
+    color: #5e3c00;
+    text-decoration: underline;
     position: absolute;
-  
   }
-  
-  .select_evaluation{
+
+  .select_evaluation {
     font-size: 17px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     top: 26px;
     position: absolute;
   }
-  
-  .select_evaluation_ans{
+
+  .select_evaluation_ans {
     font-size: 10px;
-    color:#6C6C6C;
-    word-break:keep-all;
+    color: #6c6c6c;
     top: 50px;
     position: absolute;
   }
-  
-  .select_btn{
-    background-color:#7d5b00;
+
+  .select_btn {
+    background-color: #7d5b00;
     font-weight: bold;
     text-align: center;
     font-size: 10px;
     height: 24px;
-    left:40px;
+    left: 40px;
     top: 123px;
     position: absolute;
     border: none;
     border-radius: 18px;
   }
-
 }
 
-@media only screen and (width: 768px) and (height: 1024px) { /*ipad*/
-  .body_select  {
+@media only screen and (width: 768px) and (height: 1024px) {
+  /*ipad*/
+  .body_select {
     max-width: 768px;
-    left:50%;
+    left: 50%;
     margin-left: -384px;
-    border-radius: 0px; 
+    border-radius: 0px;
   }
 
-
-.select_plant{
-  top:60px;
-  margin-top: 10px;
-  height: 225px;
-  width: 500px;
-  left:50%;
-  margin-left: -250px;  
-  border-radius: 12px;
-  border-color: white;
-  background-color: transparent;
-  border-width: 0.2vw;
-  border-style: solid;
-  position: relative;
-}
-/* 
+  .select_plant {
+    top: 60px;
+    margin-top: 10px;
+    height: 225px;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 0.2vw;
+    border-style: solid;
+    position: relative;
+  }
+  /* 
 .select_plant2{
   top: 80px;
 }
@@ -435,7 +417,7 @@
   top: 90px;
 } */
 
-/* 
+  /* 
 .left{
   float: left;
   width: 54vw;
@@ -446,126 +428,119 @@
   width: 46vw;
 } */
 
-
-.select_potato_pic{
-  left:60px;
-  top: 1vh;
-  position: absolute;
-  width:140px;
-
-} 
-
-.select_title{
-  font-size: 35px;
-  font-weight:bold;
-  color:#050244;
-  padding-left:55px;
-  position: absolute;
-  top:130px;
-}
-
-
-.select_level{
-  font-size: 20px;
-  font-weight:bold;
-  color:#6C6C6C;
-  position: absolute;
-  top:170px;
-  padding-left:55px;
-}
-
-.select_cost{
-  font-size: 20px;
-  font-weight:bold;
-  color:#6C6C6C;
-  position: absolute;
-  top:170px;
-  padding-left:150px;
-}
-
-.select_level_ans{
-  font-size: 15px;
-  text-transform:uppercase;
-  color:#6C6C6C;
-  position: absolute;
-  top:195px;
-  padding-left:63px;
-}
-
-.select_cost_ans{
-  font-size: 15px;
-  text-transform:uppercase;
-  color:#6C6C6C;
-  position: absolute;
-  top:195px;
-  padding-left:157px;
-}
-
-.select_week{
-  font-size: 30px;
-  color:#5e3c00;
-  text-decoration:underline;
-  position: absolute;
-  top:10px;
-
-}
-
-.select_evaluation{
-  font-size: 27px;
-  color:#6C6C6C;
-  top: 50px;
-  position: absolute;
-}
-
-.select_evaluation_ans{
-  font-size: 18px;
-  color:#6C6C6C;
-  word-break:keep-all;
-  top: 90px;
-  position: absolute;
-}
-
-.select_btn {
-  background-color: #7d5b00;
-  font-weight: bold;
-  text-align: center;
-  font-size: 20px;
-  height: 36px;
-  width: 100px;
-  left:100px;
-  top: 178px;
-  position: absolute;
-  border: none;
-  border-radius: 18px;
-}
-
-
-}
-
-
-@media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
-  .body_select  {
-    max-width: 1024px;
-    left:0%;
-    margin-left: auto;
-    border-radius: 0px; 
+  .select_potato_pic {
+    left: 60px;
+    top: 1vh;
+    position: absolute;
+    width: 140px;
   }
 
-  .select_plant{
-    top:60px;
+  .select_title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #050244;
+    padding-left: 55px;
+    position: absolute;
+    top: 130px;
+  }
+
+  .select_level {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    top: 170px;
+    padding-left: 55px;
+  }
+
+  .select_cost {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    top: 170px;
+    padding-left: 150px;
+  }
+
+  .select_level_ans {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    top: 195px;
+    padding-left: 63px;
+  }
+
+  .select_cost_ans {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    top: 195px;
+    padding-left: 157px;
+  }
+
+  .select_week {
+    font-size: 30px;
+    color: #5e3c00;
+    text-decoration: underline;
+    position: absolute;
+    top: 10px;
+  }
+
+  .select_evaluation {
+    font-size: 27px;
+    color: #6c6c6c;
+    top: 50px;
+    position: absolute;
+  }
+
+  .select_evaluation_ans {
+    font-size: 18px;
+    color: #6c6c6c;
+    top: 90px;
+    position: absolute;
+  }
+
+  .select_btn {
+    background-color: #7d5b00;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    height: 36px;
+    width: 100px;
+    left: 100px;
+    top: 178px;
+    position: absolute;
+    border: none;
+    border-radius: 18px;
+  }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) {
+  /*ipad pro*/
+  .body_select {
+    max-width: 1024px;
+    left: 0%;
+    margin-left: auto;
+    border-radius: 0px;
+  }
+
+  .select_plant {
+    top: 60px;
     margin-top: 10px;
     height: 300px;
     width: 700px;
-    left:50%;
-    margin-left: -350px;  
+    left: 50%;
+    margin-left: -350px;
     border-radius: 12px;
-    border-color:white;
-    background-color:transparent;
-    border-width:0.2vw;
-    border-style:solid;
+    border-color: white;
+    background-color: transparent;
+    border-width: 0.2vw;
+    border-style: solid;
     position: relative;
   }
-/*   
+  /*   
   .select_plant2{
     top: 80px;
   }
@@ -573,7 +548,7 @@
   .select_plant3{
     top: 90px;
   } */
-  
+
   /* 
   .left{
     float: left;
@@ -584,104 +559,92 @@
     float: right;
     width: 46vw;
   } */
-  
-  
-  .select_potato_pic{
-    left:60px;
+
+  .select_potato_pic {
+    left: 60px;
     top: 1vh;
     position: absolute;
-    width:180px;
-  } 
-  
-  .select_title{
+    width: 180px;
+  }
+
+  .select_title {
     font-size: 45px;
-    font-weight:bold;
-    color:#050244;
-    padding-left:55px;
+    font-weight: bold;
+    color: #050244;
+    padding-left: 55px;
     position: absolute;
-    top:175px;
+    top: 175px;
   }
-  
-  
-  .select_level{
+
+  .select_level {
     font-size: 27px;
-    font-weight:bold;
-    color:#6C6C6C;
+    font-weight: bold;
+    color: #6c6c6c;
     position: absolute;
-    top:225px;
-    padding-left:55px;
+    top: 225px;
+    padding-left: 55px;
   }
-  
-  .select_cost{
+
+  .select_cost {
     font-size: 27px;
-    font-weight:bold;
-    color:#6C6C6C;
+    font-weight: bold;
+    color: #6c6c6c;
     position: absolute;
-    top:225px;
-    padding-left:170px;
+    top: 225px;
+    padding-left: 170px;
   }
-  
-  .select_level_ans{
+
+  .select_level_ans {
     font-size: 20px;
-    text-transform:uppercase;
-    color:#6C6C6C;
+    text-transform: uppercase;
+    color: #6c6c6c;
     position: absolute;
-    top:255px;
-    padding-left:63px;
+    top: 255px;
+    padding-left: 63px;
   }
-  
-  .select_cost_ans{
+
+  .select_cost_ans {
     font-size: 20px;
-    text-transform:uppercase;
-    color:#6C6C6C;
+    text-transform: uppercase;
+    color: #6c6c6c;
     position: absolute;
-    top:255px;
-    padding-left:180px;
+    top: 255px;
+    padding-left: 180px;
   }
-  
-  .select_week{
+
+  .select_week {
     font-size: 40px;
-    color:#5e3c00;
-    text-decoration:underline;
+    color: #5e3c00;
+    text-decoration: underline;
     position: absolute;
-    top:12px;
+    top: 12px;
   }
-  
-  .select_evaluation{
+
+  .select_evaluation {
     font-size: 32px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     top: 70px;
     position: absolute;
   }
-  
-  .select_evaluation_ans{
+
+  .select_evaluation_ans {
     font-size: 25px;
-    color:#6C6C6C;
-    word-break:keep-all;
+    color: #6c6c6c;
     top: 120px;
     position: absolute;
   }
-  
-  .select_btn{
-    background-color:#7d5b00;
+
+  .select_btn {
+    background-color: #7d5b00;
     font-weight: bold;
     text-align: center;
     font-size: 26px;
     height: 45px;
     width: 120px;
-    left:120px;
+    left: 120px;
     top: 240px;
     position: absolute;
     border: none;
     border-radius: 18px;
   }
-
 }
-
-
-
-
-
-
-
-

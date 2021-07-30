@@ -47,6 +47,11 @@ function Monitor() {
           </Row>
 
           <div className="monitor_background"> 
+            <div className="monitor_light"> 
+              <div className="monitor_light2">light</div>
+              <div><img className="monitor_light_pic" src={light} alt=""/></div>
+              <div className="monitor_light1">40%</div>
+            </div>
             <div className=" monitor_detail">這邊放各種資訊abcdsfwrfsfsdldf(亂打)</div>
           </div>
 
