@@ -34,7 +34,7 @@ function Sidebar() {
       </Link>
 
       <div className="setting"> 
-        <Link to="">
+        <Link to="/setting">
           <div className="menu-item" >設定</div>
         </Link>
       </div>

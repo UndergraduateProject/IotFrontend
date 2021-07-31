@@ -1,0 +1,317 @@
+.body_wc {
+    background-color: #aebfb7;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    position: absolute;
+    color:white !important;
+}
+
+.MuiSelect-selectMenu{   /*選單內字的顏色*/
+    color:#6a6f8c !important;
+}
+
+.MuiFormControl-root{
+    vertical-align:0 !important;
+}
+
+.makeStyles-selectEmpty-2{
+    margin-top: 0px !important;
+}
+
+.makeStyles-formControl-3{
+    margin: 0px !important;
+}
+
+.makeStyles-formControl-1{
+    min-width:0px !important;
+}
+
+
+.top_block2_ct{
+    /*這一長串是用來垂直置中的*/   
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+
+.top_block1_ct{
+    /*這一長串是用來垂直置中的*/   
+    /* Internet Explorer 10 */
+   display:-ms-flexbox;
+   -ms-flex-pack:center;
+   -ms-flex-align:center;
+   /* Firefox */
+   display:-moz-box;
+   -moz-box-pack:center;
+   -moz-box-align:center;
+   /* Safari, Opera, and Chrome */
+   display:-webkit-box;
+   -webkit-box-pack:center;
+   -webkit-box-align:center;
+   /* W3C */
+   display:box;
+   box-pack:center;
+   box-align:center;
+}
+   
+
+.select_text{
+    color:gray;
+}
+
+.html, body, body *{
+    color: white ;
+}
+
+/* switch */
+.switch_position{
+    left:43vw;
+    position:relative;
+}
+
+
+@media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
+    
+    .top_block1_ct{
+        background: #6a7b62;
+        height: 80px;
+        /* width: 500px;
+        left: 50%;
+        margin-left: -250px;
+        position: absolute; */
+        /* padding-top: 15px; */
+        font-size: x-large;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2_ct{
+        height: 23vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 2vw;
+        padding-right: 2vw;     
+        font-size: 5.5vmin;
+    }
+ 
+    .text_left_ct{
+        width:71vw;
+        position: absolute;
+        left:4vw;
+    }
+    
+    .MuiInputBase-root{   /*選單寬度*/
+        font-size: 5.5vmin !important;
+        width: 22vw;
+        text-align: center;
+    }
+
+
+}
+
+@media only screen and (min-width: 768px) { /*for laptop's width>768 */
+    .body_wc{
+        max-width: 768px;
+        left:50%;
+        margin-left: -384px;
+        border-radius: 0px; 
+    }
+
+    .top_block1_ct{
+        background: #6a7b62;
+        height: 80px;
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2_ct{
+        height: 23vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 33px;
+    }
+ 
+    .text_left_ct{
+        width:600px;
+        position: absolute;
+        left:4vw;
+    }
+
+    .MuiInputBase-root{   /*選單寬度*/
+        font-size: 33px !important;
+        width: 140px;
+        text-align: center;
+    }
+
+    .switch_position{
+        left:50%;
+        margin-left: 300px;
+        position:absolute;
+    }
+
+
+}
+  
+
+@media only screen and (min-width: 1024px)  {  /*for laptop:when width>1024*/
+    .body_wc  {
+        max-width: 425px;
+        left:50%;
+        margin-left: -212.5px;
+        border-radius: 12px; 
+    }  
+
+
+    .top_block1_ct{
+        background: #6a7b62;
+        height: 80px;
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2_ct{
+        height: 20vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 26px;
+    }
+
+    .text_left_ct{
+        width:400px;
+        position: absolute;
+        left:20px;
+    }
+
+    .MuiInputBase-root{   /*選單寬度*/
+        font-size: 26px !important;
+        width: 105px;
+        text-align: center;
+    }
+
+    .switch_position{
+        left:50%;
+        margin-left:158px;
+        position:absolute;
+    }
+}
+
+@media only screen and (width: 768px) and (height: 1024px) { /*ipad*/
+    .body_wc{
+        max-width: 768px;
+        left:50%;
+        margin-left: -384px;
+        border-radius: 0px; 
+    }
+
+    .top_block1_ct{
+        background: #6a7b62;
+        height: 120px;
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2_ct{
+        height: 20vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 38px;
+    }
+ 
+    .text_left_ct{
+        width:600px;
+        position: absolute;
+        left:7vw;
+    }
+
+    .MuiInputBase-root{   /*選單寬度*/
+        font-size: 38px !important;
+        width: 140px;
+        text-align: center;
+    }
+
+    .switch_position{
+        left:50%;
+        margin-left: 300px;
+        position:absolute;
+    }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
+    .body_wc  {
+        max-width: 1024px;
+        left:0%;
+        margin-left: auto;
+        border-radius: 0px; 
+    }
+
+    .top_block1_ct{
+        background: #6a7b62;
+        height: 170px;
+        /* width: 500px;
+        left: 50%;
+        margin-left: -250px;
+        position: absolute; */
+        /* padding-top: 30px; */
+        font-size: 60px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2_ct{
+        height: 20vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 45px;
+    }
+ 
+    .text_left_ct{
+        width:800px;
+        position: absolute;
+        left:7vw;
+    }
+
+    .MuiInputBase-root{   /*選單寬度*/
+        font-size: 45px !important;
+        width: 170px;
+        text-align: center;
+    }
+
+    .switch_position{
+        left:50%;
+        margin-left: 400px;
+        position:absolute;
+    }
+}
