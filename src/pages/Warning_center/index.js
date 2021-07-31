@@ -86,11 +86,6 @@ export default function Warning_ct() {
   const handleChange = (event) => {
     setHumidity(event.target.value)
   }
-
-  const [humidity_data, setHumidity_data] = React.useState("")
-  const handleChange_humiData = (event) => {
-    setHumidity_data(event.target.value)
-  }
   //select
 
   // switch
@@ -151,8 +146,8 @@ export default function Warning_ct() {
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
-              value={humidity_data}
-              onChange={handleChange_humiData}
+              value={humidity}
+              onChange={handleChange}
               displayEmpty
               className={classes.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
@@ -160,14 +155,8 @@ export default function Warning_ct() {
               <MenuItem value="">
                 <em className="select_text">10</em>
               </MenuItem>
-              <MenuItem value={20}>
+              <MenuItem value={10}>
                 <div className="select_text">20</div>
-              </MenuItem>
-              <MenuItem value={30}>
-                <div className="select_text">30</div>
-              </MenuItem>
-              <MenuItem value={40}>
-                <div className="select_text">40</div>
               </MenuItem>
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
@@ -220,8 +209,8 @@ export default function Warning_ct() {
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
-              value={humidity_data}
-              onChange={handleChange_humiData}
+              value={humidity}
+              onChange={handleChange}
               displayEmpty
               className={classes.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
@@ -229,15 +218,10 @@ export default function Warning_ct() {
               <MenuItem value="">
                 <em className="select_text">25</em>
               </MenuItem>
-              <MenuItem value={20}>
+              <MenuItem value={10}>
                 <div className="select_text">27</div>
               </MenuItem>
-              <MenuItem value={30}>
-                <div className="select_text">29</div>
-              </MenuItem>
-              <MenuItem value={40}>
-                <div className="select_text">31</div>
-              </MenuItem>
+
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
@@ -289,8 +273,8 @@ export default function Warning_ct() {
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
-              value={humidity_data}
-              onChange={handleChange_humiData}
+              value={humidity}
+              onChange={handleChange}
               displayEmpty
               className={classes.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
@@ -298,15 +282,10 @@ export default function Warning_ct() {
               <MenuItem value="">
                 <em className="select_text">30</em>
               </MenuItem>
-              <MenuItem value={20}>
+              <MenuItem value={10}>
                 <div className="select_text">40</div>
               </MenuItem>
-              <MenuItem value={30}>
-                <div className="select_text">50</div>
-              </MenuItem>
-              <MenuItem value={40}>
-                <div className="select_text">60</div>
-              </MenuItem>
+
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
