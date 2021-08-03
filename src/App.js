@@ -6,7 +6,8 @@ import Monitor from "./pages/Monitor";
 import Select from "./pages/Select";
 import Camera from "./pages/Camera";
 import Visualization from "./pages/Visualization";
-
+import Warning_center from "./pages/Warning_center";
+import Setting from "./pages/Setting";
 import {
   Redirect,
   Route,
@@ -38,6 +39,8 @@ function App() {
         <ProtectedRoute path="/select" loggedIn = {log} component = {Select}/>
         <ProtectedRoute path="/camera" loggedIn = {log} component = {Camera}/>
         <ProtectedRoute path="/visualization" loggedIn = {log} component = {Visualization}/>
+        <ProtectedRoute path="/warning_center" loggedIn = {log} component = {Warning_center}/>
+        <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       

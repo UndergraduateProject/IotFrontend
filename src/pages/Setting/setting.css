@@ -1,0 +1,258 @@
+.body_wc {
+    background-color: #aebfb7;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    position: absolute;
+    color:white !important;
+}
+
+
+
+.top_block2{
+    /*這一長串是用來垂直置中的*/   
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+
+.top_block1{
+    /*這一長串是用來垂直置中的*/   
+    /* Internet Explorer 10 */
+   display:-ms-flexbox;
+   -ms-flex-pack:center;
+   -ms-flex-align:center;
+   /* Firefox */
+   display:-moz-box;
+   -moz-box-pack:center;
+   -moz-box-align:center;
+   /* Safari, Opera, and Chrome */
+   display:-webkit-box;
+   -webkit-box-pack:center;
+   -webkit-box-align:center;
+   /* W3C */
+   display:box;
+   box-pack:center;
+   box-align:center;
+}
+   
+
+
+.html, body, body *{
+    color: white ;
+}
+
+/* switch */
+.switch_position{
+    left:39vw;
+    position:relative;
+}
+
+
+@media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
+    
+    .top_block1{
+        background: #6a7b62;
+        height: 12vh;
+        font-size: 7.5vmin;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2{
+        height: 10vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 2vw;
+        padding-right: 2vw;     
+        font-size: 6vmin;
+    }
+ 
+    .text_left{
+        width:71vw;
+        position: absolute;
+        left:10vw;
+    }
+    
+
+}
+
+@media only screen and (min-width: 768px) { /*for laptop's width>768 */
+    .body_wc{
+        max-width: 768px;
+        left:50%;
+        margin-left: -384px;
+        border-radius: 0px; 
+    }
+
+    .top_block1{
+        background: #6a7b62;
+        height: 12vh;
+        font-size: 45px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2{
+        height: 10vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 37px;
+    }
+ 
+    .text_left{
+        width:600px;
+        position: absolute;
+        left:9vw;
+    }
+
+    .switch_position{
+        left:50%;
+        margin-left: 265px;
+        position:absolute;
+    }
+
+
+}
+  
+
+@media only screen and (min-width: 1024px)  {  /*for laptop:when width>1024*/
+    .body_wc  {
+        max-width: 425px;
+        left:50%;
+        margin-left: -212.5px;
+        border-radius: 12px; 
+    }  
+
+
+    .top_block1{
+        background: #6a7b62;
+        height: 12vh;
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2{
+        height: 10vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 26px;
+    }
+
+    .text_left{
+        width:400px;
+        position: absolute;
+        left:35px;
+    }
+
+
+    .switch_position{
+        left:50%;
+        margin-left:140px;
+        position:absolute;
+    }
+}
+
+@media only screen and (width: 768px) and (height: 1024px) { /*ipad*/
+    .body_wc{
+        max-width: 768px;
+        left:50%;
+        margin-left: -384px;
+        border-radius: 0px; 
+    }
+
+    .top_block1{
+        background: #6a7b62;
+        height: 120px;
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2{
+        height: 10vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 38px;
+    }
+ 
+    .text_left{
+        width:600px;
+        position: absolute;
+        left:10vw;
+    }
+
+
+    .switch_position{
+        left:50%;
+        margin-left: 280px;
+        position:absolute;
+    }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
+    .body_wc  {
+        max-width: 1024px;
+        left:0%;
+        margin-left: auto;
+        border-radius: 0px; 
+    }
+
+    .top_block1{
+        background: #6a7b62;
+        height: 170px;
+        font-size: 60px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .top_block2{
+        height: 10vh ;
+        border-bottom:solid  1.5px gray;
+        color: white !important ; 
+        padding-left: 80px;
+        padding-right: 80px;     
+        font-size: 45px;
+    }
+ 
+    .text_left{
+        width:800px;
+        position: absolute;
+        left:11vw;
+    }
+
+
+    .switch_position{
+        left:50%;
+        margin-left: 370px;
+        position:absolute;
+    }
+}

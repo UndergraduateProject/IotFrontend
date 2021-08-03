@@ -1,467 +1,256 @@
-#sidebar {
-  position: absolute;
-  width: 60%;
-  height: 100%;
-  background: #6a7b62;
-  transition: left 0.08s linear;
-  z-index: 9999;
+@media only screen and (max-width: 768px) {  /*for width<768 (include mobile phone)*/
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+  } 
+
+  .bm-menu {
+    background: #6a7b62;
+    padding: 2.5em 0em 0;
+    font-size: 1.15em;
+    margin-right: 20px;
+  }
+
+  .bm-menu-wrap {
+    height: 100%;
+    left: 50%;
+    margin-left: -50vw;  
+  }
 }
 
-#sidebar .toggle-btn {
-  position: absolute;
-  top: 10px;
-  left: 110%;
+@media only screen and (min-width: 768px) and (max-width: 1024px) {  /*for 768<width<1024 */
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    top: 36px;
+    left: 50%;
+    margin-left: -350px;
+  }
+
+  .bm-menu {
+    background: #6a7b62;
+    padding: 2.5em 0em 0;
+    font-size: 1.15em;
+    margin-right: 20px;
+  }
+
+  .bm-menu-wrap {
+    height: 100%;
+    left: 50%;
+    margin-left: -382px;  
+  }
 }
 
-.toggle-btn span {
+@media only screen and (min-width: 1024px) {  /*for width>1024 */
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    top: 36px;
+    left: 50%;
+    margin-left: -190px;
+  } 
+  
+  .bm-menu {
+    background: #6a7b62;
+    padding: 2.5em 0em 0;
+    font-size: 1.15em;
+    margin-right: 20px;
+  }
+
+  .bm-menu-wrap {
+    height: 100%;
+    left: 50%;
+    margin-left: -212px;
+  }
+} 
+ 
+@media only screen and (width: 768px) and (height: 1024px) {   /*ipad*/
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    top: 36px;
+    left: 50%;
+    margin-left: -350px;
+  }
+
+  .bm-menu {
+    width:350px;
+    background: #6a7b62;
+    padding: 2.5em 0em 0;
+    font-size: 1.15em;
+    margin-right: 20px;
+  }
+
+  .bm-menu-wrap {
+    height: 100%;
+    left: 50%;
+    margin-left: -382px;  
+  }
+
+  .menu-item{
+    font-size:35px !important;
+    padding:20px !important;
+    padding-left: 40px !important;
+  }
+
+  .user{
+    height: 110px !important;
+    width: 350px !important;
+  } 
+
+  .user_pic{
+    width: 97px !important;
+
+    margin-top:-20px;
+    margin-left: 42px !important;
+  }
+
+  .user-text{
+    left: 170px !important;
+    top:-85px !important;
+    font-size:50px !important;
+  }
+
+  .setting{
+    width: 350px !important;
+  }
+}
+
+ 
+@media only screen and (width: 1024px) and (height:1366px) {   /*ipad pro*/
+  .bm-burger-button {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    left: 50%;
+    margin-left: -460px;
+  }
+
+  .bm-menu {
+    width:480px;
+    background: #6a7b62;
+    padding: 2.5em 0em 0;
+    font-size: 1.15em;
+    margin-right: 20px;
+  }
+
+  .bm-menu-wrap {
+    height: 100%;
+    left: 50%;
+    margin-left: -512px;  
+  }
+
+  .menu-item{
+    font-size:45px !important;
+    padding:25px !important;
+    padding-left: 80px !important;
+  }
+
+  .user{
+    height: 150px !important;
+    width: 480px !important;
+    border-bottom: solid  2px #a1a999 !important;
+  } 
+
+  .user_pic{
+    width: 135px !important;
+    margin-top:-20px;
+    margin-left: 82px !important;
+  }
+
+  .user-text{
+    left: 260px !important;
+    top:-120px !important;
+    font-size:65px !important;
+  }
+
+  .setting{
+    width: 350px !important;
+  }
+}
+
+
+/* .bm-burger-button {
+  position: fixed;
   width: 36px;
-  height: 4px;
-  background: white;
-  display: block;
-  opacity: 75%;
-  margin-top: 11px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+} */
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: whitesmoke;
 }
 
-.user {
-  padding: 3vh 11vw 2vh 4vw;
-  text-align: right;
-  border-bottom: solid 1px #a1a999;
-  height: 122.5px;
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
 }
 
-.user img {
-  float: left;
+/* shape of close button cross 'x' */
+.bm-cross {
+  background: #bdc3c7;
+  display: none;
 }
 
-.user-text {
-  width: 5vw;
-  color: white;
-  left: 105px;
-  top: -8vh;
-  font-size: 3.7vh;
+/* General sidebar styles */
+/* .bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+} */
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0em;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background:transparent !important;
+}
+
+/*data of menu*/
+.menu-item{
+  font-size:23px;
+  color:white;
+  padding:15px;
+  padding-left: 30px;
+}
+
+.user{
+  height: 92px;
+  width: 240px;
+  border-bottom: solid  1px #a1a999;
+} 
+
+.user_pic{
+  margin-top:-20px;
+  margin-left: 30px;
+}
+
+.user-text{
+  width:5px;
+  color:white;
+  left: 135px;
+  top:-65px;
+  font-size:35px;
   position: relative;
 }
 
-#sidebar ul li {
-  list-style: none;
-  color: white;
-  font-size: 6vw;
-  padding: 2.5vh 4vw;
+.setting{
+  padding-top: 15px;
+  height: 100px;
+  width: 240px;
+  border-top:solid  1px #a1a999 ;
 }
-
-.menu {
-  margin-top: 2vh;
-  border-bottom: solid 1px #a1a999;
-  padding-bottom: 1vh;
-}
-
-.setting {
-  color: white;
-  font-size: 6vw;
-  padding: 5vh 4vw;
-}
-/* 
-@media screen and (min-width: 1024px) {
-  #sidebar {
-    position: fixed;
-    width: 220px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 33.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 35%;
-  }
-
-  .toggle-btn span {
-    width: 36px;
-    height: 4px;
-    background: white;
-    display: block;
-    margin-top: 11px;
-  }
-
-  .user {
-    padding: 3% 11% 2% 6.4%;
-    text-align: right;
-    border-bottom: solid 1px #a1a999;
-    height: 122.5px;
-  }
-
-  .user img {
-    float: left;
-  }
-
-  .user-text {
-    width: 5%;
-    color: white;
-    padding-top: 50%;
-    left: 105px;
-    font-size: 200%;
-    position: relative;
-  }
-
-  #sidebar ul li {
-    list-style: none;
-    color: white;
-    font-size: 150%;
-    padding: 2.5% 6.4%;
-  }
-
-  .menu {
-    margin-top: 10%;
-    border-bottom: solid 1px #a1a999;
-    padding-bottom: 10%;
-  }
-
-  .setting {
-    color: white;
-    font-size: 150%;
-    padding: 10% 7%;
-  }
-} */
-
-
-@media only screen and (max-width: 1024px)  {
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 5vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 60%;
-    height: 100%;
-    background: #6a7b62;
-    transition: left 0.008s linear;
-    z-index: 9999;
-  }
-}
-
-
- @media only screen and (min-width: 800px) and (max-width: 900px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    padding-left: 5vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 2.2vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-  }
-} 
-
-@media only screen and (min-width: 901px) and (max-width: 1000px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    padding-left: 10vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 7.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-  }
-} 
-
-@media only screen and (min-width: 1001px) and (max-width: 1024px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    padding-left: 10vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 12vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-  }
-} 
-
-
-@media only screen and (width: 1024px) {   /*ipad pro & when width=1024*/
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: -5vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 400px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 0vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    padding: 7vh 11vw 2vh 4vw;
-    font-size: 5vh;
-  }
-
-  #sidebar ul li {
-    font-size: 4vw;
-    padding: 2.5vh 4vw;
-  }
-    
-  .setting {
-    font-size: 4vw;
-    padding: 5vh 4vw;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1300px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 34.5vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 230px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 29.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-  }
-}
-
-
-
-@media only screen and (min-width: 1301px) and (max-width: 1600px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 37.5vw;
-  }
-  
-  #sidebar {
-    position: fixed;
-    width: 260px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 33.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-  }
-}
-
-
-@media only screen and (min-width: 1601px) and (max-width: 1900px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 39.5vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 310px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 33.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-  }
-}
-
-@media only screen and (min-width: 1901px) and (max-width: 2200px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 41.5vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 270px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 33.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 3vh;
-    padding: 12vh 11vw 2vh 0vw;
-
-  }
-
-  #sidebar ul li {
-    font-size: 1vw;
-    padding: 2.5vh 3vw;
-  }
-    
-  .setting {
-    font-size: 1vw;
-    padding: 2.5vh 3vw;
-  }
-}
-
-@media only screen and (min-width: 2201px) and (max-width: 2800px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 43vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 400px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 33.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-    padding: 10vh 11vw 2vh 3vw;
-
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-    padding: 2.5vh 3vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-    padding: 2.5vh 3vw;
-  }
-}
-
-@media only screen and (min-width: 2801px){
-  #sidebar .toggle-btn {
-    position: fixed;
-    top: 10px;
-    left: 45vw;
-  }
-
-  #sidebar {
-    position: fixed;
-    width: 400px;
-    height: 100%;
-    background: #6a7b62;
-    margin-left: 33.5vw; 
-    transition: left 0.0008s linear;
-    z-index: 9999;
-  }
-    
-  .user-text {
-    font-size: 4vh;
-    padding: 10vh 11vw 2vh 1vw;
-
-  }
-
-  #sidebar ul li {
-    font-size: 2vw;
-    padding: 2.5vh 1vw;
-  }
-    
-  .setting {
-    font-size: 2vw;
-    padding: 2.5vh 1vw;
-  }
-}
- 

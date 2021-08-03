@@ -417,9 +417,8 @@ button {
   .monitor_wea_pic {
     padding-top: 20px;
     width: 50px;
-    left: 50%;
-    position: absolute;
-    margin-left: -25px;
+    left:50%;
+    margin-left: 0px;
   }
 
   .monitor_top2 {
@@ -609,18 +608,18 @@ button {
     height: 10vh;
   }
 
-  .monitor_wea_pic {
-    padding-top: 8vh;
+  .monitor_wea_pic{
+
     width: 80px;
     left: 8vw;
     position: relative;
   }
 
-  .monitor_top2 {
+  .monitor_top2{ /*晴時多雲*/
     text-align: center;
-    left: 11vw;
-    top: 6vh;
+    left:10vw;
     font-size: 24px;
+    position: relative;
   }
 
   .monitor_top3 {
@@ -808,11 +807,11 @@ button {
   .monitor_wea_pic {
     padding-top: 8vh;
     width: 120px;
-    left: 8vw;
+    left:6vw;
     position: relative;
   }
 
-  .monitor_top2 {
+  .monitor_top2{ /*晴時多雲*/
     text-align: center;
     left: 73.5vw;
     top: 16vh;
