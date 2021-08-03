@@ -7,11 +7,18 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 import Sidebar from '../../component/Sidebar';
 import clock from '../../images/clock.png';
 import Slider from "@material-ui/core/Slider";
+import CircularColor from 'react-circular-color';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faFan} from '@fortawesome/free-solid-svg-icons'
+import { loadAnimation } from "lottie-web";
+import { defineLordIconElement } from "lord-icon-element";
+
+// register lottie and define custom element
+defineLordIconElement(loadAnimation);
 
 function Control() {
   //icon animation initialize
   const [spin, setSpin] = useState(true);
-  const [spinstyle, setStyle] = useState("fas fa-fan fa-lg fa-spin")
   const [loop, setLoop] = useState({
     msg : "loop",
     isActive : true,
@@ -25,13 +32,12 @@ function Control() {
   var [volume, setVolume] = useState(100) ;
 
 
-
   //fan icon animate
   const toSpin = () => {
     const state = !spin;
     setSpin(!spin);
-    state ? setStyle("fas fa-fan fa-lg fa-spin") : setStyle("fas fa-fan fa-lg");
   }
+  const fanIcon =  spin ? <FontAwesomeIcon icon={faFan} size="lg" spin/> : <FontAwesomeIcon icon={faFan} size="lg" />
 
   //slide volume 
   const slide = (e,value) => {
@@ -66,6 +72,7 @@ function Control() {
   }
 
 
+
   return (
     <div className="home">
       <Container fluid className="control-container">
@@ -80,19 +87,26 @@ function Control() {
         <Popup 
         trigger=
         {<Col >
-          <div className="fan"><i class={spinstyle}></i></div>
+          <div className="fan">{fanIcon}</div>
           <div className="data">30%</div>
           <div>Fan</div>
         </Col>} modal>
           <div >
-            <div className="fan"><i class={spinstyle}></i></div>
+            <div className="modal-fan">{fanIcon}</div>
             <div className="data">30%</div>
             <div>Fan</div>
           </div>
-          <label class="switch">
+          <label className="switch">
             <input type="checkbox"  onChange={toSpin} checked={spin}/>
-            <span class="slider"></span>
+            <span className="slider"></span>
           </label>
+          <ul id="recent">
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+          </ul>
         </Popup>
         
         <Popup trigger={<Col>
@@ -100,12 +114,19 @@ function Control() {
           <div className="data">{volume + "ml"}</div>
           <div>Capacity</div>
         </Col>} modal>
-            <lord-icon src="https://cdn.lordicon.com/oyclgnwc.json" trigger={water} target="div" colors="primary:#9cf4df,secondary:#d1fad7" ></lord-icon>
+            <lord-icon  src="https://cdn.lordicon.com/oyclgnwc.json" trigger={water} target="div" colors="primary:#9cf4df,secondary:#d1fad7" ></lord-icon>
             <div className="data water-data">{volume + "ml"}</div>
             <form >
               <Slider min={0} max={250} step={1} value={volume} valueLabelDisplay="auto" onChange={slide} ref={ref => slider = ref}/>
               <Button variant="primary" onClick={watering}>Water</Button>
             </form>
+            <ul id="recent">
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+            </ul>
         </Popup>
         
         <Popup trigger={<Col onClick={openLight}>
@@ -113,7 +134,7 @@ function Control() {
           <div className="data">40%</div>
           <div>Light</div>
         </Col>} modal>
-          <div className='titanic titanic-idea' ref={lightref => light = lightref}></div>
+          <CircularColor centerRect={true}/>
           <div className="data">40%</div>
           <div>Light</div>
         </Popup>

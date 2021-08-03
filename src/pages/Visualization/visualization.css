@@ -11,6 +11,11 @@
   height: auto;
 }
 
+.toolbar {
+  display: flex;
+  justify-content: space-around;
+}
+
 .toolbar button {
   font-weight: normal;
   font-size: 100%;
