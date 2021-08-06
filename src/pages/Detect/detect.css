@@ -1,0 +1,551 @@
+.detect_body {
+    background-color: #aebfb7;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    position: absolute;
+}
+
+.progress{
+    height: 0.5rem !important;
+}
+
+
+@media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
+    .detect_pc1 {
+        width:160px;
+        border-radius: 3px; 
+        left: 50%;
+        margin-left: -80px;
+        top:-30px;
+        position: relative;
+    }
+
+    .progressBar{
+        position: relative;
+        left: 50%;
+        top:160px;
+        width: 130px;
+        margin-left: -65px;
+    }
+
+    .progressBar_detail{
+        position: relative;
+        left: 50%;
+        margin-left: -45px;
+        top: 160px;
+        font-size: 10px;
+    }
+    
+    .detect_background {
+        width: 320px;
+        height: 45vh;
+        border-radius: 12px;
+        left: 50%;
+        margin-top:2vh;
+        margin-left: -160px;
+        background-color: #A2B2AB;
+        position: relative;
+    } 
+
+    .detect_pc2 {
+        max-width:120px;
+        border-radius: 3px; 
+        top:1.5vh;
+        margin-left: -140px;
+        left: 50%;
+        border-radius: 3px; 
+        position: absolute;
+    }
+
+    .detect_pc3 {
+        max-width:120px;        
+        border-radius: 3px; 
+        top:1.5vh;
+        left: 50%;
+        margin-left: 20px;
+        position: absolute;
+    }
+
+    .detect_arrow{
+        width:30px;
+        margin-left:-15px ;
+        left: 50%;
+        position: absolute;
+        top: 80px;
+        color: #53655C;
+        font-size: 18px;
+    }
+
+    .detect_status{
+        font-size: 20px;
+        font-weight: bold;
+        color: #53655C;
+        width: 200px;
+        top: 160px;
+        left: 50%;
+        margin-left:-80px;
+        position: absolute;
+    }
+
+    .detect_detail{
+        word-break: break-all;
+        width: 280px;
+        position: absolute;
+        font-size: 16px;
+        margin-left: 20px;
+        top: 190px;
+        opacity: 0.8;
+    }
+
+    .detect_slider_adjust{
+        top:1vh ;
+        position: relative;
+        width: 340px !important;
+        left: 50% !important;
+        margin-left: -170px !important;
+    }
+
+    .detect_slider_pc{
+        width:75px;
+    }
+}
+
+@media only screen and (min-width: 768px) { /*for laptop's width>768 */
+    .detect_body{
+        max-width: 768px;
+        left:50%;
+        margin-left: -384px;
+        border-radius: 0px; 
+    }
+
+    .detect_pc1 {
+        width:160px;
+        border-radius: 3px; 
+        left: 50%;
+        margin-left: -80px;
+        top:-30px;
+        position: relative;
+    }
+   
+    .progressBar{
+        position: relative;
+        left: 50%;
+        top:160px;
+        width: 130px;
+        margin-left: -65px;
+    }
+
+    .progressBar_detail{
+        position: relative;
+        left: 50%;
+        margin-left: -45px;
+        top: 160px;
+        font-size: 10px;
+    }
+    
+
+     .detect_background {
+        width: 320px;
+        height: 45vh;
+        border-radius: 12px;
+        left: 50%;
+        margin-top:2vh;
+        margin-left: -160px;
+        background-color: #A2B2AB;
+        position: relative;
+    } 
+
+    .detect_pc2 {
+        max-width:120px;
+        border-radius: 3px; 
+        top:1.5vh;
+        margin-left: -140px;
+        left: 50%;
+        border-radius: 3px; 
+        position: absolute;
+    }
+
+    .detect_pc3 {
+        max-width:120px;        
+        border-radius: 3px; 
+        top:1.5vh;
+        left: 50%;
+        margin-left: 20px;
+        position: absolute;
+    }
+
+    .detect_arrow{
+        width:30px;
+        margin-left:-15px ;
+        left: 50%;
+        position: absolute;
+        top: 80px;
+        color: #53655C;
+        font-size: 18px;
+    }
+
+    .detect_status{
+        font-size: 20px;
+        font-weight: bold;
+        color: #53655C;
+        width: 200px;
+        top: 160px;
+        left: 50%;
+        margin-left:-80px;
+        position: absolute;
+    }
+
+    .detect_detail{
+        word-break: break-all;
+        width: 280px;
+        position: absolute;
+        font-size: 16px;
+        margin-left: 20px;
+        top: 190px;
+        opacity: 0.8;
+    }
+
+    .detect_slider_adjust{
+        top:1vh ;
+        position: relative;
+        width: 340px !important;
+        left: 50% !important;
+        margin-left: -170px !important;
+    }
+
+    .detect_slider_pc{
+        width:75px;
+    }
+}
+
+@media only screen and (min-width: 1024px)  {  /*for laptop:when width>1024*/
+    .detect_body{
+        max-width: 425px;
+        left:50%;
+        margin-left: -212.5px;
+        border-radius: 12px; 
+    }
+
+    .detect_pc1 {
+        width:160px;
+        border-radius: 3px; 
+        left: 50%;
+        margin-left: -80px;
+        top:-30px;
+        position: relative;
+    }
+   
+    .progressBar{
+        position: relative;
+        left: 50%;
+        top:160px;
+        width: 130px;
+        margin-left: -65px;
+    }
+
+    .progressBar_detail{
+        position: relative;
+        left: 50%;
+        margin-left: -45px;
+        top: 160px;
+        font-size: 10px;
+    }
+
+    .detect_background {
+        width: 320px;
+        height: 45vh;
+        border-radius: 12px;
+        left: 50%;
+        margin-top:2vh;
+        margin-left: -160px;
+        background-color: #A2B2AB;
+        position: relative;
+    } 
+
+    .detect_pc2 {
+        max-width:120px;
+        border-radius: 3px; 
+        top:1.5vh;
+        margin-left: -140px;
+        left: 50%;
+        border-radius: 3px; 
+        position: absolute;
+    }
+
+    .detect_pc3 {
+        max-width:120px;        
+        border-radius: 3px; 
+        top:1.5vh;
+        left: 50%;
+        margin-left: 20px;
+        position: absolute;
+    }
+
+    .detect_arrow{
+        width:30px;
+        margin-left:-15px ;
+        left: 50%;
+        position: absolute;
+        top: 80px;
+        color: #53655C;
+        font-size: 18px;
+    }
+
+    .detect_status{
+        font-size: 20px;
+        font-weight: bold;
+        color: #53655C;
+        width: 200px;
+        top: 160px;
+        left: 50%;
+        margin-left:-80px;
+        position: absolute;
+    }
+
+    .detect_detail{
+        word-break: break-all;
+        width: 280px;
+        position: absolute;
+        font-size: 16px;
+        margin-left: 20px;
+        top: 190px;
+        opacity: 0.8;
+    }
+
+    .detect_slider_adjust{
+        top:1vh ;
+        position: relative;
+        width: 340px !important;
+        left: 50% !important;
+        margin-left: -170px !important;
+    }
+
+    .detect_slider_pc{
+        width:75px;
+    }
+}
+
+@media only screen and (width: 768px) and (height: 1024px) { /*ipad*/
+    .detect_body{
+        max-width: 768px;
+        left:50%;
+        margin-left: -384px;
+        border-radius: 0px; 
+    }
+
+    .progress{
+        height: 0.8rem !important;
+    }
+    
+    .detect_pc1 {
+        width:220px;
+        border-radius: 3px; 
+        left: 50%;
+        margin-left: -110px;
+        top:-30px;
+        position: relative;
+    }
+
+    .progressBar{
+        position: relative;
+        left: 50%;
+        top:230px;
+        width: 240px;
+        margin-left: -120px;
+    }
+
+    .progressBar_detail{
+        position: relative;
+        left: 50%;
+        margin-left: -85px;
+        top: 240px;
+        font-size: 20px;
+    }
+    
+    .detect_background {
+        width: 480px;
+        height: 45vh;
+        border-radius: 12px;
+        left: 50%;
+        margin-top:6vh;
+        margin-left: -240px;
+        background-color: #A2B2AB;
+        position: relative;
+    } 
+
+    .detect_pc2 {
+        max-width:200px;
+        border-radius: 3px; 
+        top:3vh;
+        margin-left: -180px;
+        left: 50%;
+        border-radius: 3px; 
+        position: absolute;
+    }
+
+    .detect_pc3 {
+        max-width:200px;        
+        border-radius: 3px; 
+        top:3vh;
+        left: 50%;
+        margin-left: 40px;
+        position: absolute;
+    }
+
+    .detect_arrow{
+        width:40px;
+        margin-left:-20px ;
+        left: 50%;
+        position: absolute;
+        top: 100px;
+        color: #53655C;
+        font-size: 25px;
+    }
+
+    .detect_status{
+        font-size: 30px;
+        font-weight: bold;
+        color: #53655C;
+        width: 300px;
+        top: 200px;
+        left: 50%;
+        margin-left:-120px;
+        position: absolute;
+    }
+
+    .detect_detail{
+        word-break: break-all;
+        width: 400px;
+        position: absolute;
+        font-size: 25px;
+        margin-left: 40px;
+        top: 250px;
+        opacity: 0.8;
+    }
+
+    .detect_slider_adjust{
+        top:3vh ;
+        position: relative;
+        width: 500px !important;
+        left: 50% !important;
+        margin-left: -250px !important;
+    }
+
+    .detect_slider_pc{
+        width:120px;
+    }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
+    .detect_body{
+        max-width: 1024px;
+        left:0%;
+        margin-left: auto;
+        border-radius: 0px; 
+    }
+
+    .progress{
+        height: 0.8rem !important;
+    }
+    
+    .detect_pc1 {
+        width:320px;
+        border-radius: 3px; 
+        left: 50%;
+        margin-left: -160px;
+        top:-30px;
+        position: relative;
+    }
+
+    .progressBar{
+        position: relative;
+        left: 50%;
+        top:350px;
+        width: 360px;
+        margin-left: -180px;
+    }
+
+    .progressBar_detail{
+        position: relative;
+        left: 50%;
+        margin-left: -105px;
+        top: 360px;
+        font-size: 26px;
+    }
+
+    .detect_background {
+        width: 600px;
+        height: 45vh;
+        border-radius: 12px;
+        left: 50%;
+        margin-top:6vh;
+        margin-left: -300px;
+        background-color: #A2B2AB;
+        position: relative;
+    } 
+
+    .detect_pc2 {
+        max-width:300px;
+        border-radius: 3px; 
+        top:4vh;
+        margin-left: -220px;
+        left: 50%;
+        position: absolute;
+    }
+
+    .detect_pc3 {
+        max-width:300px;        
+        border-radius: 3px; 
+        top:4vh;
+        left: 50%;
+        margin-left: 80px;
+        position: absolute;
+    }
+
+    .detect_arrow{
+        width:40px;
+        margin-left:-20px ;
+        left: 50%;
+        position: absolute;
+        top: 120px;
+        color: #53655C;
+        font-size: 35px;
+    }
+
+    .detect_status{
+        font-size: 45px;
+        font-weight: bold;
+        color: #53655C;
+        width: 500px;
+        top: 230px;
+        left: 50%;
+        margin-left:-175px;
+        position: absolute;
+    }
+
+    .detect_detail{
+        word-break: break-all;
+        width: 400px;
+        position: absolute;
+        font-size: 35px;
+        margin-left: 60px;
+        top: 310px;
+        opacity: 0.8;
+    }
+
+    .detect_slider_adjust{
+        top:3vh ;
+        position: relative;
+        width: 600px !important;
+        left: 50% !important;
+        margin-left: -300px !important;
+    }
+
+    .detect_slider_pc{
+        width:160px;
+    }
+}
