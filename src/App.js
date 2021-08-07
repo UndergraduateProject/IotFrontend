@@ -9,6 +9,8 @@ import Visualization from "./pages/Visualization";
 import Warning_center from "./pages/Warning_center";
 import Setting from "./pages/Setting";
 import Detect from "./pages/Detect";
+import Profile from "./pages/Profile";
+
 import {
   Redirect,
   Route,
@@ -43,6 +45,7 @@ function App() {
         <ProtectedRoute path="/warning_center" loggedIn = {log} component = {Warning_center}/>
         <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>
         <ProtectedRoute path="/detect" loggedIn = {log} component = {Detect}/>
+        <ProtectedRoute path="/profile" loggedIn = {log} component = {Profile}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       
