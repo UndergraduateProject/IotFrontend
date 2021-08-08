@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./setting.css"
 import {withStyles } from "@material-ui/core/styles"
@@ -69,16 +69,11 @@ const IOSSwitch = withStyles((theme) => ({
 export default function Warning_ct() {
  
   // switch
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedC: true,
-  })
+  const [notification, setNotification] = useState(true);
+  const [sound, setSound] = useState(true);
+  const [upload, setUpload] = useState(true);
 
-  const handleChange_switch = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked })
-  }
-  // switch
+
 
   return (
     <div className="body_wc">
@@ -86,75 +81,45 @@ export default function Warning_ct() {
       {/* block1 */}
       <div className="top_block1">設定</div>
       <div className="top_block2">
-        {/* switch */}
-        <FormGroup className="switch_position">
-          <FormControlLabel
-            control={
-              <IOSSwitch
-                checked={state.checkedA}
-                onClick={handleChange_switch}
-                name="checkedA"
-              />
-            }
-            //  label="On"
-          />
-        </FormGroup>
-        {/* switch */}
-
         <div className="text_left">
           開啟通知
         </div>
-         
+        {/* switch */}
+        <label className="switch" id="setting-switch" onClick={()=>setNotification(!notification)} checked={notification}>
+            <input type="checkbox" />
+            <span className="slider"></span>
+        </label>
+        {/* switch */}
       </div>
       {/* block1 */}
 
 
       {/* block2 */}
       <div className="top_block2">
-        {/* switch */}
-        <FormGroup className="switch_position">
-          <FormControlLabel
-            control={
-              <IOSSwitch
-                checked={state.checkedB}
-                onChange={handleChange_switch}
-                name="checkedB"
-              />
-            }
-            // label="iOS style"
-          />
-        </FormGroup>
-        {/* switch */}
-
         <div className="text_left">
           開啟音效
         </div>
-         
+         {/* switch */}
+        <label className="switch" id="setting-switch" onClick={()=>setSound(!sound)} checked={sound}>
+            <input type="checkbox" />
+            <span className="slider"></span>
+        </label>
+        {/* switch */}
       </div>
       {/* block2 */}
 
 
       {/* block3 */}
       <div className="top_block2">
-        {/* switch */}
-        <FormGroup className="switch_position">
-          <FormControlLabel
-            control={
-              <IOSSwitch
-                checked={state.checkedC}
-                onChange={handleChange_switch}
-                name="checkedC"
-              />
-            }
-            // label="iOS style"
-          />
-        </FormGroup>
-        {/* switch */}
-
         <div className="text_left">
           自動上傳資料
         </div>
-         
+         {/* switch */}
+        <label className="switch" id="setting-switch" onClick={()=>setUpload(!upload)} checked={upload}>
+            <input type="checkbox" />
+            <span className="slider"></span>
+        </label>
+        {/* switch */}
       </div>
       {/* block3 */}
 
