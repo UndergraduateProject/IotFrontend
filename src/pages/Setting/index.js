@@ -92,7 +92,7 @@ export default function Warning_ct() {
             control={
               <IOSSwitch
                 checked={state.checkedA}
-                onChange={handleChange_switch}
+                onClick={handleChange_switch}
                 name="checkedA"
               />
             }

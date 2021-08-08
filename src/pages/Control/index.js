@@ -25,12 +25,17 @@ function Control() {
   })
   const [water, setWater] = useState("");
   const [duration, setDuration] = useState("30mins");
+  const [lightOnOff, setOnOff] = useState(true);
   //get element reference
   var light = useRef(null);
   var slider = useRef(null);
 
   var [volume, setVolume] = useState(100) ;
 
+  //RGB value
+  const handleColorChange = (color) =>{
+    console.log(color)
+  }
 
   //fan icon animate
   const toSpin = () => {
@@ -51,25 +56,26 @@ function Control() {
     setVolume(0)
     setTimeout(()=> {
       setWater("");
-    },4000)
-  }
+    },4000);
+  };
 
 
-  //simulate click on light when click on Col
+  //light on
   const openLight = () => {
-    light.click();
-  }
+    setOnOff(!lightOnOff);
+  };
 
   //camera icon loop
   const active = () => {
     loop.isActive ? setLoop({msg:"", isActive:!loop.isActive}) : setLoop({msg:"loop",isActive:!loop.isActive});
-  }
+  };
 
   //duration
-  const changeduration = (e) => {
-    console.log(e)
-    setDuration(e.target.value)
-  }
+  const changeduration = (duration) => {
+    setDuration(duration)
+  };
+
+  
 
 
 
@@ -129,14 +135,17 @@ function Control() {
             </ul>
         </Popup>
         
-        <Popup trigger={<Col onClick={openLight}>
+        <Popup trigger={<Col >
           <div className='titanic titanic-idea' ref={lightref => light = lightref}></div>
           <div className="data">40%</div>
           <div>Light</div>
         </Col>} modal>
-          <CircularColor centerRect={true}/>
-          <div className="data">40%</div>
+          <CircularColor centerRect={true} onChange={handleColorChange}/>
           <div>Light</div>
+          <label className="switch">
+            <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
+            <span className="slider"></span>
+          </label>
         </Popup>
       </Row>
       <Row className="control-rectangle">
@@ -145,17 +154,15 @@ function Control() {
           <div className="data">{duration}</div>
           <div className="sub">Duration</div>
         </Col>} modal>
-        <form >
-        <select name="duration" onClick={changeduration}>
-        <option>5mins</option>
-            <option>10mins</option>
-            <option selected="selected">30mins</option>
-            <option>1hour</option>
-            <option>6hour</option>
-            <option>12hour</option>
-            <option>24hour</option>
-        </select>
-        </form>
+        <div id="duration" >
+          <div tabindex="1" onClick={()=>changeduration("5mins")}>5mins</div>
+          <div tabindex="2" onClick={()=>changeduration("10mins")}>10mins</div>
+          <div tabindex="3" onClick={()=>changeduration("30mins")}>30mins</div>
+          <div tabindex="4" onClick={()=>changeduration("1hour")}>1hour</div>
+          <div tabindex="5" onClick={()=>changeduration("6hour")}>6hour</div>
+          <div tabindex="6" onClick={()=>changeduration("12hour")}>12hour</div>
+          <div tabindex="7" onClick={()=>changeduration("24hour")}>24hour</div>
+        </div>
         </Popup>
         <Popup trigger={<Col>
           <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">

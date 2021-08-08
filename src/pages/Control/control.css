@@ -55,6 +55,25 @@ lord-icon {
   margin-left: 30%;
 }
 
+/* duration selector */
+#duration {
+  border-style: solid;
+  border-radius: 12px;
+  width: 40%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden scroll;
+}
+
+#duration div {
+  margin-top: 10%;
+  font-size: 1.5em;
+}
+
+#duration div:focus {
+  background-color: #dddddd;
+}
+
 /* animate slider */
 .MuiSlider-thumb:not(.MuiSlider-active) {
   transition: left 3s ease-in;
