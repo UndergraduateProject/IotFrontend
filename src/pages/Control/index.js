@@ -97,22 +97,31 @@ function Control() {
           <div className="data">30%</div>
           <div>Fan</div>
         </Col>} modal>
-          <div >
-            <div className="modal-fan">{fanIcon}</div>
-            <div className="data">30%</div>
-            <div>Fan</div>
-          </div>
-          <label className="switch">
-            <input type="checkbox"  onChange={toSpin} checked={spin}/>
-            <span className="slider"></span>
-          </label>
-          <ul id="recent">
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-          </ul>
+          {
+            close => (
+              <div className="modal">
+                <div >
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+              <div className="modal-fan">{fanIcon}</div>
+              <div className="data">30%</div>
+              <div>Fan</div>
+              </div>
+                <label className="switch">
+                  <input type="checkbox"  onChange={toSpin} checked={spin}/>
+                  <span className="slider"></span>
+                </label>
+                <ul id="recent">
+                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                </ul>
+              </div>
+            )
+          }
         </Popup>
         
         <Popup trigger={<Col>
@@ -120,19 +129,28 @@ function Control() {
           <div className="data">{volume + "ml"}</div>
           <div>Capacity</div>
         </Col>} modal>
-            <lord-icon  src="https://cdn.lordicon.com/oyclgnwc.json" trigger={water} target="div" colors="primary:#9cf4df,secondary:#d1fad7" ></lord-icon>
-            <div className="data water-data">{volume + "ml"}</div>
-            <form >
-              <Slider min={0} max={250} step={1} value={volume} valueLabelDisplay="auto" onChange={slide} ref={ref => slider = ref}/>
-              <Button variant="primary" onClick={watering}>Water</Button>
-            </form>
-            <ul id="recent">
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-            </ul>
+            {
+              close => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <lord-icon  src="https://cdn.lordicon.com/oyclgnwc.json" trigger={water} target="div" colors="primary:#9cf4df,secondary:#d1fad7" ></lord-icon>
+                    <div div className="data water-data">{volume + "ml"}</div>
+                    <form >
+                      <Slider min={0} max={250} step={1} value={volume} valueLabelDisplay="auto" onChange={slide} ref={ref => slider = ref}/>
+                      <Button variant="primary" onClick={watering}>Water</Button>
+                    </form>
+                    <ul id="recent">
+                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                    </ul>
+                </div>
+              )
+            }
         </Popup>
         
         <Popup trigger={<Col >
@@ -140,12 +158,19 @@ function Control() {
           <div className="data">40%</div>
           <div>Light</div>
         </Col>} modal>
-          <CircularColor centerRect={true} onChange={handleColorChange}/>
-          <div>Light</div>
-          <label className="switch">
-            <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
-            <span className="slider"></span>
-          </label>
+          {
+            close => (
+              <div className="modal">
+                <button className="close" onClick={close}>&times;</button>
+                <CircularColor centerRect={true} onChange={handleColorChange}/>
+                  <div>Light</div>
+                  <label className="switch">
+                    <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
+                    <span className="slider"></span>
+                  </label>
+              </div>
+            )
+          }
         </Popup>
       </Row>
       <Row className="control-rectangle">
@@ -154,15 +179,24 @@ function Control() {
           <div className="data">{duration}</div>
           <div className="sub">Duration</div>
         </Col>} modal>
-        <div id="duration" >
-          <div tabindex="1" onClick={()=>changeduration("5mins")}>5mins</div>
-          <div tabindex="2" onClick={()=>changeduration("10mins")}>10mins</div>
-          <div tabindex="3" onClick={()=>changeduration("30mins")}>30mins</div>
-          <div tabindex="4" onClick={()=>changeduration("1hour")}>1hour</div>
-          <div tabindex="5" onClick={()=>changeduration("6hour")}>6hour</div>
-          <div tabindex="6" onClick={()=>changeduration("12hour")}>12hour</div>
-          <div tabindex="7" onClick={()=>changeduration("24hour")}>24hour</div>
-        </div>
+        {
+          close => (
+            <div className="modal">
+              <button className="close" onClick={close}>
+                &times;
+              </button>
+              <div id="duration" >
+                <div tabindex="1" onClick={()=>changeduration("5mins")}>5mins</div>
+                <div tabindex="2" onClick={()=>changeduration("10mins")}>10mins</div>
+                <div tabindex="3" onClick={()=>changeduration("30mins")}>30mins</div>
+                <div tabindex="4" onClick={()=>changeduration("1hour")}>1hour</div>
+                <div tabindex="5" onClick={()=>changeduration("6hour")}>6hour</div>
+                <div tabindex="6" onClick={()=>changeduration("12hour")}>12hour</div>
+                <div tabindex="7" onClick={()=>changeduration("24hour")}>24hour</div>
+              </div>
+            </div>
+          )
+        }
         </Popup>
         <Popup trigger={<Col>
           <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
