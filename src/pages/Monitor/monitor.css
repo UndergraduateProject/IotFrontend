@@ -31,8 +31,8 @@
 }
 
 .ejXxNI {
-  background-color: #8a6e07 !important;
-  box-shadow: 0 0 1px 3px #8a6e07 !important;
+  background-color: white !important;
+  box-shadow: 0 0 0.5px 2px white !important;
 }
 
 button {
@@ -777,7 +777,7 @@ button {
   }
 
   .ejXxNI {
-    background-color: #8a6e07 !important;
+    background-color: white !important;
     width: 17px !important;
     height: 17px !important;
   }
