@@ -86,13 +86,18 @@ export default function Warning_ct() {
       {/* block1 */}
       <div className="top_block1">設定</div>
       <div className="top_block2">
-        {/* switch */}
+        
+
+        <div className="text_left">
+          開啟通知
+        </div>
+         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
             control={
               <IOSSwitch
                 checked={state.checkedA}
-                onChange={handleChange_switch}
+                onClick={handleChange_switch}
                 name="checkedA"
               />
             }
@@ -100,18 +105,18 @@ export default function Warning_ct() {
           />
         </FormGroup>
         {/* switch */}
-
-        <div className="text_left">
-          開啟通知
-        </div>
-         
       </div>
       {/* block1 */}
 
 
       {/* block2 */}
       <div className="top_block2">
-        {/* switch */}
+        
+
+        <div className="text_left">
+          開啟音效
+        </div>
+         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
             control={
@@ -125,18 +130,18 @@ export default function Warning_ct() {
           />
         </FormGroup>
         {/* switch */}
-
-        <div className="text_left">
-          開啟音效
-        </div>
-         
       </div>
       {/* block2 */}
 
 
       {/* block3 */}
       <div className="top_block2">
-        {/* switch */}
+        
+
+        <div className="text_left">
+          自動上傳資料
+        </div>
+         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
             control={
@@ -150,11 +155,6 @@ export default function Warning_ct() {
           />
         </FormGroup>
         {/* switch */}
-
-        <div className="text_left">
-          自動上傳資料
-        </div>
-         
       </div>
       {/* block3 */}
 

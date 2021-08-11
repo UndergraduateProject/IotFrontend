@@ -4,6 +4,10 @@ React 特殊語法，所有 element 都需要有 close element（如：<div></di
 
 ### 實作注意事項
 
+### 氣象局授權碼
+
+CWB-D0F2090C-5F48-45D5-B0D7-ACE9030246B0
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

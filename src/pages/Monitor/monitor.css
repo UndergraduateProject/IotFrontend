@@ -50,6 +50,11 @@ button {
   margin-right: 5vw; */
 }
 
+.selector .selected {
+  border-style: solid;
+  border-color: white;
+}
+
 @media only screen and (max-width: 768px) {
   /*width<768 (for laptop's width<768 and mobile phone)*/
   .slider_adjust {
@@ -168,7 +173,7 @@ button {
     bottom: 0;
     right: 0;
     width: 80px;
-    height: 70px; 
+    height: 70px;
     position: absolute;
   }
 
@@ -201,8 +206,8 @@ button {
   }
 
   .monitor_water_pic {
-    top: 120px;
-    left: 80px;
+    bottom: 0;
+    right: 0;
     width: 110x;
     height: 80px;
     position: absolute;
@@ -339,8 +344,8 @@ button {
   }
 
   .monitor_cloud_pic {
-    top: 120px;
-    left: 65px;
+    bottom: 0;
+    right: 0;
     width: 80px;
     height: 70px;
     position: absolute;
@@ -375,8 +380,8 @@ button {
   }
 
   .monitor_water_pic {
-    top: 120px;
-    left: 90px;
+    bottom: 0;
+    right: 0;
     width: 110x;
     height: 80px;
     position: absolute;
@@ -417,7 +422,7 @@ button {
   .monitor_wea_pic {
     padding-top: 20px;
     width: 50px;
-    left:50%;
+    left: 50%;
     margin-left: 0px;
   }
 
@@ -522,8 +527,8 @@ button {
   }
 
   .monitor_cloud_pic {
-    top: 120px;
-    left: 65px;
+    bottom: 0;
+    right: 0;
     width: 80px;
     height: 70px;
     position: absolute;
@@ -558,8 +563,8 @@ button {
   }
 
   .monitor_water_pic {
-    top: 120px;
-    left: 90px;
+    bottom: 0;
+    right: 0;
     width: 110x;
     height: 80px;
     position: absolute;
@@ -608,16 +613,16 @@ button {
     height: 10vh;
   }
 
-  .monitor_wea_pic{
-
+  .monitor_wea_pic {
     width: 80px;
     left: 8vw;
     position: relative;
   }
 
-  .monitor_top2{ /*晴時多雲*/
+  .monitor_top2 {
+    /*晴時多雲*/
     text-align: center;
-    left:10vw;
+    left: 10vw;
     font-size: 24px;
     position: relative;
   }
@@ -711,8 +716,8 @@ button {
   }
 
   .monitor_cloud_pic {
-    top: 65%;
-    left: 52%;
+    bottom: 0;
+    right: 0;
     width: 100px;
     height: 90px;
     position: absolute;
@@ -748,8 +753,8 @@ button {
   }
 
   .monitor_water_pic {
-    top: 190px;
-    left: 130px;
+    bottom: 0;
+    right: 0;
     width: 110px;
     height: 80px;
     position: absolute;
@@ -807,11 +812,12 @@ button {
   .monitor_wea_pic {
     padding-top: 8vh;
     width: 120px;
-    left:6vw;
+    left: 6vw;
     position: relative;
   }
 
-  .monitor_top2{ /*晴時多雲*/
+  .monitor_top2 {
+    /*晴時多雲*/
     text-align: center;
     left: 73.5vw;
     top: 16vh;
@@ -910,8 +916,8 @@ button {
   }
 
   .monitor_cloud_pic {
-    top: 63%;
-    left: 49%;
+    bottom: 0;
+    right: 0;
     width: 150px;
     height: 130px;
     position: absolute;
@@ -948,8 +954,8 @@ button {
   }
 
   .monitor_water_pic {
-    top: 55%;
-    left: 16vw;
+    bottom: 0;
+    right: 0;
     width: 180px;
     height: 180px;
     position: absolute;
