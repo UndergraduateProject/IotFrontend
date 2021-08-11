@@ -12,25 +12,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFan} from '@fortawesome/free-solid-svg-icons'
 import { loadAnimation } from "lottie-web";
 import { defineLordIconElement } from "lord-icon-element";
+import api from "../../utils/api"
 
 // register lottie and define custom element
 defineLordIconElement(loadAnimation);
 
 function Control() {
   //icon animation initialize
-  const [spin, setSpin] = useState(true);
+  const [spin, setSpin] = useState();
   const [loop, setLoop] = useState({
     msg : "loop",
     isActive : true,
   })
+  const [fanhistory, setFanHistory] = useState([]);
   const [water, setWater] = useState("");
+  const [waterhistory, setWaterHistory] = useState([]);
+  const [volume, setVolume] = useState(100) ;
   const [duration, setDuration] = useState("30mins");
+  const [selected, setSelected] = useState({
+    "5mins" : false,
+    "10mins" : false,
+    "30mins" : true,
+    "1hour" : false,
+    "6hour" : false,
+    "12hour" : false,
+    "24hour" : false,
+  })
   const [lightOnOff, setOnOff] = useState(true);
   //get element reference
   var light = useRef(null);
   var slider = useRef(null);
 
-  var [volume, setVolume] = useState(100) ;
 
   //RGB value
   const handleColorChange = (color) =>{
@@ -39,8 +51,15 @@ function Control() {
 
   //fan icon animate
   const toSpin = () => {
-    const state = !spin;
     setSpin(!spin);
+    const data = {
+      "switch" : !spin? "ON" : "OFF" 
+    }
+    const url = "api/Fan";
+    api.post(url, data)
+    .then(res=>{
+      console.log(res);
+    })
   }
   const fanIcon =  spin ? <FontAwesomeIcon icon={faFan} size="lg" spin/> : <FontAwesomeIcon icon={faFan} size="lg" />
 
@@ -52,6 +71,12 @@ function Control() {
   //water animation
   // setState does not change value right after called
   const watering = () => {
+    const data = {"volume" : volume};
+    const url = "api/Wartering";
+    api.post(url, data)
+    .then(res=>{
+      console.log(res)
+    })
     setWater("loop")
     setVolume(0)
     setTimeout(()=> {
@@ -72,12 +97,72 @@ function Control() {
 
   //duration
   const changeduration = (duration) => {
-    setDuration(duration)
+    setSelected({
+      "5mins" : "5mins"==duration ? true : false,
+      "10mins" : "10mins"==duration ? true : false,
+      "30mins" : "30mins"==duration ? true : false,
+      "1hour" : "1hour"==duration ? true : false,
+      "6hour" : "6hour"==duration ? true : false,
+      "12hour" : "12hour"==duration ? true : false,
+      "24hour" : "24hour"==duration ? true : false,
+    })
   };
 
-  
+  const confirmduration = () => {
+    Object.keys(selected).forEach((key)=>{
+      if(selected[key]){
+        setDuration(key);
+      }
+    })
+  };
 
+  //get data
+  //fan
+  useEffect(()=>{
+    var url = "api/Fan/";
+    api.get(url)
+    .then(res => {
+      const offset = (Math.floor(res.count/10))*10;
+      url = url + "?offset=" + offset;
+      api.get(url)
+      .then(res=>{
+        const status = res.results[res.results.length-1].switch;
+        if(status == "ON"){
+          setSpin(true)
+        }
+        else{
+          setSpin(false)
+        }
+        setFanHistory(res.results)
+        console.log(res.results)
+      })
+    })
+  },[])
 
+  const fantemplate = fanhistory.map(ele => {
+    return (<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.switch}</div></div></li>)
+  });
+  //fan
+
+  //water
+  useEffect(()=>{
+    var url = "api/Wartering/";
+    api.get(url)
+    .then(res => {
+      const offset = (Math.floor(res.count/10))*10;
+      url = url + "?offset=" + offset;
+      api.get(url)
+      .then(res=>{
+        console.log(res)
+        setWaterHistory(res.results)
+      })
+    })
+  },[])
+
+  const watertemplate = waterhistory.map(ele => {
+    return(<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.volume}ml</div></div></li>)
+  })
+  //water
 
   return (
     <div className="home">
@@ -113,11 +198,7 @@ function Control() {
                   <span className="slider"></span>
                 </label>
                 <ul id="recent">
-                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                    <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                    {fantemplate}
                 </ul>
               </div>
             )
@@ -142,11 +223,7 @@ function Control() {
                       <Button variant="primary" onClick={watering}>Water</Button>
                     </form>
                     <ul id="recent">
-                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-                      <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
+                      {watertemplate}
                     </ul>
                 </div>
               )
@@ -182,18 +259,19 @@ function Control() {
         {
           close => (
             <div className="modal">
-              <button className="close" onClick={close}>
+              <button className="close" onClick={()=>{close(); changeduration(duration)}}>
                 &times;
               </button>
               <div id="duration" >
-                <div tabindex="1" onClick={()=>changeduration("5mins")}>5mins</div>
-                <div tabindex="2" onClick={()=>changeduration("10mins")}>10mins</div>
-                <div tabindex="3" onClick={()=>changeduration("30mins")}>30mins</div>
-                <div tabindex="4" onClick={()=>changeduration("1hour")}>1hour</div>
-                <div tabindex="5" onClick={()=>changeduration("6hour")}>6hour</div>
-                <div tabindex="6" onClick={()=>changeduration("12hour")}>12hour</div>
-                <div tabindex="7" onClick={()=>changeduration("24hour")}>24hour</div>
+                <div className={selected['5mins'] ? "selected" : null} onClick={()=>changeduration("5mins")}>5mins</div>
+                <div className={selected['10mins'] ? "selected" : null} onClick={()=>changeduration("10mins")}>10mins</div>
+                <div className={selected['30mins'] ? "selected" : null} onClick={()=>changeduration("30mins")}>30mins</div>
+                <div className={selected['1hour'] ? "selected" : null} onClick={()=>changeduration("1hour")}>1hour</div>
+                <div className={selected['6hour'] ? "selected" : null} onClick={()=>changeduration("6hour")}>6hour</div>
+                <div className={selected['12hour'] ? "selected" : null} onClick={()=>changeduration("12hour")}>12hour</div>
+                <div className={selected['24hour'] ? "selected" : null} onClick={()=>changeduration("24hour")}>24hour</div>
               </div>
+              <button className="confirm-btn" onClick={()=> {confirmduration(); close();}}>confirm</button>
             </div>
           )
         }
