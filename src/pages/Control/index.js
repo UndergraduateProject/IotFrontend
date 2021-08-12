@@ -12,30 +12,54 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFan} from '@fortawesome/free-solid-svg-icons'
 import { loadAnimation } from "lottie-web";
 import { defineLordIconElement } from "lord-icon-element";
+import api from "../../utils/api"
 
 // register lottie and define custom element
 defineLordIconElement(loadAnimation);
 
 function Control() {
   //icon animation initialize
-  const [spin, setSpin] = useState(true);
+  const [spin, setSpin] = useState();
   const [loop, setLoop] = useState({
     msg : "loop",
     isActive : true,
   })
+  const [fanhistory, setFanHistory] = useState([]);
   const [water, setWater] = useState("");
+  const [waterhistory, setWaterHistory] = useState([]);
+  const [volume, setVolume] = useState(100) ;
   const [duration, setDuration] = useState("30mins");
+  const [selected, setSelected] = useState({
+    "5mins" : false,
+    "10mins" : false,
+    "30mins" : true,
+    "1hour" : false,
+    "6hour" : false,
+    "12hour" : false,
+    "24hour" : false,
+  })
+  const [lightOnOff, setOnOff] = useState(true);
   //get element reference
   var light = useRef(null);
   var slider = useRef(null);
 
-  var [volume, setVolume] = useState(100) ;
 
+  //RGB value
+  const handleColorChange = (color) =>{
+    console.log(color)
+  }
 
   //fan icon animate
   const toSpin = () => {
-    const state = !spin;
     setSpin(!spin);
+    const data = {
+      "switch" : !spin? "ON" : "OFF" 
+    }
+    const url = "api/Fan";
+    api.post(url, data)
+    .then(res=>{
+      console.log(res);
+    })
   }
   const fanIcon =  spin ? <FontAwesomeIcon icon={faFan} size="lg" spin/> : <FontAwesomeIcon icon={faFan} size="lg" />
 
@@ -47,31 +71,98 @@ function Control() {
   //water animation
   // setState does not change value right after called
   const watering = () => {
+    const data = {"volume" : volume};
+    const url = "api/Wartering";
+    api.post(url, data)
+    .then(res=>{
+      console.log(res)
+    })
     setWater("loop")
     setVolume(0)
     setTimeout(()=> {
       setWater("");
-    },4000)
-  }
+    },4000);
+  };
 
 
-  //simulate click on light when click on Col
+  //light on
   const openLight = () => {
-    light.click();
-  }
+    setOnOff(!lightOnOff);
+  };
 
   //camera icon loop
   const active = () => {
     loop.isActive ? setLoop({msg:"", isActive:!loop.isActive}) : setLoop({msg:"loop",isActive:!loop.isActive});
-  }
+  };
 
   //duration
-  const changeduration = (e) => {
-    console.log(e)
-    setDuration(e.target.value)
-  }
+  const changeduration = (duration) => {
+    setSelected({
+      "5mins" : "5mins"==duration ? true : false,
+      "10mins" : "10mins"==duration ? true : false,
+      "30mins" : "30mins"==duration ? true : false,
+      "1hour" : "1hour"==duration ? true : false,
+      "6hour" : "6hour"==duration ? true : false,
+      "12hour" : "12hour"==duration ? true : false,
+      "24hour" : "24hour"==duration ? true : false,
+    })
+  };
 
+  const confirmduration = () => {
+    Object.keys(selected).forEach((key)=>{
+      if(selected[key]){
+        setDuration(key);
+      }
+    })
+  };
 
+  //get data
+  //fan
+  useEffect(()=>{
+    var url = "api/Fan/";
+    api.get(url)
+    .then(res => {
+      const offset = (Math.floor(res.count/10))*10;
+      url = url + "?offset=" + offset;
+      api.get(url)
+      .then(res=>{
+        const status = res.results[res.results.length-1].switch;
+        if(status == "ON"){
+          setSpin(true)
+        }
+        else{
+          setSpin(false)
+        }
+        setFanHistory(res.results)
+        console.log(res.results)
+      })
+    })
+  },[])
+
+  const fantemplate = fanhistory.map(ele => {
+    return (<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.switch}</div></div></li>)
+  });
+  //fan
+
+  //water
+  useEffect(()=>{
+    var url = "api/Wartering/";
+    api.get(url)
+    .then(res => {
+      const offset = (Math.floor(res.count/10))*10;
+      url = url + "?offset=" + offset;
+      api.get(url)
+      .then(res=>{
+        console.log(res)
+        setWaterHistory(res.results)
+      })
+    })
+  },[])
+
+  const watertemplate = waterhistory.map(ele => {
+    return(<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.volume}ml</div></div></li>)
+  })
+  //water
 
   return (
     <div className="home">
@@ -91,22 +182,27 @@ function Control() {
           <div className="data">30%</div>
           <div>Fan</div>
         </Col>} modal>
-          <div >
-            <div className="modal-fan">{fanIcon}</div>
-            <div className="data">30%</div>
-            <div>Fan</div>
-          </div>
-          <label className="switch">
-            <input type="checkbox"  onChange={toSpin} checked={spin}/>
-            <span className="slider"></span>
-          </label>
-          <ul id="recent">
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-          </ul>
+          {
+            close => (
+              <div className="modal">
+                <div >
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+              <div className="modal-fan">{fanIcon}</div>
+              <div className="data">30%</div>
+              <div>Fan</div>
+              </div>
+                <label className="switch">
+                  <input type="checkbox"  onChange={toSpin} checked={spin}/>
+                  <span className="slider"></span>
+                </label>
+                <ul id="recent">
+                    {fantemplate}
+                </ul>
+              </div>
+            )
+          }
         </Popup>
         
         <Popup trigger={<Col>
@@ -114,29 +210,44 @@ function Control() {
           <div className="data">{volume + "ml"}</div>
           <div>Capacity</div>
         </Col>} modal>
-            <lord-icon  src="https://cdn.lordicon.com/oyclgnwc.json" trigger={water} target="div" colors="primary:#9cf4df,secondary:#d1fad7" ></lord-icon>
-            <div className="data water-data">{volume + "ml"}</div>
-            <form >
-              <Slider min={0} max={250} step={1} value={volume} valueLabelDisplay="auto" onChange={slide} ref={ref => slider = ref}/>
-              <Button variant="primary" onClick={watering}>Water</Button>
-            </form>
-            <ul id="recent">
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-              <li><div  className="history"><div>2021.06.25 17:25</div> <div>250ml</div></div></li>
-            </ul>
+            {
+              close => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <lord-icon  src="https://cdn.lordicon.com/oyclgnwc.json" trigger={water} target="div" colors="primary:#9cf4df,secondary:#d1fad7" ></lord-icon>
+                    <div div className="data water-data">{volume + "ml"}</div>
+                    <form >
+                      <Slider min={0} max={250} step={1} value={volume} valueLabelDisplay="auto" onChange={slide} ref={ref => slider = ref}/>
+                      <Button variant="primary" onClick={watering}>Water</Button>
+                    </form>
+                    <ul id="recent">
+                      {watertemplate}
+                    </ul>
+                </div>
+              )
+            }
         </Popup>
         
-        <Popup trigger={<Col onClick={openLight}>
+        <Popup trigger={<Col >
           <div className='titanic titanic-idea' ref={lightref => light = lightref}></div>
           <div className="data">40%</div>
           <div>Light</div>
         </Col>} modal>
-          <CircularColor centerRect={true}/>
-          <div className="data">40%</div>
-          <div>Light</div>
+          {
+            close => (
+              <div className="modal">
+                <button className="close" onClick={close}>&times;</button>
+                <CircularColor centerRect={true} onChange={handleColorChange}/>
+                  <div>Light</div>
+                  <label className="switch">
+                    <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
+                    <span className="slider"></span>
+                  </label>
+              </div>
+            )
+          }
         </Popup>
       </Row>
       <Row className="control-rectangle">
@@ -145,17 +256,25 @@ function Control() {
           <div className="data">{duration}</div>
           <div className="sub">Duration</div>
         </Col>} modal>
-        <form >
-        <select name="duration" onClick={changeduration}>
-        <option>5mins</option>
-            <option>10mins</option>
-            <option selected="selected">30mins</option>
-            <option>1hour</option>
-            <option>6hour</option>
-            <option>12hour</option>
-            <option>24hour</option>
-        </select>
-        </form>
+        {
+          close => (
+            <div className="modal">
+              <button className="close" onClick={()=>{close(); changeduration(duration)}}>
+                &times;
+              </button>
+              <div id="duration" >
+                <div className={selected['5mins'] ? "selected" : null} onClick={()=>changeduration("5mins")}>5mins</div>
+                <div className={selected['10mins'] ? "selected" : null} onClick={()=>changeduration("10mins")}>10mins</div>
+                <div className={selected['30mins'] ? "selected" : null} onClick={()=>changeduration("30mins")}>30mins</div>
+                <div className={selected['1hour'] ? "selected" : null} onClick={()=>changeduration("1hour")}>1hour</div>
+                <div className={selected['6hour'] ? "selected" : null} onClick={()=>changeduration("6hour")}>6hour</div>
+                <div className={selected['12hour'] ? "selected" : null} onClick={()=>changeduration("12hour")}>12hour</div>
+                <div className={selected['24hour'] ? "selected" : null} onClick={()=>changeduration("24hour")}>24hour</div>
+              </div>
+              <button className="confirm-btn" onClick={()=> {confirmduration(); close();}}>confirm</button>
+            </div>
+          )
+        }
         </Popup>
         <Popup trigger={<Col>
           <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
