@@ -29,7 +29,7 @@ function Sidebar() {
         <div className="menu-item" >調控物件</div>
       </Link>
 
-      <Link to="">
+      <Link to="/visualization">
         <div className="menu-item" >分析結果</div>
       </Link>
 

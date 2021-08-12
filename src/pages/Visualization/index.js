@@ -5,9 +5,10 @@ import api from '../../utils/api';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import moment from 'moment';
+import Sidebar from "../../component/Sidebar";
 
 
-const path = "api/Humidtemp/?limit=9999999";
+const path = "api/Humidtemp/?limit=10000";
 
 
 
@@ -42,9 +43,15 @@ function Visualization() {
         noData:{
             text: "DataLarge...Loading..."
         },
-				title:{
-					text:"Humidity",
-				}
+		title:{
+			text:"Humidity",
+			style: {
+				fontSize:  '28px',
+				fontWeight:  'bold',
+				fontFamily:  "SF Pro Display",
+				color:  '#FFFFFF'
+			  },
+		}
       },
 		tempoptions: {
         chart: {
@@ -74,9 +81,15 @@ function Visualization() {
         noData:{
             text: "DataLarge...Loading..."
         },
-				title:{
-					text:"Temperature",
-				}
+		title:{
+			text:"Temperature",
+			style: {
+				fontSize:  '28px',
+				fontWeight:  'bold',
+				fontFamily:  "SF Pro Display",
+				color:  '#FFFFFF'
+			  },
+		}
       },
 	
       humidityseries: [
@@ -372,6 +385,7 @@ function Visualization() {
 
   return (
     <div className="visual-wrapper">
+		<Sidebar />
 		<div id="chart-temperature">
 			<Chart
 				options={state.tempoptions}

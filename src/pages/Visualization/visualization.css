@@ -5,10 +5,13 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 #chart-temperature {
   height: auto;
+  margin-top: 20%;
 }
 
 .toolbar {
@@ -32,8 +35,6 @@
   /*ipad*/
   .visual-wrapper {
     max-width: 768px;
-    left: 50%;
-    margin-left: -384px;
     border-radius: 0px;
   }
 }
@@ -54,6 +55,6 @@
     position: relative;
     max-width: 425px;
     border-radius: 12px;
-    margin-left: 40%;
+    margin-left: 39%;
   }
 }

@@ -231,10 +231,10 @@ function Control() {
         </Popup>
         
         <Popup trigger={<Col >
-          <div className='titanic titanic-idea' ref={lightref => light = lightref}></div>
+          <img src="https://img.icons8.com/ios/50/000000/idea--v2.png"/>
           <div className="data">40%</div>
           <div>Light</div>
-        </Col>} modal>
+        </Col>}   >
           {
             close => (
               <div className="modal">

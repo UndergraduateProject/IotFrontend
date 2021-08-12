@@ -39,7 +39,7 @@ function homepage() {
 
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Link to="/"><Button size="lg" variant="light" className="home_btn">分析結果</Button>{' '}</Link>
+        <Link to="/visualization"><Button size="lg" variant="light" className="home_btn">分析結果</Button>{' '}</Link>
         </Col>
       </Row>
 
