@@ -50,11 +50,9 @@
   box-align: center;
 }
 
-.html,
-body,
-body * {
-  color: white;
-}
+/* .html, body, body *{
+    color: white ;
+} */
 
 /* switch */
 .switch_position {
