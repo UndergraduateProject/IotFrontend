@@ -232,9 +232,9 @@ function Control() {
         
         <Popup trigger={<Col >
           <img src="https://img.icons8.com/ios/50/000000/idea--v2.png"/>
-          <div className="data">40%</div>
+          <div className="data">Green</div>
           <div>Light</div>
-        </Col>}   >
+        </Col>} modal>
           {
             close => (
               <div className="modal">

@@ -6,12 +6,14 @@ import user_icon from "../images/user.png"
 function Sidebar() {
   return (
     <Menu width={ '260px' }>
-      <div className="user">
-        <div>
-          <img  className="user_pic" src={user_icon} alt="" />
+      <Link to="/profile">
+        <div className="user" >
+          <div>
+            <img  className="user_pic" src={user_icon} alt="" />
+          </div>
+          <div className="user-text">User</div>
         </div>
-        <div className="user-text">User</div>
-      </div>
+      </Link>
 
       <Link to="/homepage">
         <div className="menu-item" >首頁</div>

@@ -5,12 +5,14 @@ import tree_icon from "../../images/tree_icon.png"
 import leaf_icon from "../../images/leaf_icon.png"
 import Icon from '@material-ui/core/Icon';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import Sidebar from "../../component/Sidebar"
 
 
 
 function Profile() {
     return (
         <div className="profile_body">
+            <Sidebar />
             <div className="top_block1_profile">帳戶</div>
             <div className="background_profile">
                 <img  className="user_pic_profile" src={user_icon}  />

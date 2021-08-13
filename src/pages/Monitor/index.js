@@ -121,7 +121,7 @@ function Monitor() {
   const lighttemplate = (<div className={selecter["light"] ? "selected monitor_light" : "monitor_light"} onClick={()=>changetemplate("light")}> 
                           <div className="monitor_light2">Light</div>
                           <div><img className="monitor_light_pic" src={light} alt=""/></div>
-                          <div className="monitor_light1">40%</div>
+                          <div className="monitor_light1">Green</div>
                         </div>);
 
   const lightdetail = (<div>
