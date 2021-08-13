@@ -87,6 +87,7 @@ export default function Warning_ct() {
   const [hiLo, setHiLo] = useState ({
     "humidity" : "higher",
     "temperature" : "lower",
+    "brightness" : "lower"
   })
   //select
   const handleChange = (event) => {
@@ -134,27 +135,11 @@ export default function Warning_ct() {
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
           {/* select */}
-          than
-          {/* select */}
-          <FormControl className={classes.formControl}>
-            <Select
-              value={humidity}
-              displayEmpty
-              className={classes.selectEmpty}
-              inputProps={{ "aria-label": "Without label" }}
-            >
-              <MenuItem value="">
-                <em className="select_text">10</em>
-              </MenuItem>
-              <MenuItem value={10}>
-                <div className="select_text">20</div>
-              </MenuItem>
-            </Select>
-            {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
-          %
+          than {' '}
+          <input className="temp_wc" name="humidity" type="text"></input>
+          {' '}%
         </div>
-        {/* select */}
+      
         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
@@ -196,29 +181,11 @@ export default function Warning_ct() {
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
           {/* select */}
-          than
-          {/* select */}
-          <FormControl className={classes.formControl}>
-            <Select
-              value={humidity}
-              onChange={handleChange}
-              displayEmpty
-              className={classes.selectEmpty}
-              inputProps={{ "aria-label": "Without label" }}
-            >
-              <MenuItem value="">
-                <em className="select_text">25</em>
-              </MenuItem>
-              <MenuItem value={10}>
-                <div className="select_text">27</div>
-              </MenuItem>
-
-            </Select>
-            {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
-          °C
+          than {' '}
+          <input className="temp_wc" name="temperature" type="text"></input>
+          {' '}°C
         </div>
-        {/* select */}
+  
         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
@@ -239,16 +206,16 @@ export default function Warning_ct() {
       {/* block3 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Notice me if temperature is
+          Notice me if brightness is
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
-              value={hiLo.temperature}
+              value={hiLo.brightness}
               onChange={handleChange}
               displayEmpty
               className={classes.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
-              name="temperature"
+              name="brightness"
             >
               <MenuItem value="lower">
                 <em className="select_text">lower</em>
@@ -260,29 +227,11 @@ export default function Warning_ct() {
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
           {/* select */}
-          than
-          {/* select */}
-          <FormControl className={classes.formControl}>
-            <Select
-              value={humidity}
-              onChange={handleChange}
-              displayEmpty
-              className={classes.selectEmpty}
-              inputProps={{ "aria-label": "Without label" }}
-            >
-              <MenuItem value="">
-                <em className="select_text">30</em>
-              </MenuItem>
-              <MenuItem value={10}>
-                <div className="select_text">40</div>
-              </MenuItem>
-
-            </Select>
-            {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
-          %
+          than {' '}
+          <input className="temp_wc" name="brightness" type="text"></input>
+          {' '}%
         </div>
-        {/* select */}
+
         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
