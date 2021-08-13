@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./monitor.css";
-import {Container, Row, Col} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import monitor_weather from '../../images/monitor_weather.png';
 import light from '../../images/monitor_light.png';
 import cloud from '../../images/cloud.png';
+import battery from '../../images/battery.png';
 import water from '../../images/monitor_water.png';
+import water_volume from '../../images/water_volume.png';
+import soil from '../../images/soil.png';
 import Sidebar from '../../component/Sidebar'
 import Carousel from 'react-elastic-carousel'
 import styled from "styled-components"
@@ -119,7 +122,7 @@ function Monitor() {
   }
 
   const lighttemplate = (<div className={selecter["light"] ? "selected monitor_light" : "monitor_light"} onClick={()=>changetemplate("light")}> 
-                          <div className="monitor_light2">Light</div>
+                          <div className="monitor_light2">亮度</div>
                           <div><img className="monitor_light_pic" src={light} alt=""/></div>
                           <div className="monitor_light1">40%</div>
                         </div>);
@@ -131,7 +134,7 @@ function Monitor() {
                         </div>);
   
   const temptemplate = (<div className={selecter["temperature"] ? "selected monitor_temp" : "monitor_temp"} onClick={()=>changetemplate("temp")}> 
-                          <div className="monitor_temp2">Temperature</div>
+                          <div className="monitor_temp2">溫度</div>
                           <div><img className="monitor_cloud_pic" src={cloud} alt=""/></div>
                           <div className="monitor_temp1">{data.temperature.toFixed(0)}°C</div>
                         </div>)
@@ -143,7 +146,7 @@ function Monitor() {
                     </div>);
   
   const humiditytemplate = (<div className={selecter["humidity"] ? "selected monitor_humi" : "monitor_humi"} onClick={()=>changetemplate("humid")}> 
-                              <div className="monitor_humi2">Humidity</div>
+                              <div className="monitor_humi2">濕度</div>
                               <div><img className="monitor_water_pic" src={water} alt=""/></div>
                               <div className="monitor_humi1">{data.humidity.toFixed(0)}%</div>
                             </div>)
@@ -152,6 +155,7 @@ function Monitor() {
                         <div>空氣相對濕度:{data.humidity.toFixed(0)}%</div>
                         <div>推薦濕度:</div>
                       </div>);
+
 
 
   return (
@@ -200,15 +204,27 @@ function Monitor() {
             </Item>
             
             <Item>
-              {/* water tank */}
+              <div className="monitor_battery">
+                <div className="monitor_battery2">電量</div>
+                <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
+                <div className="monitor_battery1">87%</div>
+              </div>
             </Item>
 
             <Item>
-              {/* mositure */}
+              <div className="monitor_water_volume">
+                <div className="monitor_water_volume2">水量</div>
+                <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
+                <div className="monitor_water_volume1">45.91%</div>
+              </div>
             </Item>
-
+      
             <Item>
-
+              <div className="monitor_soil">
+                <div className="monitor_soil2">土壤濕度</div>
+                <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
+                <div className="monitor_soil1">10.66%</div>
+              </div>
             </Item>
           </Carousel>
          
