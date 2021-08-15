@@ -105,8 +105,9 @@ function Visualization() {
 			}
 		],
 		current : 0,
-		selection : 'one_month',
+		selection : 'six_months',
 		key: new Date(),
+		period:"daily",
     }
   )
 	
@@ -116,6 +117,7 @@ function Visualization() {
 		options={state.tempoptions}
 		series={state.tempseries}
 		type="line"
+		height="100%"
 		width="100%"
 	/>;
 
@@ -124,6 +126,7 @@ function Visualization() {
 		series={state.humidityseries}
 		type="line"
 		width="100%"
+		height="100%"
 		/>;
 	const [chart, setChart] = useState(0)
 	
@@ -254,6 +257,8 @@ function Visualization() {
 	switch (period){
 		case "weekly" :
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -275,6 +280,8 @@ function Visualization() {
 		
 		case "daily":
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -296,6 +303,8 @@ function Visualization() {
 
 		case "hourly":
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -317,6 +326,8 @@ function Visualization() {
 
 		default :
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -505,17 +516,16 @@ function Visualization() {
 		<Sidebar />
 		<div className="select-custom">
 		<select onChange={changechart}>
-			<option value="">Select: </option>
 			<option value="0">Temperature</option>
 			<option value="1">Humidity</option>
 			<option value="2">Moisture</option>
 		</select>
 		</div>
 		<div className="toolbar">
+        	<div><button onClick={()=>changeDate('ytd')} id="ytd" className={ (state.selection=='ytd' ? 'active' : '')}>YTD</button></div>
         	<div><button onClick={()=>changeDate('one_month')} id="one_month" className={ (state.selection=='one_month' ? 'active' : '')}>1M</button></div>
         	<div><button onClick={()=>changeDate('six_months')} id="six_months" className={ (state.selection=='six_months' ? 'active' : '')}>6M</button></div>
         	<div><button onClick={()=>changeDate('one_year')} id="one_year" className={ (state.selection=='one_year' ? 'active' : '')}>1Y</button></div>
-        	<div><button onClick={()=>changeDate('ytd')} id="ytd" className={ (state.selection=='ytd' ? 'active' : '')}>YTD</button></div>
         	<div><button onClick={()=>changeDate('all')} id="all" className={ (state.selection=='all' ? 'active' : '')}>ALL</button></div>
         </div>
 		<div id="chart">
@@ -531,13 +541,13 @@ function Visualization() {
     </div>
 		
 		<div className="toolbar">
-			<div><button onClick={()=>changePeriod("weekly")}>Weekly</button></div>
-			<div><button onClick={()=>changePeriod("daily")}>Daily</button></div>
-			<div><button onClick={()=>changePeriod("hourly")}>Hourly</button></div>
+			<div><button onClick={()=>changePeriod("weekly")} className={state.period=='weekly' ? 'active' : ''}>Weekly</button></div>
+			<div><button onClick={()=>changePeriod("daily")} className={state.period=='daily' ? 'active' : ''}>Daily</button></div>
+			<div><button onClick={()=>changePeriod("hourly")} className={state.period=='hourly' ? 'active' : ''}>Hourly</button></div>
 		</div>
     </div>
   )
 }
 
-export default Visualization
+export default Visualization;
 
