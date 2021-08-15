@@ -38,7 +38,7 @@ function Detect() {
                 <div className="detect_arrow"> >>> </div>
                 <img className="detect_pc3" src={detect_pc3}/> 
                 <div className="detect_status">Status Analysis</div>
-                <div className="detect_detail">xxx:0.00%  </div>
+                <div className="detect_detail">xxx:0.00%  <br />123 <br /> 456</div>
             </div>
             <Carousel itemPadding={[0, 10]} className="detect_slider_adjust" itemsToShow={3}>
                 <Item>
