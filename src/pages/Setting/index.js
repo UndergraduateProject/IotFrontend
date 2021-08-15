@@ -109,14 +109,10 @@ export default function Warning_ct() {
       {/* block1 */}
 
 
-      {/* block2 */}
-      <div className="top_block2">
-        
-
+      {/* <div className="top_block2">
         <div className="text_left">
           開啟音效
         </div>
-         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
             control={
@@ -126,22 +122,15 @@ export default function Warning_ct() {
                 name="checkedB"
               />
             }
-            // label="iOS style"
           />
         </FormGroup>
-        {/* switch */}
-      </div>
-      {/* block2 */}
+      </div> */}
 
 
-      {/* block3 */}
-      <div className="top_block2">
-        
-
+      {/* <div className="top_block2">
         <div className="text_left">
           自動上傳資料
         </div>
-         {/* switch */}
         <FormGroup className="switch_position">
           <FormControlLabel
             control={
@@ -151,12 +140,9 @@ export default function Warning_ct() {
                 name="checkedC"
               />
             }
-            // label="iOS style"
           />
         </FormGroup>
-        {/* switch */}
-      </div>
-      {/* block3 */}
+      </div> */}
 
 
       {/* block4 */}

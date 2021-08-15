@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import user_icon from "../images/user.png"
 
 function Sidebar() {
+  const username = localStorage.getItem('username');
   return (
     <Menu width={ '260px' }>
       <Link to="/profile">
@@ -11,7 +12,7 @@ function Sidebar() {
           <div>
             <img  className="user_pic" src={user_icon} alt="" />
           </div>
-          <div className="user-text">User</div>
+          <div className="user-text">{username}</div>
         </div>
       </Link>
 

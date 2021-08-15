@@ -1,11 +1,16 @@
-@media only screen and (max-width: 768px) {  /*for width<768 (include mobile phone)*/
+a:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  /*for width<768 (include mobile phone)*/
   .bm-burger-button {
     position: fixed;
     width: 36px;
     height: 30px;
     left: 36px;
     top: 36px;
-  } 
+  }
 
   .bm-menu {
     background: #6a7b62;
@@ -17,11 +22,12 @@
   .bm-menu-wrap {
     height: 100%;
     left: 50%;
-    margin-left: -50vw;  
+    margin-left: -50vw;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {  /*for 768<width<1024 */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /*for 768<width<1024 */
   .bm-burger-button {
     position: fixed;
     width: 36px;
@@ -41,11 +47,12 @@
   .bm-menu-wrap {
     height: 100%;
     left: 50%;
-    margin-left: -382px;  
+    margin-left: -382px;
   }
 }
 
-@media only screen and (min-width: 1024px) {  /*for width>1024 */
+@media only screen and (min-width: 1024px) {
+  /*for width>1024 */
   .bm-burger-button {
     position: fixed;
     width: 36px;
@@ -53,8 +60,8 @@
     top: 36px;
     left: 50%;
     margin-left: -190px;
-  } 
-  
+  }
+
   .bm-menu {
     background: #6a7b62;
     padding: 2.5em 0em 0;
@@ -67,9 +74,10 @@
     left: 50%;
     margin-left: -212px;
   }
-} 
- 
-@media only screen and (width: 768px) and (height: 1024px) {   /*ipad*/
+}
+
+@media only screen and (width: 768px) and (height: 1024px) {
+  /*ipad*/
   .bm-burger-button {
     position: fixed;
     width: 36px;
@@ -80,7 +88,7 @@
   }
 
   .bm-menu {
-    width:350px;
+    width: 350px;
     background: #6a7b62;
     padding: 2.5em 0em 0;
     font-size: 1.15em;
@@ -90,40 +98,40 @@
   .bm-menu-wrap {
     height: 100%;
     left: 50%;
-    margin-left: -382px;  
+    margin-left: -382px;
   }
 
-  .menu-item{
-    font-size:35px !important;
-    padding:20px !important;
+  .menu-item {
+    font-size: 35px !important;
+    padding: 20px !important;
     padding-left: 40px !important;
   }
 
-  .user{
+  .user {
     height: 110px !important;
     width: 350px !important;
-  } 
+  }
 
-  .user_pic{
+  .user_pic {
     width: 97px !important;
 
-    margin-top:-20px;
+    margin-top: -20px;
     margin-left: 42px !important;
   }
 
-  .user-text{
+  .user-text {
     left: 170px !important;
-    top:-85px !important;
-    font-size:50px !important;
+    top: -85px !important;
+    font-size: 50px !important;
   }
 
-  .setting{
+  .setting {
     width: 350px !important;
   }
 }
 
- 
-@media only screen and (width: 1024px) and (height:1366px) {   /*ipad pro*/
+@media only screen and (width: 1024px) and (height: 1366px) {
+  /*ipad pro*/
   .bm-burger-button {
     position: fixed;
     width: 50px;
@@ -134,7 +142,7 @@
   }
 
   .bm-menu {
-    width:480px;
+    width: 480px;
     background: #6a7b62;
     padding: 2.5em 0em 0;
     font-size: 1.15em;
@@ -144,38 +152,37 @@
   .bm-menu-wrap {
     height: 100%;
     left: 50%;
-    margin-left: -512px;  
+    margin-left: -512px;
   }
 
-  .menu-item{
-    font-size:45px !important;
-    padding:25px !important;
+  .menu-item {
+    font-size: 45px !important;
+    padding: 25px !important;
     padding-left: 80px !important;
   }
 
-  .user{
+  .user {
     height: 150px !important;
     width: 480px !important;
-    border-bottom: solid  2px #a1a999 !important;
-  } 
+    border-bottom: solid 2px #a1a999 !important;
+  }
 
-  .user_pic{
+  .user_pic {
     width: 135px !important;
-    margin-top:-20px;
+    margin-top: -20px;
     margin-left: 82px !important;
   }
 
-  .user-text{
+  .user-text {
     left: 260px !important;
-    top:-120px !important;
-    font-size:65px !important;
+    top: -120px !important;
+    font-size: 65px !important;
   }
 
-  .setting{
+  .setting {
     width: 350px !important;
   }
 }
-
 
 /* .bm-burger-button {
   position: fixed;
@@ -217,40 +224,40 @@
 
 /* Styling of overlay */
 .bm-overlay {
-  background:transparent !important;
+  background: transparent !important;
 }
 
 /*data of menu*/
-.menu-item{
-  font-size:23px;
-  color:white;
-  padding:15px;
+.menu-item {
+  font-size: 23px;
+  color: white;
+  padding: 15px;
   padding-left: 30px;
 }
 
-.user{
+.user {
   height: 92px;
   width: 240px;
-  border-bottom: solid  1px #a1a999;
-} 
+  border-bottom: solid 1px #a1a999;
+}
 
-.user_pic{
-  margin-top:-20px;
+.user_pic {
+  margin-top: -20px;
   margin-left: 30px;
 }
 
-.user-text{
-  width:5px;
-  color:white;
+.user-text {
+  width: 5px;
+  color: white;
   left: 135px;
-  top:-65px;
-  font-size:35px;
+  top: -65px;
+  font-size: 35px;
   position: relative;
 }
 
-.setting{
+.setting {
   padding-top: 15px;
   height: 100px;
   width: 240px;
-  border-top:solid  1px #a1a999 ;
+  border-top: solid 1px #a1a999;
 }
