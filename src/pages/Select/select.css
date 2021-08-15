@@ -9,9 +9,10 @@
   position: absolute;
 }
 
-@media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
- 
-  .select_plant{
+@media screen and (max-width: 768px) {
+  /*width<768 (for laptop's width<768 and mobile phone)*/
+
+  .select_plant {
     height: 170px;
     width: 315px;
     left: 50%;
@@ -19,15 +20,13 @@
     margin-top: 10px;
     margin-left: -157.5px;
     border-radius: 12px;
-    border-color:white;
-    background-color:transparent;
-    border-width:2px;
-    border-style:solid;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
     position: relative;
   }
-  
 
-  
   /* 
   .left{
     float: left;
@@ -38,10 +37,9 @@
     float: right;
     width: 46vw;
   } */
-  
-  
-  .select_potato_pic{
-    left:40px;
+
+  .select_potato_pic {
+    left: 40px;
     top: 1vh;
     position: absolute;
     width: 90px;
@@ -98,22 +96,20 @@
 
   .select_week {
     font-size: 20px;
-    color:#5e3c00;
-    text-decoration:underline;
+    color: #5e3c00;
     position: relative;
-  
   }
 
   .select_evaluation {
     font-size: 17px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     position: relative;
   }
-  
-  .select_evaluation_ans{
+
+  .select_evaluation_ans {
     width: 180px;
     font-size: 10px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     /* word-break:keep-all; */
     position: relative;
   }
@@ -125,35 +121,36 @@
     font-size: 10px;
     margin-top: 12px;
     left: 40px;
-    position:relative;
+    position: relative;
     border: none;
     border-radius: 18px;
   }
 }
 
-  @media only screen and (min-width: 768px) { /*for laptop's width>768 */
-    .body_select  {
-      max-width: 768px;
-      left:50%;
-      margin-left: -384px;
-      border-radius: 0px; 
-    }
-  
-    .select_plant{
-      top:60px;
-      margin-top: 10px;
-      height: 170px;
-      width: 315px;
-      left:50%;
-      margin-left: -157.5px;  
-      border-radius: 12px;
-      border-color:white;
-      background-color:transparent;
-      border-width:2px;
-      border-style:solid;
-      position: relative;
-    }
-/*     
+@media only screen and (min-width: 768px) {
+  /*for laptop's width>768 */
+  .body_select {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px;
+  }
+
+  .select_plant {
+    top: 60px;
+    margin-top: 10px;
+    height: 170px;
+    width: 315px;
+    left: 50%;
+    margin-left: -157.5px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+  }
+  /*     
     .select_plant2{
       top: 80px;
     }
@@ -172,100 +169,95 @@
       float: right;
       width: 46vw;
     } */
-    
-    
-    .select_potato_pic{
-      left:40px;
-      top: 1vh;
-      position: absolute;
-      width:90px;
-    
-    } 
-    
-    .select_title{
-      font-size: 25px;
-      font-weight:bold;
-      color:#050244;
-      padding-left:50px;
-      position: absolute;
-      top:88px;
-    }
-    
-    
-    .select_level{
-      font-size: 15px;
-      font-weight:bold;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:118px;
-      padding-left:32px;
-    }
-    
-    .select_cost{
-      font-size: 15px;
-      font-weight:bold;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:118px;
-      padding-left:100px;
-    }
-    
-    .select_level_ans{
-      font-size: 12px;
-      text-transform:uppercase;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:133px;
-      padding-left:37px;
-    }
-    
-    .select_cost_ans{
-      font-size: 12px;
-      text-transform:uppercase;
-      color:#6C6C6C;
-      position: absolute;
-      float:left;
-      top:133px;
-      padding-left:105px;
-    }
-    
-    .select_week{
-      font-size: 20px;
-      color:#5e3c00;
-      text-decoration:underline;
-      position: relative;
-    
-    }
-    
-    .select_evaluation{
-      font-size: 17px;
-      color:#6C6C6C;
-      position: relative;
-    }
-    
-    .select_evaluation_ans{
-      font-size: 10px;
-      color:#6C6C6C;
-      /* word-break:keep-all; */
-      width: 180px;
-      position: relative;
-    }
-    
-    .select_btn{
-      background-color:#7d5b00;
-      font-weight: bold;
-      text-align: center;
-      font-size: 10px;
-      height: 24px;
-      left:40px;
-      margin-top: 12px;
-      position: relative;
-      border: none;
-      border-radius: 18px;
-    }
+
+  .select_potato_pic {
+    left: 40px;
+    top: 1vh;
+    position: absolute;
+    width: 90px;
+  }
+
+  .select_title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #050244;
+    padding-left: 50px;
+    position: absolute;
+    top: 88px;
+  }
+
+  .select_level {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 118px;
+    padding-left: 32px;
+  }
+
+  .select_cost {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 118px;
+    padding-left: 100px;
+  }
+
+  .select_level_ans {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 133px;
+    padding-left: 37px;
+  }
+
+  .select_cost_ans {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 133px;
+    padding-left: 105px;
+  }
+
+  .select_week {
+    font-size: 20px;
+    color: #5e3c00;
+    position: relative;
+  }
+
+  .select_evaluation {
+    font-size: 17px;
+    color: #6c6c6c;
+    position: relative;
+  }
+
+  .select_evaluation_ans {
+    font-size: 10px;
+    color: #6c6c6c;
+    /* word-break:keep-all; */
+    width: 180px;
+    position: relative;
+  }
+
+  .select_btn {
+    background-color: #7d5b00;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    height: 24px;
+    left: 40px;
+    margin-top: 12px;
+    position: relative;
+    border: none;
+    border-radius: 18px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -367,13 +359,13 @@
 
   .select_evaluation {
     font-size: 17px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     position: relative;
   }
 
   .select_evaluation_ans {
     font-size: 10px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     /* word-break:keep-all; */
     width: 180px;
     position: relative;
@@ -385,7 +377,7 @@
     text-align: center;
     font-size: 10px;
     height: 24px;
-    left:40px;
+    left: 40px;
     margin-top: 12px;
     position: relative;
     border: none;
@@ -399,25 +391,24 @@
     max-width: 768px;
     left: 50%;
     margin-left: -384px;
-    border-radius: 0px; 
+    border-radius: 0px;
   }
 
-
-.select_plant{
-  top:60px;
-  margin-top: 10px;
-  height: 225px;
-  width: 500px;
-  left:50%;
-  margin-left: -250px;  
-  border-radius: 12px;
-  border-color:white;
-  background-color:transparent;
-  border-width:2px;
-  border-style:solid;
-  position: relative;
-}
-/* 
+  .select_plant {
+    top: 60px;
+    margin-top: 10px;
+    height: 225px;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+  }
+  /* 
 .select_plant2{
   top: 80px;
 }
@@ -462,70 +453,68 @@
     padding-left: 55px;
   }
 
-.select_week{
-  font-size: 30px;
-  color:#5e3c00;
-  text-decoration:underline;
-  position: relative;
-}
+  .select_week {
+    font-size: 30px;
+    color: #5e3c00;
+    position: relative;
+  }
 
-.select_cost {
-  font-size: 20px;
-  font-weight: bold;
-  color: #6c6c6c;
-  position: absolute;
-  float: left;
-  top: 170px;
-  padding-left: 140px;
-}
+  .select_cost {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 170px;
+    padding-left: 140px;
+  }
 
-.select_level_ans {
-  font-size: 15px;
-  text-transform: uppercase;
-  color: #6c6c6c;
-  position: absolute;
-  float: left;
-  top: 195px;
-  padding-left: 64px;
-}
+  .select_level_ans {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 195px;
+    padding-left: 64px;
+  }
 
-.select_cost_ans {
-  font-size: 15px;
-  text-transform: uppercase;
-  color: #6c6c6c;
-  position: absolute;
-  float: left;
-  top: 195px;
-  padding-left: 150px;
-}
+  .select_cost_ans {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    position: absolute;
+    float: left;
+    top: 195px;
+    padding-left: 150px;
+  }
 
-.select_evaluation{
-  font-size: 27px;
-  color:#6C6C6C;
-  position: relative;
-}
+  .select_evaluation {
+    font-size: 27px;
+    color: #6c6c6c;
+    position: relative;
+  }
 
-.select_evaluation_ans{
-  font-size: 18px;
-  color:#6C6C6C;
-  /* word-break:keep-all; */
-  width: 250px;
-  position: relative;
-}
+  .select_evaluation_ans {
+    font-size: 18px;
+    color: #6c6c6c;
+    /* word-break:keep-all; */
+    width: 250px;
+    position: relative;
+  }
 
-.select_btn{
-  background-color:#7d5b00;
-  font-weight: bold;
-  text-align: center;
-  font-size: 20px;
-  height: 36px;
-  left:70px;
-  margin-top: 16px;
-  position: relative;
-  border: none;
-  border-radius: 18px;
-}
-
+  .select_btn {
+    background-color: #7d5b00;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    height: 36px;
+    left: 70px;
+    margin-top: 16px;
+    position: relative;
+    border: none;
+    border-radius: 18px;
+  }
 }
 
 @media only screen and (width: 1024px) and (height: 1366px) {
@@ -625,22 +614,21 @@
 
   .select_week {
     font-size: 40px;
-    color:#5e3c00;
-    text-decoration:underline;
+    color: #5e3c00;
     position: relative;
   }
 
   .select_evaluation {
     font-size: 32px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     position: relative;
   }
 
   .select_evaluation_ans {
     font-size: 25px;
-    color:#6C6C6C;
+    color: #6c6c6c;
     /* word-break:keep-all; */
-    width:350px;
+    width: 350px;
     position: relative;
   }
 
@@ -651,8 +639,8 @@
     font-size: 26px;
     height: 45px;
     width: 120px;
-    left:100px;
-    top:10px;
+    left: 100px;
+    top: 10px;
     position: relative;
     border: none;
     border-radius: 18px;

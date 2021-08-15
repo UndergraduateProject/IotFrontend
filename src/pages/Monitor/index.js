@@ -50,6 +50,9 @@ function Monitor() {
     "light": true,
     "temperature" : false,
     "humidity" : false,
+    "moisture" : false,
+    "volume" : false,
+    "battery" : false,
   })
 
   useEffect(()=>{   
@@ -108,23 +111,38 @@ function Monitor() {
         setTemplate(humiditytemplate);
         setDetail(humiddetail);
         break;
-      
+
+      case "moisture":
+        setTemplate(moisturetemplate);
+        break;
+
+      case "volume":
+        setTemplate(volumetemplate);
+        break;
+
+      case "battery":
+        setTemplate(batterytemplate);
+        break;
+
       default:
         setTemplate(lighttemplate);
         setDetail(lightdetail);
         break;
     }
     setSelect({
-      "light": "light" == string ? true:false,
-      "temperature" : "temp" == string ? true:false,
-      "humidity" : "humid" == string ? true:false,
+      "light": "light" == string ? true: false,
+      "temperature" : "temp" == string ? true: false,
+      "humidity" : "humid" == string ? true: false,
+      "moisture" : "moisture" == string ? true: false,
+      "volume" : "volume" == string ? true: false,
+      "battery" : "battery" == string? true: false,
     })
   }
 
   const lighttemplate = (<div className={selecter["light"] ? "selected monitor_light" : "monitor_light"} onClick={()=>changetemplate("light")}> 
                           <div className="monitor_light2">亮度</div>
                           <div><img className="monitor_light_pic" src={light} alt=""/></div>
-                          <div className="monitor_light1">40%</div>
+                          <div className="monitor_light1">Green</div>
                         </div>);
 
   const lightdetail = (<div>
@@ -155,6 +173,24 @@ function Monitor() {
                         <div>空氣相對濕度:{data.humidity.toFixed(0)}%</div>
                         <div>推薦濕度:</div>
                       </div>);
+
+  const batterytemplate = (<div className={selecter["battery"] ? "selected monitor_battery" : "monitor_battery"} onClick={()=>changetemplate("battery")}>
+                            <div className="monitor_battery2">電量</div>
+                            <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
+                            <div className="monitor_battery1">87%</div>
+                          </div>)                    
+  
+  const volumetemplate = (<div className={selecter["volume"] ? "selected monitor_water_volume" : "monitor_water_volume"} onClick={()=>changetemplate("volume")}>
+                            <div className="monitor_water_volume2">水量</div>
+                            <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
+                            <div className="monitor_water_volume1">45 %</div>
+                          </div>)
+  
+  const moisturetemplate = (<div className={selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"} onClick={()=>changetemplate("moisture")}>
+                              <div className="monitor_soil2">土壤濕度</div>
+                              <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
+                              <div className="monitor_soil1">10%</div>
+                            </div>)
 
 
 
@@ -202,29 +238,17 @@ function Monitor() {
             <Item>
               {humiditytemplate}
             </Item>
-            
-            <Item>
-              <div className="monitor_battery">
-                <div className="monitor_battery2">電量</div>
-                <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
-                <div className="monitor_battery1">87%</div>
-              </div>
-            </Item>
 
             <Item>
-              <div className="monitor_water_volume">
-                <div className="monitor_water_volume2">水量</div>
-                <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
-                <div className="monitor_water_volume1">45.91%</div>
-              </div>
+              {volumetemplate}
             </Item>
       
             <Item>
-              <div className="monitor_soil">
-                <div className="monitor_soil2">土壤濕度</div>
-                <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
-                <div className="monitor_soil1">10.66%</div>
-              </div>
+              {moisturetemplate}
+            </Item>
+
+            <Item>
+              {batterytemplate}
             </Item>
           </Carousel>
          
