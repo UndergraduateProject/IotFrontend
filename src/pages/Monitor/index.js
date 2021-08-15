@@ -39,7 +39,7 @@ const Item = styled.div`
 
 
 function Monitor() {
-  const [weather, setWeather] = useState();
+  const [weather, setWeather] = useState("載入中");
   const [template, setTemplate] = useState();
   const [detail, setDetail] = useState();
   const [data, setData] = useState({
@@ -90,7 +90,9 @@ function Monitor() {
       return res.json();
     })
     .then(data=>{
-      setWeather(data.records.location[0].weatherElement[20].elementValue)
+      setWeather(data.records.location[0].weatherElement[20].elementValue.toString() + "  " + (parseInt(data.records.location[0].weatherElement[3].elementValue)).toFixed(0)+"°C")
+      console.log(typeof(data.records.location[0].weatherElement[3].elementValue))
+      console.log(data.records.location[0])
     })
   })
 
