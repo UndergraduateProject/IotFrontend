@@ -10,7 +10,10 @@
 
 .monitor_background .monitor_light,
 .monitor_background .monitor_humi,
-.monitor_background .monitor_temp {
+.monitor_background .monitor_temp,
+.monitor_background .monitor_battery,
+.monitor_background .monitor_water_volume,
+.monitor_background .monitor_soil {
   width: 50%;
   height: 100%;
   top: 0px;
@@ -234,7 +237,7 @@ button {
     width: 140px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #668800, #E0FFFF);
+    background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -272,7 +275,7 @@ button {
     width: 140px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #838BB2,white);
+    background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -310,7 +313,7 @@ button {
     width: 140px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to top, #8B4513, white);
+    background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -320,7 +323,7 @@ button {
   .monitor_soil2 {
     top: 2vh;
     left: 5%;
-    font-size: xx-large;
+    font-size: 1.5em;
     position: absolute;
   }
 
@@ -528,7 +531,7 @@ button {
     width: 150px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #668800, #E0FFFF);
+    background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -566,7 +569,7 @@ button {
     width: 150px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #838BB2,white);
+    background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -604,7 +607,7 @@ button {
     width: 150px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to top, #8B4513, white);
+    background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -829,7 +832,7 @@ button {
     width: 150px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #668800, #E0FFFF);
+    background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -866,7 +869,7 @@ button {
     width: 150px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #838BB2,white);
+    background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -903,7 +906,7 @@ button {
     width: 150px;
     height: 190px;
     border-radius: 12px;
-    background-image: linear-gradient(to top, #8B4513, white);
+    background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -1136,7 +1139,7 @@ button {
     width: 210px;
     height: 260px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #668800, #E0FFFF);
+    background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -1175,7 +1178,7 @@ button {
     width: 210px;
     height: 260px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #838BB2,white);
+    background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -1214,7 +1217,7 @@ button {
     width: 210px;
     height: 260px;
     border-radius: 12px;
-    background-image: linear-gradient(to top, #8B4513, white);
+    background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -1460,7 +1463,7 @@ button {
     width: 300px;
     height: 360px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #668800, #E0FFFF);
+    background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -1499,7 +1502,7 @@ button {
     width: 300px;
     height: 360px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, #838BB2,white);
+    background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -1538,7 +1541,7 @@ button {
     width: 300px;
     height: 360px;
     border-radius: 12px;
-    background-image: linear-gradient(to top, #8B4513, white);
+    background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
