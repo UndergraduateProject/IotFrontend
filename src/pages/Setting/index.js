@@ -113,7 +113,6 @@ export default function Setting() {
         <div className="text_left">
           開啟音效
         </div>
-         {/* switch */}
         <FormGroup className="switch_position_setting">
           <FormControlLabel
             control={
@@ -132,7 +131,6 @@ export default function Setting() {
         <div className="text_left">
           自動上傳資料
         </div>
-        {/* switch */}
         <FormGroup className="switch_position_setting">
           <FormControlLabel
             control={
