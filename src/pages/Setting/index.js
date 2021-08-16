@@ -66,7 +66,7 @@ const IOSSwitch = withStyles((theme) => ({
 })
 //switch
 
-export default function Warning_ct() {
+export default function Setting() {
  
   // switch
   const [state, setState] = React.useState({
@@ -81,7 +81,7 @@ export default function Warning_ct() {
   // switch
 
   return (
-    <div className="body_wc">
+    <div className="body_setting">
       <Sidebar />
       {/* block1 */}
       <div className="top_block1">設定</div>
@@ -92,7 +92,7 @@ export default function Warning_ct() {
           開啟通知
         </div>
          {/* switch */}
-        <FormGroup className="switch_position">
+        <FormGroup className="switch_position_setting">
           <FormControlLabel
             control={
               <IOSSwitch
@@ -113,7 +113,8 @@ export default function Warning_ct() {
         <div className="text_left">
           開啟音效
         </div>
-        <FormGroup className="switch_position">
+         {/* switch */}
+        <FormGroup className="switch_position_setting">
           <FormControlLabel
             control={
               <IOSSwitch
@@ -131,7 +132,8 @@ export default function Warning_ct() {
         <div className="text_left">
           自動上傳資料
         </div>
-        <FormGroup className="switch_position">
+        {/* switch */}
+        <FormGroup className="switch_position_setting">
           <FormControlLabel
             control={
               <IOSSwitch
