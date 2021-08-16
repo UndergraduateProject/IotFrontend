@@ -41,7 +41,7 @@ function Profile() {
             </div>
 
             <div className="block_bottom_1">
-                <div className="logout_profile" onClick={logout}>登出</div>
+                <button className="logout_profile" onClick={logout}>登出</button>
             </div>
 
 
