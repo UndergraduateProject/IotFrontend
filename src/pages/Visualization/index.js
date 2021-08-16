@@ -9,7 +9,7 @@ import Sidebar from "../../component/Sidebar";
 
 
 const path = "api/Humidtemp/?limit=99999999";
-
+const today = new Date();
 
 
 function Visualization() {
@@ -38,7 +38,9 @@ function Visualization() {
           },
         xaxis: {
           type: 'datetime',
-		  tickPlacement:'on',
+		  		tickPlacement:'on',
+					min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+					max: today,
         },
         noData:{
             text: "DataLarge...Loading..."
@@ -75,8 +77,10 @@ function Visualization() {
             }
           },
         xaxis: {
-			type: 'datetime',
-			tickPlacement:'on',
+					type: 'datetime',
+					tickPlacement:'on',
+					min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+					max: today,
         },
         noData:{
             text: "DataLarge...Loading..."
@@ -386,7 +390,6 @@ function Visualization() {
 	}
 
   function changeDate(timeline){
-	const today = new Date();
 	switch (timeline) {
 		case 'one_month':
 			setState({

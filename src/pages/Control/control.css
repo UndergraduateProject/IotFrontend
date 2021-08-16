@@ -562,4 +562,26 @@ input:checked + .slider:before {
     margin-top: 15%;
     margin-left: 30%;
   }
+
+  /* scrollbar */
+  /* width */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  *::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  /* Handle */
+  *::-webkit-scrollbar-thumb {
+    background: #888;
+    height: auto;
+  }
+
+  /* Handle on hover */
+  *::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
