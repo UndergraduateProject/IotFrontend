@@ -12,10 +12,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFan} from '@fortawesome/free-solid-svg-icons'
 import { loadAnimation } from "lottie-web";
 import { defineLordIconElement } from "lord-icon-element";
+import { Link } from "react-router-dom"
 import api from "../../utils/api"
+import socketIOClient from "socket.io-client";
+
+const ColorHelper = require('color-to-name');
+
 
 // register lottie and define custom element
 defineLordIconElement(loadAnimation);
+
+// socket
+const endpoint = "http://140.117.71.98:4001"
+const socket = socketIOClient(endpoint);
+const username = localStorage.getItem('username');
 
 function Control() {
   //icon animation initialize
@@ -29,6 +39,7 @@ function Control() {
   const [waterhistory, setWaterHistory] = useState([]);
   const [volume, setVolume] = useState(100) ;
   const [duration, setDuration] = useState("30mins");
+  const [color, setColor] = useState("Green");
   const [selected, setSelected] = useState({
     "5mins" : false,
     "10mins" : false,
@@ -45,17 +56,29 @@ function Control() {
 
 
   //RGB value
+  const hexToRgb = hex =>
+  hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+             ,(m, r, g, b) => '#' + r + r + g + g + b + b)
+    .substring(1).match(/.{2}/g)
+    .map(x => parseInt(x, 16))
+
+  
   const handleColorChange = (color) =>{
-    console.log(color)
+    const rgb = hexToRgb(color)
+    console.log(ColorHelper.findClosestColor(color))
+    setColor(ColorHelper.findClosestColor(color).name)
+    socket.emit("light",{"R":rgb[0], "G":rgb[1],"B":rgb[2], "Brightness":"100",})
+    console.log(hexToRgb(color))
   }
 
   //fan icon animate
   const toSpin = () => {
     setSpin(!spin);
     const data = {
-      "switch" : !spin? "ON" : "OFF" 
+      "switch" : !spin? "ON" : "OFF",
+      "controller" : username, 
     }
-    const url = "api/Fan";
+    const url = "api/Fan/";
     api.post(url, data)
     .then(res=>{
       console.log(res);
@@ -71,8 +94,11 @@ function Control() {
   //water animation
   // setState does not change value right after called
   const watering = () => {
-    const data = {"volume" : volume};
-    const url = "api/Wartering";
+    const data = {
+      "volume" : volume,
+      "controller" : username,
+    };
+    const url = "api/Wartering/";
     api.post(url, data)
     .then(res=>{
       console.log(res)
@@ -82,6 +108,7 @@ function Control() {
     setTimeout(()=> {
       setWater("");
     },4000);
+    socket.emit("water","on")
   };
 
 
@@ -232,7 +259,7 @@ function Control() {
         
         <Popup trigger={<Col >
           <img src="https://img.icons8.com/ios/50/000000/idea--v2.png"/>
-          <div className="data">Green</div>
+          <div className="data">{color}</div>
           <div>Light</div>
         </Col>} modal>
           {
@@ -276,12 +303,14 @@ function Control() {
           )
         }
         </Popup>
-        <Popup trigger={<Col>
-          <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
-          </lord-icon>
-          <div className="data">Camera</div>
-          <div className="sub">Active</div>
-        </Col>} modal></Popup>
+          <Col>
+            <Link to="/camera">
+              <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
+              </lord-icon>
+              <div className="data">Camera</div>
+              <div className="sub">Active</div>
+            </Link>
+          </Col>
       </Row>
       <Row>
         <button className="power-btn">Power On</button>

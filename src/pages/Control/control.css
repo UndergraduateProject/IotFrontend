@@ -311,12 +311,17 @@ input:checked + .slider:before {
   }
 
   .control-square img {
-    height: 30%;
+    height: 40%;
     width: 60%;
   }
 
   .data {
     font-size: 175%;
+    color: #282b3a;
+    font-weight: bold;
+  }
+
+  .data span {
     color: #282b3a;
     font-weight: bold;
   }

@@ -7,7 +7,10 @@ import x from "../../images/x.png";
 import flash from "../../images/flash.png";
 import turn_camera from "../../images/turn_camera.png";
 import left_arrow from "../../images/left_arrow.png";
+import up_arrow from "../../images/up_arrow.png";
+import down_arrow from "../../images/down_arrow.png";
 import right_arrow from "../../images/right_arrow.png";
+import { Link } from "react-router-dom"
 import shutter from "../../images/shutter.png";
 
 
@@ -103,24 +106,26 @@ function Camera() {
     videoRef.current.play();
   }
 
+  const slide = () => {
+    console.log("test")
+  }
+
   return(
     <div className="body_camera">
-      <Container>
-        <Row>
-          <Col className="camera_top"><img className="camera_pic1" src={ x }/></Col>
-          <Col className="camera_top"><img className="camera_pic2" src={ flash }/></Col>
-          <Col className="camera_top"><img className="camera_pic3" src={ turn_camera }/></Col>
+        <Row className="camera_top">
+          <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
+          <Col ><img className="camera_pic2" src={ flash }/></Col>
+          <Col ><img className="camera_pic3" src={ turn_camera }/></Col>
 
         </Row>
         <Row>
           <Col><img className="body_camera" src={ plant }/></Col>
         </Row>
 
-        <Row>
-          <Col><img className="left_arrow" src={ left_arrow }/></Col>
-        </Row>
-        <Row>
-          <Col><img className="left_arrow" src={ left_arrow }/></Col>
+
+        
+        <Row className="controller">
+          <Col><img className="left_arrow" src={ left_arrow } onClick={slide}/></Col>
           <Col><img className="camera_shutter" src={ shutter }/></Col>
           <Col><img className="right_arrow" src={ right_arrow }/></Col>
 
@@ -131,7 +136,6 @@ function Camera() {
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
       </div> */}
-      </Container>
     </div>
   )
 }
