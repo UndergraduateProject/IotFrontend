@@ -3,10 +3,10 @@ const API_URL = "http://140.117.71.98:8000/";
 // default using GET
 const apiFetch = (url, method = 'GET', data = {}) => {
   const options = {
-    'method' : method
+    'method' : method,
   };
   options.headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   };
   // const token = localStorage.clear(); // clear all localStorage data
   // we will store 'token' in localStorage which is a authentication mechanism on server
