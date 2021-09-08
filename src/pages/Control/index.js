@@ -15,6 +15,7 @@ import { defineLordIconElement } from "lord-icon-element";
 import { Link } from "react-router-dom"
 import api from "../../utils/api"
 import socketIOClient from "socket.io-client";
+import useFitText from "use-fit-text";
 
 const ColorHelper = require('color-to-name');
 
@@ -26,6 +27,11 @@ defineLordIconElement(loadAnimation);
 const endpoint = "http://140.117.71.98:4001"
 const socket = socketIOClient(endpoint);
 const username = localStorage.getItem('username');
+
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
 
 function Control() {
   //icon animation initialize
@@ -39,7 +45,7 @@ function Control() {
   const [waterhistory, setWaterHistory] = useState([]);
   const [volume, setVolume] = useState(100) ;
   const [duration, setDuration] = useState("30mins");
-  const [color, setColor] = useState("Green");
+  const [color, setColor] = useState();
   const [selected, setSelected] = useState({
     "5mins" : false,
     "10mins" : false,
@@ -50,6 +56,11 @@ function Control() {
     "24hour" : false,
   })
   const [lightOnOff, setOnOff] = useState(true);
+  const [chosenColor, setChosen] = useState();
+  const [lightColor, setLightColor] = useState({});
+  const { fontSize, ref} = useFitText({
+    maxFontSize:150,
+  });
   //get element reference
   var light = useRef(null);
   var slider = useRef(null);
@@ -64,11 +75,26 @@ function Control() {
 
   
   const handleColorChange = (color) =>{
-    const rgb = hexToRgb(color)
-    console.log(ColorHelper.findClosestColor(color))
-    setColor(ColorHelper.findClosestColor(color).name)
-    socket.emit("light",{"R":rgb[0], "G":rgb[1],"B":rgb[2], "Brightness":"100",})
-    console.log(hexToRgb(color))
+    setChosen(color)
+  }
+
+  const changeColor = () =>{
+    const rgb = hexToRgb(chosenColor)
+    const data = {
+      "red":rgb[0],
+      "green":rgb[1],
+      "blue":rgb[2],
+      "brightness":"100",
+      "switch":"ON",
+      "controller":username,
+    }
+    setColor(ColorHelper.findClosestColor(chosenColor).name)
+    socket.emit("light",data)
+    const url = "api/LED/";
+    api.post(url,data)
+    .then(res=>{
+      console.log(res);
+    })
   }
 
   //fan icon animate
@@ -149,19 +175,35 @@ function Control() {
     var url = "api/Fan/";
     api.get(url)
     .then(res => {
-      const offset = (Math.floor(res.count/10))*10;
-      url = url + "?offset=" + offset;
-      api.get(url)
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
       .then(res=>{
-        const status = res.results[res.results.length-1].switch;
-        if(status == "ON"){
-          setSpin(true)
+        if(res.results.length){
+          const status = res.results[res.results.length-1].switch;
+          if(status == "ON"){
+            setSpin(true)
+          }
+          else{
+            setSpin(false)
+          }
+          setFanHistory(res.results.reverse())
         }
         else{
-          setSpin(false)
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            const status = res.results[res.results.length-1].switch;
+            if(status == "ON"){
+              setSpin(true)
+            }
+            else{
+              setSpin(false)
+            }
+            setFanHistory(res.results.reverse())
+          })
         }
-        setFanHistory(res.results)
-        console.log(res.results)
       })
     })
   },[])
@@ -176,12 +218,21 @@ function Control() {
     var url = "api/Wartering/";
     api.get(url)
     .then(res => {
-      const offset = (Math.floor(res.count/10))*10;
-      url = url + "?offset=" + offset;
-      api.get(url)
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
       .then(res=>{
-        console.log(res)
-        setWaterHistory(res.results)
+        if(res.results.length){
+          setWaterHistory(res.results.reverse())
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            setWaterHistory(res.results.reverse())
+          })
+        }
       })
     })
   },[])
@@ -190,6 +241,52 @@ function Control() {
     return(<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.volume}ml</div></div></li>)
   })
   //water
+
+  //LED
+  function getColor(results){
+    const red = results[0].red;
+    const green = results[0].green;
+    const blue = results[0].blue;
+    const brightness = results[0].brigthness
+    const switchs = results[0].switch
+    setLightColor({
+      "R": red,
+      "G": green,
+      "B": blue,
+      "brightness":brightness,
+      "switch":switchs,
+      })
+    const hex = rgbToHex(red,green,blue)
+    setColor(ColorHelper.findClosestColor(hex).name)
+  }
+
+  useEffect(()=>{
+    var url = "api/LED/";
+    api.get(url)
+    .then(res=>{
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
+      .then(res=>{
+        if(res.results.length){
+          res.results = res.results.reverse()
+          getColor(res.results)
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            res.results = res.results.reverse()
+            getColor(res.results)
+          })
+        }
+      })
+    })
+  },[])
+  //LED
+
+  console.log(lightColor)
 
   return (
     <div className="home">
@@ -206,7 +303,7 @@ function Control() {
         trigger=
         {<Col >
           <div className="fan">{fanIcon}</div>
-          <div className="data">30%</div>
+          <div className="data">{spin?"ON":"OFF"}</div>
           <div>Fan</div>
         </Col>} modal>
           {
@@ -259,7 +356,7 @@ function Control() {
         
         <Popup trigger={<Col >
           <img src="https://img.icons8.com/ios/50/000000/idea--v2.png"/>
-          <div className="data">{color}</div>
+          <div className="data" ref={ref} style={{fontSize,height: 42, width: 80,paddingTop:5,paddingLeft:-5}}>{color}</div>
           <div>Light</div>
         </Col>} modal>
           {
@@ -272,6 +369,7 @@ function Control() {
                     <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
                     <span className="slider"></span>
                   </label>
+                  <Button variant="primary" onClick={changeColor}>Confirm</Button>
               </div>
             )
           }
