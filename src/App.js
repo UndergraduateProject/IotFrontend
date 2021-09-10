@@ -10,6 +10,7 @@ import Warning_center from "./pages/Warning_center";
 import Setting from "./pages/Setting";
 import Detect from "./pages/Detect";
 import Profile from "./pages/Profile";
+import Analyze from "./pages/Analyze";
 
 import {
   Redirect,
@@ -41,6 +42,8 @@ function App() {
         <ProtectedRoute path="/control" loggedIn = {log} component = {Control}/>
         <ProtectedRoute path="/select" loggedIn = {log} component = {Select}/>
         <ProtectedRoute path="/camera" loggedIn = {log} component = {Camera}/>
+        {/* //AI analyze page */}
+        <ProtectedRoute path="/analyze" loggedIn = {log} component = {Analyze}/>   
         <ProtectedRoute path="/visualization" loggedIn = {log} component = {Visualization}/>
         <ProtectedRoute path="/warning_center" loggedIn = {log} component = {Warning_center}/>
         <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>

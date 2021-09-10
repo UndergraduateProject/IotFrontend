@@ -12,6 +12,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import Carousel from 'react-elastic-carousel'
 import styled from "styled-components"
 import Sidebar from '../../component/Sidebar'
+import { useRef, useState, useEffect } from 'react';
+import webSocket from 'socket.io-client';
 
 
 const Item = styled.div`
@@ -26,41 +28,91 @@ const Item = styled.div`
 `
 
 function Detect() {
+  //const [ws,setWs] = useState(null);  // socket object
+  let ws;
+  const [total, setToal] = useState(0);
+  const [progress,setProg] = useState(0);
+  const [raw_image, setRaw] = useState('')
+  const [yolo_image, setYolo] = useState('');
+  const [result, setResult] = useState([]);
+  const [current, SetCurrent] = useState({});
+  const src_prefix = 'http://127.0.0.1:8000';
+  const [selected, setSelected] = useState(0);
 
-    return (
-        <div className="detect_body">
-            <Sidebar />
-            <ProgressBar className="progressBar" animated now={50} />
-            <div className="progressBar_detail">Loading Pictures…</div>
-            <img className="detect_pc1" src={detect_pc1}/> 
-            <div className="detect_background">
-                <img className="detect_pc2" src={detect_pc2}/>
-                <div className="detect_arrow"> >>> </div>
-                <img className="detect_pc3" src={detect_pc3}/> 
-                <div className="detect_status">Status Analysis</div>
-                <div className="detect_detail">xxx:0.00%  </div>
-            </div>
-            <Carousel itemPadding={[0, 10]} className="detect_slider_adjust" itemsToShow={3}>
-                <Item>
-                    <img className="detect_slider_pc" src={detect_slider_pc1}/> 
-                </Item>       
+  useEffect(async ()=>{
+    ws = await conn();
+    ws.on('progress', getProgress);
+  },[]);
 
-                <Item>
-                    <img className="detect_slider_pc" src={detect_slider_pc2}/> 
-                </Item>                       
-
-                <Item>
-                    <img className="detect_slider_pc" src={detect_slider_pc3}/> 
-                </Item>                             
-
-                <Item>
-                    <img className="detect_slider_pc" src={detect_slider_pc4}/> 
-                </Item>                                      
-
-            </Carousel>
-        </div>
-        )
+  useEffect(()=>{
+    if(result.length === 1){
+      SetCurrent(result[0]);
     }
-    
+  },[result]);
+  
+  const conn = async () =>{
+    console.log('connecting');
+    return webSocket("http://127.0.0.1:4001");
+  }
+
+  const getProgress = (message) =>{
+    //message = JSON.parse(message); 
+    if (message["total"]){
+      setToal(message["total"]);
+    }
+    if (message["current"]){
+      setProg(message["current"]);
+    }
+    if (message["raw_image"]){
+      console.log('raw image : '+message["raw_image"]);
+      setRaw(src_prefix+message["raw_image"]);
+    }
+    if (message["yolo_image"]){
+      setYolo(src_prefix+message["yolo_image"]);
+    }
+    if (message['crop_image']&&message['cam_image']&&message['prediction']){
+      const prediction = JSON.parse(message['prediction']);
+      console.log(prediction);
+      setResult(result => [...result, {'open':false, 'crop':src_prefix+message['crop_image'], 'cam':src_prefix+message['cam_image'], 'prediction':prediction}])
+    }
+  }
+
+  return (
+    <div className="detect_body">
+      <Sidebar />
+      <div className="progressContainer">
+        <img className="detect_pc1" src={yolo_image?yolo_image:detect_pc1 }/>
+        <ProgressBar className="progressBar" animated now={progress/total*100} />
+        <div className="progressBar_detail"> {progress}/{total} </div>
+      </div>
+      <div className="detect_background">
+        <div className="detect-photo-change">
+          <img className="detect_pc2" src={current.crop?current.crop:detect_pc2}/>
+          <div className="detect_arrow"> {">>>"} </div>
+          <img className="detect_pc3" src={current.cam?current.cam:detect_pc3}/> 
+        </div>
+        <div className="detect_status">Status Analysis </div>
+        <div className="detect_detail">
+          {current.prediction ? Object.keys(current.prediction).map((cate) => (
+           <p>{cate} {"->"} {Math.round((current.prediction[cate] + Number.EPSILON) * 100)}%</p>
+          )) : <p>Loading......</p>}
+        </div> 
+
+
+      </div>
+      <div className="carousel-container">
+        <Carousel itemPadding={[0, 10]} className="detect_slider_adjust" itemsToShow={3}>
+          {result.map((item, index) => (
+            <Item key={index} onClick={()=>{setSelected(index);SetCurrent(result[index])}} >
+              {selected===index ? <img className="detect_slider_pc_selected" src={item.crop}/> :<img className="detect_slider_pc" src={item.crop}/> } 
+            </Item>
+          ))}                        
+        </Carousel>
+        
+      </div>
+    </div>
+    )
+  }
+  
 export default Detect;
            

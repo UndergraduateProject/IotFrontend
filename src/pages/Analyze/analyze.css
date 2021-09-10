@@ -1,0 +1,277 @@
+.body_camera {
+  background-color: #aebfb7;
+  /* background-image: url(../../images/plant.jpg); */
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  /* background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover; */
+  left: 0%;
+  position: fixed;
+  z-index:1;
+
+}
+
+.pic{
+  height: 300px;
+  width: 300px;
+}
+
+.crop{
+  height: 250px;
+  width: 250px;
+}
+
+.body_select {
+  background-color: #aebfb7;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  position: absolute;
+}
+
+.camera_top{
+  background-color:white;
+  opacity: 0.5;
+  position:fixed;
+  height: 10vh;
+  left: 0%;
+  z-index:2;
+}
+
+.camera_pic1{
+  position: absolute;
+  top:2vh;
+  width:40px;
+  opacity:1;
+}
+
+.camera_pic2{
+  position: absolute;
+  top:2vh;
+  left:50% ;
+  margin-left: -20px;
+  width:40px;
+  opacity: 0.7;
+}
+
+.camera_pic3{
+  position: absolute;
+  top:2vh;
+  left:80%;
+  width:50px;
+  opacity: 0.6;
+}
+
+.left_arrow{
+  position: absolute;
+  top:88vh;
+  width:80px;
+  opacity:0.5;
+  z-index:2;
+}
+
+.right_arrow{
+  position: absolute;
+  top:88vh;
+  width:80px;
+  opacity:0.7;
+  z-index:2;
+  left:30%;
+}
+
+.camera_shutter{
+  position: absolute;
+  top:88vh;
+  width:70px;
+  left:50%;
+  margin-left: -35px;
+  opacity:1;
+  z-index:2;
+  left:50%;
+}
+
+
+@media only screen and (min-width: 768px) { 
+  .body_camera {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px; 
+    position: absolute;
+  }
+
+   .camera_top{
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+  } 
+
+  .camera_pic1{
+    position: absolute;
+    top:2.3vh;
+    width:50px;
+  }
+
+  .right_arrow{
+    left:70%;
+  }
+  
+
+  .camera_pic3{
+    left:90%;
+  }
+  
+}
+
+@media only screen and (min-width: 1024px)  {  
+  .body_camera {
+    max-width: 425px;
+    left: 50%;
+    margin-left: -212.5px;
+    border-radius: 12px; 
+    position: absolute;
+  }
+
+  .camera_top{
+    max-width: 425px;
+    left: 50%;
+    margin-left: -212.5px;
+  } 
+
+  .camera_pic1{
+    position: absolute;
+    top:2.3vh;
+    width:40px;
+  }
+
+  .camera_pic3{
+    left:83%;
+    /* margin-left: -10px; */
+  }
+
+  .right_arrow{
+    left:30%;
+  }
+  
+}
+
+@media only screen and (width: 768px) and (height: 1024px) { 
+   .body_camera {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px; 
+    position: absolute;
+  } 
+
+  .camera_top{
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+  } 
+
+  .camera_pic1{
+    position: absolute;
+    top:2.3vh;
+    width:60px;
+    left:3vw;
+  }
+
+  .camera_pic2{
+    top:2.3vh;
+    left:50% ;
+    margin-left: -30px;
+    width:60px;
+  }
+
+  .camera_pic3{
+    top:2vh;
+    left:85%;
+    width:70px;
+  }
+
+  .right_arrow{
+    width:100px;
+  }
+
+  .left_arrow{
+    width:100px;
+  }
+
+  .camera_shutter{
+    position: absolute;
+    top:88vh;
+    width:100px;
+    left:50%;
+    margin-left: -50px;
+    opacity:1;
+    z-index:2;
+    left:50%;
+  }
+  
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .body_camera {
+    max-width: 1024px;
+    left: 50%;
+    margin-left: -512px;
+    border-radius: 0px; 
+    position: absolute;
+
+  } 
+
+  .camera_top{
+    max-width: 1024px;
+    left: 0%;
+    margin-left: 0px;
+  } 
+
+  .camera_pic1{
+    position: absolute;
+    top:2.3vh;
+    width:70px;
+    left:3vw;
+  }
+
+  .camera_pic2{
+    top:2.3vh;
+    left:50% ;
+    margin-left: -35px;
+    width:70px;
+  }
+
+
+  .camera_pic3{
+    top:2vh;
+    left:85%;
+    width:90px;
+  }
+
+  .right_arrow{
+    width:140px;
+    left:67%;
+  }
+  
+  .left_arrow{
+    width:140px;
+  }
+
+  .camera_shutter{
+    position: absolute;
+    top:88vh;
+    width:140px;
+    left:50%;
+    margin-left: -70px;
+    opacity:1;
+    z-index:2;
+    left:50%;
+  }
+  
+}
