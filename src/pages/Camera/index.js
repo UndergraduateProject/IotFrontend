@@ -1,6 +1,6 @@
 import "./camera.css";
 import webSocket from 'socket.io-client';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import React, { useRef, useState, useEffect } from 'react';
 import plant from "../../images/plant.jpg";
 import x from "../../images/x.png";
@@ -12,12 +12,9 @@ import down_arrow from "../../images/down_arrow.png";
 import right_arrow from "../../images/right_arrow.png";
 import { Link } from "react-router-dom"
 import shutter from "../../images/shutter.png";
-
-
-
-
-
-
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 
 // this is the client side that asking for video streaming 
@@ -110,6 +107,13 @@ function Camera() {
     console.log("test")
   }
 
+  // const useStyles = makeStyles({
+  //   root: {
+  //     height: 300,
+  //   },
+  // });
+
+
   return(
     <div className="body_camera">
         <Row className="camera_top">
@@ -118,25 +122,44 @@ function Camera() {
           <Col ><img className="camera_pic3" src={ turn_camera }/></Col>
 
         </Row>
-        <Row>
+        {/* <Row>
           <Col><img className="body_camera" src={ plant }/></Col>
-        </Row>
+        </Row> */}
 
-
-        
+ 
+        <Row>
+          <Col><img className="up_arrow" src={ up_arrow }/></Col>
+        </Row>        
         <Row className="controller">
           <Col><img className="left_arrow" src={ left_arrow } onClick={slide}/></Col>
           <Col><img className="camera_shutter" src={ shutter }/></Col>
           <Col><img className="right_arrow" src={ right_arrow }/></Col>
-
         </Row>
+        <Row>
+          <Col><img className="down_arrow" src={ down_arrow }/></Col>
+        </Row>   
 
+        <React.Fragment>
+          <Typography id="vertical-slider" gutterBottom>
+            <div className="max_enlarge"> 100</div>
+          </Typography>
+            <Slider
+              orientation="vertical"
+              // getAriaValueText={valuetext}
+              defaultValue={0}
+              aria-labelledby="vertical-slider"
+            />
+        </React.Fragment>
        
       {/* <input type='button' value='connect' onClick={connectWebSocket} />
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
       </div> */}
     </div>
+
+    
+
+    
   )
 }
 
