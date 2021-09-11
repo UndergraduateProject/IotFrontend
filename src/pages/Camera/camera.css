@@ -1,5 +1,6 @@
 .body_camera {
   background-color: #aebfb7;
+  /* background-color: transparent; */
   /* background-image: url(../../images/plant.jpg); */
   font-family: "Open Sans", sans-serif;
   width: 100vw;
@@ -67,31 +68,66 @@
 
 .left_arrow {
   position: absolute;
-  top: 88vh;
-  width: 80px;
+  top: 80vh;
+  width: 53px;
   opacity: 0.5;
   z-index: 2;
+  right:  -10%;
 }
 
 .right_arrow {
   position: absolute;
-  top: 88vh;
-  width: 80px;
+  top: 80vh;
+  width: 53px;
   opacity: 0.7;
   z-index: 2;
-  left: 30%;
+  left: -10%;
+}
+
+.up_arrow{
+  position: absolute;
+  width:40px;
+  top:70vh;
+  opacity:0.5;
+  left: 50%;
+  margin-left: -20px;
+  z-index:2;
+}
+
+.down_arrow{
+  position: absolute;
+  width:40px;
+  top:88.5vh;
+  opacity:0.5;
+  left: 50%;
+  margin-left: -20px;
+  z-index:2;
 }
 
 .camera_shutter {
   position: absolute;
-  top: 88vh;
+  top: 78vh;
   width: 70px;
   left: 50%;
   margin-left: -35px;
   opacity: 1;
   z-index: 2;
-  left: 50%;
 }
+
+.max_enlarge{
+  left: 88%;
+  top:23.5vh;
+  font-size: 22px;
+  position: absolute;
+}
+
+.MuiSlider-root.MuiSlider-vertical {
+  height: 30% !important;
+  top:28%;
+  left: 88%;
+  z-index: 2;
+}
+
 
 @media only screen and (min-width: 768px) {
   .body_camera {
@@ -114,9 +150,7 @@
     width: 50px;
   }
 
-  .right_arrow {
-    left: 70%;
-  }
+
 
   .camera_pic3 {
   }
@@ -147,9 +181,7 @@
     /* margin-left: -10px; */
   }
 
-  .right_arrow {
-    left: 30%;
-  }
+
 }
 
 @media only screen and (width: 768px) and (height: 1024px) {
@@ -175,6 +207,7 @@
   }
 
   .camera_pic2 {
+    position: absolute;
     top: 2.3vh;
     left: 50%;
     margin-left: -30px;
@@ -182,28 +215,44 @@
   }
 
   .camera_pic3 {
+    position: relative;
     top: 2vh;
-    left: 85%;
+    left: 30%;
     width: 70px;
   }
 
   .right_arrow {
-    width: 100px;
+    width: 70px;
+    left: -20%;
   }
 
   .left_arrow {
-    width: 100px;
+    width: 70px;
+    right: -20%;
+  }
+
+  .up_arrow{
+    width: 54px;
+    left: 50%;
+    margin-left: -27px;
+  }
+
+  .down_arrow{
+    width: 54px;
+    left: 50%;
+    margin-left: -27px;
+    top:89vh;
   }
 
   .camera_shutter {
-    position: absolute;
-    top: 88vh;
     width: 100px;
     left: 50%;
     margin-left: -50px;
-    opacity: 1;
-    z-index: 2;
-    left: 50%;
+  }
+
+  .max_enlarge{
+    left: 87%;
+    font-size: 30px;
   }
 }
 
@@ -234,31 +283,48 @@
     left: 50%;
     margin-left: -35px;
     width: 70px;
+    position: absolute;
   }
 
   .camera_pic3 {
+    position: relative;
     top: 2vh;
-    left: 85%;
+    left: 30%;
     width: 90px;
   }
 
   .right_arrow {
-    width: 140px;
-    left: 67%;
+    width: 110px;
+    left: -20%;
   }
 
   .left_arrow {
-    width: 140px;
+    width: 110px;
+    right: -20%;
+  }
+
+  .up_arrow{
+    width: 84px;
+    left: 50%;
+    top: 68.5vh;
+    margin-left: -42px;
+  }
+
+  .down_arrow{
+    width: 84px;
+    left: 50%;
+    top: 89.5vh;
+    margin-left: -42px;
   }
 
   .camera_shutter {
-    position: absolute;
-    top: 88vh;
     width: 140px;
     left: 50%;
     margin-left: -70px;
-    opacity: 1;
-    z-index: 2;
-    left: 50%;
+  }
+
+  .max_enlarge{
+    left: 86%;
+    font-size: 40px;
   }
 }

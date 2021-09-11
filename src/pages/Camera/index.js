@@ -1,6 +1,6 @@
 import "./camera.css";
 import webSocket from 'socket.io-client';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import React, { useRef, useState, useEffect } from 'react';
 import plant from "../../images/plant.jpg";
 import x from "../../images/x.png";
@@ -12,12 +12,9 @@ import down_arrow from "../../images/down_arrow.png";
 import right_arrow from "../../images/right_arrow.png";
 import { Link } from "react-router-dom"
 import shutter from "../../images/shutter.png";
-
-
-
-
-
-
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 
 // this is the client side that asking for video streaming 
@@ -116,6 +113,7 @@ function Camera() {
     console.log("test")
   }
 
+
   // taking puicture
   const takepicture = () => {
     //clearphoto();
@@ -150,36 +148,37 @@ function Camera() {
   return(
     <div className="body_camera">
 
-      {/* <Container> */}
-      <Row className="camera_top">
-        <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
-        <Col ><img className="camera_pic2" src={ flash }/></Col>
-        <Col ><img className="camera_pic3" src={ turn_camera }/></Col>
 
-      </Row>
-      <Row>
-        {/* <Col><img className="body_camera" src={ plant }/></Col> */}
-        <Col>
-        <video className="body_camera" ref={videoRef} onCanPlay={handleCanPlay} />
-        <canvas id="canvas" ref={canvas}>
-        </canvas>
-        <div class="output">
-        <img ref={photo} id="photo" alt="The screen capture will appear in this box." /> 
+        </Row>
+        {/* <Row>
+          <Col><img className="body_camera" src={ plant }/></Col>
+        </Row> */}
 
-        </div>
-        </Col>
-      </Row>
+ 
+        <Row>
+          <Col><img className="up_arrow" src={ up_arrow }/></Col>
+        </Row>        
+        <Row className="controller">
+          <Col><img className="left_arrow" src={ left_arrow } onClick={slide}/></Col>
+          <Col><img className="camera_shutter" src={ shutter }/></Col>
+          <Col><img className="right_arrow" src={ right_arrow }/></Col>
+        </Row>
+        <Row>
+          <Col><img className="down_arrow" src={ down_arrow }/></Col>
+        </Row>   
 
-
-      
-      <Row className="controller">
-        <Col><img className="left_arrow" src={ left_arrow } onClick={takepicture}/></Col>
-        <Col><img className="camera_shutter" src={ shutter } onClick={connectWebSocket}/></Col>
-        <Col><img className="right_arrow" src={ right_arrow } onClick={takepicture}/></Col>
-
-      </Row> 
-
-      {/* 相機畫面 */}
+        <React.Fragment>
+          <Typography id="vertical-slider" gutterBottom>
+            <div className="max_enlarge"> 100</div>
+          </Typography>
+            <Slider
+              orientation="vertical"
+              // getAriaValueText={valuetext}
+              defaultValue={0}
+              aria-labelledby="vertical-slider"
+            />
+        </React.Fragment>
+       
       {/* <input type='button' value='connect' onClick={connectWebSocket} />
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
@@ -187,6 +186,7 @@ function Camera() {
       </div>  */}
       {/* </Container> */}
     </div>
+
     
   )
 }
