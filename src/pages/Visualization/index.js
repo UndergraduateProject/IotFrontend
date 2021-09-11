@@ -5,10 +5,11 @@ import api from '../../utils/api';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import moment from 'moment';
+import Sidebar from "../../component/Sidebar";
 
 
-const path = "api/Humidtemp/?limit=9999999";
-
+const path = "api/Humidtemp/?limit=99999999";
+const today = new Date();
 
 
 function Visualization() {
@@ -29,7 +30,7 @@ function Visualization() {
 			}
 			
           },
-          colors: ['#008FFB'],
+          colors: ['#4B83D1'],
           yaxis: {
             labels: {
               minWidth: 40
@@ -37,14 +38,22 @@ function Visualization() {
           },
         xaxis: {
           type: 'datetime',
-		  tickPlacement:'on',
+		  		tickPlacement:'on',
+					min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+					max: today,
         },
         noData:{
             text: "DataLarge...Loading..."
         },
-				title:{
-					text:"Humidity",
-				}
+		// title:{
+		// 	text:"Humidity",
+		// 	style: {
+		// 		fontSize:  '28px',
+		// 		fontWeight:  'bold',
+		// 		fontFamily:  "SF Pro Display",
+		// 		color:  '#FFFFFF'
+		// 	  },
+		// }
       },
 		tempoptions: {
         chart: {
@@ -61,41 +70,70 @@ function Visualization() {
 				autoSelected: 'zoom'
 			}
           },
-          colors: ['#546E7A'],
+          colors: ['#FF3F7E'],
           yaxis: {
             labels: {
               minWidth: 40,
             }
           },
         xaxis: {
-			type: 'datetime',
-			tickPlacement:'on',
+					type: 'datetime',
+					tickPlacement:'on',
+					min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+					max: today,
         },
         noData:{
             text: "DataLarge...Loading..."
         },
-				title:{
-					text:"Temperature",
-				}
+		// title:{
+		// 	text:"Temperature",
+		// 	style: {
+		// 		fontSize:  '28px',
+		// 		fontWeight:  'bold',
+		// 		fontFamily:  "SF Pro Display",
+		// 		color:  '#FFFFFF'
+		// 	  },
+		// }
       },
 	
       humidityseries: [
         {
           name: "humidity",
-          data: [],
+          data: []
         }
       ],
-			tempseries:[
-				{
-					name: "temperature",
-					data: [],
-				}
-			]
+		tempseries:[
+			{
+				name: "temperature",
+				data: []
+			}
+		],
+		current : 0,
+		selection : 'six_months',
+		key: new Date(),
+		period:"daily",
     }
   )
 	
 	const [temp, setTemp] = useState({});
 	const [humidity, setHumidity] = useState({});
+	const tempChart = <Chart
+		options={state.tempoptions}
+		series={state.tempseries}
+		type="line"
+		height="100%"
+		width="100%"
+	/>;
+
+  	const humidChart = <Chart
+		options={state.humidoptions}
+		series={state.humidityseries}
+		type="line"
+		width="100%"
+		height="100%"
+		/>;
+	const [chart, setChart] = useState(0)
+	
 
   useEffect(() => {
 	var tempValue = {
@@ -223,6 +261,8 @@ function Visualization() {
 	switch (period){
 		case "weekly" :
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -244,6 +284,8 @@ function Visualization() {
 		
 		case "daily":
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -265,6 +307,8 @@ function Visualization() {
 
 		case "hourly":
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -286,6 +330,8 @@ function Visualization() {
 
 		default :
 			setState({
+				...state,
+				period: period,
 				tempoptions: {
 					...state.tempoptions,
 				},
@@ -307,102 +353,204 @@ function Visualization() {
 	}
   }
 
-  function changeDate(timeline){
-	setState({
-		selection: timeline
-	})
-	const today = new Date()
+	const changechart = (e) => {
+		switch (e.target.value){
+			case "0":
+				setChart(0)
+				setState({
+					...state,
+					current :0
+				})
+				break;
+			
+			case "1":
+				setChart(1)
+				setState({
+					...state,
+					current :1
+				})
+				break;
+			
+			case "2":
+				setChart(0)
+				setState({
+					...state,
+					current :0
+				})
+				break;
+			
+			default :
+				setChart(0)
+				setState({
+					...state,
+					current :0
+				})
+				break;
+		}
+	}
 
+  function changeDate(timeline){
 	switch (timeline) {
 		case 'one_month':
 			setState({
+				...state,
 				humidoptions:{
+					...state.humidoptions,
 					xaxis:{
 						min: new Date(today.getFullYear(), today.getMonth()-1, today.getDate()).getTime(),
 						max: today,
 					}
-				}
+				},
+				tempoptions:{
+					...state.tempoptions,
+					xaxis:{
+						min: new Date(today.getFullYear(), today.getMonth()-1, today.getDate()).getTime(),
+						max: today,
+					}
+				},
+			selection: timeline,
 			})
 
 			break;
 		case 'six_months':
 			setState({
+				...state,
 				humidoptions:{
+					...state.humidoptions,
 					xaxis:{
 						min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
 						max: today,
 					}
-				}
+				},
+				tempoptions:{
+					...state.tempoptions,
+					xaxis:{
+						min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
 			})
 			break;
 		case 'one_year':
 			setState({
+				...state,
 				humidoptions:{
+					...state.humidoptions,
 					xaxis:{
 						min: new Date(today.getFullYear()-1, today.getMonth(), today.getDate()).getTime(),
 						max: today,
 					}
-				}
+				},
+				tempoptions:{
+					...state.tempoptions,
+					xaxis:{
+						min: new Date(today.getFullYear()-1, today.getMonth(), today.getDate()).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
 			})
 			break;
 		case 'ytd':
 			setState({
+				...state,
 				humidoptions:{
+					...state.humidoptions,
 					xaxis:{
 						min: new Date(today.getFullYear(), today.getMonth(), today.getDate()-1).getTime(),
 						max: today,
 					}
-				}
+				},
+				tempoptions:{
+					...state.tempoptions,
+					xaxis:{
+						min: new Date(today.getFullYear(), today.getMonth(), today.getDate()-1).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
 			})
 			break;
 		case 'all':
 			setState({
+				...state,
 				humidoptions:{
+					...state.humidoptions,
 					xaxis:{
 						min: null,
 						max: null,
 					}
-				}
+				},
+				tempoptions:{
+					...state.tempoptions,
+					xaxis:{
+						min: null,
+						max: null,
+					}
+				},
+				selection: timeline,
 			})
 			break;
 		default:
+			setState({
+				...state,
+				humidoptions:{
+					...state.humidoptions,
+					xaxis:{
+						min: null,
+						max: null,
+					}
+				},
+				tempoptions:{
+					...state.tempoptions,
+					xaxis:{
+						min: null,
+						max: null,
+					}
+				},
+				selection: timeline,
+			})
 	}
 }
-  
 
   return (
     <div className="visual-wrapper">
-		<div id="chart-temperature">
-			<Chart
-				options={state.tempoptions}
-				series={state.tempseries}
-				type="line"
-				width="100%"
-			/>
-        </div>
-		<div id="chart-humidity">
-			<Chart
-				options={state.humidoptions}
-				series={state.humidityseries}
-				type="line"
-				width="100%"
-			/>
-        </div>
-	    <div className="toolbar">
-        	<div><button onClick={()=>changeDate('one_month')} id="one_month" className={ (state.selection==='one_month' ? 'active' : '')}>1M</button></div>
-        	<div><button onClick={()=>changeDate('six_months')} id="six_months" className={ (state.selection==='six_months' ? 'active' : '')}>6M</button></div>
-        	<div><button onClick={()=>changeDate('one_year')} id="one_year" className={ (state.selection==='one_year' ? 'active' : '')}>1Y</button></div>
-        	<div><button onClick={()=>changeDate('ytd')} id="ytd" className={ (state.selection==='ytd' ? 'active' : '')}>YTD</button></div>
-        	<div><button onClick={()=>changeDate('all')} id="all" className={ (state.selection==='all' ? 'active' : '')}>ALL</button></div>
-        </div>
+		<Sidebar />
+		<div className="select-custom">
+		<select onChange={changechart}>
+			<option value="0">Temperature</option>
+			<option value="1">Humidity</option>
+			<option value="2">Moisture</option>
+		</select>
+		</div>
 		<div className="toolbar">
-			<div><button onClick={()=>changePeriod("weekly")}>Weekly</button></div>
-			<div><button onClick={()=>changePeriod("daily")}>Daily</button></div>
-			<div><button onClick={()=>changePeriod("hourly")}>Hourly</button></div>
+        	<div><button onClick={()=>changeDate('ytd')} id="ytd" className={ (state.selection=='ytd' ? 'active' : '')}>YTD</button></div>
+        	<div><button onClick={()=>changeDate('one_month')} id="one_month" className={ (state.selection=='one_month' ? 'active' : '')}>1M</button></div>
+        	<div><button onClick={()=>changeDate('six_months')} id="six_months" className={ (state.selection=='six_months' ? 'active' : '')}>6M</button></div>
+        	<div><button onClick={()=>changeDate('one_year')} id="one_year" className={ (state.selection=='one_year' ? 'active' : '')}>1Y</button></div>
+        	<div><button onClick={()=>changeDate('all')} id="all" className={ (state.selection=='all' ? 'active' : '')}>ALL</button></div>
+        </div>
+		<div id="chart">
+			{(()=>{
+				switch(chart){
+					case 0:
+						return(tempChart);
+					
+					case 1:
+						return(humidChart);
+				}
+			})()}
+    </div>
+		
+		<div className="toolbar">
+			<div><button onClick={()=>changePeriod("weekly")} className={state.period=='weekly' ? 'active' : ''}>Weekly</button></div>
+			<div><button onClick={()=>changePeriod("daily")} className={state.period=='daily' ? 'active' : ''}>Daily</button></div>
+			<div><button onClick={()=>changePeriod("hourly")} className={state.period=='hourly' ? 'active' : ''}>Hourly</button></div>
 		</div>
     </div>
   )
 }
 
-export default Visualization
+export default Visualization;
 

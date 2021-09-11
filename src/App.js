@@ -10,7 +10,8 @@ import Warning_center from "./pages/Warning_center";
 import Setting from "./pages/Setting";
 import Detect from "./pages/Detect";
 import Profile from "./pages/Profile";
-import Analyze from "./pages/Analyze";
+import Track from "./component/Track";
+import Water from "./component/Water";
 
 import {
   Redirect,
@@ -42,13 +43,12 @@ function App() {
         <ProtectedRoute path="/control" loggedIn = {log} component = {Control}/>
         <ProtectedRoute path="/select" loggedIn = {log} component = {Select}/>
         <ProtectedRoute path="/camera" loggedIn = {log} component = {Camera}/>
-        {/* //AI analyze page */}
-        <ProtectedRoute path="/analyze" loggedIn = {log} component = {Analyze}/>   
         <ProtectedRoute path="/visualization" loggedIn = {log} component = {Visualization}/>
         <ProtectedRoute path="/warning_center" loggedIn = {log} component = {Warning_center}/>
         <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>
         <ProtectedRoute path="/detect" loggedIn = {log} component = {Detect}/>
         <ProtectedRoute path="/profile" loggedIn = {log} component = {Profile}/>
+        <ProtectedRoute path="/test" loggedIn = {log} component = {Track}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       

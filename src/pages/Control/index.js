@@ -12,10 +12,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFan} from '@fortawesome/free-solid-svg-icons'
 import { loadAnimation } from "lottie-web";
 import { defineLordIconElement } from "lord-icon-element";
+import { Link } from "react-router-dom"
 import api from "../../utils/api"
+import socketIOClient from "socket.io-client";
+import useFitText from "use-fit-text";
+
+const ColorHelper = require('color-to-name');
+
 
 // register lottie and define custom element
 defineLordIconElement(loadAnimation);
+
+// socket
+const endpoint = "http://140.117.71.98:4001"
+const socket = socketIOClient(endpoint);
+const username = localStorage.getItem('username');
+
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
 
 function Control() {
   //icon animation initialize
@@ -29,6 +45,7 @@ function Control() {
   const [waterhistory, setWaterHistory] = useState([]);
   const [volume, setVolume] = useState(100) ;
   const [duration, setDuration] = useState("30mins");
+  const [color, setColor] = useState();
   const [selected, setSelected] = useState({
     "5mins" : false,
     "10mins" : false,
@@ -39,23 +56,55 @@ function Control() {
     "24hour" : false,
   })
   const [lightOnOff, setOnOff] = useState(true);
+  const [chosenColor, setChosen] = useState();
+  const [lightColor, setLightColor] = useState({});
+  const { fontSize, ref} = useFitText({
+    maxFontSize:150,
+  });
   //get element reference
   var light = useRef(null);
   var slider = useRef(null);
 
 
   //RGB value
+  const hexToRgb = hex =>
+  hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+             ,(m, r, g, b) => '#' + r + r + g + g + b + b)
+    .substring(1).match(/.{2}/g)
+    .map(x => parseInt(x, 16))
+
+  
   const handleColorChange = (color) =>{
-    console.log(color)
+    setChosen(color)
+  }
+
+  const changeColor = () =>{
+    const rgb = hexToRgb(chosenColor)
+    const data = {
+      "red":rgb[0],
+      "green":rgb[1],
+      "blue":rgb[2],
+      "brightness":"100",
+      "switch":"ON",
+      "controller":username,
+    }
+    setColor(ColorHelper.findClosestColor(chosenColor).name)
+    socket.emit("light",data)
+    const url = "api/LED/";
+    api.post(url,data)
+    .then(res=>{
+      console.log(res);
+    })
   }
 
   //fan icon animate
   const toSpin = () => {
     setSpin(!spin);
     const data = {
-      "switch" : !spin? "ON" : "OFF" 
+      "switch" : !spin? "ON" : "OFF",
+      "controller" : username, 
     }
-    const url = "api/Fan";
+    const url = "api/Fan/";
     api.post(url, data)
     .then(res=>{
       console.log(res);
@@ -71,8 +120,11 @@ function Control() {
   //water animation
   // setState does not change value right after called
   const watering = () => {
-    const data = {"volume" : volume};
-    const url = "api/Wartering";
+    const data = {
+      "volume" : volume,
+      "controller" : username,
+    };
+    const url = "api/Wartering/";
     api.post(url, data)
     .then(res=>{
       console.log(res)
@@ -82,6 +134,7 @@ function Control() {
     setTimeout(()=> {
       setWater("");
     },4000);
+    socket.emit("water","on")
   };
 
 
@@ -122,19 +175,35 @@ function Control() {
     var url = "api/Fan/";
     api.get(url)
     .then(res => {
-      const offset = (Math.floor(res.count/10))*10;
-      url = url + "?offset=" + offset;
-      api.get(url)
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
       .then(res=>{
-        const status = res.results[res.results.length-1].switch;
-        if(status == "ON"){
-          setSpin(true)
+        if(res.results.length){
+          const status = res.results[res.results.length-1].switch;
+          if(status == "ON"){
+            setSpin(true)
+          }
+          else{
+            setSpin(false)
+          }
+          setFanHistory(res.results.reverse())
         }
         else{
-          setSpin(false)
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            const status = res.results[res.results.length-1].switch;
+            if(status == "ON"){
+              setSpin(true)
+            }
+            else{
+              setSpin(false)
+            }
+            setFanHistory(res.results.reverse())
+          })
         }
-        setFanHistory(res.results)
-        console.log(res.results)
       })
     })
   },[])
@@ -149,12 +218,21 @@ function Control() {
     var url = "api/Wartering/";
     api.get(url)
     .then(res => {
-      const offset = (Math.floor(res.count/10))*10;
-      url = url + "?offset=" + offset;
-      api.get(url)
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
       .then(res=>{
-        console.log(res)
-        setWaterHistory(res.results)
+        if(res.results.length){
+          setWaterHistory(res.results.reverse())
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            setWaterHistory(res.results.reverse())
+          })
+        }
       })
     })
   },[])
@@ -163,6 +241,52 @@ function Control() {
     return(<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.volume}ml</div></div></li>)
   })
   //water
+
+  //LED
+  function getColor(results){
+    const red = results[0].red;
+    const green = results[0].green;
+    const blue = results[0].blue;
+    const brightness = results[0].brigthness
+    const switchs = results[0].switch
+    setLightColor({
+      "R": red,
+      "G": green,
+      "B": blue,
+      "brightness":brightness,
+      "switch":switchs,
+      })
+    const hex = rgbToHex(red,green,blue)
+    setColor(ColorHelper.findClosestColor(hex).name)
+  }
+
+  useEffect(()=>{
+    var url = "api/LED/";
+    api.get(url)
+    .then(res=>{
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
+      .then(res=>{
+        if(res.results.length){
+          res.results = res.results.reverse()
+          getColor(res.results)
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            res.results = res.results.reverse()
+            getColor(res.results)
+          })
+        }
+      })
+    })
+  },[])
+  //LED
+
+  console.log(lightColor)
 
   return (
     <div className="home">
@@ -179,7 +303,7 @@ function Control() {
         trigger=
         {<Col >
           <div className="fan">{fanIcon}</div>
-          <div className="data">30%</div>
+          <div className="data">{spin?"ON":"OFF"}</div>
           <div>Fan</div>
         </Col>} modal>
           {
@@ -231,8 +355,8 @@ function Control() {
         </Popup>
         
         <Popup trigger={<Col >
-          <div className='titanic titanic-idea' ref={lightref => light = lightref}></div>
-          <div className="data">40%</div>
+          <img src="https://img.icons8.com/ios/50/000000/idea--v2.png"/>
+          <div className="data" ref={ref} style={{fontSize,height: 42, width: 80,paddingTop:5,paddingLeft:-5}}>{color}</div>
           <div>Light</div>
         </Col>} modal>
           {
@@ -245,6 +369,7 @@ function Control() {
                     <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
                     <span className="slider"></span>
                   </label>
+                  <Button variant="primary" onClick={changeColor}>Confirm</Button>
               </div>
             )
           }
@@ -276,12 +401,14 @@ function Control() {
           )
         }
         </Popup>
-        <Popup trigger={<Col>
-          <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
-          </lord-icon>
-          <div className="data">Camera</div>
-          <div className="sub">Active</div>
-        </Col>} modal></Popup>
+          <Col>
+            <Link to="/camera">
+              <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
+              </lord-icon>
+              <div className="data">Camera</div>
+              <div className="sub">Active</div>
+            </Link>
+          </Col>
       </Row>
       <Row>
         <button className="power-btn">Power On</button>

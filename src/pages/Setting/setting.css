@@ -1,4 +1,4 @@
-.body_wc {
+.body_setting {
   background-color: #aebfb7;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
@@ -54,11 +54,6 @@
     color: white ;
 } */
 
-/* switch */
-.switch_position {
-  left: 39vw;
-  position: relative;
-}
 
 #setting-switch {
   margin: 0;
@@ -89,11 +84,17 @@
     width: 71vw;
     position: relative;
   }
+
+  .switch_position_setting {
+    left: 50%;
+    margin-left: 35vw;
+    position: absolute;
+  }
 }
 
 @media only screen and (min-width: 768px) {
   /*for laptop's width>768 */
-  .body_wc {
+  .body_setting {
     max-width: 768px;
     left: 50%;
     margin-left: -384px;
@@ -123,16 +124,16 @@
     position: relative;
   }
 
-  .switch_position {
+  .switch_position_setting {
     left: 50%;
-    margin-left: 265px;
+    margin-left: 300px;
     position: absolute;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   /*for laptop:when width>1024*/
-  .body_wc {
+  .body_setting {
     max-width: 425px;
     left: 50%;
     margin-left: -212.5px;
@@ -162,7 +163,7 @@
     position: relative;
   }
 
-  .switch_position {
+  .switch_position_setting {
     left: 50%;
     margin-left: 140px;
     position: absolute;
@@ -171,7 +172,7 @@
 
 @media only screen and (width: 768px) and (height: 1024px) {
   /*ipad*/
-  .body_wc {
+  .body_setting {
     max-width: 768px;
     left: 50%;
     margin-left: -384px;
@@ -201,7 +202,7 @@
     position: relative;
   }
 
-  .switch_position {
+  .switch_position_setting {
     left: 50%;
     margin-left: 280px;
     position: absolute;
@@ -210,7 +211,7 @@
 
 @media only screen and (width: 1024px) and (height: 1366px) {
   /*ipad pro*/
-  .body_wc {
+  .body_setting {
     max-width: 1024px;
     left: 0%;
     margin-left: auto;
@@ -240,7 +241,7 @@
     position: relative;
   }
 
-  .switch_position {
+  .switch_position_setting {
     left: 50%;
     margin-left: 370px;
     position: absolute;

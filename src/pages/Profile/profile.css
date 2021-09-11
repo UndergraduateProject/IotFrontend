@@ -1,735 +1,722 @@
 .profile_body {
-    background-color: #aebfb7;
-    box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
-    width: 100vw;
-    height: 100vh;
-    overflow-x:hidden;
-    overflow-y:hidden;
+  background-color: #aebfb7;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: absolute;
+}
+
+.top_block1_profile {
+  /*這一長串是用來垂直置中的*/
+  /* Internet Explorer 10 */
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  /* Firefox */
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  /* Safari, Opera, and Chrome */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  /* W3C */
+  display: box;
+  box-pack: center;
+  box-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  /*width<768 (for laptop's width<768 and mobile phone)*/
+  .top_block1_profile {
+    background: #6a7b62;
+    height: 12vh;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
+
+  .user_pic_profile {
+    top: -70px;
+    width: 90px;
+    left: 50%;
+    margin-left: -45px;
     position: absolute;
+  }
+
+  .camera_pic {
+    left: 50%;
+    margin-left: 10px;
+    position: absolute;
+    top: -5px;
+  }
+
+  .background_profile {
+    width: 320px;
+    height: 250px;
+    border-radius: 12px;
+    background-color: #a0b0a9;
+    left: 50%;
+    top: 90px;
+    margin-left: -160px;
+    position: relative;
+    opacity: 0.9;
+  }
+
+  .user_account_profile {
+    left: 50%;
+    top: 40px;
+    margin-left: -45px;
+    color: #53655c;
+    font-weight: bold;
+    font-size: x-large;
+    position: absolute;
+  }
+
+  .user_email_profile {
+    left: 50%;
+    top: 80px;
+    margin-left: -67px;
+    color: #53655c;
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+  }
+
+  .tree_pic_profile {
+    left: 50%;
+    top: 130px;
+    margin-left: -140px;
+    position: absolute;
+  }
+
+  .tree_detail {
+    left: 50%;
+    top: 132px;
+    margin-left: -85px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    color: #53655c;
+  }
+
+  .tree {
+    position: relative;
+    top: 50px;
+  }
+
+  .leaf_pic_profile {
+    left: 50%;
+    top: 123px;
+    margin-left: 10px;
+    position: absolute;
+  }
+
+  .leaf_detail {
+    left: 50%;
+    top: 132px;
+    margin-left: 70px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    color: #53655c;
+  }
+
+  .leaf {
+    position: relative;
+    top: 50px;
+  }
+
+  .block_bottom_1 {
+    height: 50px;
+    border-bottom: solid 1.5px gray;
+    width: 420px;
+    left: 50%;
+    margin-left: -210px;
+    font-size: 25px;
+    top: 45vh;
+    position: relative;
+  }
+
+  .text_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 20px;
+    padding-top: 10px;
+    color: #53655c;
+  }
+
+  .logout_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 20px;
+    padding-top: 10px;
+    color: #9a5058;
+    left: 50%;
+    margin-left: -75px;
+  }
 }
 
+@media only screen and (min-width: 768px) {
+  /*for laptop's width>768 */
+  .profile_body {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px;
+  }
 
-.top_block1_profile{
-    /*這一長串是用來垂直置中的*/   
-    /* Internet Explorer 10 */
-   display:-ms-flexbox;
-   -ms-flex-pack:center;
-   -ms-flex-align:center;
-   /* Firefox */
-   display:-moz-box;
-   -moz-box-pack:center;
-   -moz-box-align:center;
-   /* Safari, Opera, and Chrome */
-   display:-webkit-box;
-   -webkit-box-pack:center;
-   -webkit-box-align:center;
-   /* W3C */
-   display:box;
-   box-pack:center;
-   box-align:center;
+  .top_block1_profile {
+    background: #6a7b62;
+    height: 12vh;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
+
+  .user_pic_profile {
+    top: -70px;
+    width: 90px;
+    left: 50%;
+    margin-left: -45px;
+    position: absolute;
+  }
+
+  .camera_pic {
+    left: 50%;
+    margin-left: 10px;
+    position: absolute;
+    top: -5px;
+  }
+
+  .background_profile {
+    width: 320px;
+    height: 250px;
+    border-radius: 12px;
+    background-color: #a0b0a9;
+    left: 50%;
+    top: 90px;
+    margin-left: -160px;
+    position: relative;
+    opacity: 0.9;
+  }
+
+  .user_account_profile {
+    left: 50%;
+    top: 40px;
+    margin-left: -45px;
+    color: #53655c;
+    font-weight: bold;
+    font-size: x-large;
+    position: absolute;
+  }
+
+  .user_email_profile {
+    left: 50%;
+    top: 80px;
+    margin-left: -67px;
+    color: #53655c;
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+  }
+
+  .tree_pic_profile {
+    left: 50%;
+    top: 130px;
+    margin-left: -140px;
+    position: absolute;
+  }
+
+  .tree_detail {
+    left: 50%;
+    top: 132px;
+    margin-left: -85px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    color: #53655c;
+  }
+
+  .tree {
+    position: relative;
+    top: 50px;
+  }
+
+  .leaf_pic_profile {
+    left: 50%;
+    top: 123px;
+    margin-left: 10px;
+    position: absolute;
+  }
+
+  .leaf_detail {
+    left: 50%;
+    top: 132px;
+    margin-left: 70px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    color: #53655c;
+  }
+
+  .leaf {
+    position: relative;
+    top: 50px;
+  }
+
+  .block_bottom_1 {
+    height: 50px;
+    border-bottom: solid 1.5px gray;
+    width: 420px;
+    left: 50%;
+    margin-left: -210px;
+    font-size: 25px;
+    top: 45vh;
+    position: relative;
+  }
+
+  .text_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 20px;
+    padding-top: 10px;
+    color: #53655c;
+  }
+
+  .logout_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 20px;
+    padding-top: 10px;
+    color: #9a5058;
+    left: 50%;
+    margin-left: -75px;
+  }
 }
 
-@media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
-    .top_block1_profile{
-        background: #6a7b62;
-        height: 12vh;
-        font-size: 40px;
-        font-weight: bold;
-        text-align: center;
-        color: white;
-    }
+@media only screen and (min-width: 1024px) {
+  /*for laptop:when width>1024*/
+  .profile_body {
+    max-width: 425px;
+    left: 50%;
+    margin-left: -212.5px;
+    border-radius: 12px;
+  }
 
-    .user_pic_profile{
-        top:-70px;
-        width:90px;
-        left: 50%;
-        margin-left: -45px;
-        position: absolute;
-    }
+  .top_block1_profile {
+    background: #6a7b62;
+    height: 12vh;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
 
-    .camera_pic{
-        left: 50%;
-        margin-left: 10px;
-        position: absolute;
-        top:-5px;
-    }
+  .user_pic_profile {
+    top: -70px;
+    width: 90px;
+    left: 50%;
+    margin-left: -45px;
+    position: absolute;
+  }
 
-    .background_profile{
-        width: 320px;
-        height: 250px;
-        border-radius: 12px;
-        background-color: #A0B0A9;
-        left: 50%;
-        top:90px;
-        margin-left: -160px;
-        position: relative;
-        opacity: 0.9;
-    }
+  .camera_pic {
+    left: 50%;
+    margin-left: 10px;
+    position: absolute;
+    top: -5px;
+  }
 
-    .user_account_profile{
-        left:50%;
-        top:40px;
-        margin-left:-45px;
-        color:#53655C;
-        font-weight: bold;
-        font-size: x-large;
-        position: absolute;
-    }
+  .background_profile {
+    width: 320px;
+    height: 250px;
+    border-radius: 12px;
+    background-color: #a0b0a9;
+    left: 50%;
+    top: 90px;
+    margin-left: -160px;
+    position: relative;
+    opacity: 0.9;
+  }
 
-    .user_email_profile{
-        left:50%;
-        top:80px;
-        margin-left:-67px;
-        color:#53655C;
-        font-size:15px;
-        font-weight: 500;
-        position: absolute;
-    }
+  .user_account_profile {
+    left: 50%;
+    top: 40px;
+    margin-left: -45px;
+    color: #53655c;
+    font-weight: bold;
+    font-size: x-large;
+    position: absolute;
+  }
 
-    .tree_pic_profile{
-        left:50%;
-        top:130px;
-        margin-left:-140px;
-        position: absolute;
-    }
+  .user_email_profile {
+    left: 50%;
+    top: 80px;
+    margin-left: -67px;
+    color: #53655c;
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+  }
 
-    .tree_detail{
-        left:50%;
-        top:132px;
-        margin-left:-85px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 25px;
-        color: #53655c;
-        text-decoration:underline;
-    }
+  .tree_pic_profile {
+    left: 50%;
+    top: 130px;
+    margin-left: -140px;
+    position: absolute;
+  }
 
-    .tree{
-        position: relative;
-        top:50px;
-    }
+  .tree_detail {
+    left: 50%;
+    top: 132px;
+    margin-left: -85px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    color: #53655c;
+  }
 
-    .leaf_pic_profile{
-        left:50%;
-        top:123px;
-        margin-left:10px;
-        position: absolute;
-    }
+  .tree {
+    position: relative;
+    top: 50px;
+  }
 
-    .leaf_detail{
-        left:50%;
-        top:132px;
-        margin-left:70px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 25px;
-        color: #53655c;
-        text-decoration:underline;
-    }
+  .leaf_pic_profile {
+    left: 50%;
+    top: 123px;
+    margin-left: 10px;
+    position: absolute;
+  }
 
-    .leaf{
-        position: relative;
-        top:50px;
-    }
+  .leaf_detail {
+    left: 50%;
+    top: 132px;
+    margin-left: 70px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    color: #53655c;
+  }
 
-    .block_bottom_1{
-        height: 50px;
-        border-bottom:solid  1.5px gray;
-        width: 420px;
-        left: 50%;
-        margin-left: -210px;
-        font-size: 25px;
-        top:45vh;
-        position: relative;
-    }
+  .leaf {
+    position: relative;
+    top: 50px;
+  }
 
-    .text_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 20px;
-        padding-top: 10px;
-        color: #53655C;
-    }
+  .block_bottom_1 {
+    height: 50px;
+    border-bottom: solid 1.5px gray;
+    width: 420px;
+    left: 50%;
+    margin-left: -210px;
+    font-size: 25px;
+    top: 45vh;
+    position: relative;
+  }
 
-    .logout_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 20px;
-        padding-top: 10px;
-        color: 	#9A5058;
-        left: 50%;
-        margin-left: -75px;
-    }
+  .text_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 20px;
+    padding-top: 10px;
+    color: #53655c;
+  }
+
+  .logout_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 20px;
+    padding-top: 10px;
+    color: #9a5058;
+    left: 50%;
+    margin-left: -75px;
+  }
 }
 
-@media only screen and (min-width: 768px) { /*for laptop's width>768 */
-    .profile_body{
-        max-width: 768px;
-        left:50%;
-        margin-left: -384px;
-        border-radius: 0px; 
-    }
+@media only screen and (width: 768px) and (height: 1024px) {
+  /*ipad*/
+  .profile_body {
+    max-width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    border-radius: 0px;
+  }
 
-    .top_block1_profile{
-        background: #6a7b62;
-        height: 12vh;
-        font-size: 40px;
-        font-weight: bold;
-        text-align: center;
-        color: white;
-    }
+  .top_block1_profile {
+    background: #6a7b62;
+    height: 12vh;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
 
-    .user_pic_profile{
-        top:-70px;
-        width:90px;
-        left: 50%;
-        margin-left: -45px;
-        position: absolute;
-    }
+  .user_pic_profile {
+    top: -90px;
+    width: 120px;
+    left: 50%;
+    margin-left: -60px;
+    position: absolute;
+  }
 
-    .camera_pic{
-        left: 50%;
-        margin-left: 10px;
-        position: absolute;
-        top:-5px;
-    }
+  .camera_pic {
+    left: 50%;
+    margin-left: 10px;
+    position: absolute;
+    top: -5px;
+  }
 
-    .background_profile{
-        width: 320px;
-        height: 250px;
-        border-radius: 12px;
-        background-color: #A0B0A9;
-        left: 50%;
-        top:90px;
-        margin-left: -160px;
-        position: relative;
-        opacity: 0.9;
-    }
+  .background_profile {
+    width: 500px;
+    height: 300px;
+    border-radius: 12px;
+    background-color: #a0b0a9;
+    left: 50%;
+    top: 120px;
+    margin-left: -250px;
+    position: relative;
+    opacity: 0.9;
+  }
 
-    .user_account_profile{
-        left:50%;
-        top:40px;
-        margin-left:-45px;
-        color:#53655C;
-        font-weight: bold;
-        font-size: x-large;
-        position: absolute;
-    }
+  .user_account_profile {
+    left: 50%;
+    top: 50px;
+    margin-left: -65px;
+    color: #53655c;
+    font-weight: bold;
+    font-size: xx-large;
+    position: absolute;
+  }
 
-    .user_email_profile{
-        left:50%;
-        top:80px;
-        margin-left:-67px;
-        color:#53655C;
-        font-size:15px;
-        font-weight: 500;
-        position: absolute;
-    }
+  .user_email_profile {
+    left: 50%;
+    top: 100px;
+    margin-left: -110px;
+    color: #53655c;
+    font-size: 22px;
+    font-weight: 500;
+    position: absolute;
+  }
 
-    .tree_pic_profile{
-        left:50%;
-        top:130px;
-        margin-left:-140px;
-        position: absolute;
-    }
+  .tree_pic_profile {
+    left: 50%;
+    top: 160px;
+    margin-left: -140px;
+    position: absolute;
+  }
 
-    .tree_detail{
-        left:50%;
-        top:132px;
-        margin-left:-85px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 25px;
-        color: #53655c;
-        text-decoration:underline;
-    }
+  .tree_detail {
+    left: 50%;
+    top: 155px;
+    margin-left: -85px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 30px;
+    color: #53655c;
+  }
 
-    .tree{
-        position: relative;
-        top:50px;
-    }
+  .tree {
+    position: relative;
+    top: 50px;
+    left: -50px;
+  }
 
-    .leaf_pic_profile{
-        left:50%;
-        top:123px;
-        margin-left:10px;
-        position: absolute;
-    }
+  .leaf_pic_profile {
+    left: 50%;
+    top: 153px;
+    margin-left: 10px;
+    position: absolute;
+  }
 
-    .leaf_detail{
-        left:50%;
-        top:132px;
-        margin-left:70px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 25px;
-        color: #53655c;
-        text-decoration:underline;
-    }
+  .leaf_detail {
+    left: 50%;
+    top: 155px;
+    margin-left: 70px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 30px;
+    color: #53655c;
+  }
 
-    .leaf{
-        position: relative;
-        top:50px;
-    }
+  .leaf {
+    position: relative;
+    top: 50px;
+    right: -50px;
+  }
 
-    .block_bottom_1{
-        height: 50px;
-        border-bottom:solid  1.5px gray;
-        width: 420px;
-        left: 50%;
-        margin-left: -210px;
-        font-size: 25px;
-        top:45vh;
-        position: relative;
-    }
+  .block_bottom_1 {
+    height: 50px;
+    border-bottom: solid 1.5px gray;
+    width: 420px;
+    left: 50%;
+    margin-left: -210px;
+    font-size: 25px;
+    top: 45vh;
+    position: relative;
+  }
 
-    .text_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 20px;
-        padding-top: 10px;
-        color: #53655C;
-    }
+  .text_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 25px;
+    padding-top: 0px;
+    color: #53655c;
+  }
 
-    .logout_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 20px;
-        padding-top: 10px;
-        color: 	#9A5058;
-        left: 50%;
-        margin-left: -75px;
-    }
-
-   
+  .logout_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 25px;
+    padding-top: 10px;
+    color: #9a5058;
+    left: 50%;
+    margin-left: -75px;
+  }
 }
 
-@media only screen and (min-width: 1024px)  {  /*for laptop:when width>1024*/
-    .profile_body{
-        max-width: 425px;
-        left:50%;
-        margin-left: -212.5px;
-        border-radius: 12px; 
-    }
-    
-    .top_block1_profile{
-        background: #6a7b62;
-        height: 12vh;
-        font-size: 40px;
-        font-weight: bold;
-        text-align: center;
-        color: white;
-    }
+@media only screen and (width: 1024px) and (height: 1366px) {
+  /*ipad pro*/
+  .profile_body {
+    max-width: 1024px;
+    left: 0%;
+    margin-left: auto;
+    border-radius: 0px;
+  }
 
-    .user_pic_profile{
-        top:-70px;
-        width:90px;
-        left: 50%;
-        margin-left: -45px;
-        position: absolute;
-    }
+  .top_block1_profile {
+    background: #6a7b62;
+    height: 12vh;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
 
-    .camera_pic{
-        left: 50%;
-        margin-left: 10px;
-        position: absolute;
-        top:-5px;
-    }
+  .user_pic_profile {
+    top: -90px;
+    width: 120px;
+    left: 50%;
+    margin-left: -60px;
+    position: absolute;
+  }
 
-    .background_profile{
-        width: 320px;
-        height: 250px;
-        border-radius: 12px;
-        background-color: #A0B0A9;
-        left: 50%;
-        top:90px;
-        margin-left: -160px;
-        position: relative;
-        opacity: 0.9;
-    }
+  .camera_pic {
+    left: 50%;
+    margin-left: 10px;
+    position: absolute;
+    top: -5px;
+  }
 
-    .user_account_profile{
-        left:50%;
-        top:40px;
-        margin-left:-45px;
-        color:#53655C;
-        font-weight: bold;
-        font-size: x-large;
-        position: absolute;
-    }
+  .background_profile {
+    width: 600px;
+    height: 350px;
+    border-radius: 12px;
+    background-color: #a0b0a9;
+    left: 50%;
+    top: 120px;
+    margin-left: -300px;
+    position: relative;
+    opacity: 0.9;
+  }
 
-    .user_email_profile{
-        left:50%;
-        top:80px;
-        margin-left:-67px;
-        color:#53655C;
-        font-size:15px;
-        font-weight: 500;
-        position: absolute;
-    }
+  .user_account_profile {
+    left: 50%;
+    top: 80px;
+    margin-left: -85px;
+    color: #53655c;
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+  }
 
-    .tree_pic_profile{
-        left:50%;
-        top:130px;
-        margin-left:-140px;
-        position: absolute;
-    }
+  .user_email_profile {
+    left: 50%;
+    top: 130px;
+    margin-left: -160px;
+    color: #53655c;
+    font-size: 32px;
+    font-weight: 500;
+    position: relative;
+  }
 
-    .tree_detail{
-        left:50%;
-        top:132px;
-        margin-left:-85px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 25px;
-        color: #53655c;
-        text-decoration:underline;
-    }
+  .tree_pic_profile {
+    left: 50%;
+    top: 160px;
+    margin-left: -140px;
+    position: absolute;
+  }
 
-    .tree{
-        position: relative;
-        top:50px;
-    }
+  .tree_detail {
+    left: 50%;
+    top: 155px;
+    margin-left: -85px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 40px;
+    color: #53655c;
+  }
 
-    .leaf_pic_profile{
-        left:50%;
-        top:123px;
-        margin-left:10px;
-        position: absolute;
-    }
+  .tree {
+    position: relative;
+    top: 50px;
+    left: -50px;
+  }
 
-    .leaf_detail{
-        left:50%;
-        top:132px;
-        margin-left:70px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 25px;
-        color: #53655c;
-        text-decoration:underline;
-    }
+  .leaf_pic_profile {
+    left: 50%;
+    top: 153px;
+    margin-left: 10px;
+    position: absolute;
+  }
 
-    .leaf{
-        position: relative;
-        top:50px;
-    }
+  .leaf_detail {
+    left: 50%;
+    top: 155px;
+    margin-left: 70px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 40px;
+    color: #53655c;
+  }
 
-    .block_bottom_1{
-        height: 50px;
-        border-bottom:solid  1.5px gray;
-        width: 420px;
-        left: 50%;
-        margin-left: -210px;
-        font-size: 25px;
-        top:45vh;
-        position: relative;
-    }
+  .leaf {
+    position: relative;
+    top: 50px;
+    right: -50px;
+  }
 
-    .text_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 20px;
-        padding-top: 10px;
-        color: #53655C;
-    }
+  .block_bottom_1 {
+    height: 80px;
+    border-bottom: solid 1.5px gray;
+    width: 520px;
+    left: 50%;
+    margin-left: -260px;
+    font-size: 25px;
+    top: 45vh;
+    position: relative;
+  }
 
-    .logout_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 20px;
-        padding-top: 10px;
-        color: 	#9A5058;
-        left: 50%;
-        margin-left: -75px;
-    }
-    
-}
+  .text_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 35px;
+    padding-top: 10px;
+    color: #53655c;
+  }
 
-@media only screen and (width: 768px) and (height: 1024px) { /*ipad*/
-    .profile_body{
-        max-width: 768px;
-        left:50%;
-        margin-left: -384px;
-        border-radius: 0px; 
-    }
-
-    .top_block1_profile{
-        background: #6a7b62;
-        height: 12vh;
-        font-size: 50px;
-        font-weight: bold;
-        text-align: center;
-        color: white;
-    }
-
-    .user_pic_profile{
-        top:-90px;
-        width:120px;
-        left: 50%;
-        margin-left: -60px;
-        position: absolute;
-    }
-
-    .camera_pic{
-        left: 50%;
-        margin-left: 10px;
-        position: absolute;
-        top:-5px;
-    }
-
-    .background_profile{
-        width: 500px;
-        height: 300px;
-        border-radius: 12px;
-        background-color: #A0B0A9;
-        left: 50%;
-        top:120px;
-        margin-left: -250px;
-        position: relative;
-        opacity: 0.9;
-    }
-
-    .user_account_profile{
-        left:50%;
-        top:50px;
-        margin-left:-65px;
-        color:#53655C;
-        font-weight: bold;
-        font-size: xx-large;
-        position: absolute;
-    }
-
-    .user_email_profile{
-        left:50%;
-        top:100px;
-        margin-left:-110px;
-        color:#53655C;
-        font-size:22px;
-        font-weight: 500;
-        position: absolute;
-    }
-
-    .tree_pic_profile{
-        left:50%;
-        top:160px;
-        margin-left:-140px;
-        position: absolute;
-    }
-
-    .tree_detail{
-        left:50%;
-        top:155px;
-        margin-left:-85px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 30px;
-        color: #53655c;
-        text-decoration:underline;
-    }
-
-    .tree{
-        position: relative;
-        top:50px;
-        left: -50px;
-    }
-
-    .leaf_pic_profile{
-        left:50%;
-        top:153px;
-        margin-left:10px;
-        position: absolute;
-    }
-
-    .leaf_detail{
-        left:50%;
-        top:155px;
-        margin-left:70px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 30px;
-        color: #53655c;
-        text-decoration:underline;
-    }
-
-    .leaf{
-        position: relative;
-        top:50px;
-        right: -50px;
-    }
-
-    .block_bottom_1{
-        height: 50px;
-        border-bottom:solid  1.5px gray;
-        width: 420px;
-        left: 50%;
-        margin-left: -210px;
-        font-size: 25px;
-        top:45vh;
-        position: relative;
-    }
-
-    .text_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 25px;
-        padding-top: 0px;
-        color: #53655C;
-    }
-
-    .logout_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 25px;
-        padding-top: 10px;
-        color: 	#9A5058;
-        left: 50%;
-        margin-left: -75px;
-    }
-    
-
-}
-
-@media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
-    .profile_body{
-        max-width: 1024px;
-        left:0%;
-        margin-left: auto;
-        border-radius: 0px; 
-    }
-
-    .top_block1_profile{
-        background: #6a7b62;
-        height: 12vh;
-        font-size: 60px;
-        font-weight: bold;
-        text-align: center;
-        color: white;
-    }
-
-    .user_pic_profile{
-        top:-90px;
-        width:120px;
-        left: 50%;
-        margin-left: -60px;
-        position: absolute;
-    }
-
-    .camera_pic{
-        left: 50%;
-        margin-left: 10px;
-        position: absolute;
-        top:-5px;
-    }
-
-    .background_profile{
-        width: 600px;
-        height: 350px;
-        border-radius: 12px;
-        background-color: #A0B0A9;
-        left: 50%;
-        top:120px;
-        margin-left: -300px;
-        position: relative;
-        opacity: 0.9;
-    }
-
-    .user_account_profile{
-        left:50%;
-        top:80px;
-        margin-left:-85px;
-        color:#53655C;
-        font-weight: bold;
-        font-size: 40px;
-        position: absolute;
-    }
-
-    .user_email_profile{
-        left:50%;
-        top:130px;
-        margin-left:-160px;
-        color:#53655C;
-        font-size:32px;
-        font-weight: 500;
-        position: relative;
-    }
-
-    .tree_pic_profile{
-        left:50%;
-        top:160px;
-        margin-left:-140px;
-        position: absolute;
-    }
-
-    .tree_detail{
-        left:50%;
-        top:155px;
-        margin-left:-85px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 40px;
-        color: #53655c;
-        text-decoration:underline;
-    }
-
-    .tree{
-        position: relative;
-        top:50px;
-        left: -50px;
-    }
-
-    .leaf_pic_profile{
-        left:50%;
-        top:153px;
-        margin-left:10px;
-        position: absolute;
-    }
-
-    .leaf_detail{
-        left:50%;
-        top:155px;
-        margin-left:70px;
-        position: absolute;
-        font-weight: bold;
-        font-size: 40px;
-        color: #53655c;
-        text-decoration:underline;
-    }
-
-    .leaf{
-        position: relative;
-        top:50px;
-        right: -50px;
-    }
-
-    .block_bottom_1{
-        height: 80px;
-        border-bottom:solid  1.5px gray;
-        width: 520px;
-        left: 50%;
-        margin-left: -260px;
-        font-size: 25px;
-        top:45vh;
-        position: relative;
-    }
-
-    .text_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 35px;
-        padding-top: 10px;
-        color: #53655C;
-    }
-
-    .logout_profile{
-        padding-left: 50px;
-        position: absolute;
-        font-size: 35px;
-        padding-top: 10px;
-        color: 	#9A5058;
-        left: 50%;
-        margin-left: -75px;
-    }
-    
-
+  .logout_profile {
+    padding-left: 50px;
+    position: absolute;
+    font-size: 35px;
+    padding-top: 10px;
+    color: #9a5058;
+    left: 50%;
+    margin-left: -75px;
+  }
 }

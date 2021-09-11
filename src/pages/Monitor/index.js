@@ -39,7 +39,8 @@ const Item = styled.div`
 
 
 function Monitor() {
-  const [weather, setWeather] = useState();
+  const [weather, setWeather] = useState("載入中");
+  const [temperature, setTemperature] = useState("...");
   const [template, setTemplate] = useState();
   const [detail, setDetail] = useState();
   const [data, setData] = useState({
@@ -50,6 +51,9 @@ function Monitor() {
     "light": true,
     "temperature" : false,
     "humidity" : false,
+    "moisture" : false,
+    "volume" : false,
+    "battery" : false,
   })
 
   useEffect(()=>{   
@@ -87,9 +91,18 @@ function Monitor() {
       return res.json();
     })
     .then(data=>{
+      //天氣現象 weather
+      const weather = data.records.location[0].weatherElement[20].elementValue;
+      const temperature = (parseInt(data.records.location[0].weatherElement[3].elementValue)).toFixed(0);
       setWeather(data.records.location[0].weatherElement[20].elementValue)
+      setTemperature((parseInt(data.records.location[0].weatherElement[3].elementValue)).toFixed(0)+"°C")
+      console.log(typeof(data.records.location[0].weatherElement[3].elementValue))
+      console.log(data.records.location[0])
     })
   })
+
+  //設定 天氣照片 多雲，晴天，雨天，陰天 幾個重要的就好
+  
 
   //change main detail
   const changetemplate = (string) =>{
@@ -108,23 +121,41 @@ function Monitor() {
         setTemplate(humiditytemplate);
         setDetail(humiddetail);
         break;
-      
+
+      case "moisture":
+        setTemplate(moisturetemplate);
+        setDetail(moistuiredetail)
+        break;
+
+      case "volume":
+        setDetail(volumedetail);
+        setTemplate(volumetemplate);
+        break;
+
+      case "battery":
+        setDetail(batterydetail);
+        setTemplate(batterytemplate);
+        break;
+
       default:
         setTemplate(lighttemplate);
         setDetail(lightdetail);
         break;
     }
     setSelect({
-      "light": "light" == string ? true:false,
-      "temperature" : "temp" == string ? true:false,
-      "humidity" : "humid" == string ? true:false,
+      "light": "light" == string ? true: false,
+      "temperature" : "temp" == string ? true: false,
+      "humidity" : "humid" == string ? true: false,
+      "moisture" : "moisture" == string ? true: false,
+      "volume" : "volume" == string ? true: false,
+      "battery" : "battery" == string? true: false,
     })
   }
 
   const lighttemplate = (<div className={selecter["light"] ? "selected monitor_light" : "monitor_light"} onClick={()=>changetemplate("light")}> 
                           <div className="monitor_light2">亮度</div>
                           <div><img className="monitor_light_pic" src={light} alt=""/></div>
-                          <div className="monitor_light1">40%</div>
+                          <div className="monitor_light1">Green</div>
                         </div>);
 
   const lightdetail = (<div>
@@ -156,6 +187,37 @@ function Monitor() {
                         <div>推薦濕度:</div>
                       </div>);
 
+  const batterytemplate = (<div className={selecter["battery"] ? "selected monitor_battery" : "monitor_battery"} onClick={()=>changetemplate("battery")}>
+                            <div className="monitor_battery2">電量</div>
+                            <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
+                            <div className="monitor_battery1">87%</div>
+                          </div>)  
+                          
+  const batterydetail = (<div>
+    <div>電池電量剩餘時間 ：小於8小時</div>
+  </div>)
+  
+  const volumetemplate = (<div className={selecter["volume"] ? "selected monitor_water_volume" : "monitor_water_volume"} onClick={()=>changetemplate("volume")}>
+                            <div className="monitor_water_volume2">水量</div>
+                            <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
+                            <div className="monitor_water_volume1">45 %</div>
+                          </div>)
+
+  const volumedetail = (<div>
+    <div>上次澆水日期:2021-08-15</div>
+    <div>上次澆水量：260ml</div>
+  </div>);
+  
+  const moisturetemplate = (<div className={selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"} onClick={()=>changetemplate("moisture")}>
+                              <div className="monitor_soil2">土壤濕度</div>
+                              <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
+                              <div className="monitor_soil1">10%</div>
+                            </div>)
+
+  const moistuiredetail = (<div>
+    <div>植物推薦土壤濕度：70%~80%</div>
+  </div>)
+
 
 
   return (
@@ -170,7 +232,7 @@ function Monitor() {
 
           <Row>
             <Col className="monitor_top2"  md={{ span: 6, offset: 6 }}  sm={{ span: 6, offset: 6 }} xs={{ span: 6, offset: 6 }}>
-              {weather}
+              {weather}{temperature}
             </Col>
           </Row>
 
@@ -202,29 +264,17 @@ function Monitor() {
             <Item>
               {humiditytemplate}
             </Item>
-            
-            <Item>
-              <div className="monitor_battery">
-                <div className="monitor_battery2">電量</div>
-                <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
-                <div className="monitor_battery1">87%</div>
-              </div>
-            </Item>
 
             <Item>
-              <div className="monitor_water_volume">
-                <div className="monitor_water_volume2">水量</div>
-                <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
-                <div className="monitor_water_volume1">45.91%</div>
-              </div>
+              {volumetemplate}
             </Item>
       
             <Item>
-              <div className="monitor_soil">
-                <div className="monitor_soil2">土壤濕度</div>
-                <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
-                <div className="monitor_soil1">10.66%</div>
-              </div>
+              {moisturetemplate}
+            </Item>
+
+            <Item>
+              {batterytemplate}
             </Item>
           </Carousel>
          
