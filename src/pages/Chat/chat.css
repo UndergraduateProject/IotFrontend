@@ -1,0 +1,74 @@
+.chatbox {
+  width: 100vw;
+  background-color: #aebfb7;
+  height: 100vh;
+}
+
+#title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.chat {
+  margin-top: 5%;
+}
+
+.chat-icon {
+  width: 73px;
+  height: 73px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#input {
+  position: fixed;
+  bottom: 0;
+  border: none;
+  height: 61px;
+  width: 100%;
+  background-color: #dbdbdb;
+}
+
+@media screen and (min-width: 1025px) {
+  .chatbox {
+    margin-left: 740px;
+    max-width: 375px;
+  }
+
+  #input {
+    max-width: 375px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .chatbox {
+    margin-left: 510px;
+    max-width: 375px;
+  }
+
+  #input {
+    max-width: 375px;
+  }
+}
+
+@media screen and (width: 1024px) and (height: 858px) {
+  .chatbox {
+    margin-left: 300px;
+    max-width: 375px;
+  }
+
+  #input {
+    max-width: 375px;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .chatbox {
+    margin-left: 1075px;
+    max-width: 375px;
+  }
+
+  #input {
+    max-width: 375px;
+  }
+}

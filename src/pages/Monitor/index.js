@@ -15,6 +15,11 @@ import styled from "styled-components"
 import socketIOClient from "socket.io-client";
 import Thermometer from 'react-thermometer-component'
 import api from "../../utils/api";
+import useFitText from "use-fit-text";
+
+
+const ColorHelper = require('color-to-name');
+
 
 
 const weatherurl = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-D0F2090C-5F48-45D5-B0D7-ACE9030246B0&locationName=%E9%AB%98%E9%9B%84";
@@ -36,7 +41,9 @@ const Item = styled.div`
   // height: 150px;
   // margin: 15px;
 `
-
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
 
 function Monitor() {
   const [weather, setWeather] = useState("載入中");
@@ -47,6 +54,7 @@ function Monitor() {
     "temperature": 0,
     "humidity":0,
   });
+  const [moisture, setMoisture] = useState(0)
   const [selecter, setSelect] = useState({
     "light": true,
     "temperature" : false,
@@ -55,6 +63,10 @@ function Monitor() {
     "volume" : false,
     "battery" : false,
   })
+  const [color, setColor] = useState()
+  const { fontSize, ref} = useFitText({
+    maxFontSize:150,
+  });
 
   useEffect(()=>{   
     socket.on("monitor",res=>{
@@ -74,6 +86,19 @@ function Monitor() {
       api.get(url)
       .then(res=>{
         setData(res.results[res.results.length-1])
+      })
+    })
+  },[])
+
+  useEffect(()=>{
+    var url = "api/Moisture/";
+    api.get(url)
+    .then(res => {
+      const offset = (Math.floor(res.count/10))*10;
+      url = url + "?offset=" + offset;
+      api.get(url)
+      .then(res=>{
+        setMoisture(res.results[res.results.length-1].moisture)
       })
     })
   },[])
@@ -99,7 +124,7 @@ function Monitor() {
       console.log(typeof(data.records.location[0].weatherElement[3].elementValue))
       console.log(data.records.location[0])
     })
-  })
+  },[])
 
   //設定 天氣照片 多雲，晴天，雨天，陰天 幾個重要的就好
   
@@ -152,10 +177,54 @@ function Monitor() {
     })
   }
 
+  //LED
+  function getColor(results){
+    const red = results[0].red;
+    const green = results[0].green;
+    const blue = results[0].blue;
+    const brightness = results[0].brigthness
+    const switchs = results[0].switch
+    // setLightColor({
+    //   "R": red,
+    //   "G": green,
+    //   "B": blue,
+    //   "brightness":brightness,
+    //   "switch":switchs,
+    //   })
+    const hex = rgbToHex(red,green,blue)
+    setColor(ColorHelper.findClosestColor(hex).name)
+  }
+
+  useEffect(()=>{
+    var url = "api/LED/";
+    api.get(url)
+    .then(res=>{
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
+      .then(res=>{
+        if(res.results.length){
+          res.results = res.results.reverse()
+          getColor(res.results)
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            res.results = res.results.reverse()
+            getColor(res.results)
+          })
+        }
+      })
+    })
+  },[])
+  //LED
+
   const lighttemplate = (<div className={selecter["light"] ? "selected monitor_light" : "monitor_light"} onClick={()=>changetemplate("light")}> 
                           <div className="monitor_light2">亮度</div>
                           <div><img className="monitor_light_pic" src={light} alt=""/></div>
-                          <div className="monitor_light1">Green</div>
+                          <div className="monitor_light1" ref={ref} style={{fontSize,border: "1px solid red" }}>{color}</div>
                         </div>);
 
   const lightdetail = (<div>
@@ -211,7 +280,7 @@ function Monitor() {
   const moisturetemplate = (<div className={selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"} onClick={()=>changetemplate("moisture")}>
                               <div className="monitor_soil2">土壤濕度</div>
                               <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
-                              <div className="monitor_soil1">10%</div>
+                              <div className="monitor_soil1">{moisture}%</div>
                             </div>)
 
   const moistuiredetail = (<div>

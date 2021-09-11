@@ -142,6 +142,7 @@ button {
     text-align: center;
     font-size: 35px;
     font-weight: bold;
+    display: inline;
     position: relative;
   }
 
@@ -438,6 +439,7 @@ button {
     font-size: 35px;
     font-weight: bold;
     position: relative;
+    display: inline;
   }
 
   .monitor_detail {
@@ -740,6 +742,7 @@ button {
     text-align: center;
     font-size: 35px;
     font-weight: bold;
+    display: inline;
     position: relative;
   }
 
@@ -1044,6 +1047,7 @@ button {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
+    display: inline;
     position: relative;
   }
 
@@ -1368,6 +1372,7 @@ button {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
+    display: inline;
     position: relative;
   }
 

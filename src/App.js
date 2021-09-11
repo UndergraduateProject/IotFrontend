@@ -12,6 +12,7 @@ import Detect from "./pages/Detect";
 import Profile from "./pages/Profile";
 import Track from "./component/Track";
 import Water from "./component/Water";
+import Chat from "./pages/Chat";
 
 import {
   Redirect,
@@ -48,7 +49,7 @@ function App() {
         <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>
         <ProtectedRoute path="/detect" loggedIn = {log} component = {Detect}/>
         <ProtectedRoute path="/profile" loggedIn = {log} component = {Profile}/>
-        <ProtectedRoute path="/test" loggedIn = {log} component = {Track}/>
+        <ProtectedRoute path="/test" loggedIn = {log} component = {Chat}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       

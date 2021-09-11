@@ -44,12 +44,12 @@ function Control() {
   const [water, setWater] = useState("");
   const [waterhistory, setWaterHistory] = useState([]);
   const [volume, setVolume] = useState(100) ;
-  const [duration, setDuration] = useState("30mins");
+  const [duration, setDuration] = useState();
   const [color, setColor] = useState();
   const [selected, setSelected] = useState({
     "5mins" : false,
     "10mins" : false,
-    "30mins" : true,
+    "30mins" : false,
     "1hour" : false,
     "6hour" : false,
     "12hour" : false,
@@ -165,8 +165,50 @@ function Control() {
     Object.keys(selected).forEach((key)=>{
       if(selected[key]){
         setDuration(key);
+        const url = "api/Sensor/sensor1/";
+        var data = {
+          "name" : "sensor1",
+          "interval" : "",
+        }
+        switch(key){
+          case "5mins":
+            data.interval = "00:05:00"
+            break;
+
+          case "10mins":
+            data.interval = "00:10:00"
+            break;
+
+          case "30mins":
+            data.interval = "00:30:00"
+            break;
+
+          case "1hour":
+            data.interval = "01:00:00"
+            break;
+
+          case "6hour":
+            data.interval = "06:00:00"
+            break;
+
+          case "12hour":
+            data.interval = "12:00:00"
+            break;
+
+          case "24hour":
+            data.interval = "24:00:00"
+            break;
+
+          default:
+            data.interval="00:00:30";
+        }
+        api.patch(url,data)
+        .then(res =>{
+          console.log(res)
+        })
       }
     })
+    
   };
 
   //get data
@@ -286,7 +328,79 @@ function Control() {
   },[])
   //LED
 
-  console.log(lightColor)
+  //interval
+  useEffect(()=>{
+    const url = "api/Sensor/sensor1/"
+    api.get(url)
+    .then(res=>{
+      switch(res.interval){
+        case "00:05:00":
+          setDuration("5mins")
+          setSelected({
+            ...selected,
+            "5mins":true
+          })
+          break;
+
+        case "00:10:00":
+          setDuration("10mins")
+          setSelected({
+            ...selected,
+            "10mins":true
+          })
+          break;
+
+        case "00:30:00":
+          setDuration("30mins")
+          setSelected({
+            ...selected,
+            "30mins":true
+          })
+          break;
+
+        case "01:00:00":
+          setDuration("1hour")
+          setSelected({
+            ...selected,
+            "1hour":true
+          })
+          break;
+
+        case "06:00:00":
+          setDuration("6hour")
+          setSelected({
+            ...selected,
+            "6hour":true
+          })
+          break;
+
+        case "12:00:00":
+          setDuration("12hour")
+          setSelected({
+            ...selected,
+            "12hour":true
+          })
+          break;
+
+        case "24:00:00":
+          setDuration("24hour")
+          setSelected({
+            ...selected,
+            "24hour":true
+          })
+          break;
+
+        default:
+          setDuration("30mins")
+          setSelected({
+            ...selected,
+            "30mins":true
+          })
+      }
+    })
+  },[])
+
+  //interval
 
   return (
     <div className="home">
