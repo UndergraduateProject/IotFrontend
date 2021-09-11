@@ -23,6 +23,12 @@ function Camera() {
   const videoRef = useRef();          // video source
   const peerConnection = new RTCPeerConnection({'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]});
   const remoteStream = new MediaStream();
+  // taking picture
+  const photo = useRef();
+  const canvas = useRef();
+  const width = 320;
+ 
+
 
   useEffect(async ()=>{
     if(ws){
@@ -107,19 +113,41 @@ function Camera() {
     console.log("test")
   }
 
-  // const useStyles = makeStyles({
-  //   root: {
-  //     height: 300,
-  //   },
-  // });
+
+  // taking puicture
+  const takepicture = () => {
+    //clearphoto();
+    const height = videoRef.current.videoHeight / (videoRef.current.videoWidth/width);  
+
+    let context = canvas.current.getContext('2d');
+
+    if (width && height) {
+      canvas.current.width = width;
+      canvas.current.height = height;
+      context.drawImage(videoRef.current, 0, 0, width, height);
+    
+      let data = canvas.current.toDataURL('image/png');
+      photo.current.setAttribute('src', data);
+      localStorage.setItem('capture_image', data);
+    } 
+    // else {
+    //   clearphoto();
+    // }
+  } 
+
+  function clearphoto() {
+    let context = canvas.current.getContext('2d');
+    context.fillStyle = "#AAA";
+    context.fillRect(0, 0, canvas.current.width, canvas.current.height);
+
+    let data = canvas.current.toDataURL('image/png');
+    photo.current.setAttribute('src', data);
+  }
 
 
   return(
     <div className="body_camera">
-        <Row className="camera_top">
-          <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
-          <Col ><img className="camera_pic2" src={ flash }/></Col>
-          <Col ><img className="camera_pic3" src={ turn_camera }/></Col>
+
 
         </Row>
         {/* <Row>
@@ -154,10 +182,10 @@ function Camera() {
       {/* <input type='button' value='connect' onClick={connectWebSocket} />
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
-      </div> */}
-    </div>
 
-    
+      </div>  */}
+      {/* </Container> */}
+    </div>
 
     
   )
