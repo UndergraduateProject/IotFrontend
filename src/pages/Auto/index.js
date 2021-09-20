@@ -1,6 +1,6 @@
- import React, {useState} from "react"
+import React, {useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./warning_ct.css"
+import "./automation.css"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
@@ -86,12 +86,14 @@ export default function Warning_ct() {
   const classes = useStyles()
   const [data, setData] = useState({
     "humidity": 0,
+    "moisture":0,
     "temperature": 0,
-    "volume": 0,
+    "brightness": 0,
   })
 
   const [hiLo, setHiLo] = useState ({
     "humidity" : "higher",
+    "moisture" : "higher",
     "temperature" : "lower",
     "brightness" : "lower"
   })
@@ -111,10 +113,12 @@ export default function Warning_ct() {
     checkedA: false,
     checkedB: false,
     checkedC: false,
+    checkedD: false,
   })
 
 
   const handleChange_switch = (event,value) => {
+    console.log(value)
     if(value){
       switch(event.target.name){
         case "checkedA":
@@ -128,22 +132,32 @@ export default function Warning_ct() {
           break;
 
         case "checkedB":
+          if(value >0 && value <=100){
+            setState({ ...state, [event.target.name]: event.target.checked })
+            //post data
+          }
+          else{
+            alert("Moisture value not valid.")
+          }
+          break;
+
+        case "checkedC":
           if(value >0 && value <=50){
             setState({ ...state, [event.target.name]: event.target.checked })
             //post data
           }
           else{
-            alert("Temperture value not valid.")
+            alert("Temperature value not valid.")
           }
           break;
 
-        case "checkedC":
-          if(value >0 && value <=1000){
+        case "checkedD":
+          if(value >0 && value <=100){
             setState({ ...state, [event.target.name]: event.target.checked })
             //post data
           }
           else{
-            alert("Volume value not valid.")
+            alert("Brightness value not valid.")
           }
           break;
 
@@ -166,10 +180,10 @@ export default function Warning_ct() {
     // block1
     <div className="body_wc">
       <Sidebar />
-      <div className="top_block1_ct">Warning Center</div>
+      <div className="top_block1_ct">Automation</div>
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Notify me if humidity is
+          Water Plants if humidity is
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -212,10 +226,54 @@ export default function Warning_ct() {
       </div>
       {/* block1 */}
 
+      <div className="top_block2_ct">
+        <div className="text_left_ct">
+          Water Plants if moisture is
+          {/* select */}
+          <FormControl className={classes.formControl}>
+            <Select
+              value={hiLo.humidity}
+              onChange={handleChange}
+              displayEmpty
+              className={classes.selectEmpty}
+              inputProps={{ "aria-label": "Without label" }}
+              name="humidity"
+            >
+              <MenuItem value="lower">
+                <em className="select_text">lower</em>
+              </MenuItem>
+              <MenuItem value="higher">
+                <div className="select_text">higher</div>
+              </MenuItem>
+            </Select>
+            {/* <FormHelperText>Without label</FormHelperText> */}
+          </FormControl>
+          {/* select */}
+          than {' '}
+          <input className="temp_wc" name="moisture" type="text" onChange={setCondition} value={data.moisture}></input>
+          {' '}%
+        </div>
+      
+        {/* switch */}
+        <FormGroup className="switch_position">
+          <FormControlLabel
+            control={
+              <IOSSwitch
+                checked={state.checkedB}
+                onChange={(e)=>handleChange_switch(e, data.moisture)}
+                name="checkedB"
+              />
+            }
+            // label="iOS style"
+          />
+        </FormGroup>
+        {/* switch */}
+      </div>
+
       {/* block2 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Notify me if temperature is
+          Open fan if temperature is
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -237,7 +295,7 @@ export default function Warning_ct() {
           </FormControl>
           {/* select */}
           than {' '}
-          <input className="temp_wc" name="temperature" type="text" onChange={setCondition} value={data.temperature} ></input>
+          <input className="temp_wc" name="temperature" type="text" onChange={setCondition} value={data.temperature}></input>
           {' '}°C
         </div>
   
@@ -246,9 +304,9 @@ export default function Warning_ct() {
           <FormControlLabel
             control={
               <IOSSwitch
-                checked={state.checkedB}
+                checked={state.checkedC}
                 onChange={(e)=>handleChange_switch(e, data.temperature)}
-                name="checkedB"
+                name="checkedC"
               />
             }
             // label="iOS style"
@@ -261,7 +319,7 @@ export default function Warning_ct() {
       {/* block3 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Notify me if volume is
+          Open Light if brightness is
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -283,7 +341,7 @@ export default function Warning_ct() {
           </FormControl>
           {/* select */}
           than {' '}
-          <input className="temp_wc" name="volume" type="text" onChange={setCondition} value={data.volume}></input>
+          <input className="temp_wc" name="brightness" type="text" onChange={setCondition} value={data.brightness}></input>
           {' '}%
         </div>
 
@@ -292,9 +350,9 @@ export default function Warning_ct() {
           <FormControlLabel
             control={
               <IOSSwitch
-                checked={state.checkedC}
-                onChange={(e)=>handleChange_switch(e, data.volume)}
-                name="checkedC"
+                checked={state.checkedD}
+                onChange={(e)=>handleChange_switch(e, data.brightness)}
+                name="checkedD"
               />
             }
             // label="iOS style"

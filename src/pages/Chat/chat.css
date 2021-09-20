@@ -2,6 +2,7 @@
   width: 100vw;
   background-color: #aebfb7;
   height: 100vh;
+  overflow: scroll;
 }
 
 #title {
@@ -9,13 +10,27 @@
   font-size: 2rem;
 }
 
-.chat {
-  margin-top: 5%;
+.chat-0 {
+  margin-top: 10%;
 }
 
-.chat-icon {
-  width: 73px;
-  height: 73px;
+.chat-1 {
+  margin-top: 10%;
+  justify-content: end;
+}
+
+.chat-0 .chat-icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: #e3e8e6;
+  border-radius: 25px;
+}
+
+.chat-1 .chat-icon {
+  width: 50px;
+  height: 50px;
   margin-left: 15px;
   margin-right: 15px;
 }
@@ -26,6 +41,7 @@
   width: 100%;
   display: flex;
   background-color: #dbdbdb;
+  max-width: 375px;
 }
 
 #input {
@@ -36,7 +52,9 @@
 }
 
 #send-btn {
-  display: ;
+  display: block;
+  padding-top: 10px;
+  height: 45px;
 }
 
 @media screen and (min-width: 1025px) {

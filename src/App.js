@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import Track from "./component/Track";
 import Water from "./component/Water";
 import Chat from "./pages/Chat";
+import Auto from "./pages/Auto";
 
 import {
   Redirect,
@@ -45,11 +46,13 @@ function App() {
         <ProtectedRoute path="/select" loggedIn = {log} component = {Select}/>
         <ProtectedRoute path="/camera" loggedIn = {log} component = {Camera}/>
         <ProtectedRoute path="/visualization" loggedIn = {log} component = {Visualization}/>
+        <ProtectedRoute path="/auto" loggedIn = {log} component = {Auto}/>
         <ProtectedRoute path="/warning_center" loggedIn = {log} component = {Warning_center}/>
         <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>
         <ProtectedRoute path="/detect" loggedIn = {log} component = {Detect}/>
         <ProtectedRoute path="/profile" loggedIn = {log} component = {Profile}/>
-        <ProtectedRoute path="/test" loggedIn = {log} component = {Chat}/>
+        <ProtectedRoute path="/chat" loggedIn = {log} component = {Chat}/>
+        <ProtectedRoute path="/test" loggedIn = {log} component = {Track}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
       

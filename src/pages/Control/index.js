@@ -428,7 +428,7 @@ function Control() {
                     &times;
                   </button>
               <div className="modal-fan">{fanIcon}</div>
-              <div className="data">30%</div>
+              <div className="data">{spin?"ON":"OFF"}</div>
               <div>Fan</div>
               </div>
                 <label className="switch">

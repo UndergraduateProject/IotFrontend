@@ -4,9 +4,11 @@ import {ChatFeed, ChatBubble, Message} from 'react-chat-ui'
 import Sidebar from "../../component/Sidebar"
 import "./chat.css"
 import user_icon from "../../images/user.png";
+import Iris from "../../images/IRIS.png";
+import send from "../../images/send.png"
 
 export default function Chatbox() {
-  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'})])
+  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'}), new Message({id:0 ,message: 'Hello World!'})])
   const [current, setCurrent] = useState(1);
   var input = useRef();
 
@@ -30,7 +32,18 @@ export default function Chatbox() {
     });
     setMessage([...message, newMessage]);
   }
-
+  const test = message;
+  const messages = test.map((msg,id)=>{
+    id = id? 1 : 0;
+    return(
+      <Row className={"chat"+"-"+id}>
+        {id? "":<img className="chat-icon" src={Iris} alt="profile_pic" />}
+        <ChatBubble message={msg} />
+        {id?<img className="chat-icon" src={user_icon} alt="profile_pic" />:""}
+      </Row>
+    )
+  })
+  
   const template = (<Row className="chat">
   {/* <img className="chat-icon" src={user_icon} alt="profile_pic" /> */}
   <ChatFeed
@@ -55,15 +68,16 @@ export default function Chatbox() {
 </Row>)
 
   return(
+    
     <div className="chatbox">
       <Sidebar />
       <Row id="title">
         <Col >IRIS</Col>
       </Row>
-      {template}
-      <form id="message-form">
+      {messages}
+      <form id="message-form" onSubmit={onMessageSubmit}>
         <input ref={m => input = m} id="input" placeholder="Type your message..."></input>
-        <button id="send-btn" onClick={onMessageSubmit}>send</button>
+        <img id="send-btn" onClick={onMessageSubmit} src={send}></img>
       </form>
     </div>
   )

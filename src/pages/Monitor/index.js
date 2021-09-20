@@ -236,11 +236,19 @@ function Monitor() {
   },[])
   //LED
 
-  const lighttemplate = (<div className={selecter["light"] ? "selected monitor_light" : "monitor_light"} onClick={()=>changetemplate("light")}> 
-                          <div className="monitor_light2">亮度</div>
-                          <div><img className="monitor_light_pic" src={light} alt=""/></div>
-                          <div className="monitor_light1" ref={ref} style={{fontSize,border: "1px solid red" }}>{color}</div>
-                        </div>);
+  const lighttemplate = (
+    <div
+      className={selecter["light"] ? "selected monitor_light" : "monitor_light"}
+      onClick={() => changetemplate("light")}
+    >
+      <div className="monitor_light2">亮度</div>
+      <div>
+        <img className="monitor_light_pic" src={light} alt="" />
+      </div>
+      <div className="monitor_light3">87%</div>
+      <div className="monitor_light1">Green</div>
+    </div>
+  )
 
   const lightdetail = (<div>
                             <div>今天日照時長:</div>
@@ -298,122 +306,6 @@ function Monitor() {
                               <div className="monitor_soil1">{moisture}%</div>
                             </div>)
 
-  const lightdetail = (
-    <div>
-      <div>今天日照時長:</div>
-      <div>目前燈色:</div>
-      <div>推薦燈色:</div>
-    </div>
-  )
-
-  const temptemplate = (
-    <div
-      className={
-        selecter["temperature"] ? "selected monitor_temp" : "monitor_temp"
-      }
-      onClick={() => changetemplate("temp")}
-    >
-      <div className="monitor_temp2">溫度</div>
-      <div>
-        <img className="monitor_cloud_pic" src={cloud} alt="" />
-      </div>
-      <div className="monitor_temp1">{data.temperature.toFixed(0)}°C</div>
-    </div>
-  )
-
-  const tempdetail = (
-    <div>
-      <div>
-        溫室內溫度:
-        <br />
-        {data.temperature.toFixed(0)}°C
-      </div>
-      <div>風扇是否開啟:</div>
-      <div>推薦溫度:</div>
-    </div>
-  )
-
-  const humiditytemplate = (
-    <div
-      className={
-        selecter["humidity"] ? "selected monitor_humi" : "monitor_humi"
-      }
-      onClick={() => changetemplate("humid")}
-    >
-      <div className="monitor_humi2">濕度</div>
-      <div>
-        <img className="monitor_water_pic" src={water} alt="" />
-      </div>
-      <div className="monitor_humi1">{data.humidity.toFixed(0)}%</div>
-    </div>
-  )
-
-  const humiddetail = (
-    <div>
-      <div>空氣相對濕度:{data.humidity.toFixed(0)}%</div>
-      <div>推薦濕度:</div>
-    </div>
-  )
-
-  const batterytemplate = (
-    <div
-      className={
-        selecter["battery"] ? "selected monitor_battery" : "monitor_battery"
-      }
-      onClick={() => changetemplate("battery")}
-    >
-      <div className="monitor_battery2">電量</div>
-      <div>
-        <img className="monitor_battery_pic" src={battery} alt="" />
-      </div>
-      <div className="monitor_battery1">87%</div>
-    </div>
-  )
-
-  const batterydetail = (
-    <div>
-      <div>電池電量剩餘時間 ：小於8小時</div>
-    </div>
-  )
-
-  const volumetemplate = (
-    <div
-      className={
-        selecter["volume"]
-          ? "selected monitor_water_volume"
-          : "monitor_water_volume"
-      }
-      onClick={() => changetemplate("volume")}
-    >
-      <div className="monitor_water_volume2">水量</div>
-      <div>
-        <img className="monitor_water_volume_pic" src={water_volume} alt="" />
-      </div>
-      <div className="monitor_water_volume1">45 %</div>
-    </div>
-  )
-
-  const volumedetail = (
-    <div>
-      <div>上次澆水日期:2021-08-15</div>
-      <div>上次澆水量：260ml</div>
-    </div>
-  )
-
-  const moisturetemplate = (
-    <div
-      className={
-        selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"
-      }
-      onClick={() => changetemplate("moisture")}
-    >
-      <div className="monitor_soil2">土壤濕度</div>
-      <div>
-        <img className="monitor_soil_pic" src={soil} alt="" />
-      </div>
-      <div className="monitor_soil1">10%</div>
-    </div>
-  )
 
   const moistuiredetail = (
     <div>

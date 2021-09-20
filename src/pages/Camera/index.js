@@ -15,6 +15,11 @@ import shutter from "../../images/shutter.png";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import socketIOClient from "socket.io-client";
+import Sidebar from "../../component/Sidebar";
+
+const endpoint = "http://140.117.71.98:4001"
+const socket = socketIOClient(endpoint);
 
 
 // this is the client side that asking for video streaming 
@@ -109,9 +114,7 @@ function Camera() {
     videoRef.current.play();
   }
 
-  const slide = () => {
-    console.log("test")
-  }
+
 
 
   // taking puicture
@@ -144,46 +147,86 @@ function Camera() {
     photo.current.setAttribute('src', data);
   }
 
+  //track moving
+  useEffect(()=>{
+    socket.on("slider", res =>{
+      console.log("received instrusction, moving...")
+    })
+  })
+
+  const [step,setStep] = useState(250);
+  const [current, setCurrent] = useState(0);
+
+  //slide volume 
+  const slide = (e,value) => {
+    setStep(value);
+  }
+
+  const move = (direction)=>{
+    console.log("hello")
+    console.log("moving" +step + "steps")
+    var position = current;
+    if(direction == "up" && current>0){
+      setCurrent(current-step)
+      position = current-step
+      console.log(current)
+    }
+    else if(direction=="down" && current<1000){
+      setCurrent(current+step)
+      console.log(current)
+      position = current+step
+    }
+    const instruction = {
+      "slide":step,
+      "direction":direction,
+      "current":position,
+    }
+    socket.emit("slider",instruction)
+  }
+
 
   return(
     <div className="body_camera">
+        <Sidebar />
 
-
-        </Row>
         {/* <Row>
           <Col><img className="body_camera" src={ plant }/></Col>
         </Row> */}
 
  
         <Row>
-          <Col><img className="up_arrow" src={ up_arrow }/></Col>
+          <Col><img className="up_arrow" src={ up_arrow }  onClick={()=>move("up")}/></Col>
         </Row>        
         <Row className="controller">
-          <Col><img className="left_arrow" src={ left_arrow } onClick={slide}/></Col>
+          <Col><img className="left_arrow" src={ left_arrow } /></Col>
           <Col><img className="camera_shutter" src={ shutter }/></Col>
           <Col><img className="right_arrow" src={ right_arrow }/></Col>
         </Row>
         <Row>
-          <Col><img className="down_arrow" src={ down_arrow }/></Col>
+          <Col><img className="down_arrow" src={ down_arrow } onClick={()=>move("down")}/></Col>
         </Row>   
 
         <React.Fragment>
           <Typography id="vertical-slider" gutterBottom>
-            <div className="max_enlarge"> 100</div>
+            <div className="max_enlarge">1000</div>
           </Typography>
             <Slider
               orientation="vertical"
               // getAriaValueText={valuetext}
-              defaultValue={0}
+              defaultValue={step}
               aria-labelledby="vertical-slider"
+              valueLabelDisplay="auto"
+              min={0} 
+              max={1000}
+              onChange={slide}
             />
         </React.Fragment>
        
-      {/* <input type='button' value='connect' onClick={connectWebSocket} />
+      <input type='button' value='connect' onClick={connectWebSocket} />
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
 
-      </div>  */}
+      </div> 
       {/* </Container> */}
     </div>
 
