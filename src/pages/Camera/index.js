@@ -1,6 +1,6 @@
 import "./camera.css";
 import webSocket from 'socket.io-client';
-import {Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import React, { useRef, useState, useEffect } from 'react';
 import plant from "../../images/plant.jpg";
 import x from "../../images/x.png";
@@ -116,7 +116,6 @@ function Camera() {
 
 
 
-
   // taking puicture
   const takepicture = () => {
     //clearphoto();
@@ -187,14 +186,30 @@ function Camera() {
 
   return(
     <div className="body_camera">
-        <Sidebar />
 
-        {/* <Row>
-          <Col><img className="body_camera" src={ plant }/></Col>
-        </Row> */}
+      {/* <Container> */}
+      <Row className="camera_top">
+        <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
+        <Col ><img className="camera_pic2" src={ flash }/></Col>
+        <Col ><img className="camera_pic3" src={ turn_camera }/></Col>
 
- 
-        <Row>
+      </Row>
+      <Row>
+        {/* <Col><img className="body_camera" src={ plant }/></Col> */}
+        <Col>
+        <video className="body_camera" ref={videoRef} onCanPlay={handleCanPlay} />
+        <canvas id="canvas" ref={canvas}>
+        </canvas>
+        <div class="output">
+        <img ref={photo} id="photo" alt="The screen capture will appear in this box." /> 
+
+        </div>
+        </Col>
+      </Row>
+
+
+      
+      <Row>
           <Col><img className="up_arrow" src={ up_arrow }  onClick={()=>move("up")}/></Col>
         </Row>        
         <Row className="controller">
@@ -206,30 +221,14 @@ function Camera() {
           <Col><img className="down_arrow" src={ down_arrow } onClick={()=>move("down")}/></Col>
         </Row>   
 
-        <React.Fragment>
-          <Typography id="vertical-slider" gutterBottom>
-            <div className="max_enlarge">1000</div>
-          </Typography>
-            <Slider
-              orientation="vertical"
-              // getAriaValueText={valuetext}
-              defaultValue={step}
-              aria-labelledby="vertical-slider"
-              valueLabelDisplay="auto"
-              min={0} 
-              max={1000}
-              onChange={slide}
-            />
-        </React.Fragment>
-       
-      <input type='button' value='connect' onClick={connectWebSocket} />
+      {/* 相機畫面 */}
+      {/* <input type='button' value='connect' onClick={connectWebSocket} />
       <div>
         <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
 
       </div> 
       {/* </Container> */}
     </div>
-
     
   )
 }
