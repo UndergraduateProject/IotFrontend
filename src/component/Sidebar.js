@@ -33,7 +33,23 @@ function Sidebar() {
       </Link>
 
       <Link to="/visualization">
+        <div className="menu-item" >資料視覺化</div>
+      </Link>
+
+      <Link to="/detect">
         <div className="menu-item" >分析結果</div>
+      </Link>
+
+      <Link to="/chat">
+        <div className="menu-item" >聊天機器人</div>
+      </Link>
+
+      <Link to="/warning_center">
+        <div className="menu-item">警示設定</div>
+      </Link>
+
+      <Link to="/auto">
+        <div className="menu-item" >自動運作設定</div>
       </Link>
 
       <div className="setting"> 

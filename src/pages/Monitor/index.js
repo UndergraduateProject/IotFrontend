@@ -11,14 +11,19 @@ import soil from "../../images/soil.png"
 import Sidebar from "../../component/Sidebar"
 import Carousel from "react-elastic-carousel"
 import styled from "styled-components"
-import socketIOClient from "socket.io-client"
-import Thermometer from "react-thermometer-component"
-import api from "../../utils/api"
+import socketIOClient from "socket.io-client";
+import Thermometer from 'react-thermometer-component'
+import api from "../../utils/api";
+import useFitText from "use-fit-text";
 
-const weatherurl =
-  "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-D0F2090C-5F48-45D5-B0D7-ACE9030246B0&locationName=%E9%AB%98%E9%9B%84"
-const endpoint = "http://140.117.71.98:4001"
-const socket = socketIOClient(endpoint)
+
+const ColorHelper = require('color-to-name');
+
+
+
+const weatherurl = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-D0F2090C-5F48-45D5-B0D7-ACE9030246B0&locationName=%E9%AB%98%E9%9B%84";
+const endpoint = "http://140.117.71.98:4001";
+const socket = socketIOClient(endpoint);
 socket.on("connect_error", () => {
   setTimeout(() => {
     socket.connect()
@@ -35,6 +40,9 @@ const Item = styled.div`
   // height: 150px;
   // margin: 15px;
 `
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
 
 function Monitor() {
   const [weather, setWeather] = useState("載入中")
@@ -42,9 +50,10 @@ function Monitor() {
   const [template, setTemplate] = useState()
   const [detail, setDetail] = useState()
   const [data, setData] = useState({
-    temperature: 0,
-    humidity: 0,
-  })
+    "temperature": 0,
+    "humidity":0,
+  });
+  const [moisture, setMoisture] = useState(0)
   const [selecter, setSelect] = useState({
     light: true,
     temperature: false,
@@ -53,6 +62,10 @@ function Monitor() {
     volume: false,
     battery: false,
   })
+  const [color, setColor] = useState()
+  const { fontSize, ref} = useFitText({
+    maxFontSize:150,
+  });
 
   useEffect(() => {
     socket.on("monitor", (res) => {
@@ -73,6 +86,19 @@ function Monitor() {
       })
     })
   }, [])
+
+  useEffect(()=>{
+    var url = "api/Moisture/";
+    api.get(url)
+    .then(res => {
+      const offset = (Math.floor(res.count/10))*10;
+      url = url + "?offset=" + offset;
+      api.get(url)
+      .then(res=>{
+        setMoisture(res.results[res.results.length-1].moisture)
+      })
+    })
+  },[])
 
   //initialize
   useEffect(() => {
@@ -166,6 +192,50 @@ function Monitor() {
     })
   }
 
+  //LED
+  function getColor(results){
+    const red = results[0].red;
+    const green = results[0].green;
+    const blue = results[0].blue;
+    const brightness = results[0].brigthness
+    const switchs = results[0].switch
+    // setLightColor({
+    //   "R": red,
+    //   "G": green,
+    //   "B": blue,
+    //   "brightness":brightness,
+    //   "switch":switchs,
+    //   })
+    const hex = rgbToHex(red,green,blue)
+    setColor(ColorHelper.findClosestColor(hex).name)
+  }
+
+  useEffect(()=>{
+    var url = "api/LED/";
+    api.get(url)
+    .then(res=>{
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
+      .then(res=>{
+        if(res.results.length){
+          res.results = res.results.reverse()
+          getColor(res.results)
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            res.results = res.results.reverse()
+            getColor(res.results)
+          })
+        }
+      })
+    })
+  },[])
+  //LED
+
   const lighttemplate = (
     <div
       className={selecter["light"] ? "selected monitor_light" : "monitor_light"}
@@ -180,122 +250,62 @@ function Monitor() {
     </div>
   )
 
-  const lightdetail = (
-    <div>
-      <div>今天日照時長:</div>
-      <div>目前燈色:</div>
-      <div>推薦燈色:</div>
-    </div>
-  )
+  const lightdetail = (<div>
+                            <div>今天日照時長:</div>
+                            <div>目前燈色:</div>
+                            <div>推薦燈色:</div>
+                        </div>);
+  
+  const temptemplate = (<div className={selecter["temperature"] ? "selected monitor_temp" : "monitor_temp"} onClick={()=>changetemplate("temp")}> 
+                          <div className="monitor_temp2">溫度</div>
+                          <div><img className="monitor_cloud_pic" src={cloud} alt=""/></div>
+                          <div className="monitor_temp1">{data.temperature.toFixed(0)}°C</div>
+                        </div>)
 
-  const temptemplate = (
-    <div
-      className={
-        selecter["temperature"] ? "selected monitor_temp" : "monitor_temp"
-      }
-      onClick={() => changetemplate("temp")}
-    >
-      <div className="monitor_temp2">溫度</div>
-      <div>
-        <img className="monitor_cloud_pic" src={cloud} alt="" />
-      </div>
-      <div className="monitor_temp1">{data.temperature.toFixed(0)}°C</div>
-    </div>
-  )
+  const tempdetail = (<div>
+                        <div>溫室內溫度:<br />{data.temperature.toFixed(0)}°C</div>
+                        <div>風扇是否開啟:</div>
+                        <div>推薦溫度:</div>
+                    </div>);
+  
+  const humiditytemplate = (<div className={selecter["humidity"] ? "selected monitor_humi" : "monitor_humi"} onClick={()=>changetemplate("humid")}> 
+                              <div className="monitor_humi2">濕度</div>
+                              <div><img className="monitor_water_pic" src={water} alt=""/></div>
+                              <div className="monitor_humi1">{data.humidity.toFixed(0)}%</div>
+                            </div>)
 
-  const tempdetail = (
-    <div>
-      <div>
-        溫室內溫度:
-        <br />
-        {data.temperature.toFixed(0)}°C
-      </div>
-      <div>風扇是否開啟:</div>
-      <div>推薦溫度:</div>
-    </div>
-  )
+  const humiddetail = (<div>
+                        <div>空氣相對濕度:{data.humidity.toFixed(0)}%</div>
+                        <div>推薦濕度:</div>
+                      </div>);
 
-  const humiditytemplate = (
-    <div
-      className={
-        selecter["humidity"] ? "selected monitor_humi" : "monitor_humi"
-      }
-      onClick={() => changetemplate("humid")}
-    >
-      <div className="monitor_humi2">濕度</div>
-      <div>
-        <img className="monitor_water_pic" src={water} alt="" />
-      </div>
-      <div className="monitor_humi1">{data.humidity.toFixed(0)}%</div>
-    </div>
-  )
+  const batterytemplate = (<div className={selecter["battery"] ? "selected monitor_battery" : "monitor_battery"} onClick={()=>changetemplate("battery")}>
+                            <div className="monitor_battery2">電量</div>
+                            <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
+                            <div className="monitor_battery1">87%</div>
+                          </div>)  
+                          
+  const batterydetail = (<div>
+    <div>電池電量剩餘時間 ：小於8小時</div>
+  </div>)
+  
+  const volumetemplate = (<div className={selecter["volume"] ? "selected monitor_water_volume" : "monitor_water_volume"} onClick={()=>changetemplate("volume")}>
+                            <div className="monitor_water_volume2">水量</div>
+                            <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
+                            <div className="monitor_water_volume1">45 %</div>
+                          </div>)
 
-  const humiddetail = (
-    <div>
-      <div>空氣相對濕度:{data.humidity.toFixed(0)}%</div>
-      <div>推薦濕度:</div>
-    </div>
-  )
+  const volumedetail = (<div>
+    <div>上次澆水日期:2021-08-15</div>
+    <div>上次澆水量：260ml</div>
+  </div>);
+  
+  const moisturetemplate = (<div className={selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"} onClick={()=>changetemplate("moisture")}>
+                              <div className="monitor_soil2">土壤濕度</div>
+                              <div><img className="monitor_soil_pic" src={soil} alt=""/></div>
+                              <div className="monitor_soil1">{moisture}%</div>
+                            </div>)
 
-  const batterytemplate = (
-    <div
-      className={
-        selecter["battery"] ? "selected monitor_battery" : "monitor_battery"
-      }
-      onClick={() => changetemplate("battery")}
-    >
-      <div className="monitor_battery2">電量</div>
-      <div>
-        <img className="monitor_battery_pic" src={battery} alt="" />
-      </div>
-      <div className="monitor_battery1">87%</div>
-    </div>
-  )
-
-  const batterydetail = (
-    <div>
-      <div>電池電量剩餘時間 ：小於8小時</div>
-    </div>
-  )
-
-  const volumetemplate = (
-    <div
-      className={
-        selecter["volume"]
-          ? "selected monitor_water_volume"
-          : "monitor_water_volume"
-      }
-      onClick={() => changetemplate("volume")}
-    >
-      <div className="monitor_water_volume2">水量</div>
-      <div>
-        <img className="monitor_water_volume_pic" src={water_volume} alt="" />
-      </div>
-      <div className="monitor_water_volume1">45 %</div>
-    </div>
-  )
-
-  const volumedetail = (
-    <div>
-      <div>上次澆水日期:2021-08-15</div>
-      <div>上次澆水量：260ml</div>
-    </div>
-  )
-
-  const moisturetemplate = (
-    <div
-      className={
-        selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"
-      }
-      onClick={() => changetemplate("moisture")}
-    >
-      <div className="monitor_soil2">土壤濕度</div>
-      <div>
-        <img className="monitor_soil_pic" src={soil} alt="" />
-      </div>
-      <div className="monitor_soil1">10%</div>
-    </div>
-  )
 
   const moistuiredetail = (
     <div>
