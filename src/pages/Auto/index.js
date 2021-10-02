@@ -174,7 +174,13 @@ export default function Warning_ct() {
   // switch
 
   //get condition
-  //api.get(url)
+  // useEffect(()=>{
+  //   const url = "http://140.117.71.98:8000/api/ActionCondition/"
+  //   api.get(url)
+  //   .then(res=>{
+      
+  //   })
+  // },[])
 
   return (
     // block1
