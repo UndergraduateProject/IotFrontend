@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./automation.css"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
@@ -85,8 +85,8 @@ export default function Warning_ct() {
   //select
   const classes = useStyles()
   const [data, setData] = useState({
-    "humidity": 0,
-    "moisture":0,
+    "moisture": 0,
+    "humidity":0,
     "temperature": 0,
     "brightness": 0,
   })
@@ -110,10 +110,10 @@ export default function Warning_ct() {
 
   // switch
   const [state, setState] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
+    humidity: false,
+    moisture: false,
+    temperature: false,
+    brightness: false,
   })
 
 
@@ -121,7 +121,7 @@ export default function Warning_ct() {
     console.log(value)
     if(value){
       switch(event.target.name){
-        case "checkedA":
+        case "humidity":
           if(value >0 && value <=100){
             setState({ ...state, [event.target.name]: event.target.checked })
             //post data
@@ -131,7 +131,7 @@ export default function Warning_ct() {
           }
           break;
 
-        case "checkedB":
+        case "moisture":
           if(value >0 && value <=100){
             setState({ ...state, [event.target.name]: event.target.checked })
             //post data
@@ -141,7 +141,7 @@ export default function Warning_ct() {
           }
           break;
 
-        case "checkedC":
+        case "temperature":
           if(value >0 && value <=50){
             setState({ ...state, [event.target.name]: event.target.checked })
             //post data
@@ -151,7 +151,7 @@ export default function Warning_ct() {
           }
           break;
 
-        case "checkedD":
+        case "brightness":
           if(value >0 && value <=100){
             setState({ ...state, [event.target.name]: event.target.checked })
             //post data
@@ -173,14 +173,97 @@ export default function Warning_ct() {
   }
   // switch
 
+  //updata changes
+  //update changes
+  const saveChanges = () => {
+    const url = "api/ActionCondition/";
+    let id = 1;
+    for (const [key, value] of Object.entries(data)) {
+      const patch = url + id + "/";
+      let operator = ">";
+      let status = "ON";
+      if (hiLo[key] == "lower") {
+        operator = "<"
+      }
+      if (!state[key]) {
+        status = "OFF";
+      }
+      console.log(hiLo[key])
+      const data = {};
+      data[key] = value;
+      data["operator"] = operator;
+      data["status"] = status;
+      api.patch(patch, data)
+        .then(res => {
+          console.log(res)
+        })
+      id++;
+    }
+  }
+
   //get condition
-  // useEffect(()=>{
-  //   const url = "http://140.117.71.98:8000/api/ActionCondition/"
-  //   api.get(url)
-  //   .then(res=>{
-      
-  //   })
-  // },[])
+  useEffect(()=>{
+    const url = "api/ActionCondition/"
+    api.get(url)
+      .then(res => {
+        var temp = {};
+        var hilotemp = {};
+        var statustemp = {};
+        res.results.forEach(ele => {
+          for (const [key, value] of Object.entries(ele)) {
+            if (key in data) {
+              var operator = "higher"
+              var status = true;
+              if (ele.operator == "<") {
+                operator = "lower"
+              }
+              if (ele.status == "OFF") {
+                status = false;
+              }
+              switch (key) {
+                case "humidity":
+                  if (value != -1) {
+                    temp.humidity = value;
+                    hilotemp.humidity = operator;
+                    statustemp.humidity = status;
+                  }
+                  break;
+
+                case "temperature":
+                  if (value != -1) {
+                    temp.temperature = value;
+                    hilotemp.temperature = operator;
+                    statustemp.temperature = status;
+                  }
+                  break;
+
+                case "moisture":
+                  if (value != -1) {
+                    temp.moisture = value;
+                    hilotemp.moisture = operator;
+                    statustemp.moisture = status;
+                  }
+                  break;
+                
+                case "brightness":
+                  if (value != -1) {
+                    temp.brightness = value;
+                    hilotemp.brightness = operator;
+                    statustemp.brightness = status;
+                  }
+
+                default:
+                  break;
+              }
+            }
+          }
+        })
+        console.log(temp)
+        setState(statustemp)
+        setHiLo(hilotemp)
+        setData(temp)
+      })
+  }, [])
 
   return (
     // block1
@@ -220,9 +303,9 @@ export default function Warning_ct() {
           <FormControlLabel
             control={
               <IOSSwitch
-                checked={state.checkedA}
+                checked={state.humidity}
                 onChange={(e)=>handleChange_switch(e, data.humidity)}
-                name="checkedA"
+                name="humidity"
               />
             }
             // label="iOS style"
@@ -238,7 +321,7 @@ export default function Warning_ct() {
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
-              value={hiLo.humidity}
+              value={hiLo.moisture}
               onChange={handleChange}
               displayEmpty
               className={classes.selectEmpty}
@@ -265,9 +348,9 @@ export default function Warning_ct() {
           <FormControlLabel
             control={
               <IOSSwitch
-                checked={state.checkedB}
+                checked={state.moisture}
                 onChange={(e)=>handleChange_switch(e, data.moisture)}
-                name="checkedB"
+                name="moisture"
               />
             }
             // label="iOS style"
@@ -310,9 +393,9 @@ export default function Warning_ct() {
           <FormControlLabel
             control={
               <IOSSwitch
-                checked={state.checkedC}
+                checked={state.temperature}
                 onChange={(e)=>handleChange_switch(e, data.temperature)}
-                name="checkedC"
+                name="temperature"
               />
             }
             // label="iOS style"
@@ -356,9 +439,9 @@ export default function Warning_ct() {
           <FormControlLabel
             control={
               <IOSSwitch
-                checked={state.checkedD}
+                checked={state.brightness}
                 onChange={(e)=>handleChange_switch(e, data.brightness)}
-                name="checkedD"
+                name="brightness"
               />
             }
             // label="iOS style"
@@ -367,6 +450,8 @@ export default function Warning_ct() {
         {/* switch */}
       </div>
       {/* block3 */}
+      <div className="save" onClick={saveChanges}>Save Changes</div>
     </div>
+    
   )
 }

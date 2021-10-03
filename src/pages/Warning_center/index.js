@@ -93,19 +93,18 @@ export default function Warning_ct() {
   const [hiLo, setHiLo] = useState ({
     "humidity" : "higher",
     "temperature" : "lower",
-    "brightness" : "lower"
+    "volume" : "lower"
   })
 
   //select
   const handleChange = (event) => {
-    console.log(event.target.name)
     setHiLo({...hiLo, [event.target.name] : event.target.value})
   }
 
   const setCondition = (event) =>{
     switch(event.target.name){
       case "humidity":
-        if(event.target.value >0 && event.target.value <=100){
+        if(event.target.value <=100){
           setData({...data, [event.target.name]:event.target.value});
           // setState({ ...state, [event.target.name]: event.target.checked })
           //post data
@@ -116,7 +115,7 @@ export default function Warning_ct() {
         break;
 
       case "temperature":
-        if(event.target.value >0 && event.target.value <=50){
+        if(event.target.value <=50){
           setData({...data, [event.target.name]:event.target.value});
           // setState({ ...state, [event.target.name]: event.target.checked })
           //post data
@@ -127,7 +126,7 @@ export default function Warning_ct() {
         break;
 
       case "volume":
-        if(event.target.value >0 && event.target.value <=1000){
+        if(event.target.value <=1000){
           setData({...data, [event.target.name]:event.target.value});
           // setState({ ...state, [event.target.name]: event.target.checked })
           //post data
@@ -197,17 +196,43 @@ export default function Warning_ct() {
   }
   // switch
 
+  //update changes
+  const saveChanges = () => {
+    const url = "api/WarningCondition/";
+    let id = 5;
+    for (const [key, value] of Object.entries(data)) {
+      const patch = url + id + "/";
+      let operator = ">";
+      let status = "ON";
+      if (hiLo[key] == "lower") {
+        operator = "<"
+      }
+      if (!state[key]) {
+        status = "OFF";
+      }
+      console.log(hiLo[key])
+      const data = {};
+      data[key] = value;
+      data["operator"] = operator;
+      data["status"] = status;
+      console.log(data)
+      api.patch(patch, data)
+        .then(res => {
+        console.log(res)
+      })
+      id++;
+    }
+  }
+
   //get condition
   useEffect(()=>{
     const url= "api/WarningCondition/";
     api.get(url)
     .then(res => {
-      console.log(res.results)
       var temp = {};
       var hilotemp = {};
       var statustemp = {};
       res.results.forEach(ele =>{
-        console.log(ele)
         for (const [key,value] of Object.entries(ele)){
           if (key in data) {
               var operator = "higher"
@@ -358,12 +383,12 @@ export default function Warning_ct() {
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
-              value={hiLo.brightness}
+              value={hiLo.volume}
               onChange={handleChange}
               displayEmpty
               className={classes.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
-              name="brightness"
+              name="volume"
             >
               <MenuItem value="lower">
                 <em className="select_text">lower</em>
@@ -396,6 +421,8 @@ export default function Warning_ct() {
         {/* switch */}
       </div>
       {/* block3 */}
+
+      <div className="save" onClick={saveChanges}>Save Changes</div>
     </div>
   )
 }
