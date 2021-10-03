@@ -102,8 +102,46 @@ export default function Warning_ct() {
     setHiLo({...hiLo, [event.target.name] : event.target.value})
   }
 
-  const setCondition = (e) =>{
-    setData({...data, [e.target.name]:e.target.value});
+  const setCondition = (event) =>{
+    switch(event.target.name){
+      case "humidity":
+        if(event.target.value >0 && event.target.value <=100){
+          setData({...data, [event.target.name]:event.target.value});
+          // setState({ ...state, [event.target.name]: event.target.checked })
+          //post data
+        }
+        else{
+          alert("Humidity value not valid.")
+        }
+        break;
+
+      case "temperature":
+        if(event.target.value >0 && event.target.value <=50){
+          setData({...data, [event.target.name]:event.target.value});
+          // setState({ ...state, [event.target.name]: event.target.checked })
+          //post data
+        }
+        else{
+          alert("Temperture value not valid.")
+        }
+        break;
+
+      case "volume":
+        if(event.target.value >0 && event.target.value <=1000){
+          setData({...data, [event.target.name]:event.target.value});
+          // setState({ ...state, [event.target.name]: event.target.checked })
+          //post data
+        }
+        else{
+          alert("Volume value not valid.")
+        }
+        break;
+
+      default:
+        alert("System error!!!")
+        break;
+
+    }
   }
 
   // switch
@@ -339,7 +377,7 @@ export default function Warning_ct() {
           {/* select */}
           than {' '}
           <input className="temp_wc" name="volume" type="text" onChange={setCondition} value={data.volume}></input>
-          {' '}%
+          {' '}ml
         </div>
 
         {/* switch */}
