@@ -86,6 +86,13 @@
     position:relative;
 }
 
+.save{
+    text-align: center;
+    font-size: 2em;
+    color: red;
+    margin-top: 5%;
+}
+
 
 @media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
     
