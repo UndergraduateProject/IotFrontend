@@ -8,7 +8,7 @@ import Iris from "../../images/IRIS.png";
 import send from "../../images/send.png"
 
 export default function Chatbox() {
-  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'}), new Message({id:0 ,message: 'Hello World!'})])
+  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'}), new Message({id:0 ,message: 'What is the temperature?'}), new Message({id:1 ,message: 'Temperature :31°C'}), new Message({id:0 ,message: 'Moisture?'}), new Message({id:1 ,message: 'Moisture:3%'}), new Message({id:1 ,message: 'Need water!!'}), new Message({id:0 ,message: 'Water the plant with 500ml of water'}), new Message({id:1 ,message: 'Watering with 500ml of water'})])
   const [current, setCurrent] = useState(1);
   var input = useRef();
 
@@ -34,12 +34,11 @@ export default function Chatbox() {
   }
   const test = message;
   const messages = test.map((msg,id)=>{
-    id = id? 1 : 0;
     return(
-      <Row className={"chat"+"-"+id}>
-        {id? "":<img className="chat-icon" src={Iris} alt="profile_pic" />}
+      <Row className={"chat"+"-"+msg.id}>
+        {msg.id? <img className="chat-icon" src={Iris} alt="profile_pic" />:""}
         <ChatBubble message={msg} />
-        {id?<img className="chat-icon" src={user_icon} alt="profile_pic" />:""}
+        {msg.id?"":<img className="chat-icon" src={user_icon} alt="profile_pic" />}
       </Row>
     )
   })

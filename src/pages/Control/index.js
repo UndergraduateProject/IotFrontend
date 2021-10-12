@@ -109,6 +109,7 @@ function Control() {
     .then(res=>{
       console.log(res);
     })
+    socket.emit("fan",!spin? "ON" : "OFF")
   }
   const fanIcon =  spin ? <FontAwesomeIcon icon={faFan} size="lg" spin/> : <FontAwesomeIcon icon={faFan} size="lg" />
 
