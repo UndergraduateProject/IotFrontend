@@ -6,9 +6,14 @@ import "./chat.css"
 import user_icon from "../../images/user.png";
 import Iris from "../../images/IRIS.png";
 import send from "../../images/send.png"
+import socketIOClient from "socket.io-client";
+
+// socket
+const endpoint = "http://140.117.71.98:4001"
+const socket = socketIOClient(endpoint);
 
 export default function Chatbox() {
-  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'}), new Message({id:0 ,message: 'What is the temperature?'}), new Message({id:1 ,message: 'Temperature :31°C'}), new Message({id:0 ,message: 'Moisture?'}), new Message({id:1 ,message: 'Moisture:3%'}), new Message({id:1 ,message: 'Need water!!'}), new Message({id:0 ,message: 'Water the plant with 500ml of water'}), new Message({id:1 ,message: 'Watering with 500ml of water'})])
+  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'})])
   const [current, setCurrent] = useState(1);
   var input = useRef();
 
@@ -23,6 +28,12 @@ export default function Chatbox() {
     data.value = '';
     return true;
   }
+
+  useEffect(()=>{
+    socket.on("chatbot",res=>{
+      pushMessage(1, res);
+    })
+  })
 
   function pushMessage(recipient, msg) {
     const newMessage = new Message({
