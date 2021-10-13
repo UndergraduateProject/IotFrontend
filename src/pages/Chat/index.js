@@ -6,9 +6,14 @@ import "./chat.css"
 import user_icon from "../../images/user.png";
 import Iris from "../../images/IRIS.png";
 import send from "../../images/send.png"
+import socketIOClient from "socket.io-client";
+
+// socket
+const endpoint = "http://140.117.71.98:4001"
+const socket = socketIOClient(endpoint);
 
 export default function Chatbox() {
-  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'}), new Message({id:0 ,message: 'Hello World!'})])
+  const [message, setMessage] = useState([new Message({id:1 ,message: 'Hello World!'})])
   const [current, setCurrent] = useState(1);
   var input = useRef();
 
@@ -21,8 +26,15 @@ export default function Chatbox() {
     pushMessage(0, data.value);
     setCurrent(1)
     data.value = '';
+    socket.emit("chatbot",data.value)
     return true;
   }
+
+  useEffect(()=>{
+    socket.on("chatbot",res=>{
+      pushMessage(1, res);
+    })
+  })
 
   function pushMessage(recipient, msg) {
     const newMessage = new Message({
@@ -34,12 +46,11 @@ export default function Chatbox() {
   }
   const test = message;
   const messages = test.map((msg,id)=>{
-    id = id? 1 : 0;
     return(
-      <Row className={"chat"+"-"+id}>
-        {id? "":<img className="chat-icon" src={Iris} alt="profile_pic" />}
+      <Row className={"chat"+"-"+msg.id}>
+        {msg.id? <img className="chat-icon" src={Iris} alt="profile_pic" />:""}
         <ChatBubble message={msg} />
-        {id?<img className="chat-icon" src={user_icon} alt="profile_pic" />:""}
+        {msg.id?"":<img className="chat-icon" src={user_icon} alt="profile_pic" />}
       </Row>
     )
   })

@@ -17,6 +17,9 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import socketIOClient from "socket.io-client";
 import Sidebar from "../../component/Sidebar";
+import setting from "../../images/settings.png";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const endpoint = "http://140.117.71.98:4001"
 const socket = socketIOClient(endpoint);
@@ -149,38 +152,41 @@ function Camera() {
   //track moving
   useEffect(()=>{
     socket.on("slider", res =>{
-      console.log("received instrusction, moving...")
+      if(res == "Cannot move one"){
+        alert("Cannot move on")
+      }
+      else{
+        console.log(res)
+      }
     })
   })
 
   const [step,setStep] = useState(250);
-  const [current, setCurrent] = useState(0);
+  const [angle, setAngle] = useState(30);
 
   //slide volume 
   const slide = (e,value) => {
     setStep(value);
   }
 
+  //angle
+  const turn = (e, value)=>{
+    setAngle(value)
+  }
+
   const move = (direction)=>{
-    console.log("hello")
-    console.log("moving" +step + "steps")
-    var position = current;
-    if(direction == "up" && current>0){
-      setCurrent(current-step)
-      position = current-step
-      console.log(current)
-    }
-    else if(direction=="down" && current<1000){
-      setCurrent(current+step)
-      console.log(current)
-      position = current+step
-    }
     const instruction = {
       "slide":step,
       "direction":direction,
-      "current":position,
     }
     socket.emit("slider",instruction)
+  }
+
+  const moveangle = ()=>{
+    const instruction = {
+      "angle":angle,
+    }
+    socket.emit("slider", instruction)
   }
 
 
@@ -191,11 +197,24 @@ function Camera() {
       <Row className="camera_top">
         <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
         <Col ><img className="camera_pic2" src={ flash }/></Col>
-        <Col ><img className="camera_pic3" src={ turn_camera }/></Col>
+        <Popup trigger={ <Col ><img className="camera_pic3" src={ setting}/></Col>} modal>
+        {
+              close => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <div>Track steps</div>
+                  <Slider min={0} max={1000} step={1} value={step} onChange={slide} valueLabelDisplay="auto" />
 
+                  <div>Camera angle</div>
+                  <Slider min={0} max={180} step={1} value={angle} onChange={turn} valueLabelDisplay="auto" />
+                </div>
+              )
+            }
+        </Popup>
       </Row>
       <Row>
-        {/* <Col><img className="body_camera" src={ plant }/></Col> */}
         <Col>
         <video className="body_camera" ref={videoRef} onCanPlay={handleCanPlay} />
         <canvas id="canvas" ref={canvas}>
@@ -213,21 +232,14 @@ function Camera() {
           <Col><img className="up_arrow" src={ up_arrow }  onClick={()=>move("up")}/></Col>
         </Row>        
         <Row className="controller">
-          <Col><img className="left_arrow" src={ left_arrow } /></Col>
+          <Col><img className="left_arrow" src={ left_arrow } onClick={()=>moveangle()}/></Col>
           <Col><img className="camera_shutter" src={ shutter }/></Col>
-          <Col><img className="right_arrow" src={ right_arrow }/></Col>
+          <Col><img className="right_arrow" src={ right_arrow } onClick={()=>moveangle()}/></Col>
         </Row>
         <Row>
           <Col><img className="down_arrow" src={ down_arrow } onClick={()=>move("down")}/></Col>
         </Row>   
 
-      {/* 相機畫面 */}
-      {/* <input type='button' value='connect' onClick={connectWebSocket} />
-      <div>
-        <video ref={videoRef} onCanPlay={handleCanPlay} style={{width:300,height:300}}/>
-
-      </div> 
-      {/* </Container> */}
     </div>
     
   )
