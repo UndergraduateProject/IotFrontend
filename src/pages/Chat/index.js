@@ -24,9 +24,9 @@ export default function Chatbox() {
       return false;
     }
     pushMessage(0, data.value);
+    socket.emit("chatbot",data.value)
     setCurrent(1)
     data.value = '';
-    socket.emit("chatbot",data.value)
     return true;
   }
 
