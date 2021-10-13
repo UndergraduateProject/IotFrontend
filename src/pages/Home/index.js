@@ -21,12 +21,6 @@ function homepage() {
       
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Link to="/select"><Button size="lg" variant="light" className="home_btn">選擇植物</Button>{' '}</Link>
-        </Col>
-      </Row>
-
-      <Row >
-        <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
         <Link to="/monitor"><Button size="lg" variant="light" className="home_btn">監控數據</Button>{' '}</Link>
         </Col>
       </Row>
@@ -42,6 +36,13 @@ function homepage() {
         <Link to="/visualization"><Button size="lg" variant="light" className="home_btn">分析結果</Button>{' '}</Link>
         </Col>
       </Row>
+
+      <Row >
+        <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
+        <Link to="/chat"><Button size="lg" variant="light" className="home_btn">聊天機器人</Button>{' '}</Link>
+        </Col>
+      </Row>
+
 
     </Container>
     </div>

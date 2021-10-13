@@ -197,8 +197,9 @@ export default function Warning_ct() {
         .then(res => {
           console.log(res)
         })
-      id++;
+      id += 1;
     }
+    alert("Saved")
   }
 
   //get condition
