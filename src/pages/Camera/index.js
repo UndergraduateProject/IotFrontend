@@ -20,6 +20,8 @@ import Sidebar from "../../component/Sidebar";
 import setting from "../../images/settings.png";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 
 const endpoint = "http://140.117.71.98:4001"
 const socket = socketIOClient(endpoint);
@@ -35,6 +37,7 @@ function Camera() {
   const photo = useRef();
   const canvas = useRef();
   const width = 320;
+  let history = useHistory()
  
 
 
@@ -134,6 +137,7 @@ function Camera() {
       let data = canvas.current.toDataURL('image/png');
       photo.current.setAttribute('src', data);
       localStorage.setItem('capture_image', data);
+      history.push('/detect')
     } 
     // else {
     //   clearphoto();
@@ -196,7 +200,7 @@ function Camera() {
       {/* <Container> */}
       <Row className="camera_top">
         <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
-        <Col ><img className="camera_pic2" src={ flash }/></Col>
+        <Col ><img className="camera_pic2" src={flash} onClick={takepicture }/></Col>
         <Popup trigger={ <Col ><img className="camera_pic3" src={ setting}/></Col>} modal>
         {
               close => (
@@ -233,7 +237,7 @@ function Camera() {
         </Row>        
         <Row className="controller">
           <Col><img className="left_arrow" src={ left_arrow } onClick={()=>moveangle()}/></Col>
-          <Col><img className="camera_shutter" src={ shutter }/></Col>
+        <Col><img className="camera_shutter" src={shutter} onClick={connectWebSocket}/></Col>
           <Col><img className="right_arrow" src={ right_arrow } onClick={()=>moveangle()}/></Col>
         </Row>
         <Row>

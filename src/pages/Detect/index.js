@@ -14,7 +14,7 @@ import styled from "styled-components"
 import Sidebar from '../../component/Sidebar'
 import { useRef, useState, useEffect } from 'react';
 import webSocket from 'socket.io-client';
-
+import api from '../../utils/api';
 
 const Item = styled.div`
   display: flex;
@@ -36,12 +36,13 @@ function Detect() {
   const [yolo_image, setYolo] = useState('');
   const [result, setResult] = useState([]);
   const [current, SetCurrent] = useState({});
-  const src_prefix = 'http://127.0.0.1:8000';
+  const src_prefix = 'http://140.117.71.98:8000';
   const [selected, setSelected] = useState(0);
 
   useEffect(async ()=>{
     ws = await conn();
     ws.on('progress', getProgress);
+    sendpicture();
   },[]);
 
   useEffect(()=>{
@@ -52,7 +53,7 @@ function Detect() {
   
   const conn = async () =>{
     console.log('connecting');
-    return webSocket("http://127.0.0.1:4001");
+    return webSocket("http://140.117.71.98:4001");
   }
 
   const getProgress = (message) =>{
@@ -72,9 +73,20 @@ function Detect() {
     }
     if (message['crop_image']&&message['cam_image']&&message['prediction']){
       const prediction = JSON.parse(message['prediction']);
-      console.log(prediction);
-      setResult(result => [...result, {'open':false, 'crop':src_prefix+message['crop_image'], 'cam':src_prefix+message['cam_image'], 'prediction':prediction}])
+      //console.log(prediction);
+      console.log(src_prefix + message['crop_image']);
+      setResult(result => [...result, { 'open': false, 'crop': src_prefix + message['crop_image'], 'cam': src_prefix + message['cam_image'], 'prediction': prediction }])
     }
+  }
+
+  
+  const sendpicture = async () => {
+    const url = "api/Plantimg/";
+    const data = { 'image': localStorage.getItem('capture_image'), 'sensor': 'sensor1' };
+    api.post(url, data)
+      .then(res => {
+        console.log('done');
+      })
   }
 
   return (
