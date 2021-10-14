@@ -208,10 +208,10 @@ function Camera() {
                   <button className="close" onClick={close}>
                     &times;
                   </button>
-                  <div>Track steps</div>
+                  <div className="camera_settings">Track steps</div>
                   <Slider min={0} max={1000} step={1} value={step} onChange={slide} valueLabelDisplay="auto" />
 
-                  <div>Camera angle</div>
+                  <div className="camera_settings">Camera angle</div>
                   <Slider min={0} max={180} step={1} value={angle} onChange={turn} valueLabelDisplay="auto" />
                 </div>
               )

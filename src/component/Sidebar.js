@@ -20,10 +20,6 @@ function Sidebar() {
         <div className="menu-item" >首頁</div>
       </Link>
 
-      <Link to="select">
-        <div className="menu-item" >選擇植物</div>
-      </Link>
-
       <Link to="/monitor">
         <div className="menu-item" >監控數據</div>
       </Link>

@@ -197,8 +197,9 @@ export default function Warning_ct() {
         .then(res => {
           console.log(res)
         })
-      id++;
+      id += 1;
     }
+    alert("Saved")
   }
 
   //get condition
@@ -320,21 +321,7 @@ export default function Warning_ct() {
           Water Plants if moisture is
           {/* select */}
           <FormControl className={classes.formControl}>
-            <Select
-              value={hiLo.moisture}
-              onChange={handleChange}
-              displayEmpty
-              className={classes.selectEmpty}
-              inputProps={{ "aria-label": "Without label" }}
-              name="humidity"
-            >
-              <MenuItem value="lower">
-                <em className="select_text">lower</em>
-              </MenuItem>
-              <MenuItem value="higher">
-                <div className="select_text">higher</div>
-              </MenuItem>
-            </Select>
+            <div className="select_text">lower</div>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
           {/* select */}

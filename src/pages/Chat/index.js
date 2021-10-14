@@ -86,10 +86,12 @@ export default function Chatbox() {
         <Col >IRIS</Col>
       </Row>
       {messages}
-      <form id="message-form" onSubmit={onMessageSubmit}>
-        <input ref={m => input = m} id="input" placeholder="Type your message..."></input>
-        <img id="send-btn" onClick={onMessageSubmit} src={send}></img>
-      </form>
+      <div>
+        <form id="message-form" onSubmit={onMessageSubmit}>
+          <input ref={m => input = m} id="input" placeholder="Type your message..."></input>
+          <img id="send-btn" onClick={onMessageSubmit} src={send}></img>
+        </form>
+      </div>
     </div>
   )
 }

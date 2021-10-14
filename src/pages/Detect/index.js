@@ -15,6 +15,7 @@ import Sidebar from '../../component/Sidebar'
 import { useRef, useState, useEffect } from 'react';
 import webSocket from 'socket.io-client';
 import api from '../../utils/api';
+import { useHistory } from "react-router";
 
 const Item = styled.div`
   display: flex;
@@ -38,8 +39,12 @@ function Detect() {
   const [current, SetCurrent] = useState({});
   const src_prefix = 'http://140.117.71.98:8000';
   const [selected, setSelected] = useState(0);
+  let history = useHistory()
 
   useEffect(async ()=>{
+    if (!localStorage.getItem('capture_image')){
+      history.push('/camera')
+    }
     ws = await conn();
     ws.on('progress', getProgress);
     sendpicture();

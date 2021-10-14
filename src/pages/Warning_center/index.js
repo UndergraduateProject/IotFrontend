@@ -204,7 +204,7 @@ export default function Warning_ct() {
       const patch = url + id + "/";
       let operator = ">";
       let status = "ON";
-      if (hiLo[key] == "lower") {
+      if (hiLo[key] === "lower") {
         operator = "<"
       }
       if (!state[key]) {
@@ -220,8 +220,9 @@ export default function Warning_ct() {
         .then(res => {
         console.log(res)
       })
-      id++;
+      id += 1;
     }
+    alert("Saved")
   }
 
   //get condition

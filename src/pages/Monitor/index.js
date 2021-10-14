@@ -66,6 +66,11 @@ function Monitor() {
   const { fontSize, ref} = useFitText({
     maxFontSize:150,
   });
+  const [fan, setFan] = useState()
+  const [waterdata, setWater] = useState({
+    volume : 0,
+    timestamp : '',
+  })
 
   useEffect(() => {
     socket.on("monitor", (res) => {
@@ -79,10 +84,10 @@ function Monitor() {
   useEffect(() => {
     var url = "api/Humidtemp/"
     api.get(url).then((res) => {
-      const offset = Math.floor(res.count / 10) * 10
-      url = url + "?offset=" + offset
+      const count = res.count
+      url = url + count + "/";
       api.get(url).then((res) => {
-        setData(res.results[res.results.length - 1])
+        setData(res)
       })
     })
   }, [])
@@ -91,20 +96,30 @@ function Monitor() {
     var url = "api/Moisture/";
     api.get(url)
     .then(res => {
-      const offset = (Math.floor(res.count/10))*10;
-      url = url + "?offset=" + offset;
+      const count = res.count
+      url = url + count + "/";
       api.get(url)
       .then(res=>{
-        setMoisture(res.results[res.results.length-1].moisture)
+        setMoisture(res.moisture)
       })
     })
   },[])
 
-  //initialize
-  useEffect(() => {
-    setTemplate(lighttemplate)
-    setDetail(lightdetail)
-  }, [])
+  useEffect(()=>{
+    var url = "api/Wartering/";
+    api.get(url)
+    .then(res => {
+      const count = res.count
+      url = url + count + "/";
+      api.get(url)
+      .then(res=>{
+          setWater({
+            volume : res.volume,
+            timestamp : res.timestamp,
+          })
+      })
+    })
+  })
 
   //current weather
   useEffect(() => {
@@ -140,7 +155,43 @@ function Monitor() {
         }
         ////////////////////////////////////////////////////////////////////////////////////////
       })
-  })
+  },[])
+
+  //fan
+  useEffect(()=>{
+    var url = "api/Fan/";
+    api.get(url)
+    .then(res => {
+      var offset = (Math.floor(res.count/10))*10;
+      var offseturl = url + "?offset=" + offset;
+      api.get(offseturl)
+      .then(res=>{
+        if(res.results.length){
+          const status = res.results[res.results.length-1].switch;
+          if(status == "ON"){
+            setFan("ON")
+          }
+          else{
+            setFan("OFF")
+          }
+        }
+        else{
+          offset -= 10;
+          var newurl = url + "?offset=" + offset;
+          api.get(newurl)
+          .then(res=>{
+            const status = res.results[res.results.length-1].switch;
+            if(status == "ON"){
+              setFan("ON")
+            }
+            else{
+              setFan("ON")
+          }
+          })
+        }
+      })
+    })
+  },[])
 
   
 
@@ -246,14 +297,14 @@ function Monitor() {
         <img className="monitor_light_pic" src={light} alt="" />
       </div>
       <div className="monitor_light3">87%</div>
-      <div className="monitor_light1">Green</div>
+      <div className="monitor_light1">{color}</div>
     </div>
   )
 
   const lightdetail = (<div>
-                            <div>今天日照時長:</div>
-                            <div>目前燈色:</div>
-                            <div>推薦燈色:</div>
+                            <div>今天日照時長:5小時</div>
+                            <div>目前燈色:{color}</div>
+                            <div>推薦燈色:red</div>
                         </div>);
   
   const temptemplate = (<div className={selecter["temperature"] ? "selected monitor_temp" : "monitor_temp"} onClick={()=>changetemplate("temp")}> 
@@ -264,8 +315,8 @@ function Monitor() {
 
   const tempdetail = (<div>
                         <div>溫室內溫度:<br />{data.temperature.toFixed(0)}°C</div>
-                        <div>風扇是否開啟:</div>
-                        <div>推薦溫度:</div>
+                        <div>風扇是否開啟:{fan}</div>
+                        <div>推薦溫度:28°C</div>
                     </div>);
   
   const humiditytemplate = (<div className={selecter["humidity"] ? "selected monitor_humi" : "monitor_humi"} onClick={()=>changetemplate("humid")}> 
@@ -276,7 +327,7 @@ function Monitor() {
 
   const humiddetail = (<div>
                         <div>空氣相對濕度:{data.humidity.toFixed(0)}%</div>
-                        <div>推薦濕度:</div>
+                        <div>推薦濕度:30%~50%</div>
                       </div>);
 
   const batterytemplate = (<div className={selecter["battery"] ? "selected monitor_battery" : "monitor_battery"} onClick={()=>changetemplate("battery")}>
@@ -296,8 +347,8 @@ function Monitor() {
                           </div>)
 
   const volumedetail = (<div>
-    <div>上次澆水日期:2021-08-15</div>
-    <div>上次澆水量：260ml</div>
+    <div>上次澆水日期:{waterdata.timestamp}</div>
+    <div>上次澆水量：{waterdata.volume}</div>
   </div>);
   
   const moisturetemplate = (<div className={selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"} onClick={()=>changetemplate("moisture")}>
@@ -309,9 +360,15 @@ function Monitor() {
 
   const moistuiredetail = (
     <div>
-      <div>植物推薦土壤濕度：70%~80%</div>
+      <div>植物推薦土壤濕度：65%~75%</div>
     </div>
   )
+
+  //initialize
+  useEffect(() => {
+    setTemplate(lighttemplate)
+    setDetail(lightdetail)
+  }, [color])
 
   return (
     <div className="monitor_body">
@@ -334,7 +391,7 @@ function Monitor() {
 
       <Row>
         <Col className="monitor_top3" md={12} sm={12} xs={12}>
-          "Monitoring Status"
+          Monitoring Status
         </Col>
       </Row>
 
