@@ -67,6 +67,10 @@ function Monitor() {
     maxFontSize:150,
   });
   const [fan, setFan] = useState()
+  const [waterdata, setWater] = useState({
+    volume : 0,
+    timestamp : '',
+  })
 
   useEffect(() => {
     socket.on("monitor", (res) => {
@@ -80,10 +84,10 @@ function Monitor() {
   useEffect(() => {
     var url = "api/Humidtemp/"
     api.get(url).then((res) => {
-      const offset = Math.floor(res.count / 10) * 10
-      url = url + "?offset=" + offset
+      const count = res.count
+      url = url + count + "/";
       api.get(url).then((res) => {
-        setData(res.results[res.results.length - 1])
+        setData(res)
       })
     })
   }, [])
@@ -92,16 +96,30 @@ function Monitor() {
     var url = "api/Moisture/";
     api.get(url)
     .then(res => {
-      const offset = (Math.floor(res.count/10))*10;
-      url = url + "?offset=" + offset;
+      const count = res.count
+      url = url + count + "/";
       api.get(url)
       .then(res=>{
-        setMoisture(res.results[res.results.length-1].moisture)
+        setMoisture(res.moisture)
       })
     })
   },[])
 
-  
+  useEffect(()=>{
+    var url = "api/Wartering/";
+    api.get(url)
+    .then(res => {
+      const count = res.count
+      url = url + count + "/";
+      api.get(url)
+      .then(res=>{
+          setWater({
+            volume : res.volume,
+            timestamp : res.timestamp,
+          })
+      })
+    })
+  })
 
   //current weather
   useEffect(() => {
@@ -329,8 +347,8 @@ function Monitor() {
                           </div>)
 
   const volumedetail = (<div>
-    <div>上次澆水日期:2021-08-15</div>
-    <div>上次澆水量：260ml</div>
+    <div>上次澆水日期:{waterdata.timestamp}</div>
+    <div>上次澆水量：{waterdata.volume}</div>
   </div>);
   
   const moisturetemplate = (<div className={selecter["moisture"] ? "selected monitor_soil" : "monitor_soil"} onClick={()=>changetemplate("moisture")}>

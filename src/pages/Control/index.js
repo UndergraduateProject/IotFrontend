@@ -47,6 +47,7 @@ function Control() {
   const [duration, setDuration] = useState();
   const [color, setColor] = useState();
   const [selected, setSelected] = useState({
+    "30secs" : false,
     "5mins" : false,
     "10mins" : false,
     "30mins" : false,
@@ -152,6 +153,7 @@ function Control() {
   //duration
   const changeduration = (duration) => {
     setSelected({
+      "30secs" : "30secs"==duration ? true : false,
       "5mins" : "5mins"==duration ? true : false,
       "10mins" : "10mins"==duration ? true : false,
       "30mins" : "30mins"==duration ? true : false,
@@ -172,6 +174,10 @@ function Control() {
           "interval" : "",
         }
         switch(key){
+          case "30secs":
+            data.interval = "00:00:30"
+            break;
+
           case "5mins":
             data.interval = "00:05:00"
             break;
@@ -335,6 +341,14 @@ function Control() {
     api.get(url)
     .then(res=>{
       switch(res.interval){
+        case "00:00:30":
+          setDuration("30secs")
+          setSelected({
+            ...selected,
+            "30secs":true
+          })
+          break;
+
         case "00:05:00":
           setDuration("5mins")
           setSelected({
@@ -503,6 +517,7 @@ function Control() {
                 &times;
               </button>
               <div id="duration" >
+                <div className={selected['30secs'] ? "selected" : null} onClick={()=>changeduration("30secs")}>30secs</div>
                 <div className={selected['5mins'] ? "selected" : null} onClick={()=>changeduration("5mins")}>5mins</div>
                 <div className={selected['10mins'] ? "selected" : null} onClick={()=>changeduration("10mins")}>10mins</div>
                 <div className={selected['30mins'] ? "selected" : null} onClick={()=>changeduration("30mins")}>30mins</div>
@@ -525,9 +540,7 @@ function Control() {
             </Link>
           </Col>
       </Row>
-      <Row>
-        <button className="power-btn">Power On</button>
-      </Row>
+      
       <div id="popup-root" />
     </Container>
     </div>
