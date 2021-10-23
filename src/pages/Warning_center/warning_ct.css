@@ -10,6 +10,25 @@
     color:white !important;
 }
 
+.wc_space{
+    white-space: pre-line;
+}
+
+.wc_btn{
+    width: 220px;
+    height: 50px;
+    left: 50%;
+    font-size: 25px;
+    margin-left: -110px;
+    bottom: 5vh;
+    position: absolute;
+    color: red;
+}
+
+.wc_highlight{
+    font-weight: 100;
+}
+
 .MuiSelect-selectMenu{   /*選單內字的顏色*/
     color:#6a6f8c !important;
 }
@@ -86,14 +105,6 @@
     position:relative;
 }
 
-.save{
-    text-align: center;
-    font-size: 2em;
-    color: red;
-    margin-top: 5%;
-}
-
-
 @media  screen and (max-width : 768px)  {   /*width<768 (for laptop's width<768 and mobile phone)*/
     
     .top_block1_ct{
@@ -120,7 +131,7 @@
     }
  
     .text_left_ct{
-        width:71vw;
+        width:72vw;
         position: absolute;
         left:4vw;
     }
@@ -320,6 +331,15 @@
         border-right: transparent;
     }
 
+    .wc_btn{
+        width: 300px;
+        height: 80px;
+        left: 50%;
+        font-size: 35px;
+        margin-left: -150px;
+        bottom: 5vh;
+    }
+
 }
 
 @media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
@@ -381,5 +401,14 @@
         border-top:transparent ;
         border-left: transparent;
         border-right: transparent;
+    }
+
+    .wc_btn{
+        width: 360px;
+        height: 100px;
+        left: 50%;
+        font-size: 40px;
+        margin-left: -180px;
+        bottom: 5vh;
     }
 }

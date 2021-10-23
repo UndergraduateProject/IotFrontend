@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import {Button} from 'react-bootstrap';
 import "./automation.css"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import FormControl from "@material-ui/core/FormControl"
@@ -273,7 +274,7 @@ export default function Warning_ct() {
       <div className="top_block1_ct">Automation</div>
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Water Plants if humidity is
+          Water Plants if <b> humidity </b> is <div className="at_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -318,7 +319,7 @@ export default function Warning_ct() {
 
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Water Plants if moisture is
+          Water Plants if <b> moisture </b> is <div className="at_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <div className="select_text">lower</div>
@@ -349,7 +350,7 @@ export default function Warning_ct() {
       {/* block2 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Open fan if temperature is
+          Open fan if <b> temperature </b> is <div className="at_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -395,7 +396,7 @@ export default function Warning_ct() {
       {/* block3 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Open Light if brightness is
+          Open Light if <b> brightness </b> is
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -437,7 +438,7 @@ export default function Warning_ct() {
         {/* switch */}
       </div>
       {/* block3 */}
-      <div className="save" onClick={saveChanges}>Save Changes</div>
+      <Button onClick={saveChanges} className="at_btn" size="lg" variant="light">Save Changes</Button>
     </div>
     
   )
