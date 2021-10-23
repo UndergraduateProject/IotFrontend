@@ -1,8 +1,12 @@
 .chatbox {
   width: 100vw;
   background-color: #aebfb7;
-  height: 100vh;
+  height: 93vh;
   overflow: scroll;
+}
+
+.chatbot::after {
+  clear: both;
 }
 
 #title {
@@ -16,7 +20,8 @@
 
 .chat-0 {
   margin-top: 10%;
-  justify-content: end;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .chat-1 .chat-icon {
@@ -26,6 +31,7 @@
   margin-right: 15px;
   background-color: #e3e8e6;
   border-radius: 25px;
+  float: left;
 }
 
 .chat-0 .chat-icon {
@@ -33,20 +39,22 @@
   height: 50px;
   margin-left: 15px;
   margin-right: 15px;
+  display: block;
+  float: right;
 }
 
 #message-form {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 7vh;
   display: flex;
   background-color: #dbdbdb;
-  max-width: 375px;
 }
 
 #input {
   border: none;
-  height: 61px;
+  height: 100%;
   width: 100%;
   background-color: #dbdbdb;
 }
@@ -60,6 +68,10 @@
 @media screen and (min-width: 1025px) {
   .chatbox {
     margin-left: 740px;
+    max-width: 375px;
+  }
+
+  #message-form {
     max-width: 375px;
   }
 
@@ -79,7 +91,7 @@
   }
 }
 
-@media screen and (width: 1440px) and (height: 858px) {
+@media screen and (width: 1440px) and (min-height: 858px) {
   .chatbox {
     margin-left: 500px;
     max-width: 375px;

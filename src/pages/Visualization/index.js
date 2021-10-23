@@ -8,11 +8,12 @@ import moment from 'moment';
 import Sidebar from "../../component/Sidebar";
 
 
-const path = "api/Humidtemp/?limit=99999999";
+const path = "api/Humidtemp/?limit=1000";
 const today = new Date();
 
 
 function Visualization() {
+	const [date, setDate] = useState(new Date(today.getFullYear(), today.getMonth()-3, today.getDate()).getTime())
   const [state, setState] = useState({
     humidoptions: {
         chart: {
@@ -39,7 +40,7 @@ function Visualization() {
         xaxis: {
           type: 'datetime',
 		  		tickPlacement:'on',
-					min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+					min: date,
 					max: today,
         },
         noData:{
@@ -79,7 +80,7 @@ function Visualization() {
         xaxis: {
 					type: 'datetime',
 					tickPlacement:'on',
-					min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+					min: date,
 					max: today,
         },
         noData:{
@@ -109,14 +110,22 @@ function Visualization() {
 			}
 		],
 		current : 0,
-		selection : 'six_months',
+		selection : 'all',
 		key: new Date(),
-		period:"daily",
+		period:"hourly",
     }
   )
 	
-	const [temp, setTemp] = useState({});
-	const [humidity, setHumidity] = useState({});
+	const [temp, setTemp] = useState({
+			"weekly" : [],
+			"daily" : [],
+			"hourly" : [],
+	});
+	const [humidity, setHumidity] = useState({
+			"weekly" : [],
+			"daily" : [],
+			"hourly" : [],
+	});
 	const tempChart = <Chart
 		options={state.tempoptions}
 		series={state.tempseries}
@@ -133,129 +142,151 @@ function Visualization() {
 		height="100%"
 		/>;
 	const [chart, setChart] = useState(0)
+	const [test, setTest] = useState(0)
+	const [count, setCount] = useState(0)
+	const [offset, setOffset] = useState(0)
+
+	const getdata = async (url) => {
+		var tempValue = {
+			"weekly" :  temp.weekly,
+			"daily" : temp.daily,
+			"hourly" : temp.hourly,
+		};
 	
-
-  useEffect(() => {
-	var tempValue = {
-		"weekly" : [],
-		"daily" : [],
-		"hourly" : [],
-	};
-
-	var humidityValue = {
-		"weekly" : [],
-		"daily" : [],
-		"hourly" : [],
-	};
+		var humidityValue = {
+			"weekly" : humidity.weekly,
+			"daily" : humidity.daily,
+			"hourly" : humidity.hourly,
+		};
 		var tmp = {};
 		var hourTmp = {};
 		var weekTmp = {};
-		const getdata = async () => {
-			api.get(path).then(response => {
-				response['results'].forEach(ele => {
-					const time = new Date(ele.timestamp);
-					const date = time.toISOString().split('T')[0];
-					const obj = tmp[date] = tmp[date] || {count:0, temperature:0, humidity:0};
-					const yearWeek = [moment(date).year(),moment(date).week()];
-					const yearDay = [moment(date).year(),
-						(moment(date).month()+1).toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
-						moment(date).date().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
-						moment(time).hour().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false})];
-					const hourObj = hourTmp[yearDay] = hourTmp[yearDay] || {count:0, temperature:0,humidity:0};
-					const weekObj = weekTmp[yearWeek] = weekTmp[yearWeek] || {count:0, temperature:0, humidity:0};
-					obj.count++;
-					obj.temperature += ele.temperature;
-					obj.humidity += ele.humidity;
-					hourObj.count++;
-					hourObj.temperature += ele.temperature;
-					hourObj.humidity += ele.humidity;
-					weekObj.count++;
-					weekObj.temperature += ele.temperature;
-					weekObj.humidity += ele.humidity;
-				});
-				
-				const res = Object.entries(tmp).map(function(entry){
-					return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
-				});
+		api.get(url).then(response => {
+			const tmpoff = offset + 1000;
+			const resdate = new Date(response['results'][0].timestamp).getTime()
+			const tmpdate = new Date(date).getTime()
+			if(tmpdate > resdate){
+				setDate(new Date(response['results'][0].timestamp))
+			}
+			setOffset(tmpoff)
+			setCount(response['count'])
+			response['results'].forEach(ele => {
+				const time = new Date(ele.timestamp);
+				const date = time.toISOString().split('T')[0];
+				const obj = tmp[date] = tmp[date] || {count:0, temperature:0, humidity:0};
+				const yearWeek = [moment(date).year(),moment(date).week()];
+				const yearDay = [moment(date).year(),
+					(moment(date).month()+1).toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
+					moment(date).date().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
+					moment(time).hour().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false})];
+				const hourObj = hourTmp[yearDay] = hourTmp[yearDay] || {count:0, temperature:0,humidity:0};
+				const weekObj = weekTmp[yearWeek] = weekTmp[yearWeek] || {count:0, temperature:0, humidity:0};
+				obj.count++;
+				obj.temperature += ele.temperature;
+				obj.humidity += ele.humidity;
+				hourObj.count++;
+				hourObj.temperature += ele.temperature;
+				hourObj.humidity += ele.humidity;
+				weekObj.count++;
+				weekObj.temperature += ele.temperature;
+				weekObj.humidity += ele.humidity;
+			});
 
-				const hourlyRes = Object.entries(hourTmp).map(function(entry){
-					entry[0] = entry[0].replace(',','-');
-					entry[0] = entry[0].replace(',','-');
-					entry[0] = entry[0].replace(',','T');
-					entry[0] = moment(entry[0]);
-					// entry[0] = new Date(entry[0]).getTime();
-					return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
-				});
+			const res = Object.entries(tmp).map(function(entry){
+				return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
+			});
+			const hourlyRes = Object.entries(hourTmp).map(function(entry){
+			entry[0] = entry[0].replace(',','-');
+			entry[0] = entry[0].replace(',','-');
+			entry[0] = entry[0].replace(',','T');
+			entry[0] = moment(entry[0]);
+			// entry[0] = new Date(entry[0]).getTime();
+			return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
+			});
 
-				const weekRes = Object.entries(weekTmp).map(function(entry){
-					entry[0] = entry[0].replace(',','W');
-					entry[0] = moment(entry[0]);
-					return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
-				});
+			const weekRes = Object.entries(weekTmp).map(function(entry){
+				entry[0] = entry[0].replace(',','W');
+				entry[0] = moment(entry[0]);
+				return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
+			});
 
 
-				weekRes.forEach(ele=>{
-					var temp = [];
-					var humidity = [];
-					humidity.push(ele.date);
-					humidity.push(ele.humidAvg);
-					temp.push(ele.date);
-					temp.push(ele.tempAvg);
-					tempValue.weekly.push(temp);
-					humidityValue.weekly.push(humidity)
-				})
-				
-				res.forEach(ele=>{
-					var temp = [];
-					var humidity = [];
-					humidity.push(ele.date);
-					humidity.push(ele.humidAvg);
-					temp.push(ele.date);
-					temp.push(ele.tempAvg);
-					tempValue.daily.push(temp);
-					humidityValue.daily.push(humidity)
-				})
-
-				
-				hourlyRes.forEach(ele=>{
-					var temp = [];
-					var humidity = [];
-					humidity.push(ele.date);
-					humidity.push(ele.humidAvg);
-					temp.push(ele.date);
-					temp.push(ele.tempAvg);
-					tempValue.hourly.push(temp);
-					humidityValue.hourly.push(humidity)
-				})
-				
-				setTemp(tempValue);
-				setHumidity(humidityValue);
-				setState({
-						tempoptions: {
-								...state.tempoptions,
-							},
-						tempseries: [
-								{
-									...state.tempseries,
-									data: tempValue.daily,
-								}
-							],
-						
-						humidoptions:{
-							...state.humidoptions,
-						},
-						humidityseries:[
-							{
-								...state.humidityseries,
-								data: humidityValue.daily,
-							}
-						]
-						})
+			weekRes.forEach(ele=>{
+				var temp = [];
+				var humidity = [];
+				humidity.push(ele.date);
+				humidity.push(ele.humidAvg);
+				temp.push(ele.date);
+				temp.push(ele.tempAvg);
+				tempValue.weekly.push(temp);
+				humidityValue.weekly.push(humidity)
 			})
-		};
-    getdata();
-  }, []);
+			
+			res.forEach(ele=>{
+				var temp = [];
+				var humidity = [];
+				humidity.push(ele.date);
+				humidity.push(ele.humidAvg);
+				temp.push(ele.date);
+				temp.push(ele.tempAvg);
+				tempValue.daily.push(temp);
+				humidityValue.daily.push(humidity)
+			})
+				
+			hourlyRes.forEach(ele=>{
+				var temp = [];
+				var humidity = [];
+				humidity.push(ele.date);
+				humidity.push(ele.humidAvg);
+				temp.push(ele.date);
+				temp.push(ele.tempAvg);
+				tempValue.hourly.push(temp);
+				humidityValue.hourly.push(humidity)
+			})
+			
+			setTemp(tempValue);
+			setHumidity(humidityValue);
+			setState({
+					tempoptions: {
+							...state.tempoptions,
+							xaxis:{
+								min:date,
+								max:today,
+							}
+						},
+					tempseries: [
+							{
+								...state.tempseries,
+								data: tempValue.hourly,
+							}
+						],
+					
+					humidoptions:{
+						...state.humidoptions,
+						xaxis:{
+							min:date,
+							max:today,
+						}
+					},
+					humidityseries:[
+						{
+							...state.humidityseries,
+							data: humidityValue.hourly,
+						}
+					]
+					})
+		})
+	};
 
+  useEffect(() => {
+		const off = "&offset=" + offset;
+		const url = path + off;
+		if(offset <= count){
+			getdata(url);
+			console.log(url)
+			console.log(test)
+		}
+	}, [temp]);
 
   const changePeriod = (period) => {
 	switch (period){
@@ -478,15 +509,15 @@ function Visualization() {
 				humidoptions:{
 					...state.humidoptions,
 					xaxis:{
-						min: null,
-						max: null,
+						min: date,
+						max: today,
 					}
 				},
 				tempoptions:{
 					...state.tempoptions,
 					xaxis:{
-						min: null,
-						max: null,
+						min: date,
+						max: today,
 					}
 				},
 				selection: timeline,
