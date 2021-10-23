@@ -59,14 +59,55 @@ button {
   border-color: white;
 }
 
+.monitor_plant{
+  height: 85px;
+  width: 320px;
+  left: 50%;
+  top: -20px;
+  margin-left: -160px;
+  border-radius: 12px;
+  border-color: white;
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  position: relative;
+}
+
+.monitor_plant_pic{
+  height: 70px;
+  width: 90px;
+  padding-left: 20px;
+  padding-top: 10px;
+  position: absolute;
+}
+
+.monitor_plant_name{
+  padding-top: 0px;
+  font-size: 22px;
+  font-weight: bold;
+  left: 160px;
+  color: #050244;
+  position: relative;
+}
+
+.monitor_plant_detail{
+  font-size: 14.5px;
+  left: 125px;
+  width: 177px;
+  position: relative;
+}
+
+
+
 @media only screen and (max-width: 768px) {
   /*width<768 (for laptop's width<768 and mobile phone)*/
   .slider_adjust {
-    top: 57vh;
+    top: 65vh;
     position: absolute;
     width: 340px !important;
     left: 50% !important;
     margin-left: -170px !important;
+    /* bottom: 2vh; */
   }
 
   .monitor_top1 {
@@ -98,9 +139,9 @@ button {
   }
 
   .monitor_background {
-    top: 0vh;
+    /* top: -1.5vh; */
     width: 320px;
-    height: 30vh;
+    height: 27vh;
     border-radius: 12px;
     left: 50%;
     margin-left: -160px;
@@ -112,7 +153,7 @@ button {
   .monitor_light {
     top: 0vh;
     width: 140px;
-    height: 190px;
+    height: 175px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #008b8b, #ffff00);
     text-align: center;
@@ -141,7 +182,7 @@ button {
     margin-left: -65px;
     top: 10%;
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     position: relative;
   }
@@ -170,7 +211,7 @@ button {
   .monitor_temp {
     top: 0vh;
     width: 140px;
-    height: 190px;
+    height: 175px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #9e0000, white);
     text-align: center;
@@ -209,7 +250,7 @@ button {
   .monitor_humi {
     top: 0vh;
     width: 140px;
-    height: 190px;
+    height: 175px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #105293, white);
     text-align: center;
@@ -247,7 +288,7 @@ button {
   .monitor_battery {
     top: 0vh;
     width: 140px;
-    height: 190px;
+    height: 175px;
     border-radius: 12px;
     background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
@@ -285,7 +326,7 @@ button {
   .monitor_water_volume {
     top: 0vh;
     width: 140px;
-    height: 190px;
+    height: 175px;
     border-radius: 12px;
     background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
@@ -323,7 +364,7 @@ button {
   .monitor_soil {
     top: 0vh;
     width: 140px;
-    height: 190px;
+    height: 175px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
@@ -364,7 +405,7 @@ button {
 @media only screen and (min-width: 768px) {
   /*for laptop's 768<width<1024 */
   .slider_adjust {
-    top: 59vh;
+    top: 62vh;
     position: absolute;
     width: 400px !important;
     left: 50% !important;
@@ -407,9 +448,9 @@ button {
   }
 
   .monitor_background {
-    top: -2vh;
+    /* top: -2vh; */
     width: 340px;
-    height: 34vh;
+    height: 25vh;
     border-radius: 12px;
     left: 50%;
     margin-left: -170px;
@@ -670,8 +711,23 @@ button {
 
 @media only screen and (min-width: 1024px) {
   /*for laptop:when width>1024*/
+  
+  .monitor_plant{
+    height: 85px;
+    width: 320px;
+    left: 50%;
+    top: 80px;
+    margin-left: -160px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+  }
+
   .slider_adjust {
-    top: 59.5vh;
+    top: 66vh;
     position: absolute;
     width: 425px !important;
     left: 50% !important;
@@ -725,7 +781,7 @@ button {
   .monitor_background {
     top: 13vh;
     width: 355px;
-    height: 34vh;
+    height: 30vh;
     border-radius: 12px;
     left: 50%;
     margin-left: -177.5px;
@@ -981,8 +1037,46 @@ button {
 
 @media only screen and (width: 768px) and (height: 1024px) {
   /*ipad*/
+  .monitor_plant{
+    height: 150px;
+    width: 480px;
+    left: 50%;
+    /* top: 0px; */
+    margin-left: -240px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+  }
+
+  .monitor_plant_pic{
+    height: 120px;
+    width: 140px;
+    padding-left: 20px;
+    padding-top: 10px;
+    position: absolute;
+  }
+
+.monitor_plant_name{
+  padding-top: 0px;
+  font-size: 32px;
+  font-weight: bold;
+  left: 230px;
+  color: #050244;
+  position: relative;
+}
+
+.monitor_plant_detail{
+  font-size: 20px;
+  left: 180px;
+  width: 310px;
+  position: relative;
+}
+  
   .slider_adjust {
-    top: 57vh;
+    top: 65vh;
     position: absolute;
     width: 540px !important;
     height: 350px;
@@ -1033,14 +1127,14 @@ button {
     text-align: center;
     font-weight: bold;
     color: white;
-    top: 6vh;
+    top: 2vh;
     position: relative;
   }
 
   .monitor_background {
-    top: 4vh;
+    top: 1vh;
     width: 480px;
-    height: 30vh;
+    height: 28vh;
     border-radius: 12px;
     left: 50%;
     margin-left: -240px;
@@ -1306,8 +1400,46 @@ button {
 
 @media only screen and (width: 1024px) and (height: 1366px) {
   /*ipad pro*/
+  .monitor_plant{
+    height: 180px;
+    width: 700px;
+    left: 50%;
+    top: 17vh;
+    margin-left: -350px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+  }
+
+  .monitor_plant_pic{
+    height: 160px;
+    width: 180px;
+    padding-left: 20px;
+    padding-top: 10px;
+    position: absolute;
+  }
+
+.monitor_plant_name{
+  padding-top: 0px;
+  font-size: 44px;
+  font-weight: bold;
+  left: 350px;
+  color: #050244;
+  position: relative;
+}
+
+.monitor_plant_detail{
+  font-size: 30px;
+  left: 240px;
+  width: 460px;
+  position: relative;
+}
+  
   .slider_adjust {
-    top: 57vh;
+    top: 64vh;
     position: absolute;
     width: 800px !important;
     height: 490px;
@@ -1375,7 +1507,7 @@ button {
   .monitor_background {
     top: 18vh;
     width: 700px;
-    height: 420px;
+    height: 390px;
     border-radius: 12px;
     left: 50%;
     margin-left: -350px;
@@ -1385,9 +1517,9 @@ button {
   }
 
   .monitor_light {
-    top: 6vh;
+    top: 8vh;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #008b8b, #ffff00);
     text-align: center;
@@ -1466,9 +1598,9 @@ button {
   }
 
   .monitor_temp {
-    top: 6vh;
+    top: 8vh;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #9e0000, white);
     text-align: center;
@@ -1505,9 +1637,9 @@ button {
   }
 
   .monitor_humi {
-    top: -1vh;
+    top: 1vh;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #105293, white);
     text-align: center;
@@ -1544,9 +1676,9 @@ button {
   }
 
   .monitor_battery {
-    top: -1vh;
+    top: 1vh;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 12px;
     background-image: linear-gradient(to bottom, #668800, #e0ffff);
     text-align: center;
@@ -1583,9 +1715,9 @@ button {
   }
 
   .monitor_water_volume {
-    top: -1vh;
+    top: 1vh;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 12px;
     background-image: linear-gradient(to bottom, #838bb2, white);
     text-align: center;
@@ -1622,9 +1754,9 @@ button {
   }
 
   .monitor_soil {
-    top: -1vh;
+    top: 1vh;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 12px;
     background-image: linear-gradient(to top, #8b4513, white);
     text-align: center;
