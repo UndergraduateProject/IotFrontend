@@ -16,6 +16,8 @@ import { Link } from "react-router-dom"
 import api from "../../utils/api"
 import socketIOClient from "socket.io-client";
 import useFitText from "use-fit-text";
+import select_cabbage from "../../images/select_cabbage.png";
+
 
 const ColorHelper = require('color-to-name');
 
@@ -424,9 +426,20 @@ function Control() {
       <Row>
         <Col className="img"><img className="house" src={control_greenHouse} alt=""/></Col>
       </Row>
+
+      <div className="control_plant">
+      <img  className="control_plant_pic" src={select_cabbage}/>
+      {/* <img  style={{width:'90px' , height:'70px',paddingLeft:'20px',paddingTop:'10px'}}
+        src={select_cabbage}/> */}
+        <div className="control_plant_name">Cabbage</div>
+        <div className="control_plant_detail">喜低溫乾燥，生長時需土壤深厚、排水良好的環境。</div>
+      </div>
+
+{/* 
       <Row >
         <Col className="catalogue">Control</Col>
-      </Row>
+      </Row> */}
+
       <Row className="control-square">
         <Popup 
         trigger=
@@ -504,6 +517,7 @@ function Control() {
           }
         </Popup>
       </Row>
+
       <Row className="control-rectangle">
         <Popup trigger={<Col>
           <div ><img src={clock} alt=""/></div>
@@ -540,7 +554,6 @@ function Control() {
             </Link>
           </Col>
       </Row>
-      
       <div id="popup-root" />
     </Container>
     </div>

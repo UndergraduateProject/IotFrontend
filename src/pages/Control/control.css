@@ -188,6 +188,46 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+.control_plant{
+  height: 85px;
+  width: 368px;
+  left: 50%;
+  margin-top: 20px;
+  margin-left: -184px;
+  border-radius: 12px;
+  border-color: white;
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.control_plant_pic{
+  height: 70px;
+  width: 90px;
+  padding-left: 20px ;
+  padding-top: 10px;
+  position: absolute;
+}
+
+.control_plant_name{
+  padding-top: 0px;
+  font-size: 22px;
+  font-weight: bold;
+  left: 160px;
+  color: #050244;
+  position: relative;
+}
+
+.control_plant_detail{
+  font-size: 14.5px;
+  left: 125px;
+  width: 226px;
+  position: relative;
+}
+
+
 /* popup control */
 
 @keyframes anvil {
@@ -458,7 +498,25 @@ input:checked + .slider:before {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) { 
+  .control_plant{
+    height: 85px;
+    width: 320px;
+    left: 50%;
+    margin-top: 20px;
+    margin-left: -160px;
+    border-radius: 12px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+  }
+
+  .control_plant_detail{
+    width: 180px;
+  }
+  
   .control-container {
     position: relative;
     width: 425px;
