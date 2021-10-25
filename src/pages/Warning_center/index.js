@@ -1,5 +1,6 @@
- import React, {useState, useEffect} from "react"
+import React, {useState, useEffect} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import {Button} from 'react-bootstrap';
 import "./warning_ct.css"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import FormControl from "@material-ui/core/FormControl"
@@ -287,9 +288,10 @@ export default function Warning_ct() {
       <Sidebar />
       <div className="top_block1_ct">Warning Center</div>
       <div className="top_block2_ct">
-        <div className="text_left_ct">
-          Notify me if humidity is
+        <div className="text_left_at">
+          Notify me if <b> humidity </b> is  <div className="wc_space"></div>
           {/* select */}
+        
           <FormControl className={classes.formControl}>
             <Select
               value={hiLo.humidity}
@@ -308,11 +310,13 @@ export default function Warning_ct() {
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
+         
           {/* select */}
           than {' '}
           <input className="temp_wc" name="humidity" type="text" onChange={setCondition} value={data.humidity}></input>
           {' '}%
         </div>
+
       
         {/* switch */}
         <FormGroup className="switch_position">
@@ -333,8 +337,8 @@ export default function Warning_ct() {
 
       {/* block2 */}
       <div className="top_block2_ct">
-        <div className="text_left_ct">
-          Notify me if temperature is
+        <div className="text_left_at">
+          Notify me if <b> temperature </b> is <div className="wc_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -379,8 +383,8 @@ export default function Warning_ct() {
 
       {/* block3 */}
       <div className="top_block2_ct">
-        <div className="text_left_ct">
-          Notify me if volume is
+        <div className="text_left_at">
+          Notify me if <b> volume </b> is <div className="wc_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -423,7 +427,7 @@ export default function Warning_ct() {
       </div>
       {/* block3 */}
 
-      <div className="save" onClick={saveChanges}>Save Changes</div>
+      <Button onClick={saveChanges} className="wc_btn" size="lg" variant="light">Save Changes</Button>
     </div>
   )
 }

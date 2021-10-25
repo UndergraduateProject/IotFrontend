@@ -10,6 +10,21 @@
     color:white !important;
 }
 
+.at_space{
+    white-space: pre-line;
+}
+
+.at_btn{
+    width: 220px;
+    height: 50px;
+    left: 50%;
+    font-size: 25px;
+    margin-left: -110px;
+    margin-top: 30px;
+    position: absolute;
+    color: red;
+}
+
 .MuiSelect-selectMenu{   /*選單內字的顏色*/
     color:#6a6f8c !important;
 }
@@ -112,8 +127,7 @@
         font-size: 5.5vmin;
     }
  
-    .text_left_ct{
-        width:71vw;
+    .text_left_at{
         position: absolute;
         left:4vw;
     }
@@ -164,7 +178,7 @@
         font-size: 33px;
     }
  
-    .text_left_ct{
+    .text_left_at{
         width:600px;
         position: absolute;
         left:4vw;
@@ -225,7 +239,7 @@
         font-size: 26px;
     }
 
-    .text_left_ct{
+    .text_left_at{
         width:400px;
         position: absolute;
         left:20px;
@@ -283,7 +297,7 @@
         font-size: 38px;
     }
  
-    .text_left_ct{
+    .text_left_at{
         width:600px;
         position: absolute;
         left:7vw;
@@ -313,6 +327,14 @@
         border-right: transparent;
     }
 
+    .at_btn{
+        width: 300px;
+        height: 80px;
+        left: 50%;
+        font-size: 35px;
+        margin-left: -150px;
+        margin-top: 50px;
+    }
 }
 
 @media only screen and (width: 1024px) and (height: 1366px) { /*ipad pro*/
@@ -346,7 +368,7 @@
         font-size: 45px;
     }
  
-    .text_left_ct{
+    .text_left_at{
         width:800px;
         position: absolute;
         left:7vw;
@@ -374,5 +396,14 @@
         border-top:transparent ;
         border-left: transparent;
         border-right: transparent;
+    }
+
+    .at_btn{
+        width: 360px;
+        height: 100px;
+        left: 50%;
+        font-size: 40px;
+        margin-left: -180px;
+        margin-top: 50px;
     }
 }

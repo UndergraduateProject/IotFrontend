@@ -15,6 +15,8 @@ import socketIOClient from "socket.io-client";
 import Thermometer from 'react-thermometer-component'
 import api from "../../utils/api";
 import useFitText from "use-fit-text";
+import select_cabbage from "../../images/select_cabbage.png";
+
 
 
 const ColorHelper = require('color-to-name');
@@ -395,12 +397,19 @@ function Monitor() {
         </Col>
       </Row>
 
+    <div className="monitor_plant">
+      <img className="monitor_plant_pic" src={select_cabbage}/>
+      <div className="monitor_plant_name">Cabbage</div>
+      <div className="monitor_plant_detail">喜低溫乾燥，生長時需土壤深厚、排水良好的環境。</div>
+    </div>
+
       <div className="monitor_background">
         {template}
         <div className="monitor_detail">{detail}</div>
       </div>
 
       {/* slider */}
+
 
       <Carousel itemPadding={[97, 10]} className="slider_adjust selector" itemsToShow={2}
 >
