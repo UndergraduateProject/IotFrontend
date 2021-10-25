@@ -199,7 +199,8 @@ function Camera() {
 
       {/* <Container> */}
       <Row className="camera_top">
-        <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col>
+        <Col ><img className="camera_pic1" src={ x }/></Col>  
+        {/* <Col ><Link to="control"><img className="camera_pic1" src={ x }/></Link></Col> */}
         <Col ><img className="camera_pic2" src={flash} onClick={takepicture }/></Col>
         <Popup trigger={ <Col ><img className="camera_pic3" src={ setting}/></Col>} modal>
         {
