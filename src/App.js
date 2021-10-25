@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Homepage from "./pages/Home";
 import Control from "./pages/Control";
@@ -14,6 +14,7 @@ import Track from "./component/Track";
 import Water from "./component/Water";
 import Chat from "./pages/Chat";
 import Auto from "./pages/Auto";
+import firebase from "./firebase"
 
 import {
   Redirect,
@@ -36,6 +37,21 @@ function App() {
       />
     );
   };
+
+  useEffect(()=>{
+    const messaging = firebase.messaging();
+    messaging
+      .requestPermission()
+      .then(()=>{
+        return messaging.getToken();
+      })
+      .then(token =>{
+        console.log("token is...", token);
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+  })
   
   return (
     <React.Fragment>

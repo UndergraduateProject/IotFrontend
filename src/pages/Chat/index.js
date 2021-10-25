@@ -47,10 +47,12 @@ export default function Chatbox() {
   const test = message;
   const messages = test.map((msg,id)=>{
     return(
-      <Row className={"chat"+"-"+msg.id}>
-        {msg.id? <img className="chat-icon" src={Iris} alt="profile_pic" />:""}
-        <ChatBubble message={msg} />
-        {msg.id?"":<img className="chat-icon" src={user_icon} alt="profile_pic" />}
+      <Row >
+        <div className={"chat"+"-"+msg.id}>
+          {msg.id? <img className="chat-icon" src={Iris} alt="profile_pic" />:""}
+          {msg.id?"":<img className="chat-icon" src={user_icon} alt="profile_pic" />}
+          <ChatBubble  message={msg} />
+        </div>
       </Row>
     )
   })
