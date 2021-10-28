@@ -274,7 +274,7 @@ export default function Warning_ct() {
       <div className="top_block1_ct">Automation</div>
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Water Plants if <b> humidity </b> is <div className="at_space"></div>
+          Water Plants if <b style={{color:"blue"}}> humidity </b> is <div className="at_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -319,7 +319,7 @@ export default function Warning_ct() {
 
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Water Plants if <b> moisture </b> is <div className="at_space"></div>
+          Water Plants if <b style={{color:"brown"}}> moisture </b> is <div className="at_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <div className="select_text">lower</div>
@@ -350,7 +350,7 @@ export default function Warning_ct() {
       {/* block2 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Open fan if <b> temperature </b> is <div className="at_space"></div>
+          Open fan if <b style={{color:"red"}}> temperature </b> is <div className="at_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -393,50 +393,6 @@ export default function Warning_ct() {
       </div>
       {/* block2 */}
 
-      {/* block3 */}
-      <div className="top_block2_ct">
-        <div className="text_left_ct">
-          Open Light if <b> brightness </b> is
-          {/* select */}
-          <FormControl className={classes.formControl}>
-            <Select
-              value={hiLo.brightness}
-              onChange={handleChange}
-              displayEmpty
-              className={classes.selectEmpty}
-              inputProps={{ "aria-label": "Without label" }}
-              name="brightness"
-            >
-              <MenuItem value="lower">
-                <em className="select_text">lower</em>
-              </MenuItem>
-              <MenuItem value="higher">
-                <div className="select_text">higher</div>
-              </MenuItem>
-            </Select>
-            {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
-          {/* select */}
-          than {' '}
-          <input className="temp_wc" name="brightness" type="text" onChange={setCondition} value={data.brightness}></input>
-          {' '}%
-        </div>
-
-        {/* switch */}
-        <FormGroup className="switch_position">
-          <FormControlLabel
-            control={
-              <IOSSwitch
-                checked={state.brightness}
-                onChange={(e)=>handleChange_switch(e, data.brightness)}
-                name="brightness"
-              />
-            }
-            // label="iOS style"
-          />
-        </FormGroup>
-        {/* switch */}
-      </div>
       {/* block3 */}
       <Button onClick={saveChanges} className="at_btn" size="lg" variant="light">Save Changes</Button>
     </div>

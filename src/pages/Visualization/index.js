@@ -14,6 +14,7 @@ const today = new Date();
 
 function Visualization() {
 	const [date, setDate] = useState(new Date(today.getFullYear(), today.getMonth()-3, today.getDate()).getTime())
+	const [threshold, setThresh] = useState(false);
   const [state, setState] = useState({
     humidoptions: {
         chart: {
@@ -86,15 +87,6 @@ function Visualization() {
         noData:{
             text: "DataLarge...Loading..."
         },
-		// title:{
-		// 	text:"Temperature",
-		// 	style: {
-		// 		fontSize:  '28px',
-		// 		fontWeight:  'bold',
-		// 		fontFamily:  "SF Pro Display",
-		// 		color:  '#FFFFFF'
-		// 	  },
-		// }
       },
 	
       humidityseries: [
@@ -126,6 +118,8 @@ function Visualization() {
 			"daily" : [],
 			"hourly" : [],
 	});
+
+	
 	const tempChart = <Chart
 		options={state.tempoptions}
 		series={state.tempseries}
@@ -252,7 +246,20 @@ function Visualization() {
 							xaxis:{
 								min:date,
 								max:today,
-							}
+							},
+							annotations:{
+											yaxis: [
+												{
+													y: threshold.min_temp,
+													y2: threshold.max_temp,
+													borderColor: '#000',
+													fillColor: '#FEB019',
+													label: {
+														text: 'threshold'
+													}
+												}
+											]
+										}
 						},
 					tempseries: [
 							{
@@ -266,6 +273,19 @@ function Visualization() {
 						xaxis:{
 							min:date,
 							max:today,
+						},
+						annotations:{
+							yaxis: [
+								{
+									y: threshold.min_humid,
+									y2: threshold.max_humid,
+									borderColor: '#000',
+									fillColor: '#FEB019',
+									label: {
+										text: 'threshold'
+									}
+								}
+							]
 						}
 					},
 					humidityseries:[
@@ -287,6 +307,26 @@ function Visualization() {
 			console.log(test)
 		}
 	}, [temp]);
+
+	//plant
+  useEffect(()=>{
+    const url = "api/Usertoplant/";
+    api.get(url)
+    .then(res => {
+      const url = "api/Plant/"+ res['results'][0].plant + "/"
+      api.get(url)
+      .then(res =>{
+        console.log(res)
+				const tmp = {
+					max_temp : res.max_temp,
+					min_temp : res.min_temp,
+					max_humid : res.max_humidity,
+					min_humid : res.min_humidity,
+				}
+				setThresh(tmp)
+      })
+    })
+  },[])
 
   const changePeriod = (period) => {
 	switch (period){
