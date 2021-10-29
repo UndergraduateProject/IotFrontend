@@ -42,6 +42,7 @@ function Control() {
     msg : "loop",
     isActive : true,
   })
+  const [plant, setPlant] = useState()
   const [fanhistory, setFanHistory] = useState([]);
   const [water, setWater] = useState("");
   const [waterhistory, setWaterHistory] = useState([]);
@@ -221,6 +222,21 @@ function Control() {
   };
 
   //get data
+  //plant
+  useEffect(()=>{
+    const url = "api/Usertoplant/";
+    api.get(url)
+    .then(res => {
+      console.log(res['results']);
+      const url = "api/Plant/"+ res['results'][0].plant + "/"
+      api.get(url)
+      .then(res =>{
+        console.log(res)
+        setPlant(res)
+      })
+    })
+  },[])
+
   //fan
   useEffect(()=>{
     var url = "api/Fan/";
@@ -257,7 +273,7 @@ function Control() {
         }
       })
     })
-  },[])
+  },[spin])
 
   const fantemplate = fanhistory.map(ele => {
     return (<li key={ele.id}><div  className="history"><div>{ele.timestamp}</div> <div>{ele.switch}</div></div></li>)
@@ -428,11 +444,11 @@ function Control() {
       </Row>
 
       <div className="control_plant">
-      <img  className="control_plant_pic" src={select_cabbage}/>
+      <img  className="control_plant_pic" src={plant? plant.image :""} alt="plant"/>
       {/* <img  style={{width:'90px' , height:'70px',paddingLeft:'20px',paddingTop:'10px'}}
         src={select_cabbage}/> */}
-        <div className="control_plant_name">Cabbage</div>
-        <div className="control_plant_detail">喜低溫乾燥，生長時需土壤深厚、排水良好的環境。</div>
+        <div className="control_plant_name">{plant ? plant.name : ""}</div>
+        <div className="control_plant_detail">{plant ? plant.description : ""}</div>
       </div>
 
 {/* 

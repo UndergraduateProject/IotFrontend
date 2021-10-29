@@ -73,6 +73,23 @@ function Monitor() {
     volume : 0,
     timestamp : '',
   })
+  const [plant, setPlant] = useState()
+
+  //plant
+  useEffect(()=>{
+    const url = "api/Usertoplant/";
+    api.get(url)
+    .then(res => {
+      console.log(res['results']);
+      const url = "api/Plant/"+ res['results'][0].plant + "/"
+      api.get(url)
+      .then(res =>{
+        console.log(res)
+        setPlant(res)
+      })
+    })
+  },[])
+
 
   useEffect(() => {
     socket.on("monitor", (res) => {
@@ -398,9 +415,9 @@ function Monitor() {
       </Row>
 
     <div className="monitor_plant">
-      <img className="monitor_plant_pic" src={select_cabbage}/>
-      <div className="monitor_plant_name">Cabbage</div>
-      <div className="monitor_plant_detail">喜低溫乾燥，生長時需土壤深厚、排水良好的環境。</div>
+      <img className="monitor_plant_pic" src={plant? plant.image :""} alt="plant"/>
+        <div className="control_plant_name">{plant ? plant.name : ""}</div>
+        <div className="control_plant_detail">{plant ? plant.description : ""}</div>
     </div>
 
       <div className="monitor_background">

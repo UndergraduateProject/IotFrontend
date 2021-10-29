@@ -12,10 +12,11 @@ import Detect from "./pages/Detect";
 import Profile from "./pages/Profile";
 import Track from "./component/Track";
 import Water from "./component/Water";
+import Notification from "./component/Notification"
 import Chat from "./pages/Chat";
 import Auto from "./pages/Auto";
 import firebase from "./firebase"
-
+import {isMobile} from 'react-device-detect';
 import {
   Redirect,
   Route,
@@ -39,7 +40,8 @@ function App() {
   };
 
   useEffect(()=>{
-    const messaging = firebase.messaging();
+    if (!isMobile){
+      const messaging = firebase.messaging();
     messaging
       .requestPermission()
       .then(()=>{
@@ -51,7 +53,8 @@ function App() {
       .catch(error=>{
         console.log(error)
       })
-  })
+    }
+  },[])
   
   return (
     <React.Fragment>
@@ -71,7 +74,7 @@ function App() {
         <ProtectedRoute path="/test" loggedIn = {log} component = {Track}/>
         <Route path="/">{log ? <Homepage /> :<Login  state={{log :[log,setLog]}}/>}</Route>
       </Switch>
-      
+      <Notification />
     </React.Fragment>
   )
 }

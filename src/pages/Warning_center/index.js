@@ -289,7 +289,7 @@ export default function Warning_ct() {
       <div className="top_block1_ct">Warning Center</div>
       <div className="top_block2_ct">
         <div className="text_left_at">
-          Notify me if <b> humidity </b> is  <div className="wc_space"></div>
+          Notify me if <b style={{color:"blue"}}> humidity </b> is  <div className="wc_space"></div>
           {/* select */}
         
           <FormControl className={classes.formControl}>
@@ -338,7 +338,7 @@ export default function Warning_ct() {
       {/* block2 */}
       <div className="top_block2_ct">
         <div className="text_left_at">
-          Notify me if <b> temperature </b> is <div className="wc_space"></div>
+          Notify me if <b style={{color:"red"}}> temperature </b> is <div className="wc_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
@@ -384,7 +384,7 @@ export default function Warning_ct() {
       {/* block3 */}
       <div className="top_block2_ct">
         <div className="text_left_at">
-          Notify me if <b> volume </b> is <div className="wc_space"></div>
+          Notify me if <b style={{color:"lightblue"}}> volume </b> is <div className="wc_space"></div>
           {/* select */}
           <FormControl className={classes.formControl}>
             <Select
