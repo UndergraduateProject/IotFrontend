@@ -8,7 +8,6 @@ import moment from 'moment';
 import Sidebar from "../../component/Sidebar";
 
 
-const path = "api/Humidtemp/?limit=1000";
 const today = new Date();
 
 
@@ -47,15 +46,6 @@ function Visualization() {
         noData:{
             text: "DataLarge...Loading..."
         },
-		// title:{
-		// 	text:"Humidity",
-		// 	style: {
-		// 		fontSize:  '28px',
-		// 		fontWeight:  'bold',
-		// 		fontFamily:  "SF Pro Display",
-		// 		color:  '#FFFFFF'
-		// 	  },
-		// }
       },
 		tempoptions: {
         chart: {
@@ -298,11 +288,23 @@ function Visualization() {
 		})
 	};
 
+	
   useEffect(() => {
+		const path = "api/Humidtemp/?limit=1000";
 		const off = "&offset=" + offset;
 		const url = path + off;
 		if(offset <= count){
 			getdata(url);
+			console.log(url)
+			console.log(test)
+		}
+	}, [temp]);
+
+	useEffect(() => {
+		const path = "api/Moisture/";
+		const off = "&offset=" + offset;
+		const url = path + off;
+		if(offset <= count){
 			console.log(url)
 			console.log(test)
 		}
