@@ -48,6 +48,10 @@ function Sidebar() {
         <div className="menu-item" >自動運作設定</div>
       </Link>
 
+      <Link to="/notification_page">
+        <div className="menu-item">通知</div>
+      </Link>
+
       <div className="setting"> 
         <Link to="/setting">
           <div className="menu-item" >設定</div>
