@@ -7,6 +7,7 @@ import Select from "./pages/Select";
 import Camera from "./pages/Camera";
 import Visualization from "./pages/Visualization";
 import Warning_center from "./pages/Warning_center";
+import Notification_page from "./pages/Notification_page";
 import Setting from "./pages/Setting";
 import Detect from "./pages/Detect";
 import Profile from "./pages/Profile";
@@ -67,6 +68,7 @@ function App() {
         <ProtectedRoute path="/visualization" loggedIn = {log} component = {Visualization}/>
         <ProtectedRoute path="/auto" loggedIn = {log} component = {Auto}/>
         <ProtectedRoute path="/warning_center" loggedIn = {log} component = {Warning_center}/>
+        <ProtectedRoute path="/Notification_page" loggedIn = {log} component = {Notification_page}/>
         <ProtectedRoute path="/setting" loggedIn = {log} component = {Setting}/>
         <ProtectedRoute path="/detect" loggedIn = {log} component = {Detect}/>
         <ProtectedRoute path="/profile" loggedIn = {log} component = {Profile}/>
