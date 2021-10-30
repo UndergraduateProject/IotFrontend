@@ -78,7 +78,37 @@ function Visualization() {
             text: "DataLarge...Loading..."
         },
       },
-	
+			moistoptions: {
+        chart: {
+            id: 'temp',
+						group :'enviroment',
+            type: 'line',
+            height: "100%",
+			zoom: {
+				type: 'x',
+				enabled: true,
+				autoScaleYaxis: true
+			},
+			toolbar: {
+				autoSelected: 'zoom'
+			}
+          },
+          colors: ['#FF3F7E'],
+          yaxis: {
+            labels: {
+              minWidth: 40,
+            }
+          },
+        xaxis: {
+					type: 'datetime',
+					tickPlacement:'on',
+					min: date,
+					max: today,
+        },
+        noData:{
+            text: "DataLarge...Loading..."
+        },
+      },
       humidityseries: [
         {
           name: "humidity",
@@ -88,6 +118,12 @@ function Visualization() {
 		tempseries:[
 			{
 				name: "temperature",
+				data: []
+			}
+		],
+		moistseries:[
+			{
+				name: "moisture",
 				data: []
 			}
 		],
@@ -305,8 +341,7 @@ function Visualization() {
 		const off = "&offset=" + offset;
 		const url = path + off;
 		if(offset <= count){
-			console.log(url)
-			console.log(test)
+			
 		}
 	}, [temp]);
 
