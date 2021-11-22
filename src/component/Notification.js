@@ -53,28 +53,28 @@ function Notification(){
 
   useEffect(()=>{
     const socket = socketIOClient(endpoint);
-    socket.on("message", data =>{
-      setResponse(data)
-      var msg = temp;
-      switch(data){
-        case "temp":
-          msg = temp;
-          break;
-
-        case "humidity":
-          msg = humid;
-          break;
-        
-        case "volume":
-          msg = volume;
-          break;
-
-        default:
-          msg = temp
+    socket.on("notification", data =>{
+      store.removeAllNotifications()
+      setResponse(data);
+      var style = 'danger';
+      if (data.title == 'Automation'){
+        style = 'success'
+      }
+      const msg = {
+        title: data.title,
+        message: data.body,
+        type: style,
+        insert: "top",
+        container: "top-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
       }
       store.addNotification(msg);
     }
-    
     );
   })
     

@@ -78,37 +78,6 @@ function Visualization() {
             text: "DataLarge...Loading..."
         },
       },
-			moistoptions: {
-        chart: {
-            id: 'temp',
-						group :'enviroment',
-            type: 'line',
-            height: "100%",
-			zoom: {
-				type: 'x',
-				enabled: true,
-				autoScaleYaxis: true
-			},
-			toolbar: {
-				autoSelected: 'zoom'
-			}
-          },
-          colors: ['#FF3F7E'],
-          yaxis: {
-            labels: {
-              minWidth: 40,
-            }
-          },
-        xaxis: {
-					type: 'datetime',
-					tickPlacement:'on',
-					min: date,
-					max: today,
-        },
-        noData:{
-            text: "DataLarge...Loading..."
-        },
-      },
       humidityseries: [
         {
           name: "humidity",
@@ -121,18 +90,57 @@ function Visualization() {
 				data: []
 			}
 		],
-		moistseries:[
-			{
-				name: "moisture",
-				data: []
-			}
-		],
 		current : 0,
 		selection : 'all',
 		key: new Date(),
 		period:"hourly",
     }
   )
+
+	const [moisstate, setMoisstate] = useState({
+		options: {
+		chart: {
+				id: 'moisture',
+				group :'enviroment',
+				type: 'line',
+				height: "100%",
+	zoom: {
+		type: 'x',
+		enabled: true,
+		autoScaleYaxis: true
+	},
+	toolbar: {
+		autoSelected: 'zoom'
+	}
+	
+			},
+			colors: ['#940B00'],
+			yaxis: {
+				labels: {
+					minWidth: 40
+				}
+			},
+		xaxis: {
+			type: 'datetime',
+			tickPlacement:'on',
+			min: date,
+			max: today,
+		},
+		noData:{
+				text: "DataLarge...Loading..."
+		},
+	},
+	series: [
+		{
+			name: "moisture",
+			data: []
+		}
+	],
+	current : 0,
+	selection : 'all',
+	key: new Date(),
+	period:"daily",
+})
 	
 	const [temp, setTemp] = useState({
 			"weekly" : [],
@@ -144,6 +152,11 @@ function Visualization() {
 			"daily" : [],
 			"hourly" : [],
 	});
+	const [moisture, setMoisture] = useState({
+		"weekly" : [],
+		"daily" : [],
+		"hourly" : [],
+	});
 
 	
 	const tempChart = <Chart
@@ -154,196 +167,304 @@ function Visualization() {
 		width="100%"
 	/>;
 
-  	const humidChart = <Chart
-		options={state.humidoptions}
-		series={state.humidityseries}
-		type="line"
-		width="100%"
-		height="100%"
-		/>;
+	const humidChart = <Chart
+	options={state.humidoptions}
+	series={state.humidityseries}
+	type="line"
+	width="100%"
+	height="100%"
+	/>;
+
+	const moistChart = <Chart
+	options={moisstate.options}
+	series={moisstate.series}
+	type="line"
+	width="100%"
+	height="100%"
+	/>;
 	const [chart, setChart] = useState(0)
-	const [test, setTest] = useState(0)
 	const [count, setCount] = useState(0)
 	const [offset, setOffset] = useState(0)
 
-	const getdata = async (url) => {
-		var tempValue = {
-			"weekly" :  temp.weekly,
-			"daily" : temp.daily,
-			"hourly" : temp.hourly,
-		};
 	
-		var humidityValue = {
-			"weekly" : humidity.weekly,
-			"daily" : humidity.daily,
-			"hourly" : humidity.hourly,
-		};
-		var tmp = {};
-		var hourTmp = {};
-		var weekTmp = {};
-		api.get(url).then(response => {
-			const tmpoff = offset + 1000;
-			const resdate = new Date(response['results'][0].timestamp).getTime()
-			const tmpdate = new Date(date).getTime()
-			if(tmpdate > resdate){
-				setDate(new Date(response['results'][0].timestamp))
-			}
-			setOffset(tmpoff)
-			setCount(response['count'])
-			response['results'].forEach(ele => {
-				const time = new Date(ele.timestamp);
-				const date = time.toISOString().split('T')[0];
-				const obj = tmp[date] = tmp[date] || {count:0, temperature:0, humidity:0};
-				const yearWeek = [moment(date).year(),moment(date).week()];
-				const yearDay = [moment(date).year(),
-					(moment(date).month()+1).toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
-					moment(date).date().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
-					moment(time).hour().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false})];
-				const hourObj = hourTmp[yearDay] = hourTmp[yearDay] || {count:0, temperature:0,humidity:0};
-				const weekObj = weekTmp[yearWeek] = weekTmp[yearWeek] || {count:0, temperature:0, humidity:0};
-				obj.count++;
-				obj.temperature += ele.temperature;
-				obj.humidity += ele.humidity;
-				hourObj.count++;
-				hourObj.temperature += ele.temperature;
-				hourObj.humidity += ele.humidity;
-				weekObj.count++;
-				weekObj.temperature += ele.temperature;
-				weekObj.humidity += ele.humidity;
-			});
-
-			const res = Object.entries(tmp).map(function(entry){
-				return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
-			});
-			const hourlyRes = Object.entries(hourTmp).map(function(entry){
-			entry[0] = entry[0].replace(',','-');
-			entry[0] = entry[0].replace(',','-');
-			entry[0] = entry[0].replace(',','T');
-			entry[0] = moment(entry[0]);
-			// entry[0] = new Date(entry[0]).getTime();
-			return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
-			});
-
-			const weekRes = Object.entries(weekTmp).map(function(entry){
-				entry[0] = entry[0].replace(',','W');
-				entry[0] = moment(entry[0]);
-				return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
-			});
-
-
-			weekRes.forEach(ele=>{
-				var temp = [];
-				var humidity = [];
-				humidity.push(ele.date);
-				humidity.push(ele.humidAvg);
-				temp.push(ele.date);
-				temp.push(ele.tempAvg);
-				tempValue.weekly.push(temp);
-				humidityValue.weekly.push(humidity)
-			})
-			
-			res.forEach(ele=>{
-				var temp = [];
-				var humidity = [];
-				humidity.push(ele.date);
-				humidity.push(ele.humidAvg);
-				temp.push(ele.date);
-				temp.push(ele.tempAvg);
-				tempValue.daily.push(temp);
-				humidityValue.daily.push(humidity)
-			})
-				
-			hourlyRes.forEach(ele=>{
-				var temp = [];
-				var humidity = [];
-				humidity.push(ele.date);
-				humidity.push(ele.humidAvg);
-				temp.push(ele.date);
-				temp.push(ele.tempAvg);
-				tempValue.hourly.push(temp);
-				humidityValue.hourly.push(humidity)
-			})
-			
-			setTemp(tempValue);
-			setHumidity(humidityValue);
-			setState({
-					tempoptions: {
-							...state.tempoptions,
-							xaxis:{
-								min:date,
-								max:today,
-							},
-							annotations:{
-											yaxis: [
-												{
-													y: threshold.min_temp,
-													y2: threshold.max_temp,
-													borderColor: '#000',
-													fillColor: '#FEB019',
-													label: {
-														text: 'threshold'
-													}
-												}
-											]
-										}
-						},
-					tempseries: [
-							{
-								...state.tempseries,
-								data: tempValue.hourly,
-							}
-						],
-					
-					humidoptions:{
-						...state.humidoptions,
-						xaxis:{
-							min:date,
-							max:today,
-						},
-						annotations:{
-							yaxis: [
-								{
-									y: threshold.min_humid,
-									y2: threshold.max_humid,
-									borderColor: '#000',
-									fillColor: '#FEB019',
-									label: {
-										text: 'threshold'
-									}
-								}
-							]
-						}
-					},
-					humidityseries:[
-						{
-							...state.humidityseries,
-							data: humidityValue.hourly,
-						}
-					]
-					})
-		})
-	};
 
 	
   useEffect(() => {
 		const path = "api/Humidtemp/?limit=1000";
 		const off = "&offset=" + offset;
 		const url = path + off;
+		const getdata = async (url) => {
+			var tempValue = {
+				"weekly" :  temp.weekly,
+				"daily" : temp.daily,
+				"hourly" : temp.hourly,
+			};
+		
+			var humidityValue = {
+				"weekly" : humidity.weekly,
+				"daily" : humidity.daily,
+				"hourly" : humidity.hourly,
+			};
+			var tmp = {};
+			var hourTmp = {};
+			var weekTmp = {};
+			api.get(url).then(response => {
+				const tmpoff = offset + 1000;
+				const resdate = new Date(response['results'][0].timestamp).getTime()
+				const tmpdate = new Date(date).getTime()
+				if(tmpdate > resdate){
+					setDate(new Date(response['results'][0].timestamp))
+				}
+				setOffset(tmpoff)
+				setCount(response['count'])
+				response['results'].forEach(ele => {
+					const time = new Date(ele.timestamp);
+					const date = time.toISOString().split('T')[0];
+					const obj = tmp[date] = tmp[date] || {count:0, temperature:0, humidity:0};
+					const yearWeek = [moment(date).year(),moment(date).week()];
+					const yearDay = [moment(date).year(),
+						(moment(date).month()+1).toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
+						moment(date).date().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
+						moment(time).hour().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false})];
+					const hourObj = hourTmp[yearDay] = hourTmp[yearDay] || {count:0, temperature:0,humidity:0};
+					const weekObj = weekTmp[yearWeek] = weekTmp[yearWeek] || {count:0, temperature:0, humidity:0};
+					obj.count++;
+					obj.temperature += ele.temperature;
+					obj.humidity += ele.humidity;
+					hourObj.count++;
+					hourObj.temperature += ele.temperature;
+					hourObj.humidity += ele.humidity;
+					weekObj.count++;
+					weekObj.temperature += ele.temperature;
+					weekObj.humidity += ele.humidity;
+				});
+	
+				const res = Object.entries(tmp).map(function(entry){
+					return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
+				});
+				const hourlyRes = Object.entries(hourTmp).map(function(entry){
+				entry[0] = entry[0].replace(',','-');
+				entry[0] = entry[0].replace(',','-');
+				entry[0] = entry[0].replace(',','T');
+				entry[0] = moment(entry[0]);
+				// entry[0] = new Date(entry[0]).getTime();
+				return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
+				});
+	
+				const weekRes = Object.entries(weekTmp).map(function(entry){
+					entry[0] = entry[0].replace(',','W');
+					entry[0] = moment(entry[0]);
+					return { date: entry[0], tempAvg: (entry[1].temperature/entry[1].count).toFixed(2), humidAvg: (entry[1].humidity/entry[1].count).toFixed(2)}
+				});
+	
+	
+				weekRes.forEach(ele=>{
+					var temp = [];
+					var humidity = [];
+					humidity.push(ele.date);
+					humidity.push(ele.humidAvg);
+					temp.push(ele.date);
+					temp.push(ele.tempAvg);
+					tempValue.weekly.push(temp);
+					humidityValue.weekly.push(humidity)
+				})
+				
+				res.forEach(ele=>{
+					var temp = [];
+					var humidity = [];
+					humidity.push(ele.date);
+					humidity.push(ele.humidAvg);
+					temp.push(ele.date);
+					temp.push(ele.tempAvg);
+					tempValue.daily.push(temp);
+					humidityValue.daily.push(humidity)
+				})
+					
+				hourlyRes.forEach(ele=>{
+					var temp = [];
+					var humidity = [];
+					humidity.push(ele.date);
+					humidity.push(ele.humidAvg);
+					temp.push(ele.date);
+					temp.push(ele.tempAvg);
+					tempValue.hourly.push(temp);
+					humidityValue.hourly.push(humidity)
+				})
+				
+				setTemp(tempValue);
+				setHumidity(humidityValue);
+				setState({
+						tempoptions: {
+								...state.tempoptions,
+								xaxis:{
+									min:date,
+									max:today,
+								},
+								annotations:{
+												yaxis: [
+													{
+														y: threshold.min_temp,
+														y2: threshold.max_temp,
+														borderColor: '#000',
+														fillColor: '#FEB019',
+														label: {
+															text: 'threshold'
+														}
+													}
+												]
+											}
+							},
+						tempseries: [
+								{
+									...state.tempseries,
+									data: tempValue.daily,
+								}
+							],
+						
+						humidoptions:{
+							...state.humidoptions,
+							xaxis:{
+								min:date,
+								max:today,
+							},
+							annotations:{
+								yaxis: [
+									{
+										y: threshold.min_humid,
+										y2: threshold.max_humid,
+										borderColor: '#000',
+										fillColor: '#FEB019',
+										label: {
+											text: 'threshold'
+										}
+									}
+								]
+							}
+						},
+						humidityseries:[
+							{
+								...state.humidityseries,
+								data: humidityValue.daily,
+							}
+						],
+						current : 0,
+						selection : 'all',
+						key: new Date(),
+						period:"daily",
+						})
+			})
+		};
 		if(offset <= count){
 			getdata(url);
-			console.log(url)
-			console.log(test)
 		}
 	}, [temp]);
 
 	useEffect(() => {
-		const path = "api/Moisture/";
+		const path = "api/Moisture/?limit=1000";
 		const off = "&offset=" + offset;
 		const url = path + off;
+		const getdata = async (url) => {
+			var value = {
+				"weekly" :  temp.weekly,
+				"daily" : temp.daily,
+				"hourly" : temp.hourly,
+			};
+			var tmp = {};
+			var hourTmp = {};
+			var weekTmp = {};
+			api.get(url).then(response => {
+				const tmpoff = offset + 1000;
+				const resdate = new Date(response['results'][0].timestamp).getTime()
+				const tmpdate = new Date(date).getTime()
+				if(tmpdate > resdate){
+					setDate(new Date(response['results'][0].timestamp))
+				}
+				setOffset(tmpoff)
+				setCount(response['count'])
+				response['results'].forEach(ele => {
+					const time = new Date(ele.timestamp);
+					const date = time.toISOString().split('T')[0];
+					const obj = tmp[date] = tmp[date] || {count:0, moisture:0};
+					const yearWeek = [moment(date).year(),moment(date).week()];
+					const yearDay = [moment(date).year(),
+						(moment(date).month()+1).toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
+						moment(date).date().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false}),
+						moment(time).hour().toLocaleString('en-US',{minimumIntegerDigits:2, useGrouping:false})];
+					const hourObj = hourTmp[yearDay] = hourTmp[yearDay] || {count:0, moisture:0};
+					const weekObj = weekTmp[yearWeek] = weekTmp[yearWeek] || {count:0, moisture:0};
+					obj.count++;
+					obj.moisture += ele.moisture;
+					hourObj.count++;
+					hourObj.moisture += ele.moisture;
+					weekObj.count++;
+					weekObj.moisture += ele.moisture;
+				});
+	
+				const res = Object.entries(tmp).map(function(entry){
+					return { date: entry[0], moisAvg: (entry[1].moisture/entry[1].count).toFixed(2)}
+				});
+				const hourlyRes = Object.entries(hourTmp).map(function(entry){
+				entry[0] = entry[0].replace(',','-');
+				entry[0] = entry[0].replace(',','-');
+				entry[0] = entry[0].replace(',','T');
+				entry[0] = moment(entry[0]);
+				// entry[0] = new Date(entry[0]).getTime();
+				return { date: entry[0], moistAvg: (entry[1].moisture/entry[1].count).toFixed(2)}
+				});
+	
+				const weekRes = Object.entries(weekTmp).map(function(entry){
+					entry[0] = entry[0].replace(',','W');
+					entry[0] = moment(entry[0]);
+					return { date: entry[0], moistAvg: (entry[1].moisture/entry[1].count).toFixed(2)}
+				});
+	
+	
+				weekRes.forEach(ele=>{
+					var moisture = [];
+					moisture.push(ele.date);
+					moisture.push(ele.moistAvg);
+					value.weekly.push(moisture);
+				})
+				
+				res.forEach(ele=>{
+					var moisture = [];
+					moisture.push(ele.date);
+					moisture.push(ele.moistAvg);
+					value.daily.push(moisture);
+				})
+					
+				hourlyRes.forEach(ele=>{
+					var moisture = [];
+					moisture.push(ele.date);
+					moisture.push(ele.moistAvg);
+					value.hourly.push(moisture);
+				})
+				setMoisture(value)				
+				setMoisstate({
+						options: {
+								...moisstate.options,
+								xaxis:{
+									min:date,
+									max:today,
+								},
+							},
+						series: [
+								{
+									...moisstate.series,
+									data: value.daily,
+								}
+							],
+							current : 0,
+							selection : 'all',
+							key: new Date(),
+							period:"daily",
+						})
+			})
+		};
 		if(offset <= count){
-			
+			getdata(url)
 		}
-	}, [temp]);
+	}, []);
 
 	//plant
   useEffect(()=>{
@@ -388,6 +509,18 @@ function Visualization() {
 					}
 				]
 			})
+			setMoisstate({
+				...state,
+				period: period,
+				options:{
+					...moisstate.options
+				},
+				series:[
+					{
+						data: moisture.weekly
+					}
+				]
+			})
 			break;
 		
 		case "daily":
@@ -408,6 +541,18 @@ function Visualization() {
 				humidityseries:[
 					{
 						data: humidity.daily,
+					}
+				]
+			})
+			setMoisstate({
+				...state,
+				period: period,
+				options:{
+					...moisstate.options
+				},
+				series:[
+					{
+						data: moisture.daily
 					}
 				]
 			})
@@ -434,6 +579,18 @@ function Visualization() {
 					}
 				]
 			})
+			setMoisstate({
+				...state,
+				period: period,
+				options:{
+					...moisstate.options
+				},
+				series:[
+					{
+						data: moisture.hourly
+					}
+				]
+			})
 			break;
 
 		default :
@@ -454,6 +611,18 @@ function Visualization() {
 				humidityseries:[
 					{
 						data: humidity.daily,
+					}
+				]
+			})
+			setMoisstate({
+				...state,
+				period: period,
+				options:{
+					...moisstate.options
+				},
+				series:[
+					{
+						data: moisture.daily
 					}
 				]
 			})
@@ -480,10 +649,10 @@ function Visualization() {
 				break;
 			
 			case "2":
-				setChart(0)
+				setChart(2)
 				setState({
 					...state,
-					current :0
+					current :2
 				})
 				break;
 			
@@ -518,7 +687,17 @@ function Visualization() {
 				},
 			selection: timeline,
 			})
-
+			setMoisstate({
+				...state,
+				options:{
+					...moisstate.options,
+					xaxis:{
+						min: new Date(today.getFullYear(), today.getMonth()-1, today.getDate()).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
+			})
 			break;
 		case 'six_months':
 			setState({
@@ -532,6 +711,17 @@ function Visualization() {
 				},
 				tempoptions:{
 					...state.tempoptions,
+					xaxis:{
+						min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
+			})
+			setMoisstate({
+				...state,
+				options:{
+					...moisstate.options,
 					xaxis:{
 						min: new Date(today.getFullYear(), today.getMonth()-6, today.getDate()).getTime(),
 						max: today,
@@ -559,6 +749,17 @@ function Visualization() {
 				},
 				selection: timeline,
 			})
+			setMoisstate({
+				...state,
+				options:{
+					...moisstate.options,
+					xaxis:{
+						min: new Date(today.getFullYear()-1, today.getMonth(), today.getDate()).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
+			})
 			break;
 		case 'ytd':
 			setState({
@@ -572,6 +773,17 @@ function Visualization() {
 				},
 				tempoptions:{
 					...state.tempoptions,
+					xaxis:{
+						min: new Date(today.getFullYear(), today.getMonth(), today.getDate()-1).getTime(),
+						max: today,
+					}
+				},
+				selection: timeline,
+			})
+			setMoisstate({
+				...state,
+				options:{
+					...moisstate.options,
 					xaxis:{
 						min: new Date(today.getFullYear(), today.getMonth(), today.getDate()-1).getTime(),
 						max: today,
@@ -599,6 +811,17 @@ function Visualization() {
 				},
 				selection: timeline,
 			})
+			setMoisstate({
+				...state,
+				options:{
+					...moisstate.options,
+					xaxis:{
+						min: date,
+						max: today,
+					}
+				},
+				selection: timeline,
+			})
 			break;
 		default:
 			setState({
@@ -606,15 +829,26 @@ function Visualization() {
 				humidoptions:{
 					...state.humidoptions,
 					xaxis:{
-						min: null,
-						max: null,
+						min: date,
+						max: today,
 					}
 				},
 				tempoptions:{
 					...state.tempoptions,
 					xaxis:{
-						min: null,
-						max: null,
+						min: date,
+						max: today,
+					}
+				},
+				selection: timeline,
+			})
+			setMoisstate({
+				...state,
+				options:{
+					...moisstate.options,
+					xaxis:{
+						min: date,
+						max: today,
 					}
 				},
 				selection: timeline,
@@ -647,6 +881,12 @@ function Visualization() {
 					
 					case 1:
 						return(humidChart);
+					
+					case 2:
+						return(moistChart);
+
+					default:
+						return(tempChart);
 				}
 			})()}
     </div>
