@@ -9,48 +9,6 @@ const endpoint = "http://140.117.71.98:4001"
 
 function Notification(){
   const [response,setResponse] = useState()
-  const temp = {
-    title: "Warning!",
-    message: "Temperature too high",
-    type: "danger",
-    insert: "top",
-    container: "top-center",
-    animationIn: ["animate__animated", "animate__fadeIn"],
-    animationOut: ["animate__animated", "animate__fadeOut"],
-    dismiss: {
-      duration: 5000,
-      onScreen: true
-    }
-  }
-
-  const humid = {
-    title: "Warning!",
-    message: "Humidity is low " ,
-    type: "danger",
-    insert: "top",
-    container: "top-center",
-    animationIn: ["animate__animated", "animate__fadeIn"],
-    animationOut: ["animate__animated", "animate__fadeOut"],
-    dismiss: {
-      duration: 5000,
-      onScreen: true
-    }
-  }
-
-  const volume ={
-    title: "Warning!",
-    message: "Water tank level is low!",
-    type: "danger",
-    insert: "top",
-    container: "top-center",
-    animationIn: ["animate__animated", "animate__fadeIn"],
-    animationOut: ["animate__animated", "animate__fadeOut"],
-    dismiss: {
-      duration: 5000,
-      onScreen: true
-    }
-  }
-
   useEffect(()=>{
     const socket = socketIOClient(endpoint);
     socket.on("notification", data =>{

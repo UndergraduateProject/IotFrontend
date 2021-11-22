@@ -109,11 +109,14 @@ function Control() {
       "controller" : username, 
     }
     const url = "api/Fan/";
+    const condition = "api/ActionCondition/3/"
     api.post(url, data)
     .then(res=>{
       console.log(res);
     })
+    api.patch(condition, {"status" : "OFF"})
     socket.emit("fan",!spin? "ON" : "OFF")
+
   }
   const fanIcon =  spin ? <FontAwesomeIcon icon={faFan} size="lg" spin/> : <FontAwesomeIcon icon={faFan} size="lg" />
 
@@ -130,8 +133,18 @@ function Control() {
       "controller" : username,
     };
     const url = "api/Wartering/";
+    const condition = "api/ActionCondition/1/";
+    const condition2 = "api/ActionCondition/2/"
     api.post(url, data)
     .then(res=>{
+      console.log(res)
+    })
+    api.patch(condition, {"status" : "OFF"})
+    .then(res => {
+      console.log(res)
+    })
+    api.patch(condition2, {"status" : "OFF"})
+    .then(res => {
       console.log(res)
     })
     setWater("loop")
