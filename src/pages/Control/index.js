@@ -152,7 +152,11 @@ function Control() {
     setTimeout(()=> {
       setWater("");
     },4000);
-    socket.emit("water","on")
+    const instruction = {
+      "status" : "on",
+      "volume" : volume,
+    };
+    socket.emit("water",instruction)
   };
 
 
