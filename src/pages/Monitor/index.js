@@ -74,6 +74,37 @@ function Monitor() {
     timestamp : '',
   })
   const [plant, setPlant] = useState()
+  const [battery, setBattery] = useState(0)
+  const [volume, setVolume] = useState(0)
+  
+  //Waterstorage
+  useEffect(()=>{
+    const url = "api/WaterStorage/"
+    api.get(url)
+    .then(res =>{
+      const count = res['count']
+      const url = "api/WaterStorage/" + count + "/"
+      api.get(url)
+      .then(res => {
+        setVolume(res['volume'])
+      })
+    })
+  },[])
+
+  //Battery
+  useEffect(()=>{
+    const url = "api/Electricity/"
+    api.get(url)
+    .then(res =>{
+      const count = res['count']
+      const url = "api/Electricity/" + count + "/"
+      api.get(url)
+      .then(res => {
+        setBattery(res['quantity'])
+        console.log(res)
+      })
+    })
+  },[])
 
   //plant
   useEffect(()=>{
@@ -352,7 +383,7 @@ function Monitor() {
   const batterytemplate = (<div className={selecter["battery"] ? "selected monitor_battery" : "monitor_battery"} onClick={()=>changetemplate("battery")}>
                             <div className="monitor_battery2">電量</div>
                             <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
-                            <div className="monitor_battery1">87%</div>
+                            <div className="monitor_battery1">{battery.toFixed(0)}%</div>
                           </div>)  
                           
   const batterydetail = (<div>
@@ -362,7 +393,7 @@ function Monitor() {
   const volumetemplate = (<div className={selecter["volume"] ? "selected monitor_water_volume" : "monitor_water_volume"} onClick={()=>changetemplate("volume")}>
                             <div className="monitor_water_volume2">水量</div>
                             <div><img className="monitor_water_volume_pic" src={water_volume} alt=""/></div>
-                            <div className="monitor_water_volume1">45 %</div>
+                            <div className="monitor_water_volume1">{volume.toFixed(0)}%</div>
                           </div>)
 
   const volumedetail = (<div>
