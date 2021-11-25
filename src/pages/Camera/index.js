@@ -190,7 +190,7 @@ function Camera() {
     const instruction = {
       "angle":angle,
     }
-    socket.emit("slider", instruction)
+    socket.emit("angle", instruction)
   }
 
 
