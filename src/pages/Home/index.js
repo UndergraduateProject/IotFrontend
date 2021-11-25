@@ -39,7 +39,7 @@ function homepage() {
 
       <Row >
         <Col className="home_top2" md={{ span: 4, offset: 4 }} sm={{ span: 4, offset: 4 }} xs={{ span: 4, offset: 4 }}>
-        <Link to="/chat"><Button size="lg" variant="light" className="home_btn">聊天機器人</Button>{' '}</Link>
+        <Link to="/chat"><Button size="lg" variant="light" className="home_btn">諮詢系統</Button>{' '}</Link>
         </Col>
       </Row>
 

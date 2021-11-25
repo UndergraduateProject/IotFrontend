@@ -37,7 +37,7 @@ function Sidebar() {
       </Link>
 
       <Link to="/chat">
-        <div className="menu-item" >聊天機器人</div>
+        <div className="menu-item" >諮詢系統</div>
       </Link>
 
       <Link to="/warning_center">

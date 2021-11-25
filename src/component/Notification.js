@@ -12,26 +12,34 @@ function Notification(){
   useEffect(()=>{
     const socket = socketIOClient(endpoint);
     socket.on("notification", data =>{
-      store.removeAllNotifications()
-      setResponse(data);
-      var style = 'danger';
-      if (data.title == 'Automation'){
-        style = 'success'
-      }
-      const msg = {
-        title: data.title,
-        message: data.body,
-        type: style,
-        insert: "top",
-        container: "top-center",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 5000,
-          onScreen: true
+      const current = new Date().getTime()
+      if(localStorage.getItem('last_warning')){
+        if(current - localStorage.getItem('last_warning') > 600){
+          store.removeAllNotifications()
+          setResponse(data);
+          var style = 'danger';
+          if (data.title == 'Automation'){
+            style = 'success'
+          }
+          const msg = {
+            title: data.title,
+            message: data.body,
+            type: style,
+            insert: "top",
+            container: "top-center",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          }
+          store.addNotification(msg);
+          localStorage.setItem('last_warning', current)
         }
       }
-      store.addNotification(msg);
+      
+      
     }
     );
   })
