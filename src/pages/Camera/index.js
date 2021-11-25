@@ -229,20 +229,11 @@ function Camera() {
         </div>
         </Col>
       </Row>
-
-
-      
-      <Row>
-          <Col><img className="up_arrow" src={ up_arrow }  onClick={()=>move("up")}/></Col>
-        </Row>        
-        <Row className="controller">
-          <Col><img className="left_arrow" src={ left_arrow } onClick={()=>moveangle()}/></Col>
-        <Col><img className="camera_shutter" src={shutter} onClick={connectWebSocket}/></Col>
-          <Col><img className="right_arrow" src={ right_arrow } onClick={()=>moveangle()}/></Col>
-        </Row>
-        <Row>
-          <Col><img className="down_arrow" src={ down_arrow } onClick={()=>move("down")}/></Col>
-        </Row>   
+      <div><img className="up_arrow" src={ up_arrow }  onClick={()=>move("up")}/></div>
+      <div><img className="left_arrow" src={ left_arrow } onClick={()=>moveangle()}/></div>
+      <div><img className="camera_shutter" src={shutter} onClick={connectWebSocket}/></div>
+      <div><img className="right_arrow" src={ right_arrow } onClick={()=>moveangle()}/></div>
+      <div><img className="down_arrow" src={ down_arrow } onClick={()=>move("down")}/></div>
 
     </div>
     

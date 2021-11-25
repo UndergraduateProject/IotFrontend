@@ -41,7 +41,7 @@ export default function Notification_page() {
         <Sidebar />
         <div className="top_block1_noti">Notification</div>
 
-        {history}
+        <div className="warning_container">{history}</div>
 
         <Button className="noti_btn" size="lg" variant="light">Clean all notifications</Button>
       </div>
