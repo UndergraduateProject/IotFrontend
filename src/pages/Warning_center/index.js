@@ -431,7 +431,7 @@ export default function Warning_ct() {
       </div>
       {/* block3 */}
 
-      <Button onClick={saveChanges} className="wc_btn" size="lg" variant="light">儲存變更</Button>
+      <Button onClick={saveChanges} className="at_btn" size="lg" variant="light">儲存變更</Button>
     </div>
   )
 }
