@@ -286,12 +286,10 @@ export default function Warning_ct() {
     // block1
     <div className="body_wc">
       <Sidebar />
-      <div className="top_block1_ct">Warning Center</div>
+      <div className="top_block1_ct">警示設定</div>
       <div className="top_block2_ct">
         <div className="text_left_at">
-          Notify me if <b style={{color:"blue"}}> humidity </b> is  <div className="wc_space"></div>
-          {/* select */}
-        
+          <div>當 <b style={{color:"blue"}}> 空氣濕度 </b> 
           <FormControl className={classes.formControl}>
             <Select
               value={hiLo.humidity}
@@ -302,19 +300,23 @@ export default function Warning_ct() {
               name="humidity"
             >
               <MenuItem value="lower">
-                <em className="select_text">lower</em>
+                <em className="select_text">小於</em>
               </MenuItem>
               <MenuItem value="higher">
-                <div className="select_text">higher</div>
+                <div className="select_text">大於</div>
               </MenuItem>
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
+          </div>  <div className="wc_space"></div>
+          {/* select */}
+        
+          
          
           {/* select */}
-          than {' '}
+          {' '}
           <input className="temp_wc" name="humidity" type="text" onChange={setCondition} value={data.humidity}></input>
-          {' '}%
+          {' '}% 時通知我
         </div>
 
       
@@ -338,8 +340,7 @@ export default function Warning_ct() {
       {/* block2 */}
       <div className="top_block2_ct">
         <div className="text_left_at">
-          Notify me if <b style={{color:"red"}}> temperature </b> is <div className="wc_space"></div>
-          {/* select */}
+          <div>當 <b style={{color:"red"}}> 溫度 </b> 
           <FormControl className={classes.formControl}>
             <Select
               value={hiLo.temperature}
@@ -350,18 +351,20 @@ export default function Warning_ct() {
               name="temperature"
             >
               <MenuItem value="lower">
-                <em className="select_text">lower</em>
+                <em className="select_text">低於</em>
               </MenuItem>
               <MenuItem value="higher">
-                <div className="select_text">higher</div>
+                <div className="select_text">高於</div>
               </MenuItem>
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
+          </FormControl></div><div className="wc_space"></div>
           {/* select */}
-          than {' '}
+          
+          {/* select */}
+          {' '}
           <input className="temp_wc" name="temperature" type="text" onChange={setCondition} value={data.temperature} ></input>
-          {' '}°C
+          {' '}°C 時通知我
         </div>
   
         {/* switch */}
@@ -384,8 +387,7 @@ export default function Warning_ct() {
       {/* block3 */}
       <div className="top_block2_ct">
         <div className="text_left_at">
-          Notify me if <b style={{color:"lightblue"}}> volume </b> is <div className="wc_space"></div>
-          {/* select */}
+          <div>當 <b style={{color:"lightblue"}}> 水量</b> 
           <FormControl className={classes.formControl}>
             <Select
               value={hiLo.volume}
@@ -396,18 +398,20 @@ export default function Warning_ct() {
               name="volume"
             >
               <MenuItem value="lower">
-                <em className="select_text">lower</em>
+                <em className="select_text">低於</em>
               </MenuItem>
               <MenuItem value="higher">
-                <div className="select_text">higher</div>
+                <div className="select_text">高於</div>
               </MenuItem>
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
+          </FormControl> </div><div className="wc_space"></div>
           {/* select */}
-          than {' '}
+          
+          {/* select */}
+          {' '}
           <input className="temp_wc" name="volume" type="text" onChange={setCondition} value={data.volume}></input>
-          {' '}ml
+          {' '}ml 通知我
         </div>
 
         {/* switch */}
@@ -427,7 +431,7 @@ export default function Warning_ct() {
       </div>
       {/* block3 */}
 
-      <Button onClick={saveChanges} className="wc_btn" size="lg" variant="light">Save Changes</Button>
+      <Button onClick={saveChanges} className="wc_btn" size="lg" variant="light">儲存變更</Button>
     </div>
   )
 }

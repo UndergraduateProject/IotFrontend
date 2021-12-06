@@ -441,7 +441,7 @@ function Monitor() {
 
       <Row>
         <Col className="monitor_top3" md={12} sm={12} xs={12}>
-          Monitoring Status
+          溫室狀態
         </Col>
       </Row>
 
