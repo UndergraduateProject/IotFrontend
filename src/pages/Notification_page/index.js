@@ -7,15 +7,33 @@ import api from "../../utils/api"
 
 export default function Notification_page() {
   const [msg, setMsg] = useState([])
+  const [count, setCount] = useState()
 
   useEffect(()=>{
     const url = "api/WarningRecord/";
     api.get(url)
     .then(res =>{
       setMsg(res.results)
+      setCount(res.results[0].id)
     })
   },[])
 
+  const delete_msg = () => {
+    const url = "api/WarningRecord/";
+    console.log('deleting')
+
+    for(var i = count;i>0;i--){
+      const url2 = url + i + '/';
+      console.log(i)
+      api.remove(url2)
+      .then(res =>{
+        console.log(res)
+        if(res.detail){
+          i = 0
+        }
+      })
+    }
+  }
 
   const history = msg.map((ele, index)=>{
     if(ele.title.toLowerCase() == 'warning'){
@@ -43,7 +61,7 @@ export default function Notification_page() {
 
         <div className="warning_container">{history}</div>
 
-        <Button className="noti_btn" size="lg" variant="light">清除所有通知</Button>
+        <Button className="noti_btn" size="lg" variant="light" onClick={delete_msg}>清除所有通知</Button>
       </div>
     )
   }

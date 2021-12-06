@@ -163,6 +163,12 @@ function Control() {
   //light on
   const openLight = () => {
     setOnOff(!lightOnOff);
+    if(!lightOnOff){
+      setChosen("#000000")
+    }
+    else{
+      setChosen(chosenColor)
+    }
   };
 
   //camera icon loop
