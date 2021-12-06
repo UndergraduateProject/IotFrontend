@@ -184,7 +184,9 @@ function Visualization() {
 	/>;
 	const [chart, setChart] = useState(0)
 	const [count, setCount] = useState(0)
+	const [moiscount, setMoiscount] = useState(0)
 	const [offset, setOffset] = useState(0)
+	const [moisoff, setMoisoff] = useState(0)
 
 	
 
@@ -360,27 +362,28 @@ function Visualization() {
 	}, [temp]);
 
 	useEffect(() => {
-		const path = "api/Moisture/?limit=1000";
+		const path = "api/Moisture/?limit=20000";
 		const off = "&offset=" + offset;
-		const url = path + off;
+		const url = path;
 		const getdata = async (url) => {
 			var value = {
-				"weekly" :  temp.weekly,
-				"daily" : temp.daily,
-				"hourly" : temp.hourly,
+				"weekly" :  moisture.weekly,
+				"daily" : moisture.daily,
+				"hourly" : moisture.hourly,
 			};
 			var tmp = {};
 			var hourTmp = {};
 			var weekTmp = {};
 			api.get(url).then(response => {
+				console.log(response)
 				const tmpoff = offset + 1000;
 				const resdate = new Date(response['results'][0].timestamp).getTime()
 				const tmpdate = new Date(date).getTime()
 				if(tmpdate > resdate){
 					setDate(new Date(response['results'][0].timestamp))
 				}
-				setOffset(tmpoff)
-				setCount(response['count'])
+				setMoisoff(tmpoff)
+				setMoiscount(response['count'])
 				response['results'].forEach(ele => {
 					const time = new Date(ele.timestamp);
 					const date = time.toISOString().split('T')[0];
@@ -401,7 +404,7 @@ function Visualization() {
 				});
 	
 				const res = Object.entries(tmp).map(function(entry){
-					return { date: entry[0], moisAvg: (entry[1].moisture/entry[1].count).toFixed(2)}
+					return { date: entry[0], moistAvg: (entry[1].moisture/entry[1].count).toFixed(2)}
 				});
 				const hourlyRes = Object.entries(hourTmp).map(function(entry){
 				entry[0] = entry[0].replace(',','-');
@@ -439,7 +442,7 @@ function Visualization() {
 					moisture.push(ele.moistAvg);
 					value.hourly.push(moisture);
 				})
-				setMoisture(value)				
+				setMoisture(value)	
 				setMoisstate({
 						options: {
 								...moisstate.options,
@@ -461,10 +464,8 @@ function Visualization() {
 						})
 			})
 		};
-		if(offset <= count){
-			getdata(url)
-		}
-	}, []);
+		getdata(url)
+	},[]);
 
 	//plant
   useEffect(()=>{
@@ -861,9 +862,9 @@ function Visualization() {
 		<Sidebar />
 		<div className="select-custom">
 		<select onChange={changechart}>
-			<option value="0">Temperature</option>
-			<option value="1">Humidity</option>
-			<option value="2">Moisture</option>
+			<option value="0">溫度</option>
+			<option value="1">空氣濕度</option>
+			<option value="2">土壤濕度</option>
 		</select>
 		</div>
 		<div className="toolbar">
@@ -892,9 +893,9 @@ function Visualization() {
     </div>
 		
 		<div className="toolbar">
-			<div><button onClick={()=>changePeriod("weekly")} className={state.period=='weekly' ? 'active' : ''}>Weekly</button></div>
-			<div><button onClick={()=>changePeriod("daily")} className={state.period=='daily' ? 'active' : ''}>Daily</button></div>
-			<div><button onClick={()=>changePeriod("hourly")} className={state.period=='hourly' ? 'active' : ''}>Hourly</button></div>
+			<div><button onClick={()=>changePeriod("weekly")} className={state.period=='weekly' ? 'active' : ''}>每星期</button></div>
+			<div><button onClick={()=>changePeriod("daily")} className={state.period=='daily' ? 'active' : ''}>每天</button></div>
+			<div><button onClick={()=>changePeriod("hourly")} className={state.period=='hourly' ? 'active' : ''}>每小時</button></div>
 		</div>
     </div>
   )

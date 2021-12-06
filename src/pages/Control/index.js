@@ -50,14 +50,14 @@ function Control() {
   const [duration, setDuration] = useState();
   const [color, setColor] = useState();
   const [selected, setSelected] = useState({
-    "30secs" : false,
-    "5mins" : false,
-    "10mins" : false,
-    "30mins" : false,
-    "1hour" : false,
-    "6hour" : false,
-    "12hour" : false,
-    "24hour" : false,
+    "30秒" : false,
+    "5分鐘" : false,
+    "10分鐘" : false,
+    "30分鐘" : false,
+    "1小時" : false,
+    "6小時" : false,
+    "12小時" : false,
+    "24小時" : false,
   })
   const [lightOnOff, setOnOff] = useState(true);
   const [chosenColor, setChosen] = useState();
@@ -179,14 +179,14 @@ function Control() {
   //duration
   const changeduration = (duration) => {
     setSelected({
-      "30secs" : "30secs"==duration ? true : false,
-      "5mins" : "5mins"==duration ? true : false,
-      "10mins" : "10mins"==duration ? true : false,
-      "30mins" : "30mins"==duration ? true : false,
-      "1hour" : "1hour"==duration ? true : false,
-      "6hour" : "6hour"==duration ? true : false,
-      "12hour" : "12hour"==duration ? true : false,
-      "24hour" : "24hour"==duration ? true : false,
+      "30秒" : "30秒"==duration ? true : false,
+      "5分鐘" : "5分鐘"==duration ? true : false,
+      "10分鐘" : "10分鐘"==duration ? true : false,
+      "30分鐘" : "30分鐘"==duration ? true : false,
+      "1小時" : "1小時"==duration ? true : false,
+      "6小時" : "6小時"==duration ? true : false,
+      "12小時" : "12小時"==duration ? true : false,
+      "24小時" : "24小時"==duration ? true : false,
     })
   };
 
@@ -200,35 +200,35 @@ function Control() {
           "interval" : "",
         }
         switch(key){
-          case "30secs":
+          case "30秒":
             data.interval = "00:00:30"
             break;
 
-          case "5mins":
+          case "5分鐘":
             data.interval = "00:05:00"
             break;
 
-          case "10mins":
+          case "10分鐘":
             data.interval = "00:10:00"
             break;
 
-          case "30mins":
+          case "30分鐘":
             data.interval = "00:30:00"
             break;
 
-          case "1hour":
+          case "1小時":
             data.interval = "01:00:00"
             break;
 
-          case "6hour":
+          case "6小時":
             data.interval = "06:00:00"
             break;
 
-          case "12hour":
+          case "12小時":
             data.interval = "12:00:00"
             break;
 
-          case "24hour":
+          case "24小時":
             data.interval = "24:00:00"
             break;
 
@@ -383,74 +383,74 @@ function Control() {
     .then(res=>{
       switch(res.interval){
         case "00:00:30":
-          setDuration("30secs")
+          setDuration("30秒")
           setSelected({
             ...selected,
-            "30secs":true
+            "30秒":true
           })
           break;
 
         case "00:05:00":
-          setDuration("5mins")
+          setDuration("5分鐘")
           setSelected({
             ...selected,
-            "5mins":true
+            "5分鐘":true
           })
           break;
 
         case "00:10:00":
-          setDuration("10mins")
+          setDuration("10分鐘")
           setSelected({
             ...selected,
-            "10mins":true
+            "10分鐘":true
           })
           break;
 
         case "00:30:00":
-          setDuration("30mins")
+          setDuration("30分鐘")
           setSelected({
             ...selected,
-            "30mins":true
+            "30分鐘":true
           })
           break;
 
         case "01:00:00":
-          setDuration("1hour")
+          setDuration("1小時")
           setSelected({
             ...selected,
-            "1hour":true
+            "1小時":true
           })
           break;
 
         case "06:00:00":
-          setDuration("6hour")
+          setDuration("6小時")
           setSelected({
             ...selected,
-            "6hour":true
+            "6小時":true
           })
           break;
 
         case "12:00:00":
-          setDuration("12hour")
+          setDuration("12小時")
           setSelected({
             ...selected,
-            "12hour":true
+            "12小時":true
           })
           break;
 
         case "24:00:00":
-          setDuration("24hour")
+          setDuration("24小時")
           setSelected({
             ...selected,
-            "24hour":true
+            "24小時":true
           })
           break;
 
         default:
-          setDuration("30mins")
+          setDuration("30分鐘")
           setSelected({
             ...selected,
-            "30mins":true
+            "30分鐘":true
           })
       }
     })
@@ -484,8 +484,8 @@ function Control() {
         trigger=
         {<Col >
           <div className="fan">{fanIcon}</div>
-          <div className="data">{spin?"ON":"OFF"}</div>
-          <div>Fan</div>
+          <div className="data">{spin?"開啟":"關閉"}</div>
+          <div>風扇</div>
         </Col>} modal>
           {
             close => (
@@ -495,8 +495,8 @@ function Control() {
                     &times;
                   </button>
               <div className="modal-fan">{fanIcon}</div>
-              <div className="data">{spin?"ON":"OFF"}</div>
-              <div>Fan</div>
+              <div className="data">{spin?"開啟":"關閉"}</div>
+              <div>風扇</div>
               </div>
                 <label className="switch">
                   <input type="checkbox"  onChange={toSpin} checked={spin}/>
@@ -513,7 +513,7 @@ function Control() {
         <Popup trigger={<Col>
           <lord-icon src="https://cdn.lordicon.com/oyclgnwc.json" trigger="click" target="div" colors="primary:#9cf4df,secondary:#d1fad7"></lord-icon>
           <div className="data">{volume + "ml"}</div>
-          <div>Capacity</div>
+          <div>水量</div>
         </Col>} modal>
             {
               close => (
@@ -525,7 +525,7 @@ function Control() {
                     <div div className="data water-data">{volume + "ml"}</div>
                     <form >
                       <Slider min={0} max={250} step={1} value={volume} valueLabelDisplay="auto" onChange={slide} ref={ref => slider = ref}/>
-                      <Button variant="primary" onClick={watering}>Water</Button>
+                      <Button variant="primary" onClick={watering}>澆水</Button>
                     </form>
                     <ul id="recent">
                       {watertemplate}
@@ -538,14 +538,14 @@ function Control() {
         <Popup trigger={<Col >
           <img src="https://img.icons8.com/ios/50/000000/idea--v2.png"/>
           <div className="data" ref={ref} style={{fontSize,height: 42, width: 80,paddingTop:5,paddingLeft:-5}}>{color}</div>
-          <div>Light</div>
+          <div>燈控</div>
         </Col>} modal>
           {
             close => (
               <div className="modal">
                 <button className="close" onClick={close}>&times;</button>
                 <CircularColor centerRect={true} onChange={handleColorChange}/>
-                  <div>Light</div>
+                  <div>燈控</div>
                   <label className="switch">
                     <input type="checkbox" onClick={openLight} checked={lightOnOff}/>
                     <span className="slider"></span>
@@ -561,7 +561,7 @@ function Control() {
         <Popup trigger={<Col>
           <div ><img src={clock} alt=""/></div>
           <div className="data">{duration}</div>
-          <div className="sub">Duration</div>
+          <div className="sub">搜尋間隔</div>
         </Col>} modal>
         {
           close => (
@@ -570,14 +570,14 @@ function Control() {
                 &times;
               </button>
               <div id="duration" >
-                <div className={selected['30secs'] ? "selected" : null} onClick={()=>changeduration("30secs")}>30secs</div>
-                <div className={selected['5mins'] ? "selected" : null} onClick={()=>changeduration("5mins")}>5mins</div>
-                <div className={selected['10mins'] ? "selected" : null} onClick={()=>changeduration("10mins")}>10mins</div>
-                <div className={selected['30mins'] ? "selected" : null} onClick={()=>changeduration("30mins")}>30mins</div>
-                <div className={selected['1hour'] ? "selected" : null} onClick={()=>changeduration("1hour")}>1hour</div>
-                <div className={selected['6hour'] ? "selected" : null} onClick={()=>changeduration("6hour")}>6hour</div>
-                <div className={selected['12hour'] ? "selected" : null} onClick={()=>changeduration("12hour")}>12hour</div>
-                <div className={selected['24hour'] ? "selected" : null} onClick={()=>changeduration("24hour")}>24hour</div>
+                <div className={selected['30秒'] ? "selected" : null} onClick={()=>changeduration("30秒")}>30秒</div>
+                <div className={selected['5分鐘'] ? "selected" : null} onClick={()=>changeduration("5分鐘")}>5分鐘</div>
+                <div className={selected['10分鐘'] ? "selected" : null} onClick={()=>changeduration("10分鐘")}>10分鐘</div>
+                <div className={selected['30分鐘'] ? "selected" : null} onClick={()=>changeduration("30分鐘")}>30分鐘</div>
+                <div className={selected['1小時'] ? "selected" : null} onClick={()=>changeduration("1小時")}>1小時</div>
+                <div className={selected['6小時'] ? "selected" : null} onClick={()=>changeduration("6小時")}>6小時</div>
+                <div className={selected['12小時'] ? "selected" : null} onClick={()=>changeduration("12小時")}>12小時</div>
+                <div className={selected['24小時'] ? "selected" : null} onClick={()=>changeduration("24小時")}>24小時</div>
               </div>
               <button className="confirm-btn" onClick={()=> {confirmduration(); close();}}>confirm</button>
             </div>
@@ -588,8 +588,8 @@ function Control() {
             <Link to="/camera">
               <lord-icon src="https://cdn.lordicon.com/vixtkkbk.json" trigger={loop.msg} colors="primary:#121331,secondary:#08a88a">
               </lord-icon>
-              <div className="data">Camera</div>
-              <div className="sub">Active</div>
+              <div className="data">相機</div>
+              <div className="sub">運作中</div>
             </Link>
           </Col>
       </Row>

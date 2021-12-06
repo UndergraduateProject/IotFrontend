@@ -57,11 +57,11 @@ export default function Notification_page() {
     return (
       <div className="body_noti">
         <Sidebar />
-        <div className="top_block1_noti">Notification</div>
+        <div className="top_block1_noti">通知</div>
 
         <div className="warning_container">{history}</div>
 
-        <Button className="noti_btn" size="lg" variant="light" onClick={delete_msg}>Clean all notifications</Button>
+        <Button className="noti_btn" size="lg" variant="light" onClick={delete_msg}>清除所有通知</Button>
       </div>
     )
   }

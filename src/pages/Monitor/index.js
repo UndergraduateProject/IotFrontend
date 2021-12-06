@@ -4,7 +4,7 @@ import "./monitor.css"
 import { Row, Col } from "react-bootstrap"
 import light from "../../images/monitor_light.png"
 import cloud from "../../images/cloud.png"
-import battery from "../../images/battery.png"
+import battery_pic from "../../images/battery.png"
 import water from "../../images/monitor_water.png"
 import water_volume from "../../images/water_volume.png"
 import soil from "../../images/soil.png"
@@ -342,12 +342,11 @@ function Monitor() {
       className={selecter["light"] ? "selected monitor_light" : "monitor_light"}
       onClick={() => changetemplate("light")}
     >
-      <div className="monitor_light2">亮度</div>
+      <div className="monitor_light2">燈色</div>
       <div>
         <img className="monitor_light_pic" src={light} alt="" />
       </div>
-      <div className="monitor_light3">87%</div>
-      <div className="monitor_light1">{color}</div>
+      <div className="monitor_light3">{color}</div>
     </div>
   )
 
@@ -382,7 +381,7 @@ function Monitor() {
 
   const batterytemplate = (<div className={selecter["battery"] ? "selected monitor_battery" : "monitor_battery"} onClick={()=>changetemplate("battery")}>
                             <div className="monitor_battery2">電量</div>
-                            <div><img className="monitor_battery_pic" src={battery} alt=""/></div>
+                            <div><img className="monitor_battery_pic" src={battery_pic} alt=""/></div>
                             <div className="monitor_battery1">{battery.toFixed(0)}%</div>
                           </div>)  
                           
@@ -441,7 +440,7 @@ function Monitor() {
 
       <Row>
         <Col className="monitor_top3" md={12} sm={12} xs={12}>
-          Monitoring Status
+          溫室狀態
         </Col>
       </Row>
 

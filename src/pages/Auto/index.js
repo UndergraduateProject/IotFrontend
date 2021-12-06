@@ -271,12 +271,10 @@ export default function Warning_ct() {
     // block1
     <div className="body_wc">
       <Sidebar />
-      <div className="top_block1_ct">Automation</div>
+      <div className="top_block1_ct">自動運作設定</div>
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Water Plants if <b style={{color:"blue"}}> humidity </b> is <div className="at_space"></div>
-          {/* select */}
-          <FormControl className={classes.formControl}>
+          當 <b style={{color:"blue"}}> 空氣濕度 </b> <FormControl className={classes.formControl}>
             <Select
               value={hiLo.humidity}
               onChange={handleChange}
@@ -286,18 +284,20 @@ export default function Warning_ct() {
               name="humidity"
             >
               <MenuItem value="lower">
-                <em className="select_text">lower</em>
+                <em className="select_text">小於</em>
               </MenuItem>
               <MenuItem value="higher">
-                <div className="select_text">higher</div>
+                <div className="select_text">高於</div>
               </MenuItem>
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
-          </FormControl>
+          </FormControl><div className="at_space"></div>
           {/* select */}
-          than {' '}
+          
+          {/* select */}
+          {' '}
           <input className="temp_wc" name="humidity" type="text" onChange={setCondition} value={data.humidity}></input>
-          {' '}%
+          {' '}% 時<b style={{"color":"blue"}}>澆水</b>
         </div>
       
         {/* switch */}
@@ -319,16 +319,18 @@ export default function Warning_ct() {
 
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Water Plants if <b style={{color:"brown"}}> moisture </b> is <div className="at_space"></div>
-          {/* select */}
+          當 <b style={{color:"brown"}}> 土壤濕度 </b> 
           <FormControl className={classes.formControl}>
-            <div className="select_text">lower</div>
+            <div className="select_text">小於</div>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
+          <div className="at_space"></div>
           {/* select */}
-          than {' '}
+          
+          {/* select */}
+          {' '}
           <input className="temp_wc" name="moisture" type="text" onChange={setCondition} value={data.moisture}></input>
-          {' '}%
+          {' '}% <b style={{"color":"brown"}}>澆水</b>
         </div>
       
         {/* switch */}
@@ -350,8 +352,7 @@ export default function Warning_ct() {
       {/* block2 */}
       <div className="top_block2_ct">
         <div className="text_left_ct">
-          Open fan if <b style={{color:"red"}}> temperature </b> is <div className="at_space"></div>
-          {/* select */}
+          當 <b style={{color:"red"}}> 溫度 </b>
           <FormControl className={classes.formControl}>
             <Select
               value={hiLo.temperature}
@@ -362,18 +363,21 @@ export default function Warning_ct() {
               name="temperature"
             >
               <MenuItem value="lower">
-                <em className="select_text">lower</em>
+                <em className="select_text">低於</em>
               </MenuItem>
               <MenuItem value="higher">
-                <div className="select_text">higher</div>
+                <div className="select_text">高於</div>
               </MenuItem>
             </Select>
             {/* <FormHelperText>Without label</FormHelperText> */}
           </FormControl>
           {/* select */}
-          than {' '}
+          <div className="at_space"></div>
+          {/* select */}
+          
+          {' '}
           <input className="temp_wc" name="temperature" type="text" onChange={setCondition} value={data.temperature}></input>
-          {' '}°C
+          {' '}°C <b style={{"color":"red"}}>開啟風扇</b>
         </div>
   
         {/* switch */}
@@ -394,7 +398,7 @@ export default function Warning_ct() {
       {/* block2 */}
 
       {/* block3 */}
-      <Button onClick={saveChanges} className="at_btn" size="lg" variant="light">Save Changes</Button>
+      <Button onClick={saveChanges} className="at_btn" size="lg" variant="light">儲存變更</Button>
     </div>
     
   )
