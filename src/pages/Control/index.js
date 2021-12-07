@@ -166,10 +166,11 @@ function Control() {
   const openLight = () => {
     setOnOff(!lightOnOff);
     if(!lightOnOff){
-      setChosen("#000000")
+      setChosen(lastColor)
+      console.log(lastColor)
     }
     else{
-      setChosen(lastColor)
+      setChosen("#000000")
     }
   };
 
