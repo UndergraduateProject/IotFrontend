@@ -15,6 +15,7 @@ export default function Notification_page() {
     .then(res =>{
       setMsg(res.results)
       setCount(res.results[0].id)
+      console.log(res.results[0].id)
     })
   },[])
 
@@ -22,15 +23,12 @@ export default function Notification_page() {
     const url = "api/WarningRecord/";
     console.log('deleting')
 
-    for(var i = count;i>0;i--){
+    for(var i = count;i>count-10;i--){
       const url2 = url + i + '/';
       console.log(i)
       api.remove(url2)
       .then(res =>{
         console.log(res)
-        if(res.detail){
-          i = 0
-        }
       })
     }
   }
@@ -61,7 +59,6 @@ export default function Notification_page() {
 
         <div className="warning_container">{history}</div>
 
-        <Button className="noti_btn" size="lg" variant="light" onClick={delete_msg}>清除所有通知</Button>
       </div>
     )
   }
