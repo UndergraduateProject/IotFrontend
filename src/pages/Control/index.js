@@ -62,6 +62,7 @@ function Control() {
   const [lightOnOff, setOnOff] = useState(true);
   const [chosenColor, setChosen] = useState();
   const [lightColor, setLightColor] = useState({});
+  const [lastColor, setLastColor] = useState()
   const { fontSize, ref} = useFitText({
     maxFontSize:150,
   });
@@ -80,6 +81,7 @@ function Control() {
   
   const handleColorChange = (color) =>{
     setChosen(color)
+    setLastColor(color)
   }
 
   const changeColor = () =>{
@@ -167,7 +169,7 @@ function Control() {
       setChosen("#000000")
     }
     else{
-      setChosen(chosenColor)
+      setChosen(lastColor)
     }
   };
 
